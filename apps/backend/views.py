@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from apps.backend.models import SaaSInstance
 
 def home(request):
@@ -14,7 +15,9 @@ def home(request):
 
 @login_required
 def backend(request):
-    instances = SaaSInstance.objects.filter(status='free')
+    unused_instances = SaaSInstance.objects.filter(status='free')
+    customers = User.objects.filter(is_superuser=False, is_staff=False, is_active=True)
 
     return render(request,"backend.html",
-            {'instances':instances})
+            {'unused_instances':unused_instances,
+             'customers':customers})
