@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-box">
+  <h2>Saas Admin</h2>
+
+  <ul>
+  {% for instance in instances %}
+    <li>{{ instance.id }}: {{ instance.status }}</li>
+  {% endfor %}
+  </ul>
+
+</div>
+{% endblock %}

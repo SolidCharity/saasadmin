@@ -1,0 +1,32 @@
+{% load static %}
+<html>
+    <head>
+        <title>SaaS Admin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'Skeleton/css/normalize.css' %}">
+        <link rel="stylesheet" href="{% static 'Skeleton/css/skeleton.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'css/topnav.css' %}">
+        <link rel="stylesheet" href="{% static 'css/accordion.css' %}">
+        <link rel="stylesheet" href="{% static 'css/skeleton-tabs.css' %}">
+        <script src="{% static 'js/skeleton-tabs.js' %}"></script>
+    </head>
+    <body>
+        {% if user.is_authenticated %}
+        <nav class="topnav">
+            <a href="/backend">Backend</a>
+            <a class="right" href="/accounts/logout/">Logout</a>
+            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">About</a>
+            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">Fork me</a>
+        </nav>
+        {% else %}
+        <nav class="topnav">
+            <a href="/">SaaS Admin</a>
+            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">About</a>
+            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">Fork me</a>
+        </nav>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
