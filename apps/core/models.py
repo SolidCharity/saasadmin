@@ -4,6 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 # this is the saas instance rented by the customer
 class SaasInstance(models.Model):
+    identifier = models.CharField(_("identifier"), max_length=16)
     hostname = models.CharField(_("hostname"), max_length=128, default='localhost')
     status = models.CharField(_("Status"), max_length=16, default='free')
     auto_renew = models.BooleanField(_("Auto Renew"), default=True)

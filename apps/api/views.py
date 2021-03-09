@@ -23,6 +23,7 @@ class InstanceApiView(APIView):
     def post(self, request, *args, **kwargs):
 
         data = {
+            'identifier': request.data.get('identifier'),
             'hostname': request.data.get('hostname'),
             'status': request.data.get('status'),
         }
