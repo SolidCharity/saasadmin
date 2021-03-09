@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
-from apps.backend.models import SaaSInstance
+from apps.core.models import SaasInstance
 
-class SaaSInstanceSerializer(serializers.HyperlinkedModelSerializer):
+class InstanceSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = SaaSInstance
+        model = SaasInstance
         fields = ('id', 'hostname', 'status')

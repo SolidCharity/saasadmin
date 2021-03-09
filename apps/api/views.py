@@ -4,19 +4,20 @@ from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework import status
 
-from .serializers import SaaSInstanceSerializer
-from apps.backend.models import SaaSInstance
+from .serializers import InstanceSerializer
+from apps.core.models import SaasInstance
 
-class SaaSInstanceViewSet(viewsets.ModelViewSet):
-    queryset = SaaSInstance.objects.all().order_by('id')
-    serializer_class = SaaSInstanceSerializer
+class InstanceViewSet(viewsets.ModelViewSet):
+    queryset = SaasInstance.objects.all().order_by('id')
+    serializer_class = InstanceSerializer
+    #http_method_names = ['get', 'post']
 
-class SaaSInstanceApiView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+class InstanceApiView(APIView):
+    permission_classes = [permissions.IsAdminUser]
 
     def get(self, request, *args, **kwargs):
-        rows = SaaSInstance.objects.all().order_by('id')
-        serializer = SaaSInstanceSerializer(rows, many=True)
+        rows = SaasInstance.objects.all().order_by('id')
+        serializer = InstanceSerializer(rows, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
@@ -25,7 +26,7 @@ class SaaSInstanceApiView(APIView):
             'hostname': request.data.get('hostname'),
             'status': request.data.get('status'),
         }
-        serializer = SaaSInstanceSerializer(data=data)
+        serializer = InstanceSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)

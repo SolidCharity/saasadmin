@@ -18,7 +18,7 @@ quickstart_debian: debian_packages create_venv pip_packages create_db create_sup
 
 debian_packages:
 	sudo apt update
-	sudo apt install python3-venv python3-dev -y
+	sudo apt install python3-venv python3-dev gettext -y
 	
 quickstart_fedora: fedora_packages create_venv pip_packages create_db create_superuser
 	@echo 
