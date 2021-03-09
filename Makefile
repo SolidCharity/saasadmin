@@ -1,5 +1,13 @@
 VENV := . .venv/bin/activate &&
 
+clean:
+	rm -Rf .venv
+	rm -f db.sqlite3
+	find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+
+install:
+	if [ -f /etc/lsb-release ]; then make quickstart_debian; else make quickstart_fedora; fi
+
 quickstart_debian: debian_packages create_venv pip_packages create_db create_superuser
 	@echo 
 	@echo =====================================================================================
