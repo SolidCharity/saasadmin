@@ -45,4 +45,4 @@ create_db:
 	${VENV} python manage.py compilemessages
 
 runserver:
-	${VENV} python manage.py runserver 0.0.0.0:8000
+	${VENV} python manage.py runserver localhost:8000
