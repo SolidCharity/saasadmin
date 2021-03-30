@@ -20,3 +20,14 @@ class SaasInstance(models.Model):
 
     class Meta:
         db_table = "instance"
+
+
+class SaasPlan (models.Model):
+    name = models.CharField(_("name"), max_length=16)
+    periodLengthInMonths = models.IntegerField(_("length"))
+    currencyCode = models.CharField(_("currency"), max_length= 3, default= "EUR")
+    costPerPeriod = models.DecimalField(_("cost"), max_digits= 10, decimal_places= 2)
+    noticePeriodTypeInDays = models.IntegerField(_("notice"))
+
+    class Meta:
+        db_table = "plan"
