@@ -2,6 +2,29 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
+class SaasCustomer(models.Model):
+    newsletter = models.BooleanField(_("newsletter"), default=True)
+    newsletter_subscribed_on = models.DateTimeField(_("newsletter_subscribed_on"), null=True)
+    newsletter_cancelled = models.DateTimeField(_("newsletter_cancelled"), null=True)
+    language_code = models.CharField(_("language_code"), max_length=16)
+    verified = models.BooleanField(_("verified"), default=True)
+    verification_token = models.CharField(_("verification_token"), max_length=64)
+    verification_until = models.DateTimeField(_("verification_until"), null=True)
+    organisation_name = models.CharField(_("organisation_name"), max_length=16)
+    person_name = models.CharField(_("person_name"), max_length=16)
+    # street_and_number = models.
+    post_code = models.IntegerField(_("post_code"))
+    city = models.CharField(_("city"), max_length=16)
+    country_code = models.CharField(_("country_code"), max_length=16)
+    email_address = models.EmailField(_("email_address"))
+    is_active = models.BooleanField(_("ist_active"), default=True)
+
+
+    class Meta:
+        db_table = "Customer"
+
+
+
 # this is the saas instance rented by the customer
 class SaasInstance(models.Model):
     identifier = models.CharField(_("identifier"), max_length=16)
