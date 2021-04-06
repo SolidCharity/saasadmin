@@ -10,20 +10,18 @@ class SaasCustomer(models.Model):
     verified = models.BooleanField(_("verified"), default=True)
     verification_token = models.CharField(_("verification_token"), max_length=64)
     verification_until = models.DateTimeField(_("verification_until"), null=True)
-    organisation_name = models.CharField(_("organisation_name"), max_length=16)
-    person_name = models.CharField(_("person_name"), max_length=16)
-    # street_and_number = models.
-    post_code = models.IntegerField(_("post_code"))
+    organisation_name = models.CharField(_("organisation_name"), max_length=64)
+    person_name = models.CharField(_("person_name"), max_length=64)
+    street = models.CharField(_("street"), max_length=64)
+    number = models.CharField(_("number"), max_length=11)
+    post_code = models.CharField(_("post_code"), max_length=10)
     city = models.CharField(_("city"), max_length=16)
     country_code = models.CharField(_("country_code"), max_length=16)
     email_address = models.EmailField(_("email_address"))
     is_active = models.BooleanField(_("ist_active"), default=True)
 
-
     class Meta:
         db_table = "Customer"
-
-
 
 # this is the saas instance rented by the customer
 class SaasInstance(models.Model):
@@ -44,7 +42,6 @@ class SaasInstance(models.Model):
     class Meta:
         db_table = "instance"
 
-
 class SaasPlan (models.Model):
     name = models.CharField(_("name"), max_length=16)
     periodLengthInMonths = models.IntegerField(_("length"))
@@ -54,3 +51,33 @@ class SaasPlan (models.Model):
 
     class Meta:
         db_table = "plan"
+
+class SaasContact(models.Model):
+
+    plan = models.ForeignKey(
+        SaasPlan,
+        null=False, blank=False, default=None,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_list",
+    )
+
+    customer = models.ForeignKey(
+        SaasCustomer,
+        null=False, blank=False, default=None,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_list",
+    )
+    #instance_id
+    instance = models.ForeignKey(
+        SaasInstance,
+        null=False, blank=False, default=None,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_list",
+    )
+
+    start_date = models.DateTimeField(_("start_date"), null=True )
+    end_date = models.DateTimeField(_("end_date"), null=True)
+    auto_renew = models.BooleanField(_("auto_renew"), default= True)
+
+    class Meta:
+        db_table = "SaasContact"
