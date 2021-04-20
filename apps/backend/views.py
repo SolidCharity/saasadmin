@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from apps.core.models import SaasInstance
+from apps.core.models import SaasPlan
 
 def home(request):
     # if not logged in => redirect to login screen
@@ -16,8 +17,10 @@ def home(request):
 @login_required
 def backend(request):
     unused_instances = SaasInstance.objects.filter(status='free')
+    plans = SaasPlan.objects.all()
     customers = User.objects.filter(is_superuser=False, is_staff=False, is_active=True)
 
     return render(request,"backend.html",
             {'unused_instances':unused_instances,
+             'plans':plans,
              'customers':customers})

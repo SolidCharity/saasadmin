@@ -16,6 +16,29 @@
   {% for customer in customers %}
     <li>{{ customer.email }}: {{ customer.first_name }} {{ customer.last_name }} {{ customer.date_joined }}</li>
   {% endfor %}
+
   </ul>
+<table>
+
+<tr>
+		<th>name</th>
+		<th>BcostPerPeriod</th>
+		<th>currencyCode</th>
+		<th>periodLengthInMonths </th>
+		<th>noticePeriodTypeInDays</th>
+		<th>Action</th>
+</tr>
+      {% for plan in plans %}
+<tr>
+		<td>{{ plan.name }} </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> </td>
+		<td> Edit </td>
+</tr>
+
+</table>
+
 </div>
 {% endblock %}
