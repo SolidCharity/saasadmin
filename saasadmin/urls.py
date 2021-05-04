@@ -24,4 +24,5 @@ urlpatterns = [
     path('', backend_views.home),
     path('home/', backend_views.home),
     path('', include('apps.api.urls')),
+    path('plans/add', backend_views.addplan),
 ]
