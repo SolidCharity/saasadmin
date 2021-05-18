@@ -56,13 +56,12 @@ def editplan(request, id):
     return render(request,'editplan.html', {'plan':plan, 'form': form})
 
 @login_required
-def update(request, id):
-    transaction = Transaction.objects.get(id=id, owner=request.user)
+def updateplan(request, id):
+    plan = SaasPlan.objects.get(id=id)
     # request.POST is immutable, so make a copy
     values = request.POST.copy()
-    values['owner'] = request.user.id
-    form = TransactionForm(values, instance = transaction)
+    form = PlanForm(values, instance = plan)
     if form.is_valid():
         form.save()
-        return redirect("/transactions/show")
-    return render(request, 'edit.html', {'transaction': transaction, 'form': form})
+        return redirect("/")
+    return render(request, 'editplan.html', {'plan': plan, 'form': form})
