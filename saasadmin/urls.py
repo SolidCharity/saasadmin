@@ -27,4 +27,5 @@ urlpatterns = [
     path('plans/add', backend_views.addplan),
     path('plans/edit/<int:id>', backend_views.editplan),
     path('plans/update/<int:id>', backend_views.updateplan),
+    path('plans/delete/<int:id>', backend_views.deleteplan),
 ]

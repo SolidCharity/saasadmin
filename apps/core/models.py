@@ -80,4 +80,4 @@ class SaasContact(models.Model):
     auto_renew = models.BooleanField(_("auto_renew"), default= True)
 
     class Meta:
-        db_table = "SaasContact"
+        db_table = "contact"

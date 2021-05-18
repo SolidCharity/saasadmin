@@ -65,3 +65,9 @@ def updateplan(request, id):
         form.save()
         return redirect("/")
     return render(request, 'editplan.html', {'plan': plan, 'form': form})
+
+@login_required
+def deleteplan(request, id):
+    plan = SaasPlan.objects.get(id=id)
+    plan.delete()
+    return redirect("/")
