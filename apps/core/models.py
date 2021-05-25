@@ -53,7 +53,7 @@ class SaasPlan (models.Model):
     class Meta:
         db_table = "plan"
 
-class SaasContact(models.Model):
+class SaasContract(models.Model):
 
     plan = models.ForeignKey(
         SaasPlan,
@@ -81,4 +81,4 @@ class SaasContact(models.Model):
     auto_renew = models.BooleanField(_("auto_renew"), default= True)
 
     class Meta:
-        db_table = "contact"
+        db_table = "contract"
