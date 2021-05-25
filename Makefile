@@ -1,5 +1,12 @@
 VENV := . .venv/bin/activate &&
 
+all:
+	@echo "help:"
+	@echo "  make quickstart_debian"
+	@echo "  make quickstart_fedora"
+	@echo "  make runserver"
+	@echo "  make clean"
+
 clean:
 	rm -Rf .venv
 	rm -f db.sqlite3
