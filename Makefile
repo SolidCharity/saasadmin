@@ -54,3 +54,6 @@ create_db:
 runserver:
 	${VENV} python manage.py collectstatic
 	${VENV} python manage.py runserver localhost:8000
+
+token:
+	${VENV} python manage.py drf_create_token -r admin
