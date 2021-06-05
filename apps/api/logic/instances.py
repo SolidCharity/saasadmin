@@ -24,4 +24,4 @@ class LogicInstances:
           status = 'in_preparation')
 
         # return the result
-        return True, {'new_id': new_id, 'new_password': new_password};
+        return True, {'new_id': new_id, 'new_password': new_password, 'hostname': hostname};
