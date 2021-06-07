@@ -32,12 +32,14 @@ class InstanceApiView(APIView):
     def put(self, request, *args, **kwargs):
         if len(request.data) > 0 and 'hostname' in request.data:
             hostname = request.data['hostname']
-        #if len(request.data) > 0 and 'hostname' in request.data[0]:
-        #    hostname = request.data[0]['hostname']
         else:
             hostname = 'localhost'
+        if len(request.data) > 0 and 'startport' in request.data:
+            startport = int(request.data['startport'])
+        else:
+            startport = 7000
 
-        success, new_data = LogicInstances().create_new_instance(hostname)
+        success, new_data = LogicInstances().create_new_instance(hostname, startport)
         if success:
             return Response(new_data, status=status.HTTP_201_CREATED)
 
