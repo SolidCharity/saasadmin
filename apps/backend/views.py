@@ -3,8 +3,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from apps.core.models import SaasInstance
+from apps.core.models import SaasCustomer
 from apps.core.models import SaasPlan
 from apps.backend.forms import PlanForm
+from django.db.models import Q
+from django.db import connection
+import sqlite3
 
 
 
@@ -20,10 +24,19 @@ def home(request):
 
 @login_required
 def backend(request):
-    unused_instances = SaasInstance.objects.filter(status='free')
+    unused_instances = SaasInstance.objects.filter(Q(status='free') | Q(status='in_preparation'))
     plans = SaasPlan.objects.all()
-    customers = User.objects.filter(is_superuser=False, is_staff=False, is_active=True)
-    # addplan = user.objects.
+    customers = SaasCustomer.objects.all()
+    with connection.cursor() as cursor:
+        connection.row_factory = sqlite3.Row
+
+        sql = """SELECT email_address, person_name, instance.id as instance_id  
+            FROM customer , instance, contract 
+            WHERE contract.customer_id = customer.id 
+            AND contract.instance_id = instance.id"""
+
+        cursor.execute(sql)
+        customers = cursor.fetchall()
 
     return render(request,"backend.html",
             {'unused_instances':unused_instances,
