@@ -58,3 +58,6 @@ runserver:
 
 token:
 	${VENV} python manage.py drf_create_token -r admin
+
+demo_db:
+	cat demodata/insertdemo.sql | sqlite3 db.sqlite3
