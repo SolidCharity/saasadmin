@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('core', '0005_saasinstance_initial_password'),
+        ('core', '0006_auto_20210525_2002'),
     ]
 
     operations = [
