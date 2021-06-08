@@ -4,4 +4,4 @@ SECRET_KEY = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["saasadmintest.example.org"]
+#ALLOWED_HOSTS = ["saasadmintest.example.org"]
