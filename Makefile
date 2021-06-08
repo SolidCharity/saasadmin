@@ -48,8 +48,16 @@ create_venv:
 	python3 -m venv .venv
 
 create_db:
+	if [ ! -f saasadmin/saasadmin/settings_local.py ]; then cp saasadmin/settings_local.py.example saasadmin/settings_local.py; fi
 	${VENV} python manage.py migrate
 	${VENV} python manage.py compilemessages
 
 runserver:
+	${VENV} python manage.py collectstatic
 	${VENV} python manage.py runserver localhost:8000
+
+token:
+	${VENV} python manage.py drf_create_token -r admin
+
+demo_db:
+	cat demodata/insertdemo.sql | sqlite3 db.sqlite3

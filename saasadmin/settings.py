@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'rest_framework',
+    'rest_framework.authtoken',
     'apps.core',
     'apps.api',
     'apps.backend',
@@ -127,5 +128,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 LOGIN_REDIRECT_URL = '/home/'
 LOGOUT_REDIRECT_URL = '/home/'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
-#from .settings_local import *
+from .settings_local import *

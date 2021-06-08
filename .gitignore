@@ -1,5 +1,6 @@
 db.sqlite3
 .venv
+.idea
 /static
 local.py
 settings_local.py
