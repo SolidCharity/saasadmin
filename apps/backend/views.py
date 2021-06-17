@@ -8,10 +8,7 @@ from apps.core.models import SaasPlan
 from apps.backend.forms import PlanForm
 from django.db.models import Q
 from django.db import connection
-import sqlite3
-
-
-
+from collections import namedtuple
 
 def home(request):
     # if not logged in => redirect to login screen
@@ -26,17 +23,25 @@ def home(request):
 def backend(request):
     unused_instances = SaasInstance.objects.filter(Q(status='free') | Q(status='in_preparation'))
     plans = SaasPlan.objects.all()
-    customers = SaasCustomer.objects.all()
-    with connection.cursor() as cursor:
-        connection.row_factory = sqlite3.Row
 
-        sql = """SELECT email_address, person_name, instance.id as instance_id  
-            FROM customer , instance, contract 
-            WHERE contract.customer_id = customer.id 
+    with connection.cursor() as cursor:
+
+        sql = """SELECT email_address, person_name, instance.identifier as instance_identifier
+            FROM customer, instance, contract
+            WHERE contract.customer_id = customer.id
             AND contract.instance_id = instance.id"""
 
         cursor.execute(sql)
-        customers = cursor.fetchall()
+        result = cursor.fetchall()
+
+        customers = []
+        for row in result:
+            # create an associative array
+            a = dict(zip([c[0] for c in cursor.description], row))
+            # create an object
+            o = namedtuple("customer", a.keys())(*a.values())
+            # add the object to resulting array
+            customers.append(o)
 
     return render(request,"backend.html",
             {'unused_instances':unused_instances,
