@@ -1,7 +1,8 @@
 db.sqlite3
 .venv
+venv
 .idea
 /static
 local.py
 settings_local.py
-__pycache__
+__pycache_

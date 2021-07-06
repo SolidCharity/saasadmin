@@ -21,7 +21,7 @@ class SaasCustomer(models.Model):
     is_active = models.BooleanField(_("ist_active"), default=True)
 
     class Meta:
-        db_table = "Customer"
+        db_table = "saas_customer"
 
 # this is the saas instance rented by the customer
 class SaasInstance(models.Model):
@@ -42,7 +42,7 @@ class SaasInstance(models.Model):
     )
 
     class Meta:
-        db_table = "instance"
+        db_table = "saas_instance"
 
 class SaasPlan (models.Model):
     name = models.CharField(_("name"), max_length=16, unique=True)
@@ -52,7 +52,7 @@ class SaasPlan (models.Model):
     noticePeriodTypeInDays = models.IntegerField(_("notice"))
 
     class Meta:
-        db_table = "plan"
+        db_table = "saas_plan"
 
 class SaasContract(models.Model):
 
@@ -82,4 +82,4 @@ class SaasContract(models.Model):
     auto_renew = models.BooleanField(_("auto_renew"), default= True)
 
     class Meta:
-        db_table = "contract"
+        db_table = "saas_contract"
