@@ -5,4 +5,4 @@ venv
 /static
 local.py
 settings_local.py
-__pycache_
+__pycache__
