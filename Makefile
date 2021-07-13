@@ -47,7 +47,7 @@ create_venv:
 	python3 -m venv .venv
 
 create_db:
-	if [ ! -f saasadmin/saasadmin/settings_local.py ]; then cp saasadmin/settings_local.py.example saasadmin/settings_local.py; fi
+	if [ ! -f saasadmin/settings_local.py ]; then cp saasadmin/settings_local.py.example saasadmin/settings_local.py; fi
 	${VENV} python manage.py migrate
 	${VENV} python manage.py compilemessages
 
