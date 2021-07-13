@@ -14,13 +14,13 @@ Installation
 ln -s ~/saasadmin/wordpress_plugin wp-content/plugins/saasadmin
 ln -s ~/saasadmin/apps/api api
 ln -s ~/saasadmin/apps/frontend app
-ln -s ~/saasadmin/js js
+ln -s ~/saasadmin/static static
 ```
 
 Configuration
 =============
 
-In Wordpress, create the following pages, with this content: `[op_insert_code]`
+In Wordpress, create the following pages, with this content: `[saasadmin]`
 
 These are the perma links for the pages:
 * register

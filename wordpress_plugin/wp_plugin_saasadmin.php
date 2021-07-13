@@ -32,9 +32,9 @@ if(!class_exists('PluginSaasAdmin')) :
 	{
         // insert the custom code for SaasAdmin
 		public static function show() {
-			$code = '<script type="text/javascript" src="/js/jquery.min.js"></script>'.
-				'<link rel="stylesheet" href="/js/main.css"/>'.
-				'<script src="/js/index.js" charset="utf-8"></script>'.
+			$code = '<script type="text/javascript" src="/static/js/jquery.min.js"></script>'.
+				'<link rel="stylesheet" href="/static/css/main.css"/>'.
+				'<script src="/static/js/index.js" charset="utf-8"></script>'.
 				'<div id="MyHTML"></div>';
 			return $code;
 		}
@@ -48,7 +48,7 @@ function is_logged_in() {
 		|| (($_SESSION != null) && in_array('saasadmin_logged_in', $_SESSION) && $_SESSION['saasadmin_logged_in']);
 }
 
-add_shortcode('op_insert_code', array('PluginSaasAdmin', 'show'));
+add_shortcode('saasadmin', array('PluginSaasAdmin', 'show'));
 endif;
 
 
