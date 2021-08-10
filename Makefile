@@ -24,8 +24,7 @@ quickstart_debian: debian_packages create_venv pip_packages create_db create_sup
 	@echo Login user is '"'admin'"' password is '"'admin'"'
 
 debian_packages:
-	sudo apt update
-	sudo apt install python3-venv python3-dev gettext -y
+	(dpkg -l | grep python3-dev) || (sudo apt update && sudo apt install python3-venv python3-dev gettext -y)
 	
 quickstart_fedora: fedora_packages create_venv pip_packages create_db create_superuser
 	@echo 
@@ -48,7 +47,7 @@ create_venv:
 	python3 -m venv .venv
 
 create_db:
-	if [ ! -f saasadmin/saasadmin/settings_local.py ]; then cp saasadmin/settings_local.py.example saasadmin/settings_local.py; fi
+	if [ ! -f saasadmin/settings_local.py ]; then cp saasadmin/settings_local.py.example saasadmin/settings_local.py; fi
 	${VENV} python manage.py migrate
 	${VENV} python manage.py compilemessages
 

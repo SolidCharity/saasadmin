@@ -1,0 +1,208 @@
+<style media="screen">
+  #account_field .center-item-row {
+    margin-top:0.5em;
+  }
+  [readonly] {
+    background: transparent;
+  }
+  [changemonth] {
+    background: #dd5;
+  }
+  [changemonth][nocolor] {
+    background: unset;
+  }
+</style>
+
+<div infos>
+
+  <!-- personal info -->
+  <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;" id="account_field">
+
+    <h2 class="text-center">{personal_info}</h2>
+
+    <div class="row">
+      <!-- left -->
+      <div class="col">
+
+        <!-- firstname -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{firstname}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="firstname">
+          </div>
+        </div>
+
+        <!-- lastname -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{lastname}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="lastname">
+          </div>
+        </div>
+
+        <!-- email -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{email}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="email">
+          </div>
+        </div>
+
+        <!-- street -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{street}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="street">
+          </div>
+        </div>
+
+        <!-- postcode -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{postcode}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="postcode">
+          </div>
+        </div>
+
+        <!-- city -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{city}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="city">
+          </div>
+        </div>
+
+        <!-- country -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{country}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="country">
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="col"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <button type="button" class="btn stylish-color" onclick="save_changes(this)">{save_changes}</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- product plan -->
+  <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;" id="account_field">
+    <h2 class="text-center">{product_plan}</h2>
+
+    <div class="row">
+      <!-- left -->
+      <div class="col">
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{machine_address}</span>
+          </div>
+          <div class="col-8" id="machine_address">
+            <a href="https://%machine_address%" target="_new">%machine_address%</a>
+          </div>
+        </div>
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{current_plan}</span>
+          </div>
+          <div class="col-8">
+            <input readonly type="text" name="product_plan">
+          </div>
+        </div>
+<!--
+        <div class="center-item-row" changemonth>
+          <div class="col-4">
+            <span>{product_plan_next}</span>
+          </div>
+          <div class="col-8">
+            <input readonly type="text" name="product_plan_next">
+          </div>
+        </div>
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{maschine_paid_until}</span>
+          </div>
+          <div class="col-8">
+            <input type="date" name="paid_until" readonly>
+          </div>
+        </div>
+        <div class="center-item-row">
+          <div class="col-12">
+            <span id="auto_renew">¹ = %auto_renew%</span>
+          </div>
+        </div>
+        <div class="center-item-row" changemonth nocolor>
+          <div class="col-10">
+            <span>² = {note_2}</span>
+          </div>
+        </div>
+-->
+      </div>
+      <!-- right -->
+<!--
+      <div class="col">
+
+        <div class="center-item-row" nontest>
+          <div class="col-4">
+            <span>{payment_plan}</span>
+          </div>
+          <div class="col-8">
+            <input readonly type="text" name="payment_plan">
+          </div>
+        </div>
+        <div class="center-item-row" changemonth>
+          <div class="col-4">
+            <span>{payment_plan_next}</span>
+          </div>
+          <div class="col-8">
+            <input readonly type="text" name="payment_plan_next">
+          </div>
+        </div>
+        <div class="center-item-row" nontest>
+          <div class="col-4">
+            <span>{iban}</span>
+          </div>
+          <div class="col-8">
+            <input readonly type="text" name="iban">
+          </div>
+        </div>
+      </div>
+    </div>
+-->
+    <div class="row" >
+      <div class="col-6">
+        <a href="/{lang}/product">
+          <button type="button" class="btn stylish-color-dark">{change_plan}</button>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!--
+<script src="/js/account.js" charset="utf-8"></script>
+<script src="/js/message.js" charset="utf-8"></script>
+-->

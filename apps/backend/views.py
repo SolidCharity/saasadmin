@@ -17,7 +17,7 @@ def home(request):
     if request.user.is_staff:
         return backend(request)
     # if logged in customer => redirect frontend view
-    return redirect('/monitor')
+    return redirect('/frontend/account')
 
 @login_required
 def backend(request):
@@ -26,10 +26,10 @@ def backend(request):
 
     with connection.cursor() as cursor:
 
-        sql = """SELECT email_address, person_name, instance.identifier as instance_identifier
-            FROM customer, instance, contract
-            WHERE contract.customer_id = customer.id
-            AND contract.instance_id = instance.id"""
+        sql = """SELECT email_address, person_name, saas_instance.identifier as instance_identifier
+            FROM saas_customer, saas_instance, saas_contract
+            WHERE saas_contract.customer_id = saas_customer.id
+            AND saas_contract.instance_id = saas_instance.id"""
 
         cursor.execute(sql)
         result = cursor.fetchall()
