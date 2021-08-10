@@ -17,7 +17,7 @@ def home(request):
     if request.user.is_staff:
         return backend(request)
     # if logged in customer => redirect frontend view
-    return redirect('/monitor')
+    return redirect('/frontend/account')
 
 @login_required
 def backend(request):
