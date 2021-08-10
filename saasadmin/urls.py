@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from apps.backend import views as backend_views
+from apps.frontend import views as frontend_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +29,9 @@ urlpatterns = [
     path('plans/edit/<int:id>', backend_views.editplan),
     path('plans/update/<int:id>', backend_views.updateplan),
     path('plans/delete/<int:id>', backend_views.deleteplan),
+    path('frontend/login', frontend_views.login_view),
+    path('frontend/account', frontend_views.account_view),
+    path('frontend/logout', frontend_views.logout_view),
+    path('frontend/register', frontend_views.register_view),
+    path('frontend/plans', frontend_views.display_plans),
 ]

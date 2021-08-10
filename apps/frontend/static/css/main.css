@@ -1,0 +1,14 @@
+.display_message {
+  background:white;
+  border-radius:5px;
+  border:2px solid black;
+}
+
+.display_message_success {
+  background:#88ee44!important;
+}
+
+.display_message_fail {
+  background:#ee8844!important;
+}
+

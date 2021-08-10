@@ -1,0 +1,195 @@
+<link rel="stylesheet" href="/static/css/product.css">
+
+<div id="modal_tier" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width:66%!important;max-width:unset;">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">{% translate "Finish payment" %}</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="center-item-row">
+          <div class="col-2"><span>{% translate "IBAN" %}:</span></div>
+          <div class="col"><input type="text" name="iban" placeholder="{iban}"></div>
+        </div>
+        <div class="center-item-row">
+          <div class="col-2"><span>{% translate "Bank Account Owner" %}:</span></div>
+          <div class="col"><input type="text" name="bank_owner" placeholder="{bank_owner}"></div>
+        </div>
+        <div class="center-item-row">
+          <div class="col-2"><span>{renew}:</span></div>
+          <input class="col-2 text-right" type="checkbox" name="auto_renew">
+        </div>
+        <hr>
+        <div class="center-item-row">
+          <span class="col-1"></span>
+          <span class="col text-center">{duration}</span>
+          <span class="col text-center">{cost}</span>
+        </div>
+        <hr>
+        <div tierinfo>
+          <!-- tier info storage -->
+        </div>
+        <label class="center-item-row">
+          <input class="col-2 text-right" type="checkbox" name="accepted">
+          <span class="col">{% translate "I confirm that I agree to the conditions of service" %}</span>
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-block" onclick="submit_change_tier()">{% translate "Order now" %}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="container white-text text-center">
+
+  <h1>{% translate "Product plan" %}</h1>
+
+  <div class="center-item-row">
+    <div class="col table-selection" onclick="change_table('trial', this)" tseclect="trial">
+      <h4>{option_trial}</h4>
+    </div>
+    <div class="col table-selection" onclick="change_table('basic', this)" tseclect="basic">
+      <h4>{option_basic}</h4>
+    </div>
+    <div class="col table-selection" onclick="change_table('pro', this)" tseclect="pro">
+      <h4>{option_pro}</h4>
+    </div>
+    <div class="col table-selection" onclick="change_table('custom', this)" tseclect="custom">
+      <h4>{option_custom}</h4>
+    </div>
+  </div>
+  <div id="tier_info" style="padding: 2em 0;">
+
+    <div class="collapse" tview="trial">
+      <h3>{% translate "Test" %}</h3>
+      <h4>{% translate "Try and use for free, unlimited" %}</h4>
+      <hr>
+      <div class="center-item-row">
+        <div class="col"><span>{backup}</span></div>
+        <div class="col"><span>{option_backup_nightly}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{support}</span></div>
+        <div class="col"><span>{community_support}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{updates}</span></div>
+        <div class="col"><span>{option_basic_updates}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{access_url}</span></div>
+        <div class="col"><span>{option_basic_domain}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{other_features}</span></div>
+        <div class="col"><span>{option_trial_other}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{cost}</span></div>
+        <div class="col"><span>{option_trial_cost}</span></div>
+      </div>
+      <h3 class="collapse" cantallowchange>{change_not_allowed}</h3>
+    </div>
+
+    <div class="collapse" tview="basic">
+      <h3>{option_basic}</h3>
+      <h4>{option_basic_target}</h4>
+      <hr>
+      <div class="center-item-row">
+        <div class="col"><span>{backup}</span></div>
+        <div class="col"><span>{option_backup_nightly}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{support}</span></div>
+        <div class="col"><span>{community_support}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{updates}</span></div>
+        <div class="col"><span>{option_basic_updates}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{access_url}</span></div>
+        <div class="col"><span>{option_basic_domain}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{other_features}</span></div>
+        <div class="col"><span>{option_basic_other}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{cost}</span></div>
+        <div class="col"><span>{option_basic_cost}</span></div>
+      </div>
+      <button type="button" class="btn btn-primary btn-block" onclick="change_tier('basic')" changebtn>{change_tier}</button>
+    </div>
+
+    <div class="collapse" tview="pro">
+      <h3>{option_pro}</h3>
+      <h4>{option_pro_target}</h4>
+      <hr>
+      <div class="center-item-row">
+        <div class="col"><span>{backup}</span></div>
+        <div class="col"><span>{option_backup_hourly}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{support}</span></div>
+        <div class="col"><span>{option_pro_support}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{updates}</span></div>
+        <div class="col"><span>{option_pro_updates}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{access_url}</span></div>
+        <div class="col"><span>{option_pro_domain}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{other_features}</span></div>
+        <div class="col"><span>{option_pro_other}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{cost}</span></div>
+        <div class="col"><span>{option_pro_cost}</span></div>
+      </div>
+      <button type="button" class="btn btn-primary btn-block" onclick="change_tier('pro')" changebtn>{change_tier}</button>
+    </div>
+
+    <div class="collapse" tview="custom">
+      <h3>{option_custom}</h3>
+      <h4>{option_custom_target}</h4>
+      <hr>
+      <div class="center-item-row">
+        <div class="col"><span>{backup}</span></div>
+        <div class="col"><span>{option_backup_hourly}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{support}</span></div>
+        <div class="col"><span>{option_custom_support}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{updates}</span></div>
+        <div class="col"><span>{option_custom_updates}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{access_url}</span></div>
+        <div class="col"><span>{option_custom_domain}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{other_features}</span></div>
+        <div class="col"><span>{option_custom_extensions}</span></div>
+      </div>
+      <div class="center-item-row">
+        <div class="col"><span>{cost}</span></div>
+        <div class="col"><span>{option_custom_cost}</span></div>
+      </div>
+      <button type="button" class="btn btn-primary btn-block" onclick="change_tier('custom')" changebtn>{change_tier}</button>
+    </div>
+  </div>
+
+</div>
+<script src="/frontend/static/js/product.js" charset="utf-8"></script>
+<script src="/frontend/static/js/message.js" charset="utf-8"></script>

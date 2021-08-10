@@ -1,0 +1,48 @@
+{% load i18n %}
+
+<div class="" style="margin:10% 20%;background:white;padding:1em;border-radius:5px;">
+  <form action="index.html" onsubmit="event.preventDefault(); submit_login()" method="post" id="login_space">
+    {% csrf_token %}
+    <input type="hidden" name="lang" value="{{lang}}"/>
+
+    <h3 class="text-center">{% translate "Login" %}</h3>
+
+    <div class="center-item-row" style="margin:2px;">
+      <div class="col">
+        <input autofocus type="text" class="text-center" name="email" placeholder="{% translate "Email" %}">
+      </div>
+    </div>
+    <div class="center-item-row" style="margin:2px;">
+      <div class="col">
+        <input type="password" class="text-center" name="password" placeholder="{% translate "Password" %}">
+      </div>
+    </div>
+    <div class="center-item-row" style="margin:2px;">
+      <div class="col">
+        <button type="submit" class="btn btn-block btn-primary">{% translate "Submit" %}</button>
+      </div>
+    </div>
+
+  </form>
+
+  <hr>
+
+  <div class="center-item-row">
+    <div class="col text-center">
+      <span>{% translate "Create new account" %}</span>
+    </div>
+  </div>
+  <div class="center-item-row">
+    <div class="col">
+      <a href="/{{lang}}/register/">
+        <button type="button" class="btn btn-block btn-primary">{% translate "New account" %}</button>
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<script src="/static/js/jquery.min.js" charset="utf-8"></script>
+<script src="/static/js/utils.js" charset="utf-8"></script>
+<script src="/static/js/message.js" charset="utf-8"></script>
+<script src="/static/js/login.js" charset="utf-8"></script>
