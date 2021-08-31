@@ -29,9 +29,17 @@ urlpatterns = [
     path('plans/edit/<int:id>', backend_views.editplan),
     path('plans/update/<int:id>', backend_views.updateplan),
     path('plans/delete/<int:id>', backend_views.deleteplan),
+
     path('frontend/login', frontend_views.login_view),
     path('frontend/account', frontend_views.account_view),
     path('frontend/logout', frontend_views.logout_view),
     path('frontend/register', frontend_views.register_view),
     path('frontend/plans', frontend_views.display_plans),
+
+    # paths for testing the frontend locally
+    path('en/sign-in/', frontend_views.login_view),
+    path('en/register/', frontend_views.register_view),
+    path('en/account/', frontend_views.account_view),
+    path('en/logout/', frontend_views.logout_view),
+
 ]

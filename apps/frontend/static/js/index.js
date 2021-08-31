@@ -1,8 +1,4 @@
 $.getScript("/static/js/utils.js", function (e) {
-    $.getScript("/static/js/login.js");
-    $.getScript("/static/js/register.js");
-    $.getScript("/static/js/message.js");
-
     lang=get_language();
     page="login";
     app="frontend";
