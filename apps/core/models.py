@@ -28,7 +28,7 @@ class SaasInstance(models.Model):
     identifier = models.CharField(_("identifier"), max_length=16, unique=True)
     hostname = models.CharField(_("hostname"), max_length=128, default='localhost')
     port = models.IntegerField(_("port"), default=-1)
-    status = models.CharField(_("Status"), max_length=16, default='free')
+    status = models.CharField(_("Status"), max_length=16, default='in_preparation')
     auto_renew = models.BooleanField(_("Auto Renew"), default=True)
     initial_password = models.CharField(_("Initial Password"), max_length=64, default='topsecret')
     last_interaction = models.DateTimeField(_("Last Interaction"), null=True)
