@@ -2,7 +2,7 @@
 /*
 Plugin Name: SaasAdmin Plugin
 Plugin URI: https://github.com/solidcharity/saasadmin/wordpress_plugin
-Description: A simple wordpress plugin for inserting HTML code with shortcode for SaasAdmin
+Description: A wordpress plugin for SaasAdmin
 Version: 1.0
 Author: Timotheus Pokorra
 Author URI: https://www.solidcharity.com
@@ -31,10 +31,11 @@ if(!class_exists('PluginSaasAdmin')) :
 	class PluginSaasAdmin
 	{
         // insert the custom code for SaasAdmin
-		public static function show() {
-			$code = '<script type="text/javascript" src="/static/js/jquery.min.js"></script>'.
-				'<link rel="stylesheet" href="/static/css/main.css"/>'.
-				'<script src="/static/js/index.js" charset="utf-8"></script>'.
+        public static function show() {
+            $plugin="/wp-content/plugins/saasadmin/";
+			$code = '<script type="text/javascript" src="'.$plugin.'js/jquery.min.js"></script>'.
+				'<link rel="stylesheet" href="'.$plugin.'css/main.css"/>'.
+				'<script src="'.$plugin.'js/index.js" charset="utf-8"></script>'.
 				'<div id="MyHTML"></div>';
 			return $code;
 		}
