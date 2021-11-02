@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from apps.core.models import SaasInstance
 from apps.core.models import SaasCustomer
@@ -14,12 +15,15 @@ def home(request):
     # if not logged in => redirect to login screen
     if not request.user.is_authenticated:
         return redirect('/accounts/login/')
-    if request.user.is_staff:
-        return backend(request)
-    # if logged in customer => redirect frontend view
-    return redirect('/frontend/account')
+
+    # if this is a normal customer => redirect to frontend
+    if not request.user.is_staff:
+        return redirect('/frontend/account')
+
+    return backend(request)
 
 @login_required
+@staff_member_required
 def backend(request):
     unused_instances = SaasInstance.objects.filter(Q(status='free') | Q(status='in_preparation'))
     plans = SaasPlan.objects.all()
@@ -49,6 +53,7 @@ def backend(request):
              'customers':customers})
 
 @login_required
+@staff_member_required
 def addplan(request):
 
 
@@ -68,12 +73,14 @@ def addplan(request):
     return render(request,'addplan.html',{'form':form})
 
 @login_required
+@staff_member_required
 def editplan(request, id):
     plan = SaasPlan.objects.get(id=id)
     form = PlanForm(request.POST or None, instance = plan)
     return render(request,'editplan.html', {'plan':plan, 'form': form})
 
 @login_required
+@staff_member_required
 def updateplan(request, id):
     plan = SaasPlan.objects.get(id=id)
     # request.POST is immutable, so make a copy
@@ -85,6 +92,7 @@ def updateplan(request, id):
     return render(request, 'editplan.html', {'plan': plan, 'form': form})
 
 @login_required
+@staff_member_required
 def deleteplan(request, id):
     plan = SaasPlan.objects.get(id=id)
     plan.delete()

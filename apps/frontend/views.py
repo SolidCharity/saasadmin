@@ -1,8 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import JsonResponse
+
+def home(request):
+    # if not logged in => redirect to login screen
+    if not request.user.is_authenticated:
+        return redirect('/frontend/login')
+    if request.user.is_staff:
+        return redirect('/backend')
+    # if logged in customer => redirect frontend view
+    return redirect('/frontend/account')
 
 def login_view(request):
     lang = "en"
