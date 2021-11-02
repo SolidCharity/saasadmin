@@ -34,12 +34,8 @@ class InstanceApiView(APIView):
             hostname = request.data['hostname']
         else:
             hostname = 'localhost'
-        if len(request.data) > 0 and 'startport' in request.data:
-            startport = int(request.data['startport'])
-        else:
-            startport = 7000
 
-        success, new_data = LogicInstances().create_new_instance(hostname, startport)
+        success, new_data = LogicInstances().create_new_instance(hostname)
         if success:
             return Response(new_data, status=status.HTTP_201_CREATED)
 
