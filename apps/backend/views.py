@@ -18,9 +18,9 @@ def home(request):
 
     # if this is a normal customer => redirect to frontend
     if not request.user.is_staff:
-        return redirect('/frontend/account')
+        return redirect('/account')
 
-    return backend(request)
+    return redirect('/backend')
 
 @login_required
 @staff_member_required

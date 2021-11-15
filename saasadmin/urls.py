@@ -30,7 +30,7 @@ urlpatterns = [
 
     # SaasAdmin Backend
     path('home/', backend_views.home),
-    path('backend', backend_views.home),
+    path('backend', backend_views.backend),
     path('plans/add', backend_views.addplan),
     path('plans/edit/<int:id>', backend_views.editplan),
     path('plans/update/<int:id>', backend_views.updateplan),
@@ -38,10 +38,8 @@ urlpatterns = [
 
     # SaasAdmin Frontend
     path('', frontend_views.home),
-    path('frontend', frontend_views.home),
-    path('frontend/login', frontend_views.login_view),
-    path('frontend/account', frontend_views.account_view),
-    path('frontend/logout', frontend_views.logout_view),
-    path('frontend/register', frontend_views.register_view),
-    path('frontend/plans', frontend_views.display_plans),
+    path('account', frontend_views.account_view),
+    path('plan', frontend_views.select_plan),
+    path('payment', frontend_views.select_payment),
+    path('pricing', frontend_views.display_pricing),
 ]

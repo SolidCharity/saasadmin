@@ -1,5 +1,9 @@
+{% extends 'base_frontend.html' %}
 {% load i18n %}
+
+{% block content %}
 <link rel="stylesheet" href="/static/css/product.css">
+<link rel="stylesheet" href="/static/css/pricing.css">
 
 <div id="modal_tier" class="modal fade" role="dialog">
   <div class="modal-dialog" style="width:66%!important;max-width:unset;">
@@ -49,6 +53,81 @@
 <div class="container white-text text-center">
 
   <h1>{% translate "Product plan" %}</h1>
+
+<aside id="spacious_pricing_table_widget-5" class="widget widget_table_pricing">
+<div class="section-wrapper">
+<div class="tg-container pricing-table pricing-column-3 pricing-table-layout-1 clearfix">
+
+<div class="tg-one-third">
+
+	<div class="pricing-table-wrapper-0 pricing-table-wrapper">
+	<h4 class="pricing-title">Test</h4>
+	<div class="pricing-price">
+		<span class="pricing-currnecy">free</span>
+		<span class="pricing-date">Unlimited testing period</span>
+	</div>
+	<span class="pricing-subtitle">Take your time to try and use OpenPetra as long as you want.</span>
+	<ul class="pricing-list-wrapper">
+		<li class="pricing-list">Nightly backups</li>
+		<li class="pricing-list">Support on the <a href="https://forum.openpetra.org" target="_blank">public Forum</a>.<br>
+			A community of users and developers, that support each other.</li>
+		<li class="pricing-list">Automatic updates to the latest version of OpenPetra</li>
+		<li class="pricing-list">Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com</li>
+	</ul>
+	<div class="pricing-btn">
+	<a href="#" onclick="product_action('trial')" id="changebtn_test" class="customize-unpreviewable">Register</a>
+	</div>
+	</div>
+</div>
+
+<div class="tg-one-third">
+	<div class="pricing-table-wrapper-1 pricing-table-wrapper">
+	<span class="pricing-as-popular">popular</span>
+	<h4 class="pricing-title">Basic</h4>
+	<div class="pricing-price">
+		<span class="pricing-currnecy">50€ per Year</span>
+		<span class="pricing-date">For small charities</span>
+	</div>
+	<span class="pricing-subtitle">You support the ongoing development of OpenPetra.</span>
+	<ul class="pricing-list-wrapper">
+		<li class="pricing-list">Nightly backups</li>
+		<li class="pricing-list">Support on the <a href="https://forum.openpetra.org" target="_blank">public Forum</a>.<br>
+			A community of users and developers, that support each other.</li>
+		<li class="pricing-list">Automatic updates to the latest version of OpenPetra</li>
+		<li class="pricing-list">Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com</li>
+	</ul>
+	<div class="pricing-btn">
+	<a href="#" onclick="product_action('basic')" class="customize-unpreviewable">Register</a>
+	</div>
+	</div>
+</div>
+
+<div class="tg-one-third tg-one-third-last">
+
+	<div class="pricing-table-wrapper-2 pricing-table-wrapper">
+	<h4 class="pricing-title">Professional</h4>
+	<div class="pricing-price">
+	<span class="pricing-currnecy">500€ per Year</span><span class="pricing-date">For established charities and churches</span>
+	</div>
+	<span class="pricing-subtitle">You know the value of OpenPetra as a reliable partner.</span>
+	<ul class="pricing-list-wrapper">
+		<li class="pricing-list">Hourly backups</li>
+		<li class="pricing-list">5 hours of support/consulting/development per year inclusive. <br>More hours can be booked.</li>
+		<li class="pricing-list">Updates to OpenPetra in agreed rhythm to avoid interruptions in your work</li>
+		<li class="pricing-list">Access OpenPetra through a specifically assigned URL, eg. mycharity.openpetra.com</li>
+	</ul>
+	<div class="pricing-btn">
+	<a href="#" onclick="product_action('pro')" class="customize-unpreviewable">Register</a>
+	</div>
+	</div>
+</div>
+
+</div>
+</div>
+</aside>
+
+
+
 
   <div class="center-item-row">
     <div class="col table-selection" onclick="change_table('trial', this)" tseclect="trial">
@@ -192,5 +271,4 @@
   </div>
 
 </div>
-<script src="/frontend/static/js/product.js" charset="utf-8"></script>
-<script src="/frontend/static/js/message.js" charset="utf-8"></script>
+{% endblock %}
