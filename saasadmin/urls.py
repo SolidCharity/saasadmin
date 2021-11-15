@@ -23,6 +23,7 @@ urlpatterns = [
     # Django urls
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('accounts/', include('django_registration.backends.activation.urls')),
 
     # API
     path('', include('apps.api.urls')),

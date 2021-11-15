@@ -7,7 +7,7 @@ from django.http import JsonResponse
 def home(request):
     # if not logged in => redirect to login screen
     if not request.user.is_authenticated:
-        return redirect('/frontend/login')
+        return redirect('/accounts/login/')
     if request.user.is_staff:
         return redirect('/backend')
     # if logged in customer => redirect frontend view
