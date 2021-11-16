@@ -5,25 +5,35 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'Skeleton/css/normalize.css' %}">
         <link rel="stylesheet" href="{% static 'Skeleton/css/skeleton.css' %}">
+        <link rel="stylesheet" href="{% static 'css/skeleton-tabs.css' %}">
+        <link rel="stylesheet" href="{% static 'css/spacious.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/topnav.css' %}">
         <link rel="stylesheet" href="{% static 'css/accordion.css' %}">
-        <link rel="stylesheet" href="{% static 'css/skeleton-tabs.css' %}">
         <script src="{% static 'js/skeleton-tabs.js' %}"></script>
     </head>
     <body>
         {% if user.is_authenticated %}
         <nav class="topnav">
-            <a href="/backend">Backend</a>
+            <a href="/">Saas Admin</a>
+            {% if user.is_staff %}
+            <a class="left" href="/plans">Plans</a>
+            <a class="left" href="/instances">Instances</a>
+            <a class="left" href="/customers">Customers</a>
+            {% else %}
+            <a class="left" href="/account">Personal Details</a>
+            <a class="left" href="/plan/current">Selected Plan</a>
+            <a class="left" href="/payment">Payment Details</a>
+            {% endif %}
             <a class="right" href="/accounts/logout/">Logout</a>
-            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">About</a>
             <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">Fork me</a>
         </nav>
         {% else %}
         <nav class="topnav">
             <a href="/">SaaS Admin</a>
-            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">About</a>
+            <a class="right" href="/accounts/login/">Login</a>
             <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">Fork me</a>
+            <a class="right" href="/pricing" target="_blank">Pricing</a>
         </nav>
         {% endif %}
         {% block content %}

@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from apps.core.models import SaasInstance
 from apps.core.models import SaasCustomer
@@ -10,23 +11,13 @@ from django.db.models import Q
 from django.db import connection
 from collections import namedtuple
 
-def home(request):
-    # if not logged in => redirect to login screen
-    if not request.user.is_authenticated:
-        return redirect('/accounts/login/')
-    if request.user.is_staff:
-        return backend(request)
-    # if logged in customer => redirect frontend view
-    return redirect('/frontend/account')
 
 @login_required
-def backend(request):
-    unused_instances = SaasInstance.objects.filter(Q(status='free') | Q(status='in_preparation'))
-    plans = SaasPlan.objects.all()
-
+@staff_member_required
+def customers(request):
     with connection.cursor() as cursor:
 
-        sql = """SELECT email_address, person_name, saas_instance.identifier as instance_identifier
+        sql = """SELECT email_address, first_name, last_name, saas_instance.identifier as instance_identifier
             FROM saas_customer, saas_instance, saas_contract
             WHERE saas_contract.customer_id = saas_customer.id
             AND saas_contract.instance_id = saas_instance.id"""
@@ -43,12 +34,28 @@ def backend(request):
             # add the object to resulting array
             customers.append(o)
 
-    return render(request,"backend.html",
-            {'unused_instances':unused_instances,
-             'plans':plans,
-             'customers':customers})
+    return render(request,"customers.html",
+            {'customers':customers})
 
 @login_required
+@staff_member_required
+def instances(request):
+    unused_instances = SaasInstance.objects.filter(Q(status='free') | Q(status='in_preparation'))
+
+    return render(request,"instances.html",
+            {'unused_instances':unused_instances })
+
+
+@login_required
+@staff_member_required
+def plans(request):
+    plans = SaasPlan.objects.all()
+
+    return render(request,"plans.html",
+            { 'plans':plans })
+
+@login_required
+@staff_member_required
 def addplan(request):
 
 
@@ -68,12 +75,14 @@ def addplan(request):
     return render(request,'addplan.html',{'form':form})
 
 @login_required
+@staff_member_required
 def editplan(request, id):
     plan = SaasPlan.objects.get(id=id)
     form = PlanForm(request.POST or None, instance = plan)
     return render(request,'editplan.html', {'plan':plan, 'form': form})
 
 @login_required
+@staff_member_required
 def updateplan(request, id):
     plan = SaasPlan.objects.get(id=id)
     # request.POST is immutable, so make a copy
@@ -85,6 +94,7 @@ def updateplan(request, id):
     return render(request, 'editplan.html', {'plan': plan, 'form': form})
 
 @login_required
+@staff_member_required
 def deleteplan(request, id):
     plan = SaasPlan.objects.get(id=id)
     plan.delete()

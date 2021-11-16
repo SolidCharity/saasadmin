@@ -4,14 +4,16 @@ from django.db import connection
 import random
 
 class LogicInstances:
-    def create_new_instance(self, hostname, startport):
+    def create_new_instance(self, hostname):
         # generate new password
         new_password = User.objects.make_random_password(length=16)
 
         # find new available identifier
         # TODO: get instance_id_start and instance_id_end from configuration settings
+        # TODO: get startport from configuration settings
         instance_id_start = 10000
         instance_id_end = 20000
+        startport = 7000
         new_id = random.randrange(instance_id_start, instance_id_end)
         while SaasInstance.objects.filter(identifier=str(new_id)).exists():
           new_id = random.randrange(instance_id_start, instance_id_end)

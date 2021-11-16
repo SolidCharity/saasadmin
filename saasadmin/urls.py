@@ -20,26 +20,30 @@ from apps.backend import views as backend_views
 from apps.frontend import views as frontend_views
 
 urlpatterns = [
+    # Django urls
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', backend_views.home),
-    path('home/', backend_views.home),
+    path('accounts/', include('django_registration.backends.activation.urls')),
+
+    # API
     path('', include('apps.api.urls')),
+
+    # SaasAdmin Backend
+    path('backend', backend_views.plans),
+    path('customers', backend_views.customers),
+    path('instances', backend_views.instances),
+    path('plans', backend_views.plans),
     path('plans/add', backend_views.addplan),
     path('plans/edit/<int:id>', backend_views.editplan),
     path('plans/update/<int:id>', backend_views.updateplan),
     path('plans/delete/<int:id>', backend_views.deleteplan),
 
-    path('frontend/login', frontend_views.login_view),
-    path('frontend/account', frontend_views.account_view),
-    path('frontend/logout', frontend_views.logout_view),
-    path('frontend/register', frontend_views.register_view),
-    path('frontend/plans', frontend_views.display_plans),
-
-    # paths for testing the frontend locally
-    path('en/sign-in/', frontend_views.login_view),
-    path('en/register/', frontend_views.register_view),
-    path('en/account/', frontend_views.account_view),
-    path('en/logout/', frontend_views.logout_view),
-
+    # SaasAdmin Frontend
+    path('', frontend_views.home),
+    path('home/', frontend_views.home),
+    path('account', frontend_views.account_view),
+    path('account/update', frontend_views.account_update),
+    path('plan/<str:plan_id>', frontend_views.select_plan),
+    path('payment', frontend_views.select_payment),
+    path('pricing', frontend_views.display_pricing),
 ]

@@ -1,8 +1,13 @@
-INSERT INTO "saas_customer" ("id","newsletter","newsletter_subscribed_on","newsletter_cancelled","language_code","verified","verification_token","verification_until","organisation_name","person_name","street","number","post_code","city","country_code","email_address","is_active") VALUES
-	(1,1,'2021-01-01',0,'DE',1,'',NULL,'Kaninchenzüchter Plauen e.V.','Hans Müller','Holzweg','3','01234','Plauen','DE','hans.mueller@example.org',1),
-	(2,1,'2021-05-01',0,'DE',1,'',NULL,'Gartensparte zum Spaten','Werner Schmidt','Am Wasser','7','01234','Plauen','DE','werner@example.org',1),
-	(3,1,'2021-05-01',0,'DE',1,'',NULL,'Gartensparte Schneckenhain','Bernd Schmitz','Am Berg','2','01234','Plauen','DE','bernd.s@example.org',1),
-	(4,1,'2021-05-01',0,'DE',1,'',NULL,'Sportverein Trimm Dich','Gunter Meier','An der Elster','22','01234','Plauen','DE','gunter.meier@example.org',1);
+INSERT INTO auth_user ('id','password','is_superuser', 'is_staff', 'username', 'email', 'is_active', 'first_name', 'last_name', 'date_joined') VALUES
+    (2,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',0,0,'customer1','hans.mueller@example.org',1,'','',date('now')),
+    (3,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',0,0,'customer2','werner@example.org',1,'','',date('now')),
+    (4,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',0,0,'customer3','bernd.s@example.org',1,'','',date('now')),
+    (5,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',0,0,'customer4','gunter.meier@example.org',1,'','',date('now'));
+INSERT INTO "saas_customer" ("id","user_id","newsletter","newsletter_subscribed_on","newsletter_cancelled","language_code","verified","verification_token","verification_until","organisation_name","first_name","last_name","street","number","post_code","city","country_code","email_address","is_active") VALUES
+	(1,2,1,'2021-01-01',0,'DE',1,'',NULL,'Kaninchenzüchter Plauen e.V.','Hans','Müller','Holzweg','3','01234','Plauen','DE','hans.mueller@example.org',1),
+	(2,3,1,'2021-05-01',0,'DE',1,'',NULL,'Gartensparte zum Spaten','Werner','Schmidt','Am Wasser','7','01234','Plauen','DE','werner@example.org',1),
+	(3,4,1,'2021-05-01',0,'DE',1,'',NULL,'Gartensparte Schneckenhain','Bernd','Schmitz','Am Berg','2','01234','Plauen','DE','bernd.s@example.org',1),
+	(4,5,1,'2021-05-01',0,'DE',1,'',NULL,'Sportverein Trimm Dich','Gunter','Meier','An der Elster','22','01234','Plauen','DE','gunter.meier@example.org',1);
 INSERT INTO "saas_plan" ("id","periodLengthInMonths","currencyCode","costPerPeriod","noticePeriodTypeInDays","name") VALUES
 	(1,12,'EUR',50,14,'Basic'),
 	(2,1,'EUR',5,7,'Mini'),
