@@ -50,7 +50,7 @@
             <span>{% translate "First name" %} </span>
           </div>
           <div class="col-8">
-              <input type="text" name="firstname" value="{{customer.first_name}}">
+              <input type="text" name="first_name" value="{{customer.first_name}}">
           </div>
         </div>
 
@@ -60,7 +60,7 @@
             <span>{% translate "Last name" %}</span>
           </div>
           <div class="col-8">
-              <input type="text" name="lastname" value="{{customer.last_name}}">
+              <input type="text" name="last_name" value="{{customer.last_name}}">
           </div>
         </div>
 
@@ -70,7 +70,7 @@
             <span>{% translate "E-Mail" %}</span>
           </div>
           <div class="col-8">
-              <input type="text" name="email" value="{{customer.email_address}}">
+              <input type="text" name="email_readonly" value="{{customer.email_address}}" readonly>
           </div>
         </div>
 
@@ -80,7 +80,7 @@
             <span>{% translate "Street and house number" %}</span>
           </div>
           <div class="col-8">
-            <input type="text" name="street">
+            <input type="text" name="street" value="{{customer.street}}">
           </div>
         </div>
 
@@ -90,7 +90,7 @@
             <span>{% translate "Post code" %}</span>
           </div>
           <div class="col-8">
-            <input type="text" name="postcode">
+            <input type="text" name="post_code" value="{{customer.post_code}}">
           </div>
         </div>
 
@@ -100,7 +100,7 @@
             <span>{% translate "City" %}</span>
           </div>
           <div class="col-8">
-            <input type="text" name="city">
+            <input type="text" name="city" value="{{customer.city}}">
           </div>
         </div>
 
@@ -110,7 +110,7 @@
             <span>{% translate "Country" %}</span>
           </div>
           <div class="col-8">
-            <input type="text" name="country">
+            <input type="text" name="country_code" value="{{customer.country_code}}">
           </div>
         </div>
 

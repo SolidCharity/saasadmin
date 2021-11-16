@@ -36,10 +36,12 @@ def account_update(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     # request.POST is immutable, so make a copy
     values = request.POST.copy()
+    values['user'] = request.user.id
+
     form = CustomerForm(values, instance = customer)
     if form.is_valid():
         form.save()
-        return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
+        return redirect('/account')
     return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
 
 @login_required
