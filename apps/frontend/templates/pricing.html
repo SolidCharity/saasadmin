@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="/static/css/spacious.css">
-<link rel="stylesheet" href="/static/css/pricing.css">
+<link rel="stylesheet" href="{% static 'css/pricing.css' %}">
 
 <aside id="spacious_pricing_table_widget-5" class="widget widget_table_pricing">
 <div class="section-wrapper">
