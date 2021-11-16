@@ -1,7 +1,11 @@
-$.getScript("/static/js/utils.js", function (e) {
+plugin="/wp-content/plugins/saasadmin/";
+$.getScript(plugin + "js/utils.js", function (e) {
+    $.getScript(plugin + "js/login.js");
+    $.getScript(plugin + "js/register.js");
+    $.getScript(plugin + "js/message.js");
+
     lang=get_language();
     page="login";
-    app="frontend";
 
     if (window.location.href.indexOf('/pricing') != -1) page="pricing";
     if (window.location.href.indexOf('/sign-in') != -1) page="login";
@@ -14,8 +18,8 @@ $.getScript("/static/js/utils.js", function (e) {
     if (window.location.href.indexOf('/sign-in') != -1) page="login";
     if (window.location.href.indexOf('/logout') != -1) page="logout";
 
-    function loadPage(app, page,lang,plan) {
-        $.get("/" + app + "/" + page + "?lang=" + lang + "&plan=" + plan, function(data) {
+    function loadPage(page,lang,plan) {
+        $.get(plugin + "pages/" + page + ".php?lang=" + lang + "&plan=" + plan, function(data) {
             if (data == "gotoAccount") {
                 window.location.replace("/"+ lang + "/account");
             } else if (data == "gotoProduct") {
@@ -30,5 +34,5 @@ $.getScript("/static/js/utils.js", function (e) {
 
     plan = get_url_param("plan");
 
-    loadPage(app, page, lang, plan);
+    loadPage(page, lang, plan);
 });
