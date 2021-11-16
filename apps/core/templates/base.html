@@ -15,9 +15,11 @@
         {% if user.is_authenticated %}
         <nav class="topnav">
             <a href="/">Saas Admin</a>
+            {% if not user.is_staff %}
             <a class="left" href="/account">Personal Details</a>
             <a class="left" href="/plan">Selected Plan</a>
             <a class="left" href="/payment">Payment Details</a>
+            {% endif %}
             <a class="right" href="/accounts/logout/">Logout</a>
             <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">Fork me</a>
         </nav>

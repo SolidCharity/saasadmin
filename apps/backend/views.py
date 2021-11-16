@@ -19,7 +19,7 @@ def backend(request):
 
     with connection.cursor() as cursor:
 
-        sql = """SELECT email_address, person_name, saas_instance.identifier as instance_identifier
+        sql = """SELECT email_address, first_name, last_name, saas_instance.identifier as instance_identifier
             FROM saas_customer, saas_instance, saas_contract
             WHERE saas_contract.customer_id = saas_customer.id
             AND saas_contract.instance_id = saas_instance.id"""
