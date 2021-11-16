@@ -29,7 +29,10 @@ urlpatterns = [
     path('', include('apps.api.urls')),
 
     # SaasAdmin Backend
-    path('backend', backend_views.backend),
+    path('backend', backend_views.plans),
+    path('customers', backend_views.customers),
+    path('instances', backend_views.instances),
+    path('plans', backend_views.plans),
     path('plans/add', backend_views.addplan),
     path('plans/edit/<int:id>', backend_views.editplan),
     path('plans/update/<int:id>', backend_views.updateplan),

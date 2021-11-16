@@ -11,12 +11,10 @@ from django.db.models import Q
 from django.db import connection
 from collections import namedtuple
 
+
 @login_required
 @staff_member_required
-def backend(request):
-    unused_instances = SaasInstance.objects.filter(Q(status='free') | Q(status='in_preparation'))
-    plans = SaasPlan.objects.all()
-
+def customers(request):
     with connection.cursor() as cursor:
 
         sql = """SELECT email_address, first_name, last_name, saas_instance.identifier as instance_identifier
@@ -36,10 +34,25 @@ def backend(request):
             # add the object to resulting array
             customers.append(o)
 
-    return render(request,"backend.html",
-            {'unused_instances':unused_instances,
-             'plans':plans,
-             'customers':customers})
+    return render(request,"customers.html",
+            {'customers':customers})
+
+@login_required
+@staff_member_required
+def instances(request):
+    unused_instances = SaasInstance.objects.filter(Q(status='free') | Q(status='in_preparation'))
+
+    return render(request,"instances.html",
+            {'unused_instances':unused_instances })
+
+
+@login_required
+@staff_member_required
+def plans(request):
+    plans = SaasPlan.objects.all()
+
+    return render(request,"plans.html",
+            { 'plans':plans })
 
 @login_required
 @staff_member_required
