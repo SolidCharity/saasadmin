@@ -46,7 +46,7 @@ def account_update(request):
 
 @login_required
 def select_plan(request, plan_id):
-    return render(request, 'product.html', {})
+    return render(request, 'plan.html', {})
 
 @login_required
 def select_payment(request):
