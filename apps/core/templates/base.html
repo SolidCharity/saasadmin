@@ -14,16 +14,16 @@
     <body>
         {% if user.is_authenticated %}
         <nav class="topnav">
-            <a href="/backend">Backend</a>
+            <a href="/">Saas Admin</a>
             <a class="right" href="/accounts/logout/">Logout</a>
-            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">About</a>
             <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">Fork me</a>
         </nav>
         {% else %}
         <nav class="topnav">
             <a href="/">SaaS Admin</a>
-            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">About</a>
+            <a class="right" href="/accounts/login/">Login</a>
             <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">Fork me</a>
+            <a class="right" href="/pricing" target="_blank">Pricing</a>
         </nav>
         {% endif %}
         {% block content %}

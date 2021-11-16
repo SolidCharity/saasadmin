@@ -1,4 +1,4 @@
-{% extends 'base_frontend.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
 
 {% block content %}
@@ -26,7 +26,7 @@
 		<li class="pricing-list">Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com</li>
 	</ul>
 	<div class="pricing-btn">
-	<a href="#" onclick="product_action('trial')" id="changebtn_test" class="customize-unpreviewable">Register</a>
+	<a href="/accounts/register" id="changebtn_test" class="customize-unpreviewable">Register</a>
 	</div>
 	</div>
 </div>
@@ -48,7 +48,7 @@
 		<li class="pricing-list">Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com</li>
 	</ul>
 	<div class="pricing-btn">
-	<a href="#" onclick="product_action('basic')" class="customize-unpreviewable">Register</a>
+	<a href="/accounts/register" class="customize-unpreviewable">Register</a>
 	</div>
 	</div>
 </div>
@@ -68,7 +68,7 @@
 		<li class="pricing-list">Access OpenPetra through a specifically assigned URL, eg. mycharity.openpetra.com</li>
 	</ul>
 	<div class="pricing-btn">
-	<a href="#" onclick="product_action('pro')" class="customize-unpreviewable">Register</a>
+	<a href="/accounts/register" class="customize-unpreviewable">Register</a>
 	</div>
 	</div>
 </div>

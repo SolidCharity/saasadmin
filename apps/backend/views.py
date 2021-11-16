@@ -11,17 +11,6 @@ from django.db.models import Q
 from django.db import connection
 from collections import namedtuple
 
-def home(request):
-    # if not logged in => redirect to login screen
-    if not request.user.is_authenticated:
-        return redirect('/accounts/login/')
-
-    # if this is a normal customer => redirect to frontend
-    if not request.user.is_staff:
-        return redirect('/account')
-
-    return redirect('/backend')
-
 @login_required
 @staff_member_required
 def backend(request):

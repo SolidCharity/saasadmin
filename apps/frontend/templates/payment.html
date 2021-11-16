@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load i18n %}
+    
+{% block content %}
+<main>
+    <div class="container" payment="">
+
+    <div class="row">
+      <div class="col">
+
+        <!-- payment options -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>Please choose how you want to pay the invoice:</span>
+            <br>
+            <br>
+          </div>
+          <div class="col-8">
+            <input type="radio" id="sepa_transfer" name="paymentMethod" value="sepa_transfer" checked="">
+            <label for="sepa_transfer"> You transfer the money via SEPA</label>
+			<br>
+            <!--<input type="radio" id="sepa_directdebit" name="paymentMethod" value="sepa_directdebit">-->
+            <input type="radio" id="paypal" name="paymentMethod" value="paypal">
+            <label for="paypal"> You transfer the money via Paypal</label>
+			<br>
+          </div>
+        </div>
+
+        <!-- country -->
+        <div class="center-item-row">
+          <div class="col-12">
+            <br><br>
+            <span>We will send you an invoice per E-Mail, and you can please pay that invoice within 14 days. The payment covers the current month and the coming 12 months.</span>
+            <br>
+            <span>If you don't cancel the contract, the contract will be automatically renewed for another 12 months, and we will send you a new invoice per E-Mail.</span>
+            <br>
+            <span>Up until 4 weeks before the end of the paid period, you can cancel the contract by E-Mail. We will provide you with a backup of your data from your OpenPetra instance.</span>
+            <br><br>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+
+        <input type="hidden" name="tier" value="basic">
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>To be paid</span>
+            <br>
+            <br>
+          </div>
+          <div class="col-8">
+            <input type="text" readonly="" value="50,00 Euro">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <button type="button" class="btn stylish-color" onclick="save_changes(this)">Order now</button>
+      </div>
+    </div>
+
+    </div>
+
+
+</main>
+{% endblock %}

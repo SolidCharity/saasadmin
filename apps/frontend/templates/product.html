@@ -1,54 +1,9 @@
-{% extends 'base_frontend.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
 
 {% block content %}
 <link rel="stylesheet" href="/static/css/product.css">
 <link rel="stylesheet" href="/static/css/pricing.css">
-
-<div id="modal_tier" class="modal fade" role="dialog">
-  <div class="modal-dialog" style="width:66%!important;max-width:unset;">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">{% translate "Finish payment" %}</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="center-item-row">
-          <div class="col-2"><span>{% translate "IBAN" %}:</span></div>
-          <div class="col"><input type="text" name="iban" placeholder="{% translate "IBAN" %}"></div>
-        </div>
-        <div class="center-item-row">
-          <div class="col-2"><span>{% translate "Bank Account Owner" %}:</span></div>
-          <div class="col"><input type="text" name="bank_owner" placeholder="{% translate "Bank Owner" %}"></div>
-        </div>
-        <div class="center-item-row">
-          <div class="col-2"><span>{% translate "renew" %}:</span></div>
-          <input class="col-2 text-right" type="checkbox" name="auto_renew">
-        </div>
-        <hr>
-        <div class="center-item-row">
-          <span class="col-1"></span>
-          <span class="col text-center">{% translate "duration" %}:</span>
-          <span class="col text-center">{% translate "cost" %}:</span>
-        </div>
-        <hr>
-        <div tierinfo>
-          <!-- tier info storage -->
-        </div>
-        <label class="center-item-row">
-          <input class="col-2 text-right" type="checkbox" name="accepted">
-          <span class="col">{% translate "I confirm that I agree to the conditions of service" %}</span>
-        </label>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-block" onclick="submit_change_tier()">{% translate "Order now" %}</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <div class="container white-text text-center">
 
