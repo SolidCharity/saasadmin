@@ -45,7 +45,7 @@ def account_update(request):
     return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
 
 @login_required
-def select_plan(request):
+def select_plan(request, plan_id):
     return render(request, 'product.html', {})
 
 @login_required

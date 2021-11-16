@@ -2,7 +2,14 @@
 {% load i18n %}
     
 {% block content %}
-<main>
+
+
+<!-- personal info -->
+<div details>
+  <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;" id="account_field">
+
+    <h2 class="text-center">{% translate "Payment Details" %}</h2>
+
     <div class="container" payment="">
 
     <div class="row">
@@ -68,6 +75,6 @@
 
     </div>
 
-
-</main>
+  </div>
+</div>
 {% endblock %}

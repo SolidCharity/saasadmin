@@ -2,12 +2,8 @@
 {% load i18n %}
 
 {% block content %}
-<link rel="stylesheet" href="/static/css/product.css">
+<link rel="stylesheet" href="/static/css/spacious.css">
 <link rel="stylesheet" href="/static/css/pricing.css">
-
-<div class="container white-text text-center">
-
-  <h1>{% translate "Product plan" %}</h1>
 
 <aside id="spacious_pricing_table_widget-5" class="widget widget_table_pricing">
 <div class="section-wrapper">
@@ -15,215 +11,75 @@
 
 <div class="tg-one-third">
 
-	<div class="pricing-table-wrapper-0 pricing-table-wrapper">
-	<h4 class="pricing-title">Test</h4>
-	<div class="pricing-price">
-		<span class="pricing-currnecy">free</span>
-		<span class="pricing-date">Unlimited testing period</span>
-	</div>
-	<span class="pricing-subtitle">Take your time to try and use OpenPetra as long as you want.</span>
-	<ul class="pricing-list-wrapper">
-		<li class="pricing-list">Nightly backups</li>
-		<li class="pricing-list">Support on the <a href="https://forum.openpetra.org" target="_blank">public Forum</a>.<br>
-			A community of users and developers, that support each other.</li>
-		<li class="pricing-list">Automatic updates to the latest version of OpenPetra</li>
-		<li class="pricing-list">Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com</li>
-	</ul>
-	<div class="pricing-btn">
-	<a href="#" onclick="product_action('trial')" id="changebtn_test" class="customize-unpreviewable">Register</a>
-	</div>
-	</div>
+<div class="pricing-table-wrapper-0 pricing-table-wrapper">
+<span class="pricing-as-popular hidden" id="selected_trial">Selected</span>
+<h4 class="pricing-title">Test</h4>
+
+<div class="pricing-price">
+	<span class="pricing-currnecy">free</span>
+	<span class="pricing-date">Unlimited testing period</span>
+</div>
+<span class="pricing-subtitle">Take your time to try and use OpenPetra as long as you want.</span>
+<ul class="pricing-list-wrapper">
+	<li class="pricing-list">Nightly backups</li>
+	<li class="pricing-list">Support on the <a href="https://forum.openpetra.org" target="_blank">public Forum</a>.<br>
+		A community of users and developers, that support each other.</li>
+	<li class="pricing-list">Automatic updates to the latest version of OpenPetra</li>
+	<li class="pricing-list">Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com</li>
+</ul>
+
+<div class="pricing-btn">
+<a href="/plan/test" id="changebtn_test" class="customize-unpreviewable disabled">Choose</a>
+</div>
+</div>
 </div>
 
 <div class="tg-one-third">
-	<div class="pricing-table-wrapper-1 pricing-table-wrapper">
-	<span class="pricing-as-popular">popular</span>
-	<h4 class="pricing-title">Basic</h4>
-	<div class="pricing-price">
-		<span class="pricing-currnecy">50€ per Year</span>
-		<span class="pricing-date">For small charities</span>
-	</div>
-	<span class="pricing-subtitle">You support the ongoing development of OpenPetra.</span>
-	<ul class="pricing-list-wrapper">
-		<li class="pricing-list">Nightly backups</li>
-		<li class="pricing-list">Support on the <a href="https://forum.openpetra.org" target="_blank">public Forum</a>.<br>
-			A community of users and developers, that support each other.</li>
-		<li class="pricing-list">Automatic updates to the latest version of OpenPetra</li>
-		<li class="pricing-list">Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com</li>
-	</ul>
-	<div class="pricing-btn">
-	<a href="#" onclick="product_action('basic')" class="customize-unpreviewable">Register</a>
-	</div>
-	</div>
+
+<div class="pricing-table-wrapper-1 pricing-table-wrapper">
+<span class="pricing-as-popular hidden" id="selected_basic">Selected</span>
+<h4 class="pricing-title">Basic</h4>
+<div class="pricing-price">
+	<span class="pricing-currnecy">50€ per Year</span>
+	<span class="pricing-date">For small charities</span>
+</div>
+<span class="pricing-subtitle">You support the ongoing development of OpenPetra.</span>
+<ul class="pricing-list-wrapper">
+	<li class="pricing-list">Nightly backups</li>
+	<li class="pricing-list">Support on the <a href="https://forum.openpetra.org" target="_blank">public Forum</a>.<br>
+		A community of users and developers, that support each other.</li>
+	<li class="pricing-list">Automatic updates to the latest version of OpenPetra</li>
+	<li class="pricing-list">Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com</li>
+</ul>
+<div class="pricing-btn">
+<a href="/plan/basic" class="customize-unpreviewable">Choose</a>
+</div>
+</div>
 </div>
 
 <div class="tg-one-third tg-one-third-last">
 
-	<div class="pricing-table-wrapper-2 pricing-table-wrapper">
-	<h4 class="pricing-title">Professional</h4>
-	<div class="pricing-price">
-	<span class="pricing-currnecy">500€ per Year</span><span class="pricing-date">For established charities and churches</span>
-	</div>
-	<span class="pricing-subtitle">You know the value of OpenPetra as a reliable partner.</span>
-	<ul class="pricing-list-wrapper">
-		<li class="pricing-list">Hourly backups</li>
-		<li class="pricing-list">5 hours of support/consulting/development per year inclusive. <br>More hours can be booked.</li>
-		<li class="pricing-list">Updates to OpenPetra in agreed rhythm to avoid interruptions in your work</li>
-		<li class="pricing-list">Access OpenPetra through a specifically assigned URL, eg. mycharity.openpetra.com</li>
-	</ul>
-	<div class="pricing-btn">
-	<a href="#" onclick="product_action('pro')" class="customize-unpreviewable">Register</a>
-	</div>
-	</div>
+<div class="pricing-table-wrapper-2 pricing-table-wrapper">
+<span class="pricing-as-popular" id="selected_pro">Selected</span>
+<h4 class="pricing-title">Professional</h4>
+<div class="pricing-price">
+<span class="pricing-currnecy">500€ per Year</span><span class="pricing-date">For established charities and churches</span>
+</div>
+<span class="pricing-subtitle">You know the value of OpenPetra as a reliable partner.</span>
+<ul class="pricing-list-wrapper">
+	<li class="pricing-list">Hourly backups</li>
+	<li class="pricing-list">5 hours of support/consulting/development per year inclusive. <br>More hours can be booked.</li>
+	<li class="pricing-list">Updates to OpenPetra in agreed rhythm to avoid interruptions in your work</li>
+	<li class="pricing-list">Access OpenPetra through a specifically assigned URL, eg. mycharity.openpetra.com</li>
+</ul>
+<div class="pricing-btn">
+<a href="/plan/professional" class="customize-unpreviewable">Choose</a>
+</div>
+</div>
 </div>
 
 </div>
 </div>
 </aside>
 
-
-
-
-  <div class="center-item-row">
-    <div class="col table-selection" onclick="change_table('trial', this)" tseclect="trial">
-      <h4>{% translate "Test" %}</h4>
-    </div>
-    <div class="col table-selection" onclick="change_table('basic', this)" tseclect="basic">
-      <h4>{% translate "Basic" %}</h4>
-    </div>
-    <div class="col table-selection" onclick="change_table('pro', this)" tseclect="pro">
-      <h4>{% translate "Professional" %}</h4>
-    </div>
-    <div class="col table-selection" onclick="change_table('custom', this)" tseclect="custom">
-      <h4>{% translate "Custom" %}</h4>
-    </div>
-  </div>
-  <div id="tier_info" style="padding: 2em 0;">
-
-    <div class="collapse" tview="trial">
-      <h3>{% translate "Test" %}</h3>
-      <h4>{% translate "Try and use for free, unlimited" %}</h4>
-      <hr>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Backup" %}</span></div>
-        <div class="col"><span>{% translate "Nightly backups" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "support" %}</span></div>
-        <div class="col"><span>{% translate "Support in the forum <a href='https://forum.openpetra.org'>forum.openpetra.org</a>" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Updates" %}</span></div>
-        <div class="col"><span>{% translate "Automatic updates to the latest version of OpenPetra" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Access via URL" %}</span></div>
-        <div class="col"><span>{% translate "Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "More services" %}</span></div>
-        <div class="col"><span>{% translate "-" %} {option_trial_other}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Cost" %}</span></div>
-        <div class="col"><span>{% translate "unlimited test period" %}</span></div>
-      </div>
-      <h3 class="collapse" cantallowchange>{% translate "You cannot switch to this plan" %}</h3>
-    </div>
-
-    <div class="collapse" tview="basic">
-      <h3>{% translate "Basic" %}</h3>
-      <h4>{% translate "For smaller charities" %}</h4>
-      <hr>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Backup" %}</span></div>
-        <div class="col"><span>{% translate "Nightly backups" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Support" %}</span></div>
-        <div class="col"><span>{% translate "Support in the forum <a href='https://forum.openpetra.org'>forum.openpetra.org</a>" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Updates" %}</span></div>
-        <div class="col"><span>{% translate "Automatic updates to the latest version of OpenPetra" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Access via URL" %}</span></div>
-        <div class="col"><span>{% translate "Access OpenPetra through an automatically generated URL, eg. op_012345.openpetra.com" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "More services" %}</span></div>
-        <div class="col"><span>{% translate "-" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Cost" %}</span></div>
-        <div class="col"><span>{% translate "5 Euro per month, or 50 Euro per year (incl. VAT)" %}</span></div>
-      </div>
-      <button type="button" class="btn btn-primary btn-block" onclick="change_tier('basic')" changebtn>{% translate "Switch to this plan" %}</button>
-    </div>
-
-    <div class="collapse" tview="pro">
-      <h3>{% translate "Professional" %}</h3>
-      <h4>{% translate "For charities with advanced needs" %}</h4>
-      <hr>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Backup" %}</span></div>
-        <div class="col"><span>{% translate "Hourly backups" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Support" %}</span></div>
-        <div class="col"><span>{% translate "5 hours of support/development per year, more hours can be requested" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "updates" %}</span></div>
-        <div class="col"><span>{% translate "Updates to OpenPetra in agreed rhythm" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Access via URL" %}</span></div>
-        <div class="col"><span>{% translate "Access OpenPetra through an assigned URL, eg. mycharity.openpetra.com" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "More services" %}</span></div>
-        <div class="col"><span>{% translate "-" %} </span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Cost" %}</span></div>
-        <div class="col"><span>{% translate "400 Euro per year (incl. VAT)" %} </span></div>
-      </div>
-      <button type="button" class="btn btn-primary btn-block" onclick="Switch to this plan('Pro')" changebtn>{% translate "Switch to this plan" %}</button>
-    </div>
-
-    <div class="collapse" tview="custom">
-      <h3>{% translate "Custom" %}</h3>
-      <h4>{% translate "For charities with special requirements" %}</h4>
-      <hr>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Backup" %}</span></div>
-        <div class="col"><span>{% translate "Hourly backups" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Support" %}</span></div>
-        <div class="col"><span>{% translate "12 hours of support/development per year, more hours can be requested" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Updates" %}</span></div>
-        <div class="col"><span>{% translate "Updates to OpenPetra on demand" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Access via URL" %}</span></div>
-        <div class="col"><span>{% translate "Access OpenPetra through your own domain, eg. eg openpetra.mycharity.org" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "More services" %}</span></div>
-        <div class="col"><span>{% translate "Install your own (or developed by us for you) plugins or adjustments" %}</span></div>
-      </div>
-      <div class="center-item-row">
-        <div class="col"><span>{% translate "Cost" %}</span></div>
-        <div class="col"><span>{% translate "900 Euro per year (incl. VAT)" %}</span></div>
-      </div>
-      <button type="button" class="btn btn-primary btn-block" onclick="Switch to this plan('custom')" changebtn>{% translate "Switch to this plan" %}</button>
-    </div>
-  </div>
-
-</div>
 {% endblock %}

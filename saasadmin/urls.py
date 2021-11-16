@@ -40,7 +40,7 @@ urlpatterns = [
     path('home/', frontend_views.home),
     path('account', frontend_views.account_view),
     path('account/update', frontend_views.account_update),
-    path('plan', frontend_views.select_plan),
+    path('plan/<str:plan_id>', frontend_views.select_plan),
     path('payment', frontend_views.select_payment),
     path('pricing', frontend_views.display_pricing),
 ]
