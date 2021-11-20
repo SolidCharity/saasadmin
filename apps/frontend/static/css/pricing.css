@@ -227,4 +227,15 @@ pricing-list-wrapper {
 .container {
     max-width: 1200px;
 }
+.pricing .row {
+    display: flex;
+    width: 100%;
+}
+
+.pricing .column {
+    flex: 1;
+    padding: 16px;
+    margin-left: 16px;
+    width: 100%;
+}
 
