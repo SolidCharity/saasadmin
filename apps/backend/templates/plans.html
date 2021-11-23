@@ -8,6 +8,7 @@
 
 <tr>
 		<th>name</th>
+		<th>language</th>
 		<th>costPerPeriod</th>
 		<th>currencyCode</th>
 		<th>periodLengthInMonths </th>
@@ -17,6 +18,7 @@
       {% for plan in plans %}
 <tr>
 		<td>{{ plan.name }} </td>
+		<td>{{ plan.language }} </td>
 		<td> {{ plan.costPerPeriod}}</td>
 		<td>{{ plan.currencyCode}} </td>
 		<td>{{ plan.periodLengthInMonths}} </td>

@@ -52,6 +52,8 @@ class SaasPlan (models.Model):
     currencyCode = models.CharField(_("currency"), max_length= 3, default= "EUR")
     costPerPeriod = models.DecimalField(_("cost"), max_digits= 10, decimal_places= 2)
     noticePeriodTypeInDays = models.IntegerField(_("notice"))
+    language = (models.CharField(_("language"), max_length=10, default = "DE"))
+  
 
     class Meta:
         db_table = "saas_plan"
@@ -64,7 +66,7 @@ class SaasContract(models.Model):
         on_delete=models.CASCADE,
         related_name="%(app_label)s_%(class)s_list",
     )
-
+     
     customer = models.ForeignKey(
         SaasCustomer,
         null=False, blank=False, default=None,
