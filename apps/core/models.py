@@ -53,7 +53,12 @@ class SaasPlan (models.Model):
     costPerPeriod = models.DecimalField(_("cost"), max_digits= 10, decimal_places= 2)
     noticePeriodTypeInDays = models.IntegerField(_("notice"))
     language = (models.CharField(_("language"), max_length=10, default = "DE"))
-  
+    descr_target = (models.CharField(_("descr_target"), max_length=200, default = "TODO"))
+    descr_caption = (models.CharField(_("descr_caption"), max_length=200, default = "TODO"))
+    descr_1 = (models.CharField(_("descr_1"), max_length=200, default = "TODO"))
+    descr_2 = (models.CharField(_("descr_2"), max_length=200, default = "TODO"))
+    descr_3 = (models.CharField(_("descr_3"), max_length=200, default = "TODO"))
+    descr_4 = (models.CharField(_("descr_4"), max_length=200, default = "TODO"))
 
     class Meta:
         db_table = "saas_plan"
