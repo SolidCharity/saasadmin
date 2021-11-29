@@ -8,10 +8,10 @@ INSERT INTO "saas_customer" ("id","user_id","newsletter","newsletter_subscribed_
 	(2,3,1,'2021-05-01',0,'DE',1,'',NULL,'Gartensparte zum Spaten','Werner','Schmidt','Am Wasser','7','01234','Plauen','DE','werner@example.org',1),
 	(3,4,1,'2021-05-01',0,'DE',1,'',NULL,'Gartensparte Schneckenhain','Bernd','Schmitz','Am Berg','2','01234','Plauen','DE','bernd.s@example.org',1),
 	(4,5,1,'2021-05-01',0,'DE',1,'',NULL,'Sportverein Trimm Dich','Gunter','Meier','An der Elster','22','01234','Plauen','DE','gunter.meier@example.org',1);
-INSERT INTO "saas_plan" ("id","periodLengthInMonths","currencyCode","costPerPeriod","noticePeriodTypeInDays","name") VALUES
-	(1,12,'EUR',50,14,'Basic'),
-	(2,1,'EUR',5,7,'Mini'),
-	(3,12,'EUR',300,14,'Pro');
+INSERT INTO "saas_plan" ("id","periodLengthInMonths","currencyCode","costPerPeriod","noticePeriodTypeInDays","name","language","descr_target","descr_caption","descr_1","descr_2","descr_3","descr_4") VALUES
+	(1,12,'EUR',50,14,'Basic','de','','','','','',''),
+	(2,1,'EUR',5,7,'Mini','de','','','','','',''),
+	(3,12,'EUR',300,14,'Pro','de','','','','','','');
 INSERT INTO "saas_instance" ("id","identifier","hostname","status","auto_renew","last_interaction","reserved_token","reserved_until","reserved_for_user_id","initial_password","port") VALUES
 	(1,'344567','host0001','active',1,NULL,NULL,NULL,NULL,'',2000),
 	(2,'238978','host0001','active',1,NULL,NULL,NULL,NULL,'',2001),
