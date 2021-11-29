@@ -52,7 +52,7 @@ create_db:
 	${VENV} python manage.py compilemessages
 
 runserver:
-	echo "yes" | ${VENV} python manage.py collectstatic
+	${VENV} (echo "yes" | python manage.py collectstatic)
 	${VENV} python manage.py runserver localhost:8000
 
 token:
