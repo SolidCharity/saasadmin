@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import JsonResponse
-from apps.core.models import SaasCustomer
+from apps.core.models import SaasCustomer, SaasPlan
 from apps.frontend.forms import CustomerForm
 
 def home(request):
@@ -46,11 +46,19 @@ def account_update(request):
 
 @login_required
 def select_plan(request, plan_id):
-    return render(request, 'plan.html', {})
+    plans = SaasPlan.objects.filter(language="de").order_by('costPerPeriod')
+    if plan_id == 'current':
+        # load current plan
+        plan_id = plans.first().name
+    else:
+        # TODO store current plan
+        None
+    return render(request, 'plan.html', {'plans': plans, 'selected_plan': plan_id})
 
 @login_required
 def select_payment(request):
     return render(request, 'payment.html', {})
 
 def display_pricing(request):
-    return render(request, 'pricing.html', {})
+    plans = SaasPlan.objects.filter(language="de").order_by('costPerPeriod')
+    return render(request, 'pricing.html', {'plans': plans, 'popular_plan': 'Basic'})
