@@ -4,5 +4,6 @@ venv
 .idea
 /static
 local.py
+*.mo
 settings_local.py
 __pycache__

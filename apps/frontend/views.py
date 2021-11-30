@@ -6,6 +6,7 @@ from django.db import IntegrityError
 from django.http import JsonResponse
 from apps.core.models import SaasCustomer, SaasPlan
 from apps.frontend.forms import CustomerForm
+from django.utils import translation
 
 def home(request):
     # if not logged in => redirect to pricing
@@ -27,6 +28,9 @@ def account_view(request):
         customer.email_address = request.user.email
         customer.save()
 
+        # TODO now reserve the instance
+        # TODO send out emails to set the initial passwords
+
     return render(request, 'account.html', {'customer': customer, 'lang': lang})
 
 @login_required
@@ -44,14 +48,30 @@ def account_update(request):
         return redirect('/account')
     return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
 
+
+def get_plans():
+    cur_language = translation.get_language()
+    if "de" in cur_language:
+        cur_language = "de"
+    else:
+        cur_language = "en"
+
+    plans = SaasPlan.objects.filter(language=cur_language).order_by('costPerPeriod')
+    if plans.count() == 0:
+        plans = SaasPlan.objects.filter(language="de").order_by('costPerPeriod')
+
+    return plans
+
+
 @login_required
 def select_plan(request, plan_id):
-    plans = SaasPlan.objects.filter(language="de").order_by('costPerPeriod')
+    plans = get_plans()
+
     if plan_id == 'current':
-        # load current plan
+        # TODO load current plan
         plan_id = plans.first().name
     else:
-        # TODO store current plan
+        # TODO store current plan (if it is a valid name)
         None
     return render(request, 'plan.html', {'plans': plans, 'selected_plan': plan_id})
 
@@ -60,5 +80,6 @@ def select_payment(request):
     return render(request, 'payment.html', {})
 
 def display_pricing(request):
-    plans = SaasPlan.objects.filter(language="de").order_by('costPerPeriod')
-    return render(request, 'pricing.html', {'plans': plans, 'popular_plan': 'Basic'})
+    plans = get_plans()
+
+    return render(request, 'pricing.html', {'plans': plans, 'popular_plan': plans[1].name})
