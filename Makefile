@@ -60,6 +60,7 @@ token:
 
 translate:
 	${VENV} cd apps/core && django-admin compilemessages
+	${VENV} cd apps/backend && django-admin compilemessages
 	${VENV} cd apps/frontend && django-admin compilemessages
 
 demo_db:
