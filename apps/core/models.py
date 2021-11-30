@@ -47,7 +47,7 @@ class SaasInstance(models.Model):
         db_table = "saas_instance"
 
 class SaasPlan (models.Model):
-    name = models.CharField(_("name"), max_length=16, unique=True)
+    name = models.CharField(_("name"), max_length=16)
     periodLengthInMonths = models.IntegerField(_("length"))
     currencyCode = models.CharField(_("currency"), max_length= 3, default= "EUR")
     costPerPeriod = models.DecimalField(_("cost"), max_digits= 10, decimal_places= 2)

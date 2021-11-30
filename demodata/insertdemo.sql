@@ -9,9 +9,12 @@ INSERT INTO "saas_customer" ("id","user_id","newsletter","newsletter_subscribed_
 	(3,4,1,'2021-05-01',0,'DE',1,'',NULL,'Gartensparte Schneckenhain','Bernd','Schmitz','Am Berg','2','01234','Plauen','DE','bernd.s@example.org',1),
 	(4,5,1,'2021-05-01',0,'DE',1,'',NULL,'Sportverein Trimm Dich','Gunter','Meier','An der Elster','22','01234','Plauen','DE','gunter.meier@example.org',1);
 INSERT INTO "saas_plan" ("id","periodLengthInMonths","currencyCode","costPerPeriod","noticePeriodTypeInDays","name","language","descr_target","descr_caption","descr_1","descr_2","descr_3","descr_4") VALUES
-	(1,12,'EUR',50,14,'Basic','de','','','','','',''),
-	(2,1,'EUR',5,7,'Mini','de','','','','','',''),
-	(3,12,'EUR',300,14,'Pro','de','','','','','','');
+	(1,12,'EUR',50,14,'Basic','de','Für jeden','Alles was man so braucht','Nächtliche Backups','Support im öffentlichen Forum','Immer wieder Aktualisierungen auf die aktuelle Version','Zugriff über automatisch vergebene URL'),
+	(2,1,'EUR',5,7,'Mini','de','Für Anfänger','Nur zum Ausprobieren','Nächtliche Backups','Support im öffentlichen Forum','Immer wieder Aktualisierungen auf die aktuelle Version','Zugriff über automatisch vergebene URL'),
+	(3,12,'EUR',300,14,'Pro','de','Für Profis','Mit allem Schnickschnack','Stündliche Backups','Support über Ticket-System, mit 3 Std. inkl.','Aktualisierungen mit Ihnen abgesprochen','Zugriff über eigene URL'),
+	(4,12,'EUR',50,14,'Basic','en','For everyone','Everything you need','Nightly Backups','Support in the public forum','Regular Updates to latest release','Access via automatic url'),
+	(5,1,'EUR',5,7,'Mini','en','For starters','Just experimenting','Nightly Backups','Support in the public forum','Regular Updates to latest release','Access via automatic url'),
+	(6,12,'EUR',300,14,'Pro','en','For Professionals','With all bells and whistles','Hourly Backups','Support with Ticketing system, 3 hours incl.','Updates coordinated with you','Access via your own url');
 INSERT INTO "saas_instance" ("id","identifier","hostname","status","auto_renew","last_interaction","reserved_token","reserved_until","reserved_for_user_id","initial_password","port") VALUES
 	(1,'344567','host0001','active',1,NULL,NULL,NULL,NULL,'',2000),
 	(2,'238978','host0001','active',1,NULL,NULL,NULL,NULL,'',2001),
