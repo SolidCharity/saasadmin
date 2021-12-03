@@ -99,3 +99,55 @@ def deleteplan(request, id):
     plan = SaasPlan.objects.get(id=id)
     plan.delete()
     return redirect("/")
+
+def products(request):
+    products = SaasProduct.objects.all()
+
+    return render(request,"products.html",
+            { 'products':products })
+
+@login_required
+@staff_member_required
+def addproduct(request):
+
+
+    if request.method == "POST":
+        # request.POST is immutable, so make a copy
+        values = request.POST.copy()
+        values['owner'] = request.user.id
+        form = ProductForm(values)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/')
+            except:
+                pass
+    else:
+        form = ProductForm()
+    return render(request,'addproduct.html',{'form':form})
+
+@login_required
+@staff_member_required
+def editproduct(request, id):
+    product = SaasProduct.objects.get(id=id)
+    form = ProductForm(request.POST or None, instance = Product)
+    return render(request,'editproduct.html', {'product':Product, 'form': form})
+
+@login_required
+@staff_member_required
+def updateproduct(request, id):
+    product = SaasProduct.objects.get(id=id)
+    # request.POST is immutable, so make a copy
+    values = request.POST.copy()
+    form = ProductForm(values, instance = product)
+    if form.is_valid():
+        form.save()
+        return redirect("/")
+    return render(request, 'editproduct.html', {'product': product, 'form': form})
+
+@login_required
+@staff_member_required
+def deleteproduct(request, id):
+    product = SaasProduct.objects.get(id=id)
+    product.delete()
+    return redirect("/")

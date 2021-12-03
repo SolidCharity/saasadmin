@@ -38,6 +38,12 @@ urlpatterns = [
     path('plans/update/<int:id>', backend_views.updateplan),
     path('plans/delete/<int:id>', backend_views.deleteplan),
 
+    path('products', backend_views.products),
+    path('products/add', backend_views.addproduct),
+    path('products/edit/<int:id>', backend_views.editproduct),
+    path('products/update/<int:id>', backend_views.updateproduct),
+    path('products/delete/<int:id>', backend_views.deleteproduct),
+
     # SaasAdmin Frontend
     path('', frontend_views.home),
     path('home/', frontend_views.home),

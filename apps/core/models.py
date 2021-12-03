@@ -46,6 +46,20 @@ class SaasInstance(models.Model):
     class Meta:
         db_table = "saas_instance"
 
+class SaasProduct (models.Model):
+    name = models.CharField(_("name"), max_length=16)
+    activationurl = (models.CharField(_("activationurl"), max_length=200))
+
+class SaasProductLanguage (models.Model):
+    product = models.ForeignKey(
+        SaasProduct,
+        null=False, blank=False, default=None,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_list",
+    )
+    language = (models.CharField(_("language"), max_length=10, default = "DE"))
+    payment_details = (models.CharField(_("payment_details"), max_length=300, default = ""))
+    
 class SaasPlan (models.Model):
     name = models.CharField(_("name"), max_length=16)
     periodLengthInMonths = models.IntegerField(_("length"))
@@ -92,3 +106,5 @@ class SaasContract(models.Model):
 
     class Meta:
         db_table = "saas_contract"
+
+
