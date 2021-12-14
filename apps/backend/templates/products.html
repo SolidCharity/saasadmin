@@ -8,21 +8,13 @@
 
 <tr>
 		<th>name</th>
-		<th>language</th>
-		<th>costPerPeriod</th>
-		<th>currencyCode</th>
-		<th>periodLengthInMonths </th>
-		<th>noticePeriodTypeInDays</th>
+		<th>activationurl</th>
 		<th>Action</th>
 </tr>
       {% for product in products %}
 <tr>
 		<td>{{ product.name }} </td>
-		<td>{{ product.language }} </td>
-		<td> {{ product.costPerPeriod}}</td>
-		<td>{{ product.currencyCode}} </td>
-		<td>{{ product.periodLengthInMonths}} </td>
-		<td>{{ product.noticePeriodTypeInDays}} </td>
+		<td>{{ product.activationurl }} </td>
 		<td><a href="/products/edit/{{ product.id }}" class="button button-primary">Edit</a></td>
         <td><a href="/products/delete/{{ product.id }}" class="button button-danger">delete</a></td>
 </tr>
