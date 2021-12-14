@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+<h3>Plans</h3>
+<table>
+
+<tr>
+		<th>name</th>
+		<th>language</th>
+		<th>costPerPeriod</th>
+		<th>currencyCode</th>
+		<th>periodLengthInMonths </th>
+		<th>noticePeriodTypeInDays</th>
+		<th>Action</th>
+</tr>
+      {% for plan in plans %}
+<tr>
+		<td>{{ plan.name }} </td>
+		<td>{{ plan.language }} </td>
+		<td> {{ plan.costPerPeriod}}</td>
+		<td>{{ plan.currencyCode}} </td>
+		<td>{{ plan.periodLengthInMonths}} </td>
+		<td>{{ plan.noticePeriodTypeInDays}} </td>
+		<td><a href="/plans/edit/{{ plan.id }}" class="button button-primary">Edit</a></td>
+        <td><a href="/plans/delete/{{ plan.id }}" class="button button-danger">delete</a></td>
+</tr>
+{% endfor %}
+</table>
+<center><a href="/plans/add" class="button button-primary">Add New Record</a></center>
+</div>
+
+{% endblock %}

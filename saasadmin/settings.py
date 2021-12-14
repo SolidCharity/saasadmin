@@ -38,15 +38,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'django_registration',
     'rest_framework',
+    'rest_framework.authtoken',
     'apps.core',
     'apps.api',
     'apps.backend',
+    'apps.frontend',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -109,6 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
 
 TIME_ZONE = 'UTC'
 
@@ -127,5 +132,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 LOGIN_REDIRECT_URL = '/home/'
 LOGOUT_REDIRECT_URL = '/home/'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
-#from .settings_local import *
+from .settings_local import *

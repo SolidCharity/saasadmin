@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h3>Instances</h3>
+  <ul>
+  {% for instance in unused_instances %}
+    <li>{{ instance.identifier }}: {{ instance.status }}</li>
+      {% endfor %}
+  </ul>
+
+</div>
+
+{% endblock %}

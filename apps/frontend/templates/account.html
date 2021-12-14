@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<style media="screen">
+  #account_field .center-item-row {
+    margin-top:0.5em;
+  }
+  [readonly] {
+    background: transparent;
+  }
+  [changemonth] {
+    background: #dd5;
+  }
+  [changemonth][nocolor] {
+    background: unset;
+  }
+</style>
+
+<div details>
+
+  <!-- personal info -->
+  <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;" id="account_field">
+
+    <h2 class="text-center">{% translate "Personal Details" %}</h2>
+
+    <form method="POST" class="post-form" action="/account/update">
+		{% csrf_token %}
+    <div class="row">
+      <!-- left -->
+      <div class="col">
+
+{% if form.errors %}
+	{% for field in form %}
+		{% for error in field.errors %}
+			<div class="alert alert-danger">
+				<strong>{{field.name}}: {{ error|escape }}</strong>
+			</div>
+		{% endfor %}
+	{% endfor %}
+	{% for error in form.non_field_errors %}
+		<div class="alert alert-danger">
+			<strong>{{ error|escape }}</strong>
+		</div>
+	{% endfor %}
+{% endif %}
+        <!-- firstname -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{% translate "First name" %} </span>
+          </div>
+          <div class="col-8">
+              <input type="text" name="first_name" value="{{customer.first_name}}">
+          </div>
+        </div>
+
+        <!-- lastname -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{% translate "Last name" %}</span>
+          </div>
+          <div class="col-8">
+              <input type="text" name="last_name" value="{{customer.last_name}}">
+          </div>
+        </div>
+
+        <!-- email -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{% translate "E-Mail" %}</span>
+          </div>
+          <div class="col-8">
+              <input type="text" name="email_readonly" value="{{customer.email_address}}" readonly>
+          </div>
+        </div>
+
+        <!-- street -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{% translate "Street and house number" %}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="street" value="{{customer.street}}">
+          </div>
+        </div>
+
+        <!-- postcode -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{% translate "Post code" %}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="post_code" value="{{customer.post_code}}">
+          </div>
+        </div>
+
+        <!-- city -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{% translate "City" %}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="city" value="{{customer.city}}">
+          </div>
+        </div>
+
+        <!-- country -->
+        <div class="center-item-row">
+          <div class="col-4">
+            <span>{% translate "Country" %}</span>
+          </div>
+          <div class="col-8">
+            <input type="text" name="country_code" value="{{customer.country_code}}">
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="col"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        <button type="submit" class="btn stylish-color">{% translate "Save changes" %}</button>
+      </div>
+    </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

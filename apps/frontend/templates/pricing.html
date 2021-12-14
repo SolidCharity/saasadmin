@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/pricing.css' %}">
+
+<div class="container pricing">
+<div class="row" id="spacious_pricing_table_widget-5" class="widget_table_pricing">
+
+
+{% for plan in plans %}
+<div class="one-third column">
+
+<div class="pricing-table-wrapper-0 pricing-table-wrapper">
+<span class="pricing-as-popular {%if popular_plan != plan.name%}hidden{%endif%}">{%translate "popular"%}</span>
+<h4 class="pricing-title">{{plan.name}}</h4>
+
+<div class="pricing-price">
+	<span class="pricing-currency">
+		{% if plan.costPerPeriod == 0 %} {%translate "free"%}
+		{%else%}
+			{%if plan.currencyCode == 'EUR' %}{{plan.costPerPeriod.normalize}}&euro;
+			{%elif plan.currencyCode == 'USD'%}${{plan.costPerPeriod.normalize}}
+			{%else%}{{plan.costPerPeriod.normalize}} {{plan.currencyCode}}
+			{%endif%}
+			{%if plan.periodLengthInMonths == 1 %}{% translate "per month" %}
+			{%elif plan.periodLengthInMonths == 3 %}{% translate "per quarter" %}
+			{%elif plan.periodLengthInMonths == 12 %}{% translate "per year" %}
+			{%endif%}
+		{% endif %}</span>
+	<span class="pricing-date">{{plan.descr_caption}}</span>
+</div>
+<span class="pricing-subtitle">{{plan.descr_target}}</span>
+
+<ul class="pricing-list-wrapper">
+	<li class="pricing-list">{{plan.descr_1|safe}}</li>
+	<li class="pricing-list">{{plan.descr_2|safe}}</li>
+	<li class="pricing-list">{{plan.descr_3|safe}}</li>
+	<li class="pricing-list">{{plan.descr_4|safe}}</li>
+</ul>
+
+<div class="pricing-btn">
+	<a href="/accounts/register" class="customize-unpreviewable">{%translate "Register"%}</a>
+</div>
+</div>
+</div>
+{% endfor %}
+
+</div>
+</div>
+
+{% endblock %}

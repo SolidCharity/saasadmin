@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+<h3>products</h3>
+<table>
+
+<tr>
+		<th>name</th>
+		<th>activationurl</th>
+		<th>Action</th>
+</tr>
+      {% for product in products %}
+<tr>
+		<td>{{ product.name }} </td>
+		<td>{{ product.activationurl }} </td>
+		<td><a href="/products/edit/{{ product.id }}" class="button button-primary">Edit</a></td>
+        <td><a href="/products/delete/{{ product.id }}" class="button button-danger">delete</a></td>
+</tr>
+{% endfor %}
+</table>
+<center><a href="/products/add" class="button button-primary">Add New Record</a></center>
+</div>
+
+{% endblock %}
