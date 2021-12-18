@@ -25,9 +25,60 @@ class SaasCustomer(models.Model):
     class Meta:
         db_table = "saas_customer"
 
+class SaasProduct (models.Model):
+    name = models.CharField(_("name"), max_length=16)
+    activationurl = (models.CharField(_("activationurl"), max_length=200))
+
+    class Meta:
+        db_table = "saas_product"
+
+class SaasProductLanguage (models.Model):
+    product = models.ForeignKey(
+        SaasProduct,
+        null=False, blank=False, default=None,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_list",
+    )
+    language = (models.CharField(_("language"), max_length=10, default = "DE"))
+    payment_details = (models.CharField(_("payment_details"), max_length=300, default = ""))
+
+    class Meta:
+        db_table = "saas_product_language"
+
+class SaasPlan (models.Model):
+    name = models.CharField(_("name"), max_length=16)
+    product = models.ForeignKey(
+        SaasProduct,
+        null=False, blank=False, default=None,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_list",
+    )
+    periodLengthInMonths = models.IntegerField(_("length"))
+    currencyCode = models.CharField(_("currency"), max_length= 3, default= "EUR")
+    costPerPeriod = models.DecimalField(_("cost"), max_digits= 10, decimal_places= 2)
+    noticePeriodTypeInDays = models.IntegerField(_("notice"))
+    language = (models.CharField(_("language"), max_length=10, default = "DE"))
+    descr_target = (models.CharField(_("descr_target"), max_length=200, default = "TODO"))
+    descr_caption = (models.CharField(_("descr_caption"), max_length=200, default = "TODO"))
+    descr_1 = (models.CharField(_("descr_1"), max_length=200, default = "TODO"))
+    descr_2 = (models.CharField(_("descr_2"), max_length=200, default = "TODO"))
+    descr_3 = (models.CharField(_("descr_3"), max_length=200, default = "TODO"))
+    descr_4 = (models.CharField(_("descr_4"), max_length=200, default = "TODO"))
+
+    class Meta:
+        db_table = "saas_plan"
+
 # this is the saas instance rented by the customer
 class SaasInstance(models.Model):
     identifier = models.CharField(_("identifier"), max_length=16, unique=True)
+
+    product = models.ForeignKey(
+        SaasProduct,
+        null=False, blank=False, default=None,
+        on_delete=models.CASCADE,
+        related_name="%(app_label)s_%(class)s_list",
+    )
+
     hostname = models.CharField(_("hostname"), max_length=128, default='localhost')
     port = models.IntegerField(_("port"), default=-1)
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
@@ -45,37 +96,6 @@ class SaasInstance(models.Model):
 
     class Meta:
         db_table = "saas_instance"
-
-class SaasProduct (models.Model):
-    name = models.CharField(_("name"), max_length=16)
-    activationurl = (models.CharField(_("activationurl"), max_length=200))
-
-class SaasProductLanguage (models.Model):
-    product = models.ForeignKey(
-        SaasProduct,
-        null=False, blank=False, default=None,
-        on_delete=models.CASCADE,
-        related_name="%(app_label)s_%(class)s_list",
-    )
-    language = (models.CharField(_("language"), max_length=10, default = "DE"))
-    payment_details = (models.CharField(_("payment_details"), max_length=300, default = ""))
-    
-class SaasPlan (models.Model):
-    name = models.CharField(_("name"), max_length=16)
-    periodLengthInMonths = models.IntegerField(_("length"))
-    currencyCode = models.CharField(_("currency"), max_length= 3, default= "EUR")
-    costPerPeriod = models.DecimalField(_("cost"), max_digits= 10, decimal_places= 2)
-    noticePeriodTypeInDays = models.IntegerField(_("notice"))
-    language = (models.CharField(_("language"), max_length=10, default = "DE"))
-    descr_target = (models.CharField(_("descr_target"), max_length=200, default = "TODO"))
-    descr_caption = (models.CharField(_("descr_caption"), max_length=200, default = "TODO"))
-    descr_1 = (models.CharField(_("descr_1"), max_length=200, default = "TODO"))
-    descr_2 = (models.CharField(_("descr_2"), max_length=200, default = "TODO"))
-    descr_3 = (models.CharField(_("descr_3"), max_length=200, default = "TODO"))
-    descr_4 = (models.CharField(_("descr_4"), max_length=200, default = "TODO"))
-
-    class Meta:
-        db_table = "saas_plan"
 
 class SaasContract(models.Model):
 
