@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 from apps.core.models import SaasInstance
 from apps.core.models import SaasCustomer
 from apps.core.models import SaasPlan
-from apps.backend.forms import PlanForm
+from apps.core.models import SaasProduct
+from apps.backend.forms import PlanForm, ProductForm
 from django.db.models import Q
 from django.db import connection
 from collections import namedtuple
@@ -99,3 +100,55 @@ def deleteplan(request, id):
     plan = SaasPlan.objects.get(id=id)
     plan.delete()
     return redirect("/")
+
+def products(request):
+    products = SaasProduct.objects.all()
+
+    return render(request,"products.html",
+            { 'products':products })
+
+@login_required
+@staff_member_required
+def addproduct(request):
+
+
+    if request.method == "POST":
+        # request.POST is immutable, so make a copy
+        values = request.POST.copy()
+        values['owner'] = request.user.id
+        form = ProductForm(values)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('/products')
+            except:
+                pass
+    else:
+        form = ProductForm()
+    return render(request,'addproduct.html',{'form':form})
+
+@login_required
+@staff_member_required
+def editproduct(request, id):
+    product = SaasProduct.objects.get(id=id)
+    form = ProductForm(request.POST or None, instance = product)
+    return render(request,'editproduct.html', {'product':product, 'form': form})
+
+@login_required
+@staff_member_required
+def updateproduct(request, id):
+    product = SaasProduct.objects.get(id=id)
+    # request.POST is immutable, so make a copy
+    values = request.POST.copy()
+    form = ProductForm(values, instance = product)
+    if form.is_valid():
+        form.save()
+        return redirect("/products")
+    return render(request, 'editproduct.html', {'product': product, 'form': form})
+
+@login_required
+@staff_member_required
+def deleteproduct(request, id):
+    product = SaasProduct.objects.get(id=id)
+    product.delete()
+    return redirect("/products")
