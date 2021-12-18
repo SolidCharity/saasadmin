@@ -15,18 +15,17 @@ clean:
 install:
 	if [ -f /etc/lsb-release ]; then make quickstart_debian; else make quickstart_fedora; fi
 
-quickstart_debian: debian_packages create_venv pip_packages create_db create_superuser
-	@echo 
-	@echo =====================================================================================
-	@echo Installation has finished successfully
-	@echo Run '"'make runserver'"' in order to start the server and access it through one of the following IP addresses
-	@ip addr | sed 's/\/[0-9]*//' | awk '/inet / {print "http://" $$2 ":8000/"}'
-	@echo Login user is '"'admin'"' password is '"'admin'"'
+quickstart_debian: debian_packages quickstart
 
 debian_packages:
 	(dpkg -l | grep python3-dev) || (sudo apt update && sudo apt install python3-venv python3-dev gettext -y)
 	
-quickstart_fedora: fedora_packages create_venv pip_packages create_db create_superuser
+quickstart_fedora: fedora_packages quickstart
+
+fedora_packages:
+	(rpm -qa | grep python3-devel) || sudo dnf install python3-devel
+
+quickstart: create_venv pip_packages create_db create_superuser demo_db
 	@echo 
 	@echo =====================================================================================
 	@echo Installation has finished successfully
@@ -34,9 +33,6 @@ quickstart_fedora: fedora_packages create_venv pip_packages create_db create_sup
 	@ip addr | sed 's/\/[0-9]*//' | awk '/inet / {print "http://" $$2 ":8000/"}'
 	@echo Login user is '"'admin'"' password is '"'admin'"'
 	
-fedora_packages:
-	(rpm -qa | grep python3-devel) || sudo dnf install python3-devel
-
 create_superuser:
 	${VENV} echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(is_superuser=True).exists() or User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python manage.py shell
 
