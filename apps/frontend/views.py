@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import JsonResponse
 from django.utils import translation
+from apps.api.logic.products import LogicProducts
 from apps.core.models import SaasCustomer, SaasPlan
 from apps.frontend.forms import CustomerForm
 from apps.api.logic.customers import LogicCustomers
@@ -31,8 +32,9 @@ def account_view(request):
         customer.save()
 
     logic = LogicCustomers()
-    if not logic.has_instance(customer):
-        if logic.assign_instance(customer):
+    product = LogicProducts().get_product(request);
+    if product and not logic.has_instance(customer, product):
+        if logic.assign_instance(customer, product):
             # TODO message to customer to inform about new instance
             None
         else:
