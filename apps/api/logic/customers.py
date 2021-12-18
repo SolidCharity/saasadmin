@@ -30,3 +30,4 @@ class LogicCustomers:
 
             # TODO call openpetra api SetInitialSysadminEmail
             # TODO send notification email to admin
+            # TODO send notification email to customer

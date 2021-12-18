@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 
 from apps.api.logic.instances import LogicInstances
+from apps.api.logic.products import LogicProducts
 from .serializers import InstanceSerializer
 from apps.core.models import SaasInstance
 
@@ -34,9 +35,11 @@ class InstanceApiView(APIView):
             hostname = request.data['hostname']
         else:
             hostname = 'localhost'
+        product = LogicProducts().get_product(request)
 
-        success, new_data = LogicInstances().create_new_instance(hostname)
-        if success:
-            return Response(new_data, status=status.HTTP_201_CREATED)
+        if product:
+            success, new_data = LogicInstances().create_new_instance(hostname, product)
+            if success:
+                return Response(new_data, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
