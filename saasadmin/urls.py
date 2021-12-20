@@ -32,6 +32,7 @@ urlpatterns = [
     path('backend', backend_views.plans),
     path('customers', backend_views.customers),
     path('instances', backend_views.instances),
+    path('instances/add', backend_views.addinstances),
     path('plans', backend_views.plans),
     path('plans/add', backend_views.addplan),
     path('plans/edit/<int:id>', backend_views.editplan),

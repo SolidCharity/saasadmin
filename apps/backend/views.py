@@ -7,7 +7,9 @@ from apps.core.models import SaasInstance
 from apps.core.models import SaasCustomer
 from apps.core.models import SaasPlan
 from apps.core.models import SaasProduct
-from apps.backend.forms import PlanForm, ProductForm
+from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm
+from apps.api.logic.products import LogicProducts
+from apps.api.logic.instances import LogicInstances
 from django.db.models import Q
 from django.db import connection
 from collections import namedtuple
@@ -45,6 +47,29 @@ def instances(request):
 
     return render(request,"instances.html",
             {'unused_instances':unused_instances })
+
+
+@login_required
+@staff_member_required
+def addinstances(request):
+    product = LogicProducts().get_product(request)
+
+    if request.method == "POST":
+        # request.POST is immutable, so make a copy
+        values = request.POST.copy()
+        form = AddInstancesForm(values)
+        if form.is_valid():
+            try:
+                for x in range(1, int(form['count'].value())):
+                    LogicInstances().create_new_instance(form['hostname'].value(), product)
+                return redirect('/instances')
+            except:
+                pass
+    else:
+        # TODO use the last used hostname for this product
+        form = AddInstancesForm(initial={'product_id': product.id, 'count': 10, 'hostname': 'localhost'})
+
+    return render(request,'addinstances.html',{'form':form})
 
 
 @login_required

@@ -4,11 +4,12 @@
 <div class="container">
   <h3>Instances</h3>
   <ul>
-  {% for instance in unused_instances %}
-    <li>{{ instance.identifier }}: {{ instance.status }}</li>
-      {% endfor %}
+    {% for instance in unused_instances %}
+    <li>{{ instance.hostname }} - {{ instance.identifier }}: {{ instance.status }}</li>
+    {% endfor %}
   </ul>
 
+  <center><a href="/instances/add" class="button button-primary">Add new Instances</a></center>
 </div>
 
 {% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="form-box">
+    <form method="POST" class="post-form" action="/instances/add">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{form.product_id.value}}">
+
+        <br>
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{field.name}}: {{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="container">
+
+        <div class="form-group row">
+          <label class="col-sm-1 col-form-label"></label>
+          <div class="col-sm-4">
+          <h3>Add Instances</h3>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Hostname:</label>
+          <div class="col-sm-4">
+            {{ form.hostname }}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Number of Instances:</label>
+          <div class="col-sm-4">
+            {{ form.count }}
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-4">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div>
+
+      </div>
+    </form>
+</div>
+
+{% endblock %}
