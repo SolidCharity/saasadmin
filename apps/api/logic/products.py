@@ -8,6 +8,8 @@ class LogicProducts:
             products = SaasProduct.objects.filter(id = request.GET['product_id'])
         elif 'product_id' in request.POST:
             products = SaasProduct.objects.filter(id = request.POST['product_id'])
+        elif 'product_name' in request.GET:
+            products = SaasProduct.objects.filter(name = request.GET['product_name'])
         else:
             products = SaasProduct.objects
         if products.count() == 1:

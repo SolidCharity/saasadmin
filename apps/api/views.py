@@ -19,27 +19,32 @@ class InstanceApiView(APIView):
     permission_classes = [permissions.IsAdminUser]
     authentication_classes = [TokenAuthentication,SessionAuthentication]
 
+    def getParam(self, request, name, default):
+        if len(request.GET) > 0 and name in request.GET:
+            return request.GET[name]
+        return default
+
     def get(self, request, *args, **kwargs):
-        if len(request.GET) > 0 and 'hostname' in request.GET:
-            hostname = request.GET['hostname']
-            rows = SaasInstance.objects.filter(hostname=hostname).order_by('id')
+        hostname = self.getParam(request, 'hostname', '')
+        product = LogicProducts().get_product(request)
+        if hostname and product:
+            rows = SaasInstance.objects.filter(hostname=hostname, product=product).order_by('id')
         else:
-            rows = SaasInstance.objects.all().order_by('id')
+            raise Exception('please specify hostname and product_name')
         serializer = InstanceSerializer(rows, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     # create new instance. assign free instance number
     # test with: {"hostname": "localhost"}
     def put(self, request, *args, **kwargs):
-        if len(request.data) > 0 and 'hostname' in request.data:
-            hostname = request.data['hostname']
-        else:
-            hostname = 'localhost'
+        hostname = self.getParam(request, 'hostname', '')
         product = LogicProducts().get_product(request)
 
-        if product:
+        if hostname and product:
             success, new_data = LogicInstances().create_new_instance(hostname, product)
             if success:
                 return Response(new_data, status=status.HTTP_201_CREATED)
+        else:
+            raise Exception('please specify hostname and product_name')
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        raise Exception('could not create new instance')

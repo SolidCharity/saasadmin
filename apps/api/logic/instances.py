@@ -9,6 +9,8 @@ class LogicInstances:
     def create_new_instance(self, hostname, product):
         # generate new password
         new_password = User.objects.make_random_password(length=16)
+        # generate the db password
+        db_password = User.objects.make_random_password(length=16)
 
         # find new available identifier
         # TODO: get instance_id_start and instance_id_end from configuration settings
@@ -39,7 +41,8 @@ class LogicInstances:
           product = product,
           port = new_port,
           initial_password = new_password,
+          db_password = db_password,
           status = 'in_preparation')
 
         # return the result
-        return True, {'new_id': new_id, 'new_password': new_password, 'hostname': hostname, 'port': new_port};
+        return True, {'new_id': new_id, 'new_password': new_password, 'db_password': db_password, 'hostname': hostname, 'port': new_port};
