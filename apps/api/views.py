@@ -5,6 +5,8 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.authentication import TokenAuthentication, SessionAuthentication
 
+from django.db.models import Q
+
 from apps.api.logic.instances import LogicInstances
 from apps.api.logic.products import LogicProducts
 from .serializers import InstanceSerializer
@@ -48,3 +50,25 @@ class InstanceApiView(APIView):
             raise Exception('please specify hostname and product_name')
 
         raise Exception('could not create new instance')
+
+    # update the status of the specified instance
+    def patch(self, request, *args, **kwargs):
+        hostname = self.getParam(request, 'hostname', '')
+        product = LogicProducts().get_product(request)
+        new_status = self.getParam(request, 'status', '')
+        instance_id = self.getParam(request, 'instance_id', '')
+
+        if hostname and product and status and instance_id:
+            instance = SaasInstance.objects. \
+                filter(Q(identifier=instance_id)&Q(hostname=hostname)&Q(product=product)&Q(status='in_preparation')). \
+                first()
+
+        if not instance:
+            raise Exception('please specify hostname and product_name and instance_id and status')
+
+        if instance.status == 'in_preparation' and new_status == 'free':
+            instance.status = 'free'
+            instance.save()
+            return Response({'success':'true'}, status=status.HTTP_200_OK)
+
+        raise Exception('unexpected behaviour')
