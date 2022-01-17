@@ -101,6 +101,8 @@ def deleteplan(request, id):
     plan.delete()
     return redirect("/")
 
+@login_required
+@staff_member_required
 def products(request):
     products = SaasProduct.objects.all()
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-30 08:24+0100\n"
+"POT-Creation-Date: 2021-12-18 06:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,106 +118,120 @@ msgstr ""
 msgid "Reserved Until"
 msgstr ""
 
-#: models.py:50
+#: models.py:50 models.py:64
 msgid "name"
 msgstr ""
 
 #: models.py:51
-msgid "length"
+msgid "activationurl"
 msgstr ""
 
-#: models.py:52
-msgid "currency"
-msgstr ""
-
-#: models.py:53
-msgid "cost"
-msgstr ""
-
-#: models.py:54
-msgid "notice"
-msgstr ""
-
-#: models.py:55
+#: models.py:60 models.py:69
 msgid "language"
 msgstr ""
 
-#: models.py:56
+#: models.py:61
+#, fuzzy
+#| msgid "Payment Details"
+msgid "payment_details"
+msgstr "Zahlungsweise"
+
+#: models.py:65
+msgid "length"
+msgstr ""
+
+#: models.py:66
+msgid "currency"
+msgstr ""
+
+#: models.py:67
+msgid "cost"
+msgstr ""
+
+#: models.py:68
+msgid "notice"
+msgstr ""
+
+#: models.py:70
 msgid "descr_target"
 msgstr ""
 
-#: models.py:57
+#: models.py:71
 msgid "descr_caption"
 msgstr ""
 
-#: models.py:58
+#: models.py:72
 msgid "descr_1"
 msgstr ""
 
-#: models.py:59
+#: models.py:73
 msgid "descr_2"
 msgstr ""
 
-#: models.py:60
+#: models.py:74
 msgid "descr_3"
 msgstr ""
 
-#: models.py:61
+#: models.py:75
 msgid "descr_4"
 msgstr ""
 
-#: models.py:89
+#: models.py:103
 msgid "start_date"
 msgstr ""
 
-#: models.py:90
+#: models.py:104
 msgid "end_date"
 msgstr ""
 
-#: models.py:91
+#: models.py:105
 msgid "auto_renew"
 msgstr ""
 
-#: templates/base.html:4 templates/base.html:17
+#: templates/base.html:5 templates/base.html:18
 msgid "SaaS Admin"
 msgstr "SaaS Admin"
 
-#: templates/base.html:19
+#: templates/base.html:20
+msgid "Products"
+msgstr "Produkte"
+
+#: templates/base.html:21
 msgid "Plans"
 msgstr "Angebote"
 
-#: templates/base.html:20
+#: templates/base.html:22
 msgid "Instances"
 msgstr "Instanzen"
 
-#: templates/base.html:21
+#: templates/base.html:23
 msgid "Customers"
 msgstr "Kunden"
 
-#: templates/base.html:23
+#: templates/base.html:25
 msgid "Personal Details"
 msgstr "Persönliche Daten"
 
-#: templates/base.html:24
+#: templates/base.html:26
 msgid "Selected Plan"
 msgstr "Ausgewähltes Angebot"
 
-#: templates/base.html:25
+#: templates/base.html:27
 msgid "Payment Details"
 msgstr "Zahlungsweise"
 
-#: templates/base.html:27
+#: templates/base.html:29
 msgid "Logout"
 msgstr "Abmelden"
 
-#: templates/base.html:28 templates/base.html:34
+#: templates/base.html:30 templates/base.html:36
 msgid "Fork me"
 msgstr "Zum Code"
 
-#: templates/base.html:33
+#: templates/base.html:35
 msgid "Login"
 msgstr "Anmelden"
 
-#: templates/base.html:35
+#: templates/base.html:37
 msgid "Pricing"
 msgstr "Preise"
