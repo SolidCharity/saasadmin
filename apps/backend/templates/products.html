@@ -15,8 +15,9 @@
 <tr>
 		<td>{{ product.name }} </td>
 		<td>{{ product.activationurl }} </td>
+		<td><a href="/products/{{ product.slug }}/dashboard" class="button button-primary">Select</a></td>
 		<td><a href="/products/edit/{{ product.id }}" class="button button-primary">Edit</a></td>
-        <td><a href="/products/delete/{{ product.id }}" class="button button-danger">delete</a></td>
+		<td><a href="/products/delete/{{ product.id }}" class="button button-danger">Delete</a></td>
 </tr>
 {% endfor %}
 </table>

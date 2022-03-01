@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="form-box">
-    <form method="POST" class="post-form" action="/instances/add">
+    <form method="POST" class="post-form" action="/instances/{{product.slug}}/add">
         {% csrf_token %}
         <input type="hidden" name="product_id" value="{{form.product_id.value}}">
 
