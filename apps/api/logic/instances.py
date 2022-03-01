@@ -22,11 +22,11 @@ class LogicInstances:
         while SaasInstance.objects.filter(identifier=str(new_id), product = product).exists():
           new_id = random.randrange(instance_id_start, instance_id_end)
 
-        # find new available port on that host
+        # find new available port on that host, independant of the product
         new_port = -1
-        if SaasInstance.objects.filter(hostname=hostname, product = product).exists():
+        if SaasInstance.objects.filter(hostname=hostname).exists():
           with connection.cursor() as cursor:
-            sql = """SELECT MAX(port) FROM `saas_instance` WHERE hostname = %s AND product_id = %s"""
+            sql = """SELECT MAX(port) FROM `saas_instance` WHERE hostname = %s"""
             cursor.execute(sql, [hostname,product.id,])
             port_result = cursor.fetchone()
             if port_result:
