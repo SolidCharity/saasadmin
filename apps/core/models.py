@@ -58,7 +58,7 @@ class SaasPlan (models.Model):
     periodLengthInMonths = models.IntegerField(_("Period Length in Months"))
     currencyCode = models.CharField(_("currency"), max_length= 3, default= "EUR")
     costPerPeriod = models.DecimalField(_("Cost per Period"), max_digits= 10, decimal_places= 2)
-    noticePeriodTypeInDays = models.IntegerField(_("Notice Period in Days"))
+    noticePeriodInDays = models.IntegerField(_("Notice Period in Days"))
     language = (models.CharField(_("Language"), max_length=10, default = "DE"))
     descr_target = (models.CharField(_("Description Target"), max_length=200, default = "TODO"))
     descr_caption = (models.CharField(_("Description Caption"), max_length=200, default = "TODO"))

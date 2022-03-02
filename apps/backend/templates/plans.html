@@ -13,7 +13,7 @@
 		<th>costPerPeriod</th>
 		<th>currencyCode</th>
 		<th>periodLengthInMonths </th>
-		<th>noticePeriodTypeInDays</th>
+		<th>noticePeriodInDays</th>
 		<th>Action</th>
 </tr>
       {% for plan in plans %}
@@ -23,7 +23,7 @@
 		<td> {{ plan.costPerPeriod}}</td>
 		<td>{{ plan.currencyCode}} </td>
 		<td>{{ plan.periodLengthInMonths}} </td>
-		<td>{{ plan.noticePeriodTypeInDays}} </td>
+		<td>{{ plan.noticePeriodInDays}} </td>
 		<td><a href="/plans/edit/{{ plan.id }}" class="button button-primary">Edit</a></td>
         <td><a href="/plans/delete/{{ plan.id }}" class="button button-danger">delete</a></td>
 </tr>

@@ -7,7 +7,7 @@ class PlanForm(forms.ModelForm):
 
     class Meta:
         model = SaasPlan
-        fields = ("name", "periodLengthInMonths", "costPerPeriod", "currencyCode", "noticePeriodTypeInDays", "language", "descr_target", "descr_caption", "descr_1", "descr_2", "descr_3", "descr_4")
+        fields = ("name", "periodLengthInMonths", "costPerPeriod", "currencyCode", "noticePeriodInDays", "language", "descr_target", "descr_caption", "descr_1", "descr_2", "descr_3", "descr_4")
 
 
 class ProductForm(forms.ModelForm):
