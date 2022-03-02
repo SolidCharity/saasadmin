@@ -26,7 +26,6 @@ class SaasCustomer(models.Model):
         db_table = "saas_customer"
 
 class SaasProduct (models.Model):
-    # TODO unique
     slug = (models.CharField(_("slug"), max_length=50, default = "invalid", unique=True))
     name = models.CharField(_("name"), max_length=16)
     activationurl = (models.CharField(_("activationurl"), max_length=200))
