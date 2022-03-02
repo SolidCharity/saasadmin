@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
-  <h3>Customers</h3>
+  <h3>{%translate "Customers"%} {{product.name}}</h3>
   <ul>
   {% for customer in customers %}
     <li>{{ customer.email_address }}: {{ customer.instance_identifier }} {{ customer.last_name }}</li>

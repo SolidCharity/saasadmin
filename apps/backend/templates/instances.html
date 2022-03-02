@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 <div class="container">
-  <h3>Instances</h3>
+  <h3>{%translate "Instances"%} {{product.name}}</h3>
   <ul>
     {% for instance in unused_instances %}
     <li>{{ instance.hostname }} - {{ instance.identifier }}: {{ instance.status }}</li>

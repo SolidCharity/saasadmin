@@ -19,6 +19,7 @@
             {% if user.is_staff %}
             <a class="left" href="/products">{%translate "Products"%}</a>
             {% if product %}
+            <a class="left" href="/products/{{product.slug}}/dashboard">{{product.name}}</a>
             <a class="left" href="/plans/{{product.slug}}/">{%translate "Plans"%}</a>
             <a class="left" href="/instances/{{product.slug}}/">{%translate "Instances"%}</a>
             <a class="left" href="/customers/{{product.slug}}/">{%translate "Customers"%}</a>
