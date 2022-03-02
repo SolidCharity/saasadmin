@@ -1,3 +1,4 @@
+-- password is: Test1234!
 INSERT INTO auth_user ('id','password','is_superuser', 'is_staff', 'username', 'email', 'is_active', 'first_name', 'last_name', 'date_joined') VALUES
     (2,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',0,0,'customer1','hans.mueller@example.org',1,'','',date('now')),
     (3,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',0,0,'customer2','werner@example.org',1,'','',date('now')),
@@ -6,12 +7,12 @@ INSERT INTO auth_user ('id','password','is_superuser', 'is_staff', 'username', '
 INSERT INTO "saas_product" ("id", "slug", "name", "activationurl") VALUES
 	(1, "kanboard", "Kanboard", "https://kanboard.example.org/activate");
 INSERT INTO "saas_plan" ("id","product_id","periodLengthInMonths","currencyCode","costPerPeriod","noticePeriodInDays","name","language","descr_target","descr_caption","descr_1","descr_2","descr_3","descr_4") VALUES
-	(1,1,12,'EUR',50,14,'Basic','de','Für jeden','Alles was man so braucht','Nächtliche Backups','Support im öffentlichen Forum','Immer wieder Aktualisierungen auf die aktuelle Version','Zugriff über automatisch vergebene URL'),
-	(2,1,1,'EUR',5,7,'Mini','de','Für Anfänger','Nur zum Ausprobieren','Nächtliche Backups','Support im öffentlichen Forum','Immer wieder Aktualisierungen auf die aktuelle Version','Zugriff über automatisch vergebene URL'),
-	(3,1,12,'EUR',300,14,'Pro','de','Für Profis','Mit allem Schnickschnack','Stündliche Backups','Support über Ticket-System, mit 3 Std. inkl.','Aktualisierungen mit Ihnen abgesprochen','Zugriff über eigene URL'),
-	(4,1,12,'EUR',50,14,'Basic','en','For everyone','Everything you need','Nightly Backups','Support in the public forum','Regular Updates to latest release','Access via automatic url'),
-	(5,1,1,'EUR',5,7,'Mini','en','For starters','Just experimenting','Nightly Backups','Support in the public forum','Regular Updates to latest release','Access via automatic url'),
-	(6,1,12,'EUR',300,14,'Pro','en','For Professionals','With all bells and whistles','Hourly Backups','Support with Ticketing system, 3 hours incl.','Updates coordinated with you','Access via your own url');
+	(1,1,12,'EUR',50,14,'Basic','DE','Für jeden','Alles was man so braucht','Nächtliche Backups','Support im öffentlichen Forum','Immer wieder Aktualisierungen auf die aktuelle Version','Zugriff über automatisch vergebene URL'),
+	(2,1,1,'EUR',5,7,'Mini','DE','Für Anfänger','Nur zum Ausprobieren','Nächtliche Backups','Support im öffentlichen Forum','Immer wieder Aktualisierungen auf die aktuelle Version','Zugriff über automatisch vergebene URL'),
+	(3,1,12,'EUR',300,14,'Pro','DE','Für Profis','Mit allem Schnickschnack','Stündliche Backups','Support über Ticket-System, mit 3 Std. inkl.','Aktualisierungen mit Ihnen abgesprochen','Zugriff über eigene URL'),
+	(4,1,12,'EUR',50,14,'Basic','EN','For everyone','Everything you need','Nightly Backups','Support in the public forum','Regular Updates to latest release','Access via automatic url'),
+	(5,1,1,'EUR',5,7,'Mini','EN','For starters','Just experimenting','Nightly Backups','Support in the public forum','Regular Updates to latest release','Access via automatic url'),
+	(6,1,12,'EUR',300,14,'Pro','EN','For Professionals','With all bells and whistles','Hourly Backups','Support with Ticketing system, 3 hours incl.','Updates coordinated with you','Access via your own url');
 INSERT INTO "saas_customer" ("id","user_id","newsletter","newsletter_subscribed_on","newsletter_cancelled","language_code","verified","verification_token","verification_until","organisation_name","first_name","last_name","street","number","post_code","city","country_code","email_address","is_active") VALUES
 	(1,2,1,'2021-01-01',0,'DE',1,'',NULL,'Kaninchenzüchter Plauen e.V.','Hans','Müller','Holzweg','3','01234','Plauen','DE','hans.mueller@example.org',1),
 	(2,3,1,'2021-05-01',0,'DE',1,'',NULL,'Gartensparte zum Spaten','Werner','Schmidt','Am Wasser','7','01234','Plauen','DE','werner@example.org',1),

@@ -61,8 +61,8 @@ def account_update(request):
 
 @login_required
 def select_plan(request, plan_id):
-    logic = LogicPlans()
-    plans = logic.get_plans()
+    product = LogicProducts().get_product(request)
+    plans = LogicPlans().get_plans(product)
 
     if plan_id == 'current':
         # TODO load current plan
@@ -70,14 +70,20 @@ def select_plan(request, plan_id):
     else:
         # TODO store current plan (if it is a valid name)
         None
-    return render(request, 'plan.html', {'plans': plans, 'selected_plan': plan_id})
+    return render(request, 'plan.html', {'product': product, 'plans': plans, 'selected_plan': plan_id})
 
 @login_required
 def select_payment(request):
-    return render(request, 'payment.html', {})
+    product = LogicProducts().get_product(request)
+    return render(request, 'payment.html', {'product': product})
 
 def display_pricing(request):
-    logic = LogicPlans()
-    plans = logic.get_plans()
+    product = LogicProducts().get_product(request)
 
-    return render(request, 'pricing.html', {'plans': plans, 'popular_plan': plans[1].name})
+    if product is None:
+        products = LogicProducts().get_products()
+        return render(request, 'select_product.html', {'products': products, 'hostname': request.META['HTTP_HOST']})
+
+    plans = LogicPlans().get_plans(product)
+
+    return render(request, 'pricing.html', {'product': product, 'plans': plans, 'popular_plan': plans[1].name})
