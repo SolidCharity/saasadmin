@@ -20,15 +20,16 @@ class SaasCustomer(models.Model):
     city = models.CharField(_("city"), max_length=16, null=True)
     country_code = models.CharField(_("country_code"), max_length=16, default="DE")
     email_address = models.EmailField(_("email_address"))
-    is_active = models.BooleanField(_("ist_active"), default=True)
+    is_active = models.BooleanField(_("is_active"), default=True)
 
     class Meta:
         db_table = "saas_customer"
 
 class SaasProduct (models.Model):
-    slug = (models.CharField(_("slug"), max_length=50, default = "invalid", unique=True))
+    slug = models.CharField(_("slug"), max_length=50, default = "invalid", unique=True)
     name = models.CharField(_("name"), max_length=16)
-    activationurl = (models.CharField(_("activationurl"), max_length=200))
+    activationurl = models.CharField(_("activationurl"), max_length=200)
+    is_active = models.BooleanField(_("is_active"), default=False)
 
     class Meta:
         db_table = "saas_product"

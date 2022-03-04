@@ -28,7 +28,7 @@ class InstanceApiView(APIView):
 
     def get(self, request, *args, **kwargs):
         hostname = self.getParam(request, 'hostname', '')
-        product = LogicProducts().get_product(request)
+        product = LogicProducts().get_product(request, False)
         if hostname and product:
             rows = SaasInstance.objects.filter(hostname=hostname, product=product).order_by('id')
         else:
@@ -40,7 +40,7 @@ class InstanceApiView(APIView):
     # test with: {"hostname": "localhost"}
     def put(self, request, *args, **kwargs):
         hostname = self.getParam(request, 'hostname', '')
-        product = LogicProducts().get_product(request)
+        product = LogicProducts().get_product(request, False)
 
         if hostname and product:
             success, new_data = LogicInstances().create_new_instance(hostname, product)
@@ -54,7 +54,7 @@ class InstanceApiView(APIView):
     # update the status of the specified instance
     def patch(self, request, *args, **kwargs):
         hostname = self.getParam(request, 'hostname', '')
-        product = LogicProducts().get_product(request)
+        product = LogicProducts().get_product(request, False)
         new_status = self.getParam(request, 'status', '')
         instance_id = self.getParam(request, 'instance_id', '')
 

@@ -9,12 +9,14 @@
 <tr>
 		<th>Name</th>
 		<th>Activation URL</th>
+		<th>Is Active</th>
 		<th>Action</th>
 </tr>
       {% for product in products %}
 <tr>
 		<td>{{ product.name }} </td>
 		<td>{{ product.activationurl }} </td>
+		<td>{{ product.is_active }} </td>
 		<td><a href="/products/{{ product.slug }}/dashboard" class="button button-primary">Select</a></td>
 		<td><a href="/products/edit/{{ product.id }}" class="button button-primary">Edit</a></td>
 		<td><a href="/products/delete/{{ product.id }}" class="button button-danger">Delete</a></td>

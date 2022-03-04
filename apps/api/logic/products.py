@@ -3,7 +3,8 @@ from apps.core.models import SaasProduct
 
 class LogicProducts:
 
-    def get_product(self, request):
+    def get_product(self, request, only_active = True):
+        result = None
         if 'product_id' in request.GET:
             products = SaasProduct.objects.filter(id = request.GET['product_id'])
         elif 'product_id' in request.POST:
@@ -13,15 +14,21 @@ class LogicProducts:
         else:
             products = SaasProduct.objects
         if products.count() == 1:
-            return products.first()
+            result = products.first()
         else:
             # search all projects slugs in the request hostname
             for product in products.all():
                 if request.META['HTTP_HOST'].startswith(product.slug + "."):
-                    return product
+                    result = product
 
-        return None
+        if only_active and result is not None:
+            if not result.is_active:
+                return None
 
-    def get_products(self):
-        # TODO only get active products
-        return SaasProduct.objects.all()
+        return result
+
+    def get_products(self, only_active = True):
+        if only_active:
+            return SaasProduct.objects.filter(is_active=True)
+        else:
+            return SaasProduct.objects.all()
