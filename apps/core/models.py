@@ -82,6 +82,7 @@ class SaasInstance(models.Model):
     )
 
     hostname = models.CharField(_("hostname"), max_length=128, default='localhost')
+    channel = models.CharField(_("channel"), max_length=128, default='stable')
     port = models.IntegerField(_("port"), default=-1)
 
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
