@@ -105,7 +105,7 @@ def addplan(request, product):
             try:
                 form.instance.product = product
                 form.save()
-                return redirect("/plans/%1/" % (product.slug,))
+                return redirect("/plans/%s/" % (product.slug,))
             except:
                 pass
     else:
@@ -136,7 +136,7 @@ def updateplan(request, id):
 def deleteplan(request, id):
     plan = SaasPlan.objects.get(id=id)
     plan.delete()
-    return redirect("/")
+    return redirect("/plans/%s/" % (plan.product.slug,))
 
 @login_required
 @staff_member_required
