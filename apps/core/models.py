@@ -30,6 +30,8 @@ class SaasProduct (models.Model):
     name = models.CharField(_("name"), max_length=16)
     activationurl = models.CharField(_("activationurl"), max_length=200)
     is_active = models.BooleanField(_("is_active"), default=False)
+    number_of_ports = models.IntegerField(_("number of ports"), default=1)
+    instance_prefix = models.CharField(_("instance prefix"), max_length=10, default='xy')
 
     class Meta:
         db_table = "saas_product"
@@ -83,7 +85,8 @@ class SaasInstance(models.Model):
 
     hostname = models.CharField(_("hostname"), max_length=128, default='localhost')
     channel = models.CharField(_("channel"), max_length=128, default='stable')
-    port = models.IntegerField(_("port"), default=-1)
+    first_port = models.IntegerField(_("first port"), default=-1)
+    last_port = models.IntegerField(_("last port"), default=-1)
 
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
     auto_renew = models.BooleanField(_("Auto Renew"), default=True)
@@ -102,7 +105,6 @@ class SaasInstance(models.Model):
     class Meta:
         db_table = "saas_instance"
         constraints = [
-            models.UniqueConstraint(fields=['hostname', 'port'], name='hostname and port'),
             models.UniqueConstraint(fields=['identifier', 'product'], name='identifier and product')
         ]
 

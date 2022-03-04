@@ -70,7 +70,7 @@ def addinstances(request, product):
                 return redirect("/instances/%s/" % (product.slug,))
             except Exception as ex:
                 print('Exception in addinstances: %s' % (ex,))
-                pass
+                raise
     else:
         # use the last used hostname for this product
         hostname = 'localhost'
