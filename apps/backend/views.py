@@ -142,7 +142,7 @@ def deleteplan(request, id):
 @staff_member_required
 def products(request):
     products = SaasProduct.objects.all()
-    product = LogicProducts().get_product(request)
+    product = LogicProducts().get_product(request, False)
 
     return render(request,"products.html",
             { 'products': products, 'product': product })
