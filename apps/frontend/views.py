@@ -82,7 +82,10 @@ def display_pricing(request):
 
     if product is None:
         products = LogicProducts().get_products()
-        return render(request, 'select_product.html', {'products': products, 'hostname': request.META['HTTP_HOST']})
+        hostname = request.META['HTTP_HOST']
+        if hostname.startswith("www."):
+            hostname = hostname.replace('www.','')
+        return render(request, 'select_product.html', {'products': products, 'hostname': hostname})
 
     plans = LogicPlans().get_plans(product)
 
