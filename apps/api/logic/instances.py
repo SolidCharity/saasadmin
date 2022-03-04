@@ -38,7 +38,7 @@ class LogicInstances:
           last_port = new_port + product.number_of_ports - 1
 
         if new_port > endport:
-          return False
+          return False, {}
 
         # store to database
         instance = SaasInstance.objects.create(
