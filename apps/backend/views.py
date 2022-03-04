@@ -25,7 +25,7 @@ def customers(request, product):
             FROM saas_customer, saas_instance, saas_contract
             WHERE saas_contract.customer_id = saas_customer.id
             AND saas_contract.instance_id = saas_instance.id
-            AND saas_instance.product_id == %s"""
+            AND saas_instance.product_id = %s"""
 
         cursor.execute(sql, [product.id,])
         result = cursor.fetchall()
