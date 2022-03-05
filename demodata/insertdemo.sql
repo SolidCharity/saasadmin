@@ -5,7 +5,7 @@ INSERT INTO auth_user (`id`, `password`, `is_superuser`, `is_staff`, `username`,
     (4,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',0,0,'customer3','bernd.s@example.org',1,'','',date('now')),
     (5,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',0,0,'customer4','gunter.meier@example.org',1,'','',date('now'));
 INSERT INTO saas_product (`id`, `slug`, `name`, `instance_prefix`, `activationurl`, `is_active`, `number_of_ports`) VALUES
-	(1, `kanboard`, `Kanboard`, `kb`, `https://kanboard.example.org/activate`, 1, 0);
+	(1, 'kanboard', 'Kanboard', 'kb', 'https://kanboard.example.org/activate', 1, 0);
 INSERT INTO saas_plan (`id`,`product_id`,`periodLengthInMonths`,`currencyCode`,`costPerPeriod`,`noticePeriodInDays`,`name`,`language`,`descr_target`,`descr_caption`,`descr_1`,`descr_2`,`descr_3`,`descr_4`) VALUES
 	(1,1,12,'EUR',50,14,'Basic','DE','Für jeden','Alles was man so braucht','Nächtliche Backups','Support im öffentlichen Forum','Immer wieder Aktualisierungen auf die aktuelle Version','Zugriff über automatisch vergebene URL'),
 	(2,1,1,'EUR',5,7,'Mini','DE','Für Anfänger','Nur zum Ausprobieren','Nächtliche Backups','Support im öffentlichen Forum','Immer wieder Aktualisierungen auf die aktuelle Version','Zugriff über automatisch vergebene URL'),
