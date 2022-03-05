@@ -4,9 +4,12 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import JsonResponse
+from django.utils import translation
+from apps.api.logic.products import LogicProducts
 from apps.core.models import SaasCustomer, SaasPlan
 from apps.frontend.forms import CustomerForm
-from django.utils import translation
+from apps.api.logic.customers import LogicCustomers
+from apps.api.logic.plans import LogicPlans
 
 def home(request):
     # if not logged in => redirect to pricing
@@ -28,8 +31,15 @@ def account_view(request):
         customer.email_address = request.user.email
         customer.save()
 
-        # TODO now reserve the instance
-        # TODO send out emails to set the initial passwords
+    logic = LogicCustomers()
+    product = LogicProducts().get_product(request);
+    if product and not logic.has_instance(customer, product):
+        if logic.assign_instance(customer, product):
+            # TODO message to customer to inform about new instance
+            None
+        else:
+            # TODO what about the situation where there is no free instance available
+            None
 
     return render(request, 'account.html', {'customer': customer, 'lang': lang})
 
@@ -49,23 +59,10 @@ def account_update(request):
     return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
 
 
-def get_plans():
-    cur_language = translation.get_language()
-    if "de" in cur_language:
-        cur_language = "de"
-    else:
-        cur_language = "en"
-
-    plans = SaasPlan.objects.filter(language=cur_language).order_by('costPerPeriod')
-    if plans.count() == 0:
-        plans = SaasPlan.objects.filter(language="de").order_by('costPerPeriod')
-
-    return plans
-
-
 @login_required
 def select_plan(request, plan_id):
-    plans = get_plans()
+    product = LogicProducts().get_product(request)
+    plans = LogicPlans().get_plans(product)
 
     if plan_id == 'current':
         # TODO load current plan
@@ -73,13 +70,23 @@ def select_plan(request, plan_id):
     else:
         # TODO store current plan (if it is a valid name)
         None
-    return render(request, 'plan.html', {'plans': plans, 'selected_plan': plan_id})
+    return render(request, 'plan.html', {'product': product, 'plans': plans, 'selected_plan': plan_id})
 
 @login_required
 def select_payment(request):
-    return render(request, 'payment.html', {})
+    product = LogicProducts().get_product(request)
+    return render(request, 'payment.html', {'product': product})
 
 def display_pricing(request):
-    plans = get_plans()
+    product = LogicProducts().get_product(request)
 
-    return render(request, 'pricing.html', {'plans': plans, 'popular_plan': plans[1].name})
+    if product is None:
+        products = LogicProducts().get_products()
+        hostname = request.META['HTTP_HOST']
+        if hostname.startswith("www."):
+            hostname = hostname.replace('www.','')
+        return render(request, 'select_product.html', {'products': products, 'hostname': hostname})
+
+    plans = LogicPlans().get_plans(product)
+
+    return render(request, 'pricing.html', {'product': product, 'plans': plans, 'popular_plan': plans[1].name})

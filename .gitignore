@@ -2,6 +2,7 @@ db.sqlite3
 .venv
 venv
 .idea
+.vscode
 /static
 local.py
 *.mo

@@ -1,24 +1,30 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
-<h3>Products</h3>
+<h3>{%translate "Products"%}</h3>
 <table>
 
 <tr>
 		<th>Name</th>
 		<th>Activation URL</th>
-		<th>Action</th>
+		<th>Is Active</th>
+		<th colspan="3">Action</th>
 </tr>
-      {% for product in products %}
+
+{% for product in products %}
 <tr>
 		<td>{{ product.name }} </td>
 		<td>{{ product.activationurl }} </td>
+		<td>{{ product.is_active }} </td>
+		<td><a href="/products/{{ product.slug }}/dashboard" class="button button-primary">Select</a></td>
 		<td><a href="/products/edit/{{ product.id }}" class="button button-primary">Edit</a></td>
-        <td><a href="/products/delete/{{ product.id }}" class="button button-danger">delete</a></td>
+		<td><a href="/products/delete/{{ product.id }}" class="button button-danger">Delete</a></td>
 </tr>
 {% endfor %}
+
 </table>
 <center><a href="/products/add" class="button button-primary">Add New Record</a></center>
 </div>

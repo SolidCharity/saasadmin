@@ -20,14 +20,18 @@ class SaasCustomer(models.Model):
     city = models.CharField(_("city"), max_length=16, null=True)
     country_code = models.CharField(_("country_code"), max_length=16, default="DE")
     email_address = models.EmailField(_("email_address"))
-    is_active = models.BooleanField(_("ist_active"), default=True)
+    is_active = models.BooleanField(_("is_active"), default=True)
 
     class Meta:
         db_table = "saas_customer"
 
 class SaasProduct (models.Model):
+    slug = models.CharField(_("slug"), max_length=50, default = "invalid", unique=True)
     name = models.CharField(_("name"), max_length=16)
-    activationurl = (models.CharField(_("activationurl"), max_length=200))
+    activationurl = models.CharField(_("activationurl"), max_length=200)
+    is_active = models.BooleanField(_("is_active"), default=False)
+    number_of_ports = models.IntegerField(_("number of ports"), default=1)
+    instance_prefix = models.CharField(_("instance prefix"), max_length=10, default='xy')
 
     class Meta:
         db_table = "saas_product"
@@ -53,24 +57,24 @@ class SaasPlan (models.Model):
         on_delete=models.CASCADE,
         related_name="%(app_label)s_%(class)s_list",
     )
-    periodLengthInMonths = models.IntegerField(_("length"))
+    periodLengthInMonths = models.IntegerField(_("Period Length in Months"))
     currencyCode = models.CharField(_("currency"), max_length= 3, default= "EUR")
-    costPerPeriod = models.DecimalField(_("cost"), max_digits= 10, decimal_places= 2)
-    noticePeriodTypeInDays = models.IntegerField(_("notice"))
-    language = (models.CharField(_("language"), max_length=10, default = "DE"))
-    descr_target = (models.CharField(_("descr_target"), max_length=200, default = "TODO"))
-    descr_caption = (models.CharField(_("descr_caption"), max_length=200, default = "TODO"))
-    descr_1 = (models.CharField(_("descr_1"), max_length=200, default = "TODO"))
-    descr_2 = (models.CharField(_("descr_2"), max_length=200, default = "TODO"))
-    descr_3 = (models.CharField(_("descr_3"), max_length=200, default = "TODO"))
-    descr_4 = (models.CharField(_("descr_4"), max_length=200, default = "TODO"))
+    costPerPeriod = models.DecimalField(_("Cost per Period"), max_digits= 10, decimal_places= 2)
+    noticePeriodInDays = models.IntegerField(_("Notice Period in Days"))
+    language = (models.CharField(_("Language"), max_length=10, default = "DE"))
+    descr_target = (models.CharField(_("Description Target"), max_length=200, default = "TODO"))
+    descr_caption = (models.CharField(_("Description Caption"), max_length=200, default = "TODO"))
+    descr_1 = (models.CharField(_("Description 1"), max_length=200, default = "TODO"))
+    descr_2 = (models.CharField(_("Description 2"), max_length=200, default = "TODO"))
+    descr_3 = (models.CharField(_("Description 3"), max_length=200, default = "TODO"))
+    descr_4 = (models.CharField(_("Description 4"), max_length=200, default = "TODO"))
 
     class Meta:
         db_table = "saas_plan"
 
 # this is the saas instance rented by the customer
 class SaasInstance(models.Model):
-    identifier = models.CharField(_("identifier"), max_length=16, unique=True)
+    identifier = models.CharField(_("identifier"), max_length=16)
 
     product = models.ForeignKey(
         SaasProduct,
@@ -80,9 +84,13 @@ class SaasInstance(models.Model):
     )
 
     hostname = models.CharField(_("hostname"), max_length=128, default='localhost')
-    port = models.IntegerField(_("port"), default=-1)
+    channel = models.CharField(_("channel"), max_length=128, default='stable')
+    first_port = models.IntegerField(_("first port"), default=-1)
+    last_port = models.IntegerField(_("last port"), default=-1)
+
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
     auto_renew = models.BooleanField(_("Auto Renew"), default=True)
+    db_password = models.CharField(_("DB Password"), max_length=64, default='topsecret')
     initial_password = models.CharField(_("Initial Password"), max_length=64, default='topsecret')
     last_interaction = models.DateTimeField(_("Last Interaction"), null=True)
     reserved_token = models.CharField(max_length=64, null=True)
@@ -96,6 +104,9 @@ class SaasInstance(models.Model):
 
     class Meta:
         db_table = "saas_instance"
+        constraints = [
+            models.UniqueConstraint(fields=['identifier', 'product'], name='identifier and product')
+        ]
 
 class SaasContract(models.Model):
 

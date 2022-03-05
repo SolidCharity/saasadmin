@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+    Select product:
+
+    <ul>
+    {% for product in products %}
+        <li><a href="//{{product.slug}}.{{hostname}}/">{{product.name}}</a></li>
+    {% endfor %}
+    </ul>
+
+
+</div>
+
+{% endblock %}

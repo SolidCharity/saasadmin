@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="{% static 'css/skeleton-tabs.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/topnav.css' %}">
-        <link rel="stylesheet" href="{% static 'css/accordion.css' %}">
         <script src="{% static 'js/skeleton-tabs.js' %}"></script>
     </head>
     <body>
@@ -18,9 +17,12 @@
             <a href="/">{%translate "SaaS Admin"%}</a>
             {% if user.is_staff %}
             <a class="left" href="/products">{%translate "Products"%}</a>
-            <a class="left" href="/plans">{%translate "Plans"%}</a>
-            <a class="left" href="/instances">{%translate "Instances"%}</a>
-            <a class="left" href="/customers">{%translate "Customers"%}</a>
+            {% if product %}
+            <a class="left" href="/products/{{product.slug}}/dashboard">{{product.name}}</a>
+            <a class="left" href="/plans/{{product.slug}}/">{%translate "Plans"%}</a>
+            <a class="left" href="/instances/{{product.slug}}/">{%translate "Instances"%}</a>
+            <a class="left" href="/customers/{{product.slug}}/">{%translate "Customers"%}</a>
+            {% endif %}
             {% else %}
             <a class="left" href="/account">{%translate "Personal Details"%}</a>
             <a class="left" href="/plan/current">{%translate "Selected Plan"%}</a>
