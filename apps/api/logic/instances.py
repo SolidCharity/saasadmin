@@ -7,11 +7,13 @@ from django.conf import settings
 
 class LogicInstances:
     @transaction.atomic
-    def create_new_instance(self, hostname, product):
+    def create_new_instance(self, hostname, pacuser, product):
         # generate new password
         new_password = User.objects.make_random_password(length=16)
         # generate the db password
         db_password = User.objects.make_random_password(length=16)
+        # the activation token that allows us to activate the instance
+        activation_token = User.objects.make_random_password(length=16)
 
         # find new available identifier
         instance_id_start = settings.INSTANCE_ID_START
@@ -44,6 +46,8 @@ class LogicInstances:
         instance = SaasInstance.objects.create(
           identifier = str(new_id),
           hostname = hostname,
+          pacuser = pacuser,
+          activation_token = activation_token,
           product = product,
           first_port = new_port,
           last_port = last_port,
