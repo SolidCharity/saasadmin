@@ -60,4 +60,4 @@ translate:
 	${VENV} cd apps/frontend && django-admin compilemessages
 
 demo_db:
-	cat demodata/insertdemo.sql | python manage.py dbshell
+	${VENV} cat demodata/insertdemo.sql | python manage.py dbshell

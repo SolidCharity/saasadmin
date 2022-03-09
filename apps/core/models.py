@@ -36,8 +36,9 @@ class SaasCustomer(models.Model):
 class SaasProduct (models.Model):
     slug = models.CharField(_("slug"), max_length=50, default = "invalid", unique=True)
     name = models.CharField(_("name"), max_length=16)
-    activationurl = models.CharField(_("activationurl"), max_length=250)
-    is_active = models.BooleanField(_("is_active"), default=False)
+    activation_url = models.CharField(_("Activation URL"), max_length=250, default = "https://%prefix%identifier.example.org/activate")
+    instance_url = models.CharField(_("Instance URL"), max_length=250, default = "https://%prefix%identifier.example.org")
+    is_active = models.BooleanField(_("is active"), default=False)
     number_of_ports = models.IntegerField(_("number of ports"), default=1)
     instance_prefix = models.CharField(_("instance prefix"), max_length=10, default='xy')
 
