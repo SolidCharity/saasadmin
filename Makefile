@@ -47,8 +47,10 @@ create_db:
 	${VENV} python manage.py migrate
 	${VENV} python manage.py compilemessages
 
-runserver:
+collectstatic:
 	${VENV} (echo "yes" | python manage.py collectstatic)
+
+runserver: collectstatic
 	${VENV} python manage.py runserver localhost:8000
 
 token:
