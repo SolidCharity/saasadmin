@@ -2,3 +2,4 @@ django
 djangorestframework
 django-registration
 # mysqlclient
+# psycopg2

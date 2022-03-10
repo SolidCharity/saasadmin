@@ -63,8 +63,8 @@ def addinstances(request, product):
         form = AddInstancesForm(values)
         if form.is_valid():
             try:
-                for x in range(1, int(form['count'].value())):
-                    success, new_data = LogicInstances().create_new_instance(form['hostname'].value(), product)
+                for x in range(0, int(form['count'].value())):
+                    success, new_data = LogicInstances().create_new_instance(form['hostname'].value(), form['pacuser'].value(), product)
                     if not success:
                         raise Exception('there was an error creating a new instance')
                 return redirect("/instances/%s/" % (product.slug,))
@@ -74,10 +74,12 @@ def addinstances(request, product):
     else:
         # use the last used hostname for this product
         hostname = 'localhost'
+        pacuser = 'xyz00'
         last_instance = SaasInstance.objects.filter(product=product).order_by('id')
         if last_instance.count() > 0:
             hostname = last_instance.last().hostname
-        form = AddInstancesForm(initial={'product_id': product.id, 'count': 10, 'hostname': hostname})
+            pacuser = last_instance.last().pacuser
+        form = AddInstancesForm(initial={'product_id': product.id, 'count': 10, 'hostname': hostname, 'pacuser': pacuser})
 
     return render(request,'addinstances.html',{'form': form, 'product': product})
 

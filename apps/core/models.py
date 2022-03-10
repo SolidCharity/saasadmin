@@ -2,6 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 
+class SaasConfiguration(models.Model):
+    name = models.CharField(_("name"), max_length=64)
+    language = models.CharField(_("language"), max_length=10)
+    value = models.CharField(_("value"), max_length=250)
+
+    class Meta:
+        db_table = "saas_configuration"
+
 class SaasCustomer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     newsletter = models.BooleanField(_("newsletter"), default=True)
@@ -28,8 +36,9 @@ class SaasCustomer(models.Model):
 class SaasProduct (models.Model):
     slug = models.CharField(_("slug"), max_length=50, default = "invalid", unique=True)
     name = models.CharField(_("name"), max_length=16)
-    activationurl = models.CharField(_("activationurl"), max_length=200)
-    is_active = models.BooleanField(_("is_active"), default=False)
+    activation_url = models.CharField(_("Activation URL"), max_length=250, default = "https://%prefix%identifier.example.org/activate")
+    instance_url = models.CharField(_("Instance URL"), max_length=250, default = "https://%prefix%identifier.example.org")
+    is_active = models.BooleanField(_("is active"), default=False)
     number_of_ports = models.IntegerField(_("number of ports"), default=1)
     instance_prefix = models.CharField(_("instance prefix"), max_length=10, default='xy')
 
@@ -84,10 +93,13 @@ class SaasInstance(models.Model):
     )
 
     hostname = models.CharField(_("hostname"), max_length=128, default='localhost')
+    pacuser = models.CharField(_("pacuser"), max_length=128, default='xyz00')
     channel = models.CharField(_("channel"), max_length=128, default='stable')
     first_port = models.IntegerField(_("first port"), default=-1)
     last_port = models.IntegerField(_("last port"), default=-1)
+    activation_token = models.CharField(max_length=64, null=True)
 
+    # possible values: in_preparation, new, active, expired, cancelled, to_be_removed, deleted
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
     auto_renew = models.BooleanField(_("Auto Renew"), default=True)
     db_password = models.CharField(_("DB Password"), max_length=64, default='topsecret')

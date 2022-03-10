@@ -20,4 +20,5 @@ class ProductForm(forms.ModelForm):
 class AddInstancesForm(forms.Form):
     product_id = forms.IntegerField()
     hostname = forms.CharField(max_length=128)
+    pacuser = forms.CharField(max_length=128)
     count = forms.IntegerField()
