@@ -15,6 +15,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
       .replace('{{username}}', instance['prefix'] + instance['identifier'])
       .replace('{{password}}', instance['db_password'])
       .replace('{{SaasActivationPassword}}', instance['activation_token'])
+      .replace('{{SaasInstanceStatus}}', instance['status'])
       .replace('{{smtp_from}}', config['saasadmin']['smtp_from'])
       .replace('{{smtp_host}}', config['saasadmin']['smtp_host'])
       .replace('{{smtp_user}}', config['saasadmin']['smtp_user'])
@@ -45,7 +46,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
   return return_code
 
 
-def setup_instances(config, url, admin_token, host_name, product_slug, ansible_path):
+def setup_instances(config, url, admin_token, host_name, product_slug, ansible_path, action):
   params = dict(format='json', hostname=host_name, product=product_slug)
   resp = requests.get(url=url, params=params, headers={'Authorization': f'Token {admin_token}'})
   data = resp.json()
@@ -62,19 +63,29 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
   for instance in data:
     if return_code:
       continue
+
+    # if action is update, then run for all instances
+    if not (action == 'update'):
+      # if action is install, then only run this for instances in preparation
+      if action == 'install' and not (instance['status'] == 'in_preparation'):
+        continue
+
+    print(instance['identifier'] + ' ' + instance['status'])
+    # print(instance)
+
+    return_code = run_ansible(config, ansible_inventory_template, ansible_path + '/playbook-install.yml', instance)
+    if return_code:
+      continue
+
+    return_code = run_ansible(config, ansible_inventory_template, ansible_path + '/playbook-saas.yml', instance)
+    if return_code:
+      continue
+
     if instance['status'] == 'in_preparation':
-      print(instance['identifier'])
-      # print(instance)
-
-      return_code = run_ansible(config, ansible_inventory_template, ansible_path + '/playbook-install.yml', instance)
-
       # on success of ansible: change status to "new"
-      if not return_code:
-        return_code = run_ansible(config, ansible_inventory_template, ansible_path + '/playbook-saas.yml', instance)
-        if not return_code:
-          params = dict(format='json', hostname=host_name, product=product_slug, instance_id=instance['identifier'], status='free')
-          resp = requests.patch(url=url,
-            params=params, headers={'Authorization': f'Token {admin_token}'})
+      params = dict(format='json', hostname=host_name, product=product_slug, instance_id=instance['identifier'], status='free')
+      resp = requests.patch(url=url,
+        params=params, headers={'Authorization': f'Token {admin_token}'})
 
 
 @click.command()
@@ -84,7 +95,8 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
 @click.option('--admintoken', help='The token for access to the REST API of SaasAdmin')
 @click.option('--url', help='The url for access to the REST API of SaasAdmin')
 @click.option('--configfile', default='config.yaml', help='The config file to use')
-def main(product, hostname, ansiblepath, admintoken, url, configfile):
+@click.option('--action', default='install', help='The action: install, update')
+def main(product, hostname, ansiblepath, admintoken, url, configfile, action):
     """run the ansible playbook for all specified instances"""
 
     # load from config.yml file
@@ -99,7 +111,7 @@ def main(product, hostname, ansiblepath, admintoken, url, configfile):
     if url is None:
       url=config['saasadmin']['url'] + '/api/v1/instances/'
 
-    setup_instances(config, url, admintoken, hostname, product, ansiblepath)
+    setup_instances(config, url, admintoken, hostname, product, ansiblepath, action)
 
 if __name__ == '__main__':
     main()

@@ -99,6 +99,7 @@ class SaasInstance(models.Model):
     last_port = models.IntegerField(_("last port"), default=-1)
     activation_token = models.CharField(max_length=64, null=True)
 
+    # possible values: in_preparation, new, active, expired, cancelled, to_be_removed, deleted
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
     auto_renew = models.BooleanField(_("Auto Renew"), default=True)
     db_password = models.CharField(_("DB Password"), max_length=64, default='topsecret')
