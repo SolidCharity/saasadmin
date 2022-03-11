@@ -31,7 +31,7 @@ quickstart_without_demodb: create_venv pip_packages create_db create_superuser
 	@echo Installation has finished successfully
 	@echo Run '"'make runserver'"' in order to start the server and access it through one of the following IP addresses
 	@ip addr | sed 's/\/[0-9]*//' | awk '/inet / {print "http://" $$2 ":8000/"}'
-	@echo Login user is '"'admin'"' password is '"'admin'"'
+	@echo For the first login, the user is '"'admin'"', and the password is '"'admin'"'
 
 quickstart: quickstart_without_demo demo_db
 

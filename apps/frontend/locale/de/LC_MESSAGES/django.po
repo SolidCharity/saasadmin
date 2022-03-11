@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-30 07:55+0100\n"
+"POT-Creation-Date: 2022-03-11 07:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,74 +18,67 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/account.html:25
+#: apps/frontend/templates/account.html:25
 msgid "Personal Details"
 msgstr "Persönliche Daten"
 
-#: templates/account.html:50
-msgid "First name"
-msgstr "Vorname"
-
-#: templates/account.html:60
-msgid "Last name"
-msgstr "Nachname"
-
-#: templates/account.html:70
-msgid "E-Mail"
-msgstr "E-Mail"
-
-#: templates/account.html:80
-msgid "Street and house number"
-msgstr "Straße und Hausnummer"
-
-#: templates/account.html:90
-msgid "Post code"
-msgstr "PLZ"
-
-#: templates/account.html:100
-msgid "City"
-msgstr "Ort"
-
-#: templates/account.html:110
-msgid "Country"
-msgstr "Land"
-
-#: templates/account.html:125
+#: apps/frontend/templates/account.html:42
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
-#: templates/payment.html:11
+#: apps/frontend/templates/payment.html:11
 msgid "Payment Details"
 msgstr "Zahlungsweise"
 
-#: templates/plan.html:15
+#: apps/frontend/templates/plan.html:15
 msgid "selected"
 msgstr "ausgewählt"
 
-#: templates/plan.html:20 templates/pricing.html:21
+#: apps/frontend/templates/plan.html:20 apps/frontend/templates/pricing.html:22
 msgid "free"
 msgstr "Kostenlos"
 
-#: templates/plan.html:26 templates/pricing.html:27
+#: apps/frontend/templates/plan.html:26 apps/frontend/templates/pricing.html:28
 msgid "per month"
 msgstr "pro Monat"
 
-#: templates/plan.html:27 templates/pricing.html:28
+#: apps/frontend/templates/plan.html:27 apps/frontend/templates/pricing.html:29
 msgid "per quarter"
 msgstr "pro Quartal"
 
-#: templates/plan.html:28 templates/pricing.html:29
+#: apps/frontend/templates/plan.html:28 apps/frontend/templates/pricing.html:30
 msgid "per year"
 msgstr "pro Jahr"
 
-#: templates/plan.html:43
+#: apps/frontend/templates/plan.html:43
 msgid "Choose"
 msgstr "Auswählen"
 
-#: templates/pricing.html:16
+#: apps/frontend/templates/pricing.html:17
 msgid "popular"
 msgstr "beliebt"
 
-#: templates/pricing.html:44
+#: apps/frontend/templates/pricing.html:45
 msgid "Register"
 msgstr "Registrieren"
+
+#~ msgid "First name"
+#~ msgstr "Vorname"
+
+#~ msgid "Last name"
+#~ msgstr "Nachname"
+
+#~ msgid "E-Mail"
+#~ msgstr "E-Mail"
+
+#~ msgid "Street and house number"
+#~ msgstr "Straße und Hausnummer"
+
+#~ msgid "Post code"
+#~ msgstr "PLZ"
+
+#~ msgid "City"
+#~ msgstr "Ort"
+
+#~ msgid "Country"
+#~ msgstr "Land"

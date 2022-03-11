@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+from django_countries.fields import CountryField
 
 class SaasConfiguration(models.Model):
     name = models.CharField(_("name"), max_length=64)
@@ -20,13 +21,24 @@ class SaasCustomer(models.Model):
     verification_token = models.CharField(_("verification_token"), max_length=64, null=True)
     verification_until = models.DateTimeField(_("verification_until"), null=True)
     organisation_name = models.CharField(_("organisation_name"), max_length=64, null=True)
-    first_name = models.CharField(_("first_name"), max_length=64, null=True)
-    last_name = models.CharField(_("last_name"), max_length=64, null=True)
-    street = models.CharField(_("street"), max_length=64, null=True)
-    number = models.CharField(_("number"), max_length=11, null=True)
-    post_code = models.CharField(_("post_code"), max_length=10, null=True)
-    city = models.CharField(_("city"), max_length=16, null=True)
-    country_code = models.CharField(_("country_code"), max_length=16, default="DE")
+
+    MR, MRS, MRDR, MRSDR = ('Mr', 'Mrs', 'Mr Dr', 'Mrs Dr')
+    TITLE_CHOICES = (
+        (MR, _("Mr")),
+        (MRS, _("Mrs")),
+        (MRDR, _("Mr Dr")),
+        (MRSDR, _("Mrs Dr")),
+    )
+    title = models.CharField(
+        _("Title"),
+        max_length=64, choices=TITLE_CHOICES, blank=True)
+
+    first_name = models.CharField(_("first_name"), max_length=64, default='')
+    last_name = models.CharField(_("last_name"), max_length=64, default='')
+    street = models.CharField(_("street"), max_length=64, default='')
+    post_code = models.CharField(_("post_code"), max_length=10, default='')
+    city = models.CharField(_("city"), max_length=16, default='')
+    country_code = CountryField(_("country"), default='DE')
     email_address = models.EmailField(_("email_address"))
     is_active = models.BooleanField(_("is_active"), default=True)
 

@@ -41,7 +41,20 @@ def account_view(request):
             # TODO what about the situation where there is no free instance available
             None
 
-    return render(request, 'account.html', {'customer': customer, 'lang': lang})
+    form = CustomerForm(instance = customer)
+    return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
+
+def  clean_null(customer):
+    if customer.first_name is None:
+        customer.first_name = ''
+    if customer.last_name is None:
+        customer.last_name = ''
+    if customer.street is None:
+        customer.street = ''
+    if customer.post_code is None:
+        customer.post_code = ''
+    if customer.city is None:
+        customer.city = ''
 
 @login_required
 def account_update(request):
