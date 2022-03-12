@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 07:25+0100\n"
+"POT-Creation-Date: 2022-03-12 08:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,21 +38,25 @@ msgstr "Bitte wählen Sie, wie Sie die Rechnung bezahlen wollen:"
 msgid "You transfer the money via SEPA"
 msgstr "Sie überweisen das Geld mittels SEPA Banküberweisung"
 
-#: apps/frontend/templates/payment.html:31
+#: apps/frontend/templates/payment.html:30
+msgid "You allow us to debit your bank account via SEPA"
+msgstr "Sie geben uns eine Einzugsermächtigung, damit wir den Betrag per SEPA einziehen können"
+
+#: apps/frontend/templates/payment.html:34
 msgid "You transfer the money via Paypal"
 msgstr "Sie übermitteln das Geld über Paypal"
 
-#: apps/frontend/templates/payment.html:40
+#: apps/frontend/templates/payment.html:44
 msgid ""
 "We will send you an invoice per E-Mail, and you can please pay that invoice "
 "within 14 days. The current month is free, that means the payment covers the "
 "month that follows the date of your order."
 msgstr ""
 "Wir werden Ihnen eine Rechnung per E-Mail schicken, und Sie bezahlen diese "
-"Rechnung bitte innerhalb von 14 Tagen. Der aktuelle Monat ist kostenlos, d."
+"Rechnung bitte innerhalb von 14 Tagen, bzw. wir ziehen den Betrag von Ihrem Konto ein. Der aktuelle Monat ist kostenlos, d."
 "h. die Bezahlung ist ab dem Monat, der dem Tag Ihrer Bestellung folgt."
 
-#: apps/frontend/templates/payment.html:42
+#: apps/frontend/templates/payment.html:46
 #, python-format
 msgid ""
 "Up until %(noticePeriod)s before the end of the paid period, you can cancel "
@@ -63,7 +67,7 @@ msgstr ""
 "Laufzeit kündigen.  Wir stellen Ihnen eine Datensicherung der Daten von "
 "Ihrer Instanz bereit."
 
-#: apps/frontend/templates/payment.html:44
+#: apps/frontend/templates/payment.html:48
 #, python-format
 msgid ""
 "If you don't cancel the contract, the contract will be automatically renewed "
@@ -73,19 +77,19 @@ msgstr ""
 "%(periodLengthExtension)s verlängert, und wir werden Ihnen dann eine neue "
 "Rechnung per E-Mail senden."
 
-#: apps/frontend/templates/payment.html:59
+#: apps/frontend/templates/payment.html:63
 msgid "To be paid"
 msgstr "Zu zahlen"
 
-#: apps/frontend/templates/payment.html:64
+#: apps/frontend/templates/payment.html:68
 msgid "per"
 msgstr "pro"
 
-#: apps/frontend/templates/payment.html:73
+#: apps/frontend/templates/payment.html:77
 msgid "Order now"
 msgstr "Jetzt zahlungspflichtig bestellen"
 
-#: apps/frontend/templates/payment.html:75
+#: apps/frontend/templates/payment.html:79
 msgid "Cancel Contract"
 msgstr "Vertrag beenden"
 
