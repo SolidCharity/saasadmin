@@ -5,11 +5,13 @@ from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import JsonResponse
 from django.utils import translation
+from django.utils.translation import gettext as _
 from apps.api.logic.products import LogicProducts
 from apps.core.models import SaasCustomer, SaasPlan
 from apps.frontend.forms import CustomerForm
 from apps.api.logic.customers import LogicCustomers
 from apps.api.logic.plans import LogicPlans
+from apps.api.logic.contracts import LogicContracts
 
 def home(request):
     # if not logged in => redirect to pricing
@@ -30,16 +32,6 @@ def account_view(request):
         customer.user = request.user
         customer.email_address = request.user.email
         customer.save()
-
-    logic = LogicCustomers()
-    product = LogicProducts().get_product(request);
-    if product and not logic.has_instance(customer, product):
-        if logic.assign_instance(customer, product):
-            # TODO message to customer to inform about new instance
-            None
-        else:
-            # TODO what about the situation where there is no free instance available
-            None
 
     form = CustomerForm(instance = customer)
     return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
@@ -75,20 +67,79 @@ def account_update(request):
 @login_required
 def select_plan(request, plan_id):
     product = LogicProducts().get_product(request)
+    current_plan = LogicContracts().get_current_plan(request, product)
     plans = LogicPlans().get_plans(product)
 
-    if plan_id == 'current':
-        # TODO load current plan
-        plan_id = plans.first().name
+    # the customer has selected a plan
+    if plan_id != 'current':
+        # check if this is a valid plan
+        new_plan = plans.filter(name=plan_id).first()
+        if new_plan and (current_plan is None or (new_plan.name != current_plan.name)):
+            return show_payment(request, product, new_plan, True)
+        else:
+            plan_id = 'current'
+
+    # load booked plan from the database
+    if current_plan:
+        plan_id = current_plan.name
     else:
-        # TODO store current plan (if it is a valid name)
-        None
+        plan_id = ''
+
     return render(request, 'plan.html', {'product': product, 'plans': plans, 'selected_plan': plan_id})
 
 @login_required
 def select_payment(request):
     product = LogicProducts().get_product(request)
-    return render(request, 'payment.html', {'product': product})
+    current_plan = LogicContracts().get_current_plan(request, product)
+    return show_payment(request, product, current_plan, False)
+
+
+def readablePeriodsInMonths(periodLength):
+    if periodLength == 12:
+        return "1 " + _("year")
+    elif periodLength == 1:
+        return "1 " + _("month")
+    else:
+        return str(periodLength) + " " + _("months")
+
+def readablePeriodsInDays(periodLength):
+    if periodLength == 30:
+        return "1 " + _("month")
+    elif periodLength == 14:
+        return "2 " + _("weeks")
+    else:
+        return str(periodLength) + " " + _("days")
+
+def show_payment(request, product, plan, is_new_order):
+    periodLength = readablePeriodsInMonths(plan.periodLengthInMonths)
+    if plan.periodLengthInMonths == 1:
+        periodLengthExtension = _("another month")
+    elif plan.periodLengthInMonths == 3:
+        periodLengthExtension = _("another quarter")
+    elif plan.periodLengthInMonths == 12:
+        periodLengthExtension = _("another year")
+    noticePeriod = readablePeriodsInDays(plan.noticePeriodInDays)
+    return render(request, 'payment.html',
+        {'product': product,
+        'plan': plan,
+        'is_new_order': is_new_order,
+        'noticePeriod': noticePeriod,
+        'periodLength': periodLength,
+        'periodLengthExtension': periodLengthExtension})
+
+
+"""
+def TODO(request):
+    logic = LogicCustomers()
+    product = LogicProducts().get_product(request);
+    if product and not logic.has_instance(customer, product):
+        if logic.assign_instance(customer, product):
+            # TODO message to customer to inform about new instance
+            None
+        else:
+            # TODO what about the situation where there is no free instance available
+            None
+"""
 
 def display_pricing(request):
     product = LogicProducts().get_product(request)

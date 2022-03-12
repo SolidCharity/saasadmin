@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-11 07:59+0100\n"
+"POT-Creation-Date: 2022-03-12 07:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,65 @@ msgstr "Änderungen speichern"
 #: apps/frontend/templates/payment.html:11
 msgid "Payment Details"
 msgstr "Zahlungsweise"
+
+#: apps/frontend/templates/payment.html:21
+msgid "Please choose how you want to pay the invoice:"
+msgstr "Bitte wählen Sie, wie Sie die Rechnung bezahlen wollen:"
+
+#: apps/frontend/templates/payment.html:27
+msgid "You transfer the money via SEPA"
+msgstr "Sie überweisen das Geld mittels SEPA Banküberweisung"
+
+#: apps/frontend/templates/payment.html:31
+msgid "You transfer the money via Paypal"
+msgstr "Sie übermitteln das Geld über Paypal"
+
+#: apps/frontend/templates/payment.html:40
+msgid ""
+"We will send you an invoice per E-Mail, and you can please pay that invoice "
+"within 14 days. The current month is free, that means the payment covers the "
+"month that follows the date of your order."
+msgstr ""
+"Wir werden Ihnen eine Rechnung per E-Mail schicken, und Sie bezahlen diese "
+"Rechnung bitte innerhalb von 14 Tagen. Der aktuelle Monat ist kostenlos, d."
+"h. die Bezahlung ist ab dem Monat, der dem Tag Ihrer Bestellung folgt."
+
+#: apps/frontend/templates/payment.html:42
+#, python-format
+msgid ""
+"Up until %(noticePeriod)s before the end of the paid period, you can cancel "
+"the contract by E-Mail. We will provide you with a backup of your data from "
+"your instance."
+msgstr ""
+"Sie können den Vertrag bis %(noticePeriod)s vor dem Ende der bezahlten "
+"Laufzeit kündigen.  Wir stellen Ihnen eine Datensicherung der Daten von "
+"Ihrer Instanz bereit."
+
+#: apps/frontend/templates/payment.html:44
+#, python-format
+msgid ""
+"If you don't cancel the contract, the contract will be automatically renewed "
+"for %(periodLengthExtension)s, and we will send you a new invoice per E-Mail."
+msgstr ""
+"Falls Sie den Vertrag nicht beenden, wird der Vertrag automatisch um "
+"%(periodLengthExtension)s verlängert, und wir werden Ihnen dann eine neue "
+"Rechnung per E-Mail senden."
+
+#: apps/frontend/templates/payment.html:59
+msgid "To be paid"
+msgstr "Zu zahlen"
+
+#: apps/frontend/templates/payment.html:64
+msgid "per"
+msgstr "pro"
+
+#: apps/frontend/templates/payment.html:73
+msgid "Order now"
+msgstr "Jetzt zahlungspflichtig bestellen"
+
+#: apps/frontend/templates/payment.html:75
+msgid "Cancel Contract"
+msgstr "Vertrag beenden"
 
 #: apps/frontend/templates/plan.html:15
 msgid "selected"
@@ -61,6 +120,42 @@ msgstr "beliebt"
 #: apps/frontend/templates/pricing.html:45
 msgid "Register"
 msgstr "Registrieren"
+
+#: apps/frontend/views.py:99
+msgid "year"
+msgstr "Jahr"
+
+#: apps/frontend/views.py:101 apps/frontend/views.py:107
+#, fuzzy
+#| msgid "per month"
+msgid "month"
+msgstr "pro Monat"
+
+#: apps/frontend/views.py:103
+#, fuzzy
+#| msgid "per month"
+msgid "months"
+msgstr "pro Monat"
+
+#: apps/frontend/views.py:109
+msgid "weeks"
+msgstr "Wochen"
+
+#: apps/frontend/views.py:111
+msgid "days"
+msgstr "Tage"
+
+#: apps/frontend/views.py:116
+msgid "another month"
+msgstr "einen weiteren Monat"
+
+#: apps/frontend/views.py:118
+msgid "another quarter"
+msgstr "ein weiteres Quartal"
+
+#: apps/frontend/views.py:120
+msgid "another year"
+msgstr "ein weiteres Jahr"
 
 #~ msgid "First name"
 #~ msgstr "Vorname"

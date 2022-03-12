@@ -8,6 +8,13 @@
 input, textarea {
   width: 100%;
 }
+input[type="checkbox"], input[type="radio"] {
+  width: auto;
+}
+label {
+  display: inline;
+  font-weight: 1;
+}
 h3 {
   padding-top: 30px;
 }
