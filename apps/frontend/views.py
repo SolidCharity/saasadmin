@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.utils import translation
 from django.utils.translation import gettext as _
 from apps.api.logic.products import LogicProducts
-from apps.core.models import SaasCustomer, SaasPlan
+from apps.core.models import SaasCustomer, SaasPlan, SaasProduct
 from apps.frontend.forms import CustomerForm
 from apps.api.logic.customers import LogicCustomers
 from apps.api.logic.plans import LogicPlans
@@ -73,11 +73,8 @@ def select_plan(request, plan_id):
     # the customer has selected a plan
     if plan_id != 'current':
         # check if this is a valid plan
-        new_plan = plans.filter(name=plan_id).first()
-        if new_plan and (current_plan is None or (new_plan.name != current_plan.name)):
-            return show_payment(request, product, new_plan, True)
-        else:
-            plan_id = 'current'
+        new_plan = LogicPlans().get_plan(product, plan_id)
+        return show_payment(request, product, current_plan, new_plan)
 
     # load booked plan from the database
     if current_plan:
@@ -91,7 +88,9 @@ def select_plan(request, plan_id):
 def select_payment(request):
     product = LogicProducts().get_product(request)
     current_plan = LogicContracts().get_current_plan(request, product)
-    return show_payment(request, product, current_plan, False)
+    if current_plan is None:
+        return redirect('/plan/current')
+    return show_payment(request, product, current_plan, None)
 
 
 def readablePeriodsInMonths(periodLength):
@@ -110,36 +109,78 @@ def readablePeriodsInDays(periodLength):
     else:
         return str(periodLength) + " " + _("days")
 
-def show_payment(request, product, plan, is_new_order):
-    periodLength = readablePeriodsInMonths(plan.periodLengthInMonths)
-    if plan.periodLengthInMonths == 1:
+def show_payment(request, product, current_plan, new_plan):
+    if new_plan is None:
+        new_plan = current_plan
+    periodLength = readablePeriodsInMonths(new_plan.periodLengthInMonths)
+    if new_plan.periodLengthInMonths == 1:
         periodLengthExtension = _("another month")
-    elif plan.periodLengthInMonths == 3:
+    elif new_plan.periodLengthInMonths == 3:
         periodLengthExtension = _("another quarter")
-    elif plan.periodLengthInMonths == 12:
+    elif new_plan.periodLengthInMonths == 12:
         periodLengthExtension = _("another year")
-    noticePeriod = readablePeriodsInDays(plan.noticePeriodInDays)
+    noticePeriod = readablePeriodsInDays(new_plan.noticePeriodInDays)
     return render(request, 'payment.html',
         {'product': product,
-        'plan': plan,
-        'is_new_order': is_new_order,
+        'plan': new_plan,
+        'is_new_order': current_plan is None or current_plan.name != new_plan.name,
+        'contract_exists': current_plan is not None and current_plan.name == new_plan.name,
         'noticePeriod': noticePeriod,
         'periodLength': periodLength,
         'periodLengthExtension': periodLengthExtension})
 
 
-"""
-def TODO(request):
+def subscribe(request, product_id, plan_id):
     logic = LogicCustomers()
-    product = LogicProducts().get_product(request);
-    if product and not logic.has_instance(customer, product):
+    customer = SaasCustomer.objects.filter(user=request.user).first()
+    product = SaasProduct.objects.filter(slug = product_id).first()
+    if not product:
+        raise Exception('invalid product')
+    plan = LogicPlans().get_plan(product, plan_id)
+    if not plan:
+        raise Exception('invalid plan')
+
+    if logic.has_contract(customer, product):
+        # TODO upgrade or downgrade the plan?
+        contract = logic.get_contract(customer, product)
+        contract.plan = plan
+        contract.save()
+
+        # redirect to instance details page
+        return redirect('/instance')
+
+    else:
+        # assign a new instance
         if logic.assign_instance(customer, product):
-            # TODO message to customer to inform about new instance
-            None
+            # redirect to instance details page
+            return redirect('/instance')
         else:
             # TODO what about the situation where there is no free instance available
-            None
-"""
+            raise Exception('no instance available')
+
+
+def cancel(request, product_id):
+    logic = LogicCustomers()
+    customer = SaasCustomer.objects.filter(user=request.user).first()
+    product = SaasProduct.objects.filter(slug = product_id).first()
+    plan = LogicContracts().get_current_plan(request, product)
+
+    # cancel the contract
+    if product and logic.has_instance(customer, product):
+        contract = logic.get_contract(customer, product)
+        contract.auto_renew = False
+        contract.save()
+
+    return show_payment(request, product, plan, None)
+
+
+def instance_view(request):
+    logic = LogicCustomers()
+    customer = SaasCustomer.objects.filter(user=request.user).first()
+    product = LogicProducts().get_product(request)
+    contract = logic.get_contract(customer, product)
+    return render(request, 'instance.html', {'instance': contract.instance})
+
 
 def display_pricing(request):
     product = LogicProducts().get_product(request)

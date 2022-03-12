@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 08:08+0100\n"
+"POT-Creation-Date: 2022-03-12 22:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,37 +26,50 @@ msgstr "Persönliche Daten"
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
-#: apps/frontend/templates/payment.html:11
+#: apps/frontend/templates/instance.html:9
+msgid "Details of your instance"
+msgstr "Infos über Ihre Instanz"
+
+#: apps/frontend/templates/payment.html:15
 msgid "Payment Details"
 msgstr "Zahlungsweise"
 
-#: apps/frontend/templates/payment.html:21
+#: apps/frontend/templates/payment.html:22
 msgid "Please choose how you want to pay the invoice:"
 msgstr "Bitte wählen Sie, wie Sie die Rechnung bezahlen wollen:"
 
-#: apps/frontend/templates/payment.html:27
+#: apps/frontend/templates/payment.html:25
 msgid "You transfer the money via SEPA"
-msgstr "Sie überweisen das Geld mittels SEPA Banküberweisung"
+msgstr "Sie überweisen das Geld mittels SEPA Banküberweisung oder Dauerauftrag"
 
-#: apps/frontend/templates/payment.html:30
+#: apps/frontend/templates/payment.html:29
 msgid "You allow us to debit your bank account via SEPA"
-msgstr "Sie geben uns eine Einzugsermächtigung, damit wir den Betrag per SEPA einziehen können"
+msgstr ""
+"Sie geben uns eine Einzugsermächtigung, damit wir den Betrag per SEPA "
+"einziehen können"
 
 #: apps/frontend/templates/payment.html:34
 msgid "You transfer the money via Paypal"
 msgstr "Sie übermitteln das Geld über Paypal"
 
-#: apps/frontend/templates/payment.html:44
+#: apps/frontend/templates/payment.html:41
 msgid ""
 "We will send you an invoice per E-Mail, and you can please pay that invoice "
-"within 14 days. The current month is free, that means the payment covers the "
-"month that follows the date of your order."
+"within 14 days."
 msgstr ""
 "Wir werden Ihnen eine Rechnung per E-Mail schicken, und Sie bezahlen diese "
-"Rechnung bitte innerhalb von 14 Tagen, bzw. wir ziehen den Betrag von Ihrem Konto ein. Der aktuelle Monat ist kostenlos, d."
-"h. die Bezahlung ist ab dem Monat, der dem Tag Ihrer Bestellung folgt."
+"Rechnung bitte innerhalb von 14 Tagen, bzw. wir ziehen den Betrag von Ihrem "
+"Konto ein."
 
-#: apps/frontend/templates/payment.html:46
+#: apps/frontend/templates/payment.html:42
+msgid ""
+"The current month is free, that means the payment covers the month that "
+"follows the date of your order."
+msgstr ""
+"Der aktuelle Monat ist kostenlos, d.h. die Bezahlung ist ab dem Monat, der "
+"dem Tag Ihrer Bestellung folgt."
+
+#: apps/frontend/templates/payment.html:44
 #, python-format
 msgid ""
 "Up until %(noticePeriod)s before the end of the paid period, you can cancel "
@@ -67,7 +80,7 @@ msgstr ""
 "Laufzeit kündigen.  Wir stellen Ihnen eine Datensicherung der Daten von "
 "Ihrer Instanz bereit."
 
-#: apps/frontend/templates/payment.html:48
+#: apps/frontend/templates/payment.html:46
 #, python-format
 msgid ""
 "If you don't cancel the contract, the contract will be automatically renewed "
@@ -77,19 +90,31 @@ msgstr ""
 "%(periodLengthExtension)s verlängert, und wir werden Ihnen dann eine neue "
 "Rechnung per E-Mail senden."
 
-#: apps/frontend/templates/payment.html:63
+#: apps/frontend/templates/payment.html:48
+msgid ""
+"If you downgrade your product, then this will affect the next payment "
+"period. You will not receive a refund."
+msgstr ""
+"Wenn Sie einen kleineren Vertrag wählen, wird das bei der nächsten Rechnung "
+"berücksichtigt. Wir erstatten keine Beträge zurück."
+
+#: apps/frontend/templates/payment.html:52
 msgid "To be paid"
 msgstr "Zu zahlen"
 
-#: apps/frontend/templates/payment.html:68
+#: apps/frontend/templates/payment.html:53
 msgid "per"
 msgstr "pro"
 
-#: apps/frontend/templates/payment.html:77
+#: apps/frontend/templates/payment.html:55
+msgid "Service Period"
+msgstr "Zeitraum der Dienstleistung"
+
+#: apps/frontend/templates/payment.html:61
 msgid "Order now"
 msgstr "Jetzt zahlungspflichtig bestellen"
 
-#: apps/frontend/templates/payment.html:79
+#: apps/frontend/templates/payment.html:71
 msgid "Cancel Contract"
 msgstr "Vertrag beenden"
 
@@ -125,39 +150,35 @@ msgstr "beliebt"
 msgid "Register"
 msgstr "Registrieren"
 
-#: apps/frontend/views.py:99
+#: apps/frontend/views.py:98
 msgid "year"
 msgstr "Jahr"
 
-#: apps/frontend/views.py:101 apps/frontend/views.py:107
-#, fuzzy
-#| msgid "per month"
+#: apps/frontend/views.py:100 apps/frontend/views.py:106
 msgid "month"
-msgstr "pro Monat"
+msgstr "Monat"
 
-#: apps/frontend/views.py:103
-#, fuzzy
-#| msgid "per month"
+#: apps/frontend/views.py:102
 msgid "months"
-msgstr "pro Monat"
+msgstr "Monate"
 
-#: apps/frontend/views.py:109
+#: apps/frontend/views.py:108
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/frontend/views.py:111
+#: apps/frontend/views.py:110
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:116
+#: apps/frontend/views.py:117
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:118
+#: apps/frontend/views.py:119
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:120
+#: apps/frontend/views.py:121
 msgid "another year"
 msgstr "ein weiteres Jahr"
 

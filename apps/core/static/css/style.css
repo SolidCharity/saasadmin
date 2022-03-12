@@ -22,3 +22,9 @@ div.tab-pane h4 {
   font-size: 14px;
   font-weight: 600;
 }
+
+div.withborder {
+  border-style: solid;
+  padding: 5px;
+  border-width: 1px;
+}

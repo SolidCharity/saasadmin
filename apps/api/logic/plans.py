@@ -13,4 +13,8 @@ class LogicPlans:
         if plans.count() == 0:
             plans = SaasPlan.objects.filter(language=settings.DEFAULT_FRONTEND_LANGUAGE, product=product).order_by('costPerPeriod')
 
-        return plans.all()
+        return plans
+
+    def get_plan(self, product, plan_id):
+        plans = self.get_plans(product)
+        return plans.filter(name=plan_id).first()

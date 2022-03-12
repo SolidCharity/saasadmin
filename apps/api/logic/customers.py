@@ -5,9 +5,13 @@ from django.db import transaction
 
 class LogicCustomers:
 
-    def has_instance(self, customer, product):
+    def has_contract(self, customer, product):
         plans = SaasPlan.objects.filter(product=product).all()
         return SaasContract.objects.filter(customer=customer).filter(plan__in=plans).count() > 0
+
+    def get_contract(self, customer, product):
+        plans = SaasPlan.objects.filter(product=product).all()
+        return SaasContract.objects.filter(customer=customer).filter(plan__in=plans).order_by('start_date').last()
 
     @transaction.atomic
     def assign_instance(self, customer, product):
@@ -15,7 +19,7 @@ class LogicCustomers:
         instance = SaasInstance.objects.filter(product=product).filter(status='free').first()
         if not instance:
             # TODO if no instance is available, then add the user to the waiting list; send notification email to admin; return False
-            None
+            return False
         else:
             # assign a free instance
             contract = SaasContract()
@@ -31,3 +35,4 @@ class LogicCustomers:
             # TODO call openpetra api SetInitialSysadminEmail
             # TODO send notification email to admin
             # TODO send notification email to customer
+            return True
