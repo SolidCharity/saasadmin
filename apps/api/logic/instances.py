@@ -1,9 +1,11 @@
-from apps.core.models import SaasInstance
+import random
+import requests
 from django.contrib.auth.models import User
 from django.db import connection
-import random
 from django.db import transaction
 from django.conf import settings
+from apps.core.models import SaasInstance
+from apps.core.models import SaasProduct
 
 class LogicInstances:
     @transaction.atomic
@@ -57,3 +59,30 @@ class LogicInstances:
 
         # return the result
         return True, {'new_id': new_id, 'new_password': new_password, 'db_password': db_password, 'hostname': hostname, 'port': new_port};
+
+
+    def activate_instance(self, customer, product, instance):
+
+        url = product.activation_url
+
+        PasswordResetToken = None
+        if '#PasswordResetToken' in url:
+            PasswordResetToken = User.objects.make_random_password(length=16)
+            url = url.replace('#PasswordResetToken', PasswordResetToken)
+
+        url = url. \
+            replace('#Prefix', product.instance_prefix). \
+            replace('#Identifier', instance.identifier). \
+            replace('#SaasActivationPassword', instance.activation_token). \
+            replace('#UserEmailAddress', customer.email_address)
+
+        try:
+            resp = requests.get(url=url)
+            data = resp.json()
+            if not data['success']:
+                return [False, None]
+        except Exception as ex:
+            print('Exception in activate_instance: %s' % (ex,))
+            return [False, None]
+
+        return [True, PasswordResetToken]

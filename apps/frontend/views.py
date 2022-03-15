@@ -160,12 +160,12 @@ def subscribe(request, product_id, plan_id):
 
     else:
         # assign a new instance
-        if logic.assign_instance(customer, product):
+        if logic.assign_instance(customer, product, plan):
             # redirect to instance details page
             return redirect('/instance')
         else:
             # TODO what about the situation where there is no free instance available
-            raise Exception('no instance available')
+            return render(request, 'error.html', {'message': _("Error: no instance available. Please try again tomorrow!")})
 
 
 def cancel(request, product_id):

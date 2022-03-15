@@ -154,9 +154,9 @@ class SaasContract(models.Model):
         related_name="%(app_label)s_%(class)s_list",
     )
 
-    start_date = models.DateTimeField(_("start_date"), null=True )
-    end_date = models.DateTimeField(_("end_date"), null=True)
-    latest_cancel_date = models.DateTimeField(_("latest_cancel_date"), null=True)
+    start_date = models.DateField(_("start_date"), null=True )
+    end_date = models.DateField(_("end_date"), null=True)
+    latest_cancel_date = models.DateField(_("latest_cancel_date"), null=True)
     auto_renew = models.BooleanField(_("auto_renew"), default= True)
 
     class Meta:

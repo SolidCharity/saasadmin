@@ -1,4 +1,5 @@
 python-dateutil
+requests
 django
 djangorestframework
 django-registration
