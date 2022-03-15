@@ -8,10 +8,10 @@
 input, textarea {
   width: 100%;
 }
-input[type="checkbox"], input[type="radio"] {
+div.paymentform input[type="checkbox"], input[type="radio"] {
   width: auto;
 }
-label {
+div.paymentform label {
   display: inline;
   font-weight: 1;
 }
