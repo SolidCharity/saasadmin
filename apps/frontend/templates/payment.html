@@ -50,7 +50,7 @@
           </div>
 
           <div>{%translate "To be paid"%}</div>
-          <div class='withborder'>{{plan.costPerPeriod}} {{plan.currencyCode}} {%translate "per"%} {{periodLength}}</div>
+          <div class='withborder'>{{plan.cost_per_period}} {{plan.currency_code}} {%translate "per"%} {{periodLength}}</div>
 
           <div>{%translate "Service Period"%}</div>
           <div class='withborder'>{{contract.start_date|date}} - {{contract.end_date|date}}</div>

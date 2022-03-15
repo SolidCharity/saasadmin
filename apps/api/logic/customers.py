@@ -83,8 +83,8 @@ class LogicCustomers:
 
         contract.start_date = datetime.today()
         nextMonthFirstDay = (contract.start_date.replace(day=1) + timedelta(days=32)).replace(day=1)
-        contract.end_date = nextMonthFirstDay + relativedelta(months=plan.periodLengthInMonths) - timedelta(days=1)
-        contract.latest_cancel_date = contract.end_date - timedelta(days=plan.noticePeriodInDays)
+        contract.end_date = nextMonthFirstDay + relativedelta(months=plan.period_length_in_months) - timedelta(days=1)
+        contract.latest_cancel_date = contract.end_date - timedelta(days=plan.notice_period_in_days)
 
         return contract
 
