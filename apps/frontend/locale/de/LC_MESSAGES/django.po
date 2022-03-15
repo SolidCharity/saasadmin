@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 22:37+0100\n"
+"POT-Creation-Date: 2022-03-15 07:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,11 +110,24 @@ msgstr "pro"
 msgid "Service Period"
 msgstr "Zeitraum der Dienstleistung"
 
+#: apps/frontend/templates/payment.html:59
+#, python-format
+msgid ""
+"Contract will automatically be renewed by %(periodLengthExtension)s if it is "
+"not cancelled up until:"
+msgstr ""
+"Der Vertrag wird automatisch um %(periodLengthExtension)s verlängert, falls "
+"er nicht bis zu diesem Datum gekündigt wird:"
+
 #: apps/frontend/templates/payment.html:61
+msgid "Contract will end on:"
+msgstr "Der Vertrag läuft aus am:"
+
+#: apps/frontend/templates/payment.html:68
 msgid "Order now"
 msgstr "Jetzt zahlungspflichtig bestellen"
 
-#: apps/frontend/templates/payment.html:71
+#: apps/frontend/templates/payment.html:78
 msgid "Cancel Contract"
 msgstr "Vertrag beenden"
 
@@ -170,15 +183,15 @@ msgstr "Wochen"
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:117
+#: apps/frontend/views.py:119
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:119
+#: apps/frontend/views.py:121
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:121
+#: apps/frontend/views.py:123
 msgid "another year"
 msgstr "ein weiteres Jahr"
 

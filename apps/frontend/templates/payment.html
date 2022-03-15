@@ -53,8 +53,15 @@
           <div class='withborder'>{{plan.costPerPeriod}} {{plan.currencyCode}} {%translate "per"%} {{periodLength}}</div>
 
           <div>{%translate "Service Period"%}</div>
-          <div class='withborder'>{{startDate}} - {{endDate}}</div>
-          <div class='withborder'>{{AutoRenewOrCancelled}}</div>
+          <div class='withborder'>{{contract.start_date|date}} - {{contract.end_date|date}}</div>
+
+          {%if contract.auto_renew %}
+          <div>{% blocktrans %}Contract will automatically be renewed by {{periodLengthExtension}} if it is not cancelled up until:{% endblocktrans %} {{ contract.latest_cancel_date|date }}</div>
+          {%else%}
+          <div>{% blocktrans %}Contract will end on:{% endblocktrans %} {{contract.end_date|date}}</div>
+          {%endif%}
+
+          <br/>
 
           {%if is_new_order%}
           <div class="col-6">

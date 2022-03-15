@@ -112,6 +112,8 @@ def readablePeriodsInDays(periodLength):
 def show_payment(request, product, current_plan, new_plan):
     if new_plan is None:
         new_plan = current_plan
+    customer = SaasCustomer.objects.filter(user=request.user).first()
+    contract = LogicCustomers().get_contract(customer, product)
     periodLength = readablePeriodsInMonths(new_plan.periodLengthInMonths)
     if new_plan.periodLengthInMonths == 1:
         periodLengthExtension = _("another month")
@@ -119,12 +121,19 @@ def show_payment(request, product, current_plan, new_plan):
         periodLengthExtension = _("another quarter")
     elif new_plan.periodLengthInMonths == 12:
         periodLengthExtension = _("another year")
+    isNewOrder = current_plan is None or current_plan.name != new_plan.name
+    isNotNewContract = current_plan is not None and current_plan.name == new_plan.name
     noticePeriod = readablePeriodsInDays(new_plan.noticePeriodInDays)
+    if not contract:
+        # get new contract from logic
+        contract = LogicCustomers().get_new_contract(customer, product, new_plan)
+
     return render(request, 'payment.html',
         {'product': product,
         'plan': new_plan,
-        'is_new_order': current_plan is None or current_plan.name != new_plan.name,
-        'contract_exists': current_plan is not None and current_plan.name == new_plan.name,
+        'contract': contract,
+        'is_new_order': isNewOrder,
+        'contract_exists': isNotNewContract,
         'noticePeriod': noticePeriod,
         'periodLength': periodLength,
         'periodLengthExtension': periodLengthExtension})

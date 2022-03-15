@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-12 22:37+0100\n"
+"POT-Creation-Date: 2022-03-15 07:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -219,31 +219,31 @@ msgid "Status"
 msgstr ""
 
 #: apps/core/models.py:116
-msgid "Auto Renew"
-msgstr ""
-
-#: apps/core/models.py:117
 msgid "DB Password"
 msgstr ""
 
-#: apps/core/models.py:118
+#: apps/core/models.py:117
 msgid "Initial Password"
 msgstr ""
 
-#: apps/core/models.py:119
+#: apps/core/models.py:118
 msgid "Last Interaction"
 msgstr ""
 
-#: apps/core/models.py:121
+#: apps/core/models.py:120
 msgid "Reserved Until"
 msgstr ""
 
-#: apps/core/models.py:158
+#: apps/core/models.py:157
 msgid "start_date"
 msgstr ""
 
-#: apps/core/models.py:159
+#: apps/core/models.py:158
 msgid "end_date"
+msgstr ""
+
+#: apps/core/models.py:159
+msgid "latest_cancel_date"
 msgstr ""
 
 #: apps/core/models.py:160

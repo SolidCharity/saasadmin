@@ -65,3 +65,7 @@ translate:
 
 demo_db:
 	${VENV} cat demodata/insertdemo.sql | python manage.py dbshell
+
+messages:
+	${VENV} django-admin makemessages -l de
+	${VENV} django-admin compilemessages

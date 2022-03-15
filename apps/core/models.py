@@ -113,7 +113,6 @@ class SaasInstance(models.Model):
 
     # possible values: in_preparation, new, active, expired, cancelled, to_be_removed, deleted
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
-    auto_renew = models.BooleanField(_("Auto Renew"), default=True)
     db_password = models.CharField(_("DB Password"), max_length=64, default='topsecret')
     initial_password = models.CharField(_("Initial Password"), max_length=64, default='topsecret')
     last_interaction = models.DateTimeField(_("Last Interaction"), null=True)
@@ -157,6 +156,7 @@ class SaasContract(models.Model):
 
     start_date = models.DateTimeField(_("start_date"), null=True )
     end_date = models.DateTimeField(_("end_date"), null=True)
+    latest_cancel_date = models.DateTimeField(_("latest_cancel_date"), null=True)
     auto_renew = models.BooleanField(_("auto_renew"), default= True)
 
     class Meta:
