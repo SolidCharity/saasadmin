@@ -188,6 +188,8 @@ def instance_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request)
     contract = logic.get_contract(customer, product)
+    if not contract:
+        return render(request, 'error.html', {'message': _("Error: no instance has been assigned yet.")})
     return render(request, 'instance.html', {'instance': contract.instance})
 
 

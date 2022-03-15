@@ -33,7 +33,7 @@ quickstart_without_demodb: create_venv pip_packages create_db create_superuser
 	@ip addr | sed 's/\/[0-9]*//' | awk '/inet / {print "http://" $$2 ":8000/"}'
 	@echo For the first login, the user is '"'admin'"', and the password is '"'admin'"'
 
-quickstart: quickstart_without_demo demo_db
+quickstart: quickstart_without_demodb demo_db
 
 create_superuser:
 	${VENV} echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(is_superuser=True).exists() or User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python manage.py shell
@@ -65,6 +65,7 @@ translate:
 
 demo_db:
 	${VENV} cat demodata/insertdemo.sql | python manage.py dbshell
+	(${VENV} cat demodata/insertdemo.psql.sql | python manage.py dbshell) || echo "ignore errors for sqlite"
 
 messages:
 	${VENV} django-admin makemessages -l de
