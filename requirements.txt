@@ -4,5 +4,6 @@ django
 djangorestframework
 django-registration
 django-countries
+django-modeltranslation
 # mysqlclient
 # psycopg2

@@ -5,7 +5,6 @@ from django_countries.fields import CountryField
 
 class SaasConfiguration(models.Model):
     name = models.CharField(_("name"), max_length=64)
-    language = models.CharField(_("language"), max_length=10)
     value = models.CharField(_("value"), max_length=250)
 
     class Meta:
@@ -82,7 +81,6 @@ class SaasPlan (models.Model):
     currency_code = models.CharField(_("currency"), max_length= 3, default= "EUR")
     cost_per_period = models.DecimalField(_("Cost per Period"), max_digits= 10, decimal_places= 2)
     notice_period_in_days = models.IntegerField(_("Notice Period in Days"))
-    language = (models.CharField(_("Language"), max_length=10, default = "DE"))
     descr_target = (models.CharField(_("Description Target"), max_length=200, default = "TODO"))
     descr_caption = (models.CharField(_("Description Caption"), max_length=200, default = "TODO"))
     descr_1 = (models.CharField(_("Description 1"), max_length=200, default = "TODO"))

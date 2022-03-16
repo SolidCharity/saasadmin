@@ -28,6 +28,9 @@ urlpatterns = [
     # API
     path('', include('apps.api.urls')),
 
+    # i18n
+    path('i18n/', include('django.conf.urls.i18n')),
+
     # SaasAdmin Backend
     path('backend', backend_views.products),
     path('customers/<str:product>/', backend_views.customers),
