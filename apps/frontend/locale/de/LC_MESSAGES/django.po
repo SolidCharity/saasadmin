@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 07:32+0100\n"
+"POT-Creation-Date: 2022-03-16 20:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,19 +135,19 @@ msgstr "Vertrag beenden"
 msgid "selected"
 msgstr "ausgewählt"
 
-#: apps/frontend/templates/plan.html:20 apps/frontend/templates/pricing.html:22
+#: apps/frontend/templates/plan.html:20 apps/frontend/templates/pricing.html:23
 msgid "free"
 msgstr "Kostenlos"
 
-#: apps/frontend/templates/plan.html:26 apps/frontend/templates/pricing.html:28
+#: apps/frontend/templates/plan.html:26 apps/frontend/templates/pricing.html:30
 msgid "per month"
 msgstr "pro Monat"
 
-#: apps/frontend/templates/plan.html:27 apps/frontend/templates/pricing.html:29
+#: apps/frontend/templates/plan.html:27 apps/frontend/templates/pricing.html:31
 msgid "per quarter"
 msgstr "pro Quartal"
 
-#: apps/frontend/templates/plan.html:28 apps/frontend/templates/pricing.html:30
+#: apps/frontend/templates/plan.html:28 apps/frontend/templates/pricing.html:32
 msgid "per year"
 msgstr "pro Jahr"
 
@@ -159,7 +159,11 @@ msgstr "Auswählen"
 msgid "popular"
 msgstr "beliebt"
 
-#: apps/frontend/templates/pricing.html:45
+#: apps/frontend/templates/pricing.html:24
+msgid "for one day"
+msgstr ""
+
+#: apps/frontend/templates/pricing.html:48
 msgid "Register"
 msgstr "Registrieren"
 
@@ -194,6 +198,14 @@ msgstr "ein weiteres Quartal"
 #: apps/frontend/views.py:123
 msgid "another year"
 msgstr "ein weiteres Jahr"
+
+#: apps/frontend/views.py:168
+msgid "Error: no instance available. Please try again tomorrow!"
+msgstr ""
+
+#: apps/frontend/views.py:192
+msgid "Error: no instance has been assigned yet."
+msgstr ""
 
 #~ msgid "First name"
 #~ msgstr "Vorname"

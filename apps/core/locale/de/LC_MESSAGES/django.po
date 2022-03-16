@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 07:32+0100\n"
+"POT-Creation-Date: 2022-03-16 20:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,129 +18,129 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps/core/models.py:7 apps/core/models.py:50 apps/core/models.py:74
+#: apps/core/models.py:7 apps/core/models.py:49 apps/core/models.py:74
 msgid "name"
 msgstr ""
 
-#: apps/core/models.py:8 apps/core/models.py:67
-msgid "language"
-msgstr ""
-
-#: apps/core/models.py:9
+#: apps/core/models.py:8
 msgid "value"
 msgstr ""
 
-#: apps/core/models.py:16
+#: apps/core/models.py:15
 msgid "newsletter"
 msgstr ""
 
-#: apps/core/models.py:17
+#: apps/core/models.py:16
 msgid "newsletter_subscribed_on"
 msgstr ""
 
-#: apps/core/models.py:18
+#: apps/core/models.py:17
 msgid "newsletter_cancelled"
 msgstr ""
 
-#: apps/core/models.py:19
+#: apps/core/models.py:18
 msgid "language_code"
 msgstr ""
 
-#: apps/core/models.py:20
+#: apps/core/models.py:19
 msgid "verified"
 msgstr ""
 
-#: apps/core/models.py:21
+#: apps/core/models.py:20
 msgid "verification_token"
 msgstr ""
 
-#: apps/core/models.py:22
+#: apps/core/models.py:21
 msgid "verification_until"
 msgstr ""
 
-#: apps/core/models.py:23
+#: apps/core/models.py:22
 msgid "organisation_name"
 msgstr "Name des Vereins/der Firma"
 
-#: apps/core/models.py:27
+#: apps/core/models.py:26
 msgid "Mr"
 msgstr "Herr"
 
-#: apps/core/models.py:28
+#: apps/core/models.py:27
 msgid "Mrs"
 msgstr "Frau"
 
-#: apps/core/models.py:29
+#: apps/core/models.py:28
 msgid "Mr Dr"
 msgstr "Herr Dr"
 
-#: apps/core/models.py:30
+#: apps/core/models.py:29
 msgid "Mrs Dr"
 msgstr "Frau Dr"
 
-#: apps/core/models.py:33
+#: apps/core/models.py:32
 msgid "Title"
 msgstr "Anrede"
 
-#: apps/core/models.py:36
+#: apps/core/models.py:35
 msgid "first_name"
 msgstr "Vorname"
 
-#: apps/core/models.py:37
+#: apps/core/models.py:36
 msgid "last_name"
 msgstr "Nachname"
 
-#: apps/core/models.py:38
+#: apps/core/models.py:37
 msgid "street"
 msgstr "Straße und Hausnummer"
 
-#: apps/core/models.py:39
+#: apps/core/models.py:38
 msgid "post_code"
 msgstr "PLZ"
 
-#: apps/core/models.py:40
+#: apps/core/models.py:39
 msgid "city"
 msgstr "Ort"
 
-#: apps/core/models.py:41
+#: apps/core/models.py:40
 msgid "country"
 msgstr "Land"
 
-#: apps/core/models.py:42
+#: apps/core/models.py:41
 msgid "email_address"
 msgstr "E-Mail Adresse"
 
-#: apps/core/models.py:43
+#: apps/core/models.py:42
 msgid "is_active"
 msgstr ""
 
-#: apps/core/models.py:49
+#: apps/core/models.py:48 apps/core/models.py:73
 msgid "slug"
 msgstr ""
 
-#: apps/core/models.py:51
+#: apps/core/models.py:50
 msgid "Activation URL"
 msgstr ""
 
-#: apps/core/models.py:52
+#: apps/core/models.py:51
 #, fuzzy
 #| msgid "Instances"
 msgid "Instance URL"
 msgstr "Instanzen"
 
-#: apps/core/models.py:53
+#: apps/core/models.py:52
 msgid "is active"
 msgstr ""
 
-#: apps/core/models.py:54
+#: apps/core/models.py:53
 msgid "number of ports"
 msgstr ""
 
-#: apps/core/models.py:55
+#: apps/core/models.py:54
 msgid "instance prefix"
 msgstr ""
 
-#: apps/core/models.py:68
+#: apps/core/models.py:66
+msgid "language"
+msgstr ""
+
+#: apps/core/models.py:67
 #, fuzzy
 #| msgid "Payment Details"
 msgid "payment_details"
@@ -151,7 +151,7 @@ msgid "Period Length in Months"
 msgstr ""
 
 #: apps/core/models.py:82
-msgid "currency"
+msgid "Currency"
 msgstr ""
 
 #: apps/core/models.py:83
@@ -163,90 +163,86 @@ msgid "Notice Period in Days"
 msgstr ""
 
 #: apps/core/models.py:85
-msgid "Language"
-msgstr ""
-
-#: apps/core/models.py:86
 msgid "Description Target"
 msgstr ""
 
-#: apps/core/models.py:87
+#: apps/core/models.py:86
 msgid "Description Caption"
 msgstr ""
 
-#: apps/core/models.py:88
+#: apps/core/models.py:87
 msgid "Description 1"
 msgstr ""
 
-#: apps/core/models.py:89
+#: apps/core/models.py:88
 msgid "Description 2"
 msgstr ""
 
-#: apps/core/models.py:90
+#: apps/core/models.py:89
 msgid "Description 3"
 msgstr ""
 
-#: apps/core/models.py:91
+#: apps/core/models.py:90
 msgid "Description 4"
 msgstr ""
 
-#: apps/core/models.py:98
+#: apps/core/models.py:97
 msgid "identifier"
 msgstr ""
 
-#: apps/core/models.py:107
+#: apps/core/models.py:106
 msgid "hostname"
 msgstr ""
 
-#: apps/core/models.py:108
+#: apps/core/models.py:107
 msgid "pacuser"
 msgstr ""
 
-#: apps/core/models.py:109
+#: apps/core/models.py:108
 msgid "channel"
 msgstr ""
 
-#: apps/core/models.py:110
+#: apps/core/models.py:109
 msgid "first port"
 msgstr ""
 
-#: apps/core/models.py:111
+#: apps/core/models.py:110
 msgid "last port"
 msgstr ""
 
-#: apps/core/models.py:115
+#: apps/core/models.py:114
 msgid "Status"
 msgstr ""
 
-#: apps/core/models.py:116
+#: apps/core/models.py:115
 msgid "DB Password"
 msgstr ""
 
-#: apps/core/models.py:117
+#: apps/core/models.py:116
 msgid "Initial Password"
 msgstr ""
 
-#: apps/core/models.py:118
+#: apps/core/models.py:117
 msgid "Last Interaction"
 msgstr ""
 
-#: apps/core/models.py:120
+#: apps/core/models.py:119
 msgid "Reserved Until"
 msgstr ""
 
-#: apps/core/models.py:157
+#: apps/core/models.py:156
 msgid "start_date"
 msgstr ""
 
-#: apps/core/models.py:158
+#: apps/core/models.py:157
 msgid "end_date"
 msgstr ""
 
-#: apps/core/models.py:159
+#: apps/core/models.py:158
 msgid "latest_cancel_date"
 msgstr ""
 
-#: apps/core/models.py:160
+#: apps/core/models.py:159
 msgid "auto_renew"
 msgstr ""
 

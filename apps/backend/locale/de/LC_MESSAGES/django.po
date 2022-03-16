@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 07:32+0100\n"
+"POT-Creation-Date: 2022-03-16 20:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,8 +34,60 @@ msgstr ""
 msgid "Plans"
 msgstr ""
 
+#: apps/backend/templates/plans.html:25
+msgid "slug"
+msgstr ""
+
+#: apps/backend/templates/plans.html:26
+msgid "name"
+msgstr ""
+
+#: apps/backend/templates/plans.html:27
+msgid "Cost per Period"
+msgstr ""
+
+#: apps/backend/templates/plans.html:28
+msgid "Currency"
+msgstr ""
+
+#: apps/backend/templates/plans.html:29
+msgid "Period Length in Months"
+msgstr ""
+
+#: apps/backend/templates/plans.html:30
+msgid "Notice Period in Days"
+msgstr ""
+
+#: apps/backend/templates/plans.html:31 apps/backend/templates/products.html:13
+msgid "Action"
+msgstr ""
+
+#: apps/backend/templates/plans.html:42 apps/backend/templates/products.html:21
+msgid "Edit"
+msgstr ""
+
+#: apps/backend/templates/plans.html:43 apps/backend/templates/products.html:22
+msgid "Delete"
+msgstr ""
+
+#: apps/backend/templates/plans.html:49 apps/backend/templates/products.html:27
+msgid "Add New Record"
+msgstr ""
+
 #: apps/backend/templates/products.html:7
 msgid "Products"
+msgstr ""
+
+#: apps/backend/templates/products.html:11
+msgid "Name"
+msgstr ""
+
+#: apps/backend/templates/products.html:12
+msgid "Is Active"
+msgstr ""
+
+#: apps/backend/templates/products.html:20
+msgid "Select"
 msgstr ""
 
 #: apps/backend/templates/registration/login.html:31
