@@ -53,5 +53,8 @@ urlpatterns = [
     path('account/update', frontend_views.account_update),
     path('plan/<str:plan_id>', frontend_views.select_plan),
     path('payment', frontend_views.select_payment),
+    path('contract/<str:product_id>/<str:plan_id>/add', frontend_views.subscribe),
+    path('contract/<str:product_id>/cancel', frontend_views.cancel),
+    path('instance', frontend_views.instance_view),
     path('pricing', frontend_views.display_pricing),
 ]

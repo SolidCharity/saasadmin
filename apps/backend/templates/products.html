@@ -8,25 +8,23 @@
 <table>
 
 <tr>
-		<th>Name</th>
-		<th>Activation URL</th>
-		<th>Is Active</th>
-		<th colspan="3">Action</th>
+    <th>{%translate "Name"%}</th>
+    <th>{%translate "Is Active"%}</th>
+    <th colspan="3">{%translate "Action"%}</th>
 </tr>
 
 {% for product in products %}
 <tr>
-		<td>{{ product.name }} </td>
-		<td>{{ product.activationurl }} </td>
-		<td>{{ product.is_active }} </td>
-		<td><a href="/products/{{ product.slug }}/dashboard" class="button button-primary">Select</a></td>
-		<td><a href="/products/edit/{{ product.id }}" class="button button-primary">Edit</a></td>
-		<td><a href="/products/delete/{{ product.id }}" class="button button-danger">Delete</a></td>
+    <td>{{ product.name }} </td>
+    <td>{{ product.is_active }} </td>
+    <td><a href="/products/{{ product.slug }}/dashboard" class="button button-primary">{%translate "Select"%}</a></td>
+    <td><a href="/products/edit/{{ product.id }}" class="button button-primary">{%translate "Edit"%}</a></td>
+    <td><a href="/products/delete/{{ product.id }}" class="button button-danger">{%translate "Delete"%}</a></td>
 </tr>
 {% endfor %}
 
 </table>
-<center><a href="/products/add" class="button button-primary">Add New Record</a></center>
+<center><a href="/products/add" class="button button-primary">{%translate "Add New Record"%}</a></center>
 </div>
 
 {% endblock %}

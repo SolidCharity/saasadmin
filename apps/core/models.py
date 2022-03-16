@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+from django_countries.fields import CountryField
 
 class SaasConfiguration(models.Model):
     name = models.CharField(_("name"), max_length=64)
@@ -20,13 +21,24 @@ class SaasCustomer(models.Model):
     verification_token = models.CharField(_("verification_token"), max_length=64, null=True)
     verification_until = models.DateTimeField(_("verification_until"), null=True)
     organisation_name = models.CharField(_("organisation_name"), max_length=64, null=True)
-    first_name = models.CharField(_("first_name"), max_length=64, null=True)
-    last_name = models.CharField(_("last_name"), max_length=64, null=True)
-    street = models.CharField(_("street"), max_length=64, null=True)
-    number = models.CharField(_("number"), max_length=11, null=True)
-    post_code = models.CharField(_("post_code"), max_length=10, null=True)
-    city = models.CharField(_("city"), max_length=16, null=True)
-    country_code = models.CharField(_("country_code"), max_length=16, default="DE")
+
+    MR, MRS, MRDR, MRSDR = ('Mr', 'Mrs', 'Mr Dr', 'Mrs Dr')
+    TITLE_CHOICES = (
+        (MR, _("Mr")),
+        (MRS, _("Mrs")),
+        (MRDR, _("Mr Dr")),
+        (MRSDR, _("Mrs Dr")),
+    )
+    title = models.CharField(
+        _("Title"),
+        max_length=64, choices=TITLE_CHOICES, blank=True)
+
+    first_name = models.CharField(_("first_name"), max_length=64, default='')
+    last_name = models.CharField(_("last_name"), max_length=64, default='')
+    street = models.CharField(_("street"), max_length=64, default='')
+    post_code = models.CharField(_("post_code"), max_length=10, default='')
+    city = models.CharField(_("city"), max_length=16, default='')
+    country_code = CountryField(_("country"), default='DE')
     email_address = models.EmailField(_("email_address"))
     is_active = models.BooleanField(_("is_active"), default=True)
 
@@ -66,10 +78,10 @@ class SaasPlan (models.Model):
         on_delete=models.CASCADE,
         related_name="%(app_label)s_%(class)s_list",
     )
-    periodLengthInMonths = models.IntegerField(_("Period Length in Months"))
-    currencyCode = models.CharField(_("currency"), max_length= 3, default= "EUR")
-    costPerPeriod = models.DecimalField(_("Cost per Period"), max_digits= 10, decimal_places= 2)
-    noticePeriodInDays = models.IntegerField(_("Notice Period in Days"))
+    period_length_in_months = models.IntegerField(_("Period Length in Months"))
+    currency_code = models.CharField(_("currency"), max_length= 3, default= "EUR")
+    cost_per_period = models.DecimalField(_("Cost per Period"), max_digits= 10, decimal_places= 2)
+    notice_period_in_days = models.IntegerField(_("Notice Period in Days"))
     language = (models.CharField(_("Language"), max_length=10, default = "DE"))
     descr_target = (models.CharField(_("Description Target"), max_length=200, default = "TODO"))
     descr_caption = (models.CharField(_("Description Caption"), max_length=200, default = "TODO"))
@@ -101,7 +113,6 @@ class SaasInstance(models.Model):
 
     # possible values: in_preparation, new, active, expired, cancelled, to_be_removed, deleted
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
-    auto_renew = models.BooleanField(_("Auto Renew"), default=True)
     db_password = models.CharField(_("DB Password"), max_length=64, default='topsecret')
     initial_password = models.CharField(_("Initial Password"), max_length=64, default='topsecret')
     last_interaction = models.DateTimeField(_("Last Interaction"), null=True)
@@ -143,11 +154,10 @@ class SaasContract(models.Model):
         related_name="%(app_label)s_%(class)s_list",
     )
 
-    start_date = models.DateTimeField(_("start_date"), null=True )
-    end_date = models.DateTimeField(_("end_date"), null=True)
+    start_date = models.DateField(_("start_date"), null=True )
+    end_date = models.DateField(_("end_date"), null=True)
+    latest_cancel_date = models.DateField(_("latest_cancel_date"), null=True)
     auto_renew = models.BooleanField(_("auto_renew"), default= True)
 
     class Meta:
         db_table = "saas_contract"
-
-

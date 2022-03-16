@@ -7,14 +7,14 @@ class PlanForm(forms.ModelForm):
 
     class Meta:
         model = SaasPlan
-        fields = ("name", "periodLengthInMonths", "costPerPeriod", "currencyCode", "noticePeriodInDays", "language", "descr_target", "descr_caption", "descr_1", "descr_2", "descr_3", "descr_4")
+        fields = ("name", "period_length_in_months", "cost_per_period", "currency_code", "notice_period_in_days", "language", "descr_target", "descr_caption", "descr_1", "descr_2", "descr_3", "descr_4")
 
 
 class ProductForm(forms.ModelForm):
 
     class Meta:
         model = SaasProduct
-        fields = "__all__"
+        fields = ("slug", "name", "instance_prefix", "activation_url", "instance_url", "number_of_ports", "is_active")
 
 
 class AddInstancesForm(forms.Form):

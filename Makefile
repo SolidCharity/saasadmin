@@ -25,14 +25,16 @@ quickstart_fedora: fedora_packages quickstart
 fedora_packages:
 	(rpm -qa | grep python3-devel) || sudo dnf install python3-devel
 
-quickstart: create_venv pip_packages create_db create_superuser demo_db
+quickstart_without_demodb: create_venv pip_packages create_db create_superuser
 	@echo 
 	@echo =====================================================================================
 	@echo Installation has finished successfully
 	@echo Run '"'make runserver'"' in order to start the server and access it through one of the following IP addresses
 	@ip addr | sed 's/\/[0-9]*//' | awk '/inet / {print "http://" $$2 ":8000/"}'
-	@echo Login user is '"'admin'"' password is '"'admin'"'
-	
+	@echo For the first login, the user is '"'admin'"', and the password is '"'admin'"'
+
+quickstart: quickstart_without_demodb demo_db
+
 create_superuser:
 	${VENV} echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(is_superuser=True).exists() or User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python manage.py shell
 
@@ -63,3 +65,8 @@ translate:
 
 demo_db:
 	${VENV} cat demodata/insertdemo.sql | python manage.py dbshell
+	(${VENV} cat demodata/insertdemo.psql.sql | python manage.py dbshell) || echo "ignore errors for sqlite"
+
+messages:
+	${VENV} django-admin makemessages -l de
+	${VENV} django-admin compilemessages

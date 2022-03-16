@@ -3,6 +3,9 @@ SECRET_KEY = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ADMINS = [('John', 'john@example.com'), ('Mary', 'mary@example.com')]
+SERVER_EMAIL = 'no-reply@solidcharity.com'
+EMAIL_SUBJECT_PREFIX = '[SaasAdmin]'
 
 #ALLOWED_HOSTS = ["saasadmintest.example.org"]
 
@@ -22,3 +25,5 @@ INSTANCE_ID_START = 10000
 INSTANCE_ID_END = 20000
 PORT_START = 7000
 PORT_END = 9000
+
+COUNTRIES_ONLY = ['DE', 'AT', 'CH', 'NL']

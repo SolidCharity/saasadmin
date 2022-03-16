@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-30 07:55+0100\n"
+"POT-Creation-Date: 2022-03-15 07:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,74 +18,200 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/account.html:25
+#: apps/frontend/templates/account.html:25
 msgid "Personal Details"
 msgstr "Persönliche Daten"
 
-#: templates/account.html:50
-msgid "First name"
-msgstr "Vorname"
-
-#: templates/account.html:60
-msgid "Last name"
-msgstr "Nachname"
-
-#: templates/account.html:70
-msgid "E-Mail"
-msgstr "E-Mail"
-
-#: templates/account.html:80
-msgid "Street and house number"
-msgstr "Straße und Hausnummer"
-
-#: templates/account.html:90
-msgid "Post code"
-msgstr "PLZ"
-
-#: templates/account.html:100
-msgid "City"
-msgstr "Ort"
-
-#: templates/account.html:110
-msgid "Country"
-msgstr "Land"
-
-#: templates/account.html:125
+#: apps/frontend/templates/account.html:42
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
-#: templates/payment.html:11
+#: apps/frontend/templates/instance.html:9
+msgid "Details of your instance"
+msgstr "Infos über Ihre Instanz"
+
+#: apps/frontend/templates/payment.html:15
 msgid "Payment Details"
 msgstr "Zahlungsweise"
 
-#: templates/plan.html:15
+#: apps/frontend/templates/payment.html:22
+msgid "Please choose how you want to pay the invoice:"
+msgstr "Bitte wählen Sie, wie Sie die Rechnung bezahlen wollen:"
+
+#: apps/frontend/templates/payment.html:25
+msgid "You transfer the money via SEPA"
+msgstr "Sie überweisen das Geld mittels SEPA Banküberweisung oder Dauerauftrag"
+
+#: apps/frontend/templates/payment.html:29
+msgid "You allow us to debit your bank account via SEPA"
+msgstr ""
+"Sie geben uns eine Einzugsermächtigung, damit wir den Betrag per SEPA "
+"einziehen können"
+
+#: apps/frontend/templates/payment.html:34
+msgid "You transfer the money via Paypal"
+msgstr "Sie übermitteln das Geld über Paypal"
+
+#: apps/frontend/templates/payment.html:41
+msgid ""
+"We will send you an invoice per E-Mail, and you can please pay that invoice "
+"within 14 days."
+msgstr ""
+"Wir werden Ihnen eine Rechnung per E-Mail schicken, und Sie bezahlen diese "
+"Rechnung bitte innerhalb von 14 Tagen, bzw. wir ziehen den Betrag von Ihrem "
+"Konto ein."
+
+#: apps/frontend/templates/payment.html:42
+msgid ""
+"The current month is free, that means the payment covers the month that "
+"follows the date of your order."
+msgstr ""
+"Der aktuelle Monat ist kostenlos, d.h. die Bezahlung ist ab dem Monat, der "
+"dem Tag Ihrer Bestellung folgt."
+
+#: apps/frontend/templates/payment.html:44
+#, python-format
+msgid ""
+"Up until %(noticePeriod)s before the end of the paid period, you can cancel "
+"the contract by E-Mail. We will provide you with a backup of your data from "
+"your instance."
+msgstr ""
+"Sie können den Vertrag bis %(noticePeriod)s vor dem Ende der bezahlten "
+"Laufzeit kündigen.  Wir stellen Ihnen eine Datensicherung der Daten von "
+"Ihrer Instanz bereit."
+
+#: apps/frontend/templates/payment.html:46
+#, python-format
+msgid ""
+"If you don't cancel the contract, the contract will be automatically renewed "
+"for %(periodLengthExtension)s, and we will send you a new invoice per E-Mail."
+msgstr ""
+"Falls Sie den Vertrag nicht beenden, wird der Vertrag automatisch um "
+"%(periodLengthExtension)s verlängert, und wir werden Ihnen dann eine neue "
+"Rechnung per E-Mail senden."
+
+#: apps/frontend/templates/payment.html:48
+msgid ""
+"If you downgrade your product, then this will affect the next payment "
+"period. You will not receive a refund."
+msgstr ""
+"Wenn Sie einen kleineren Vertrag wählen, wird das bei der nächsten Rechnung "
+"berücksichtigt. Wir erstatten keine Beträge zurück."
+
+#: apps/frontend/templates/payment.html:52
+msgid "To be paid"
+msgstr "Zu zahlen"
+
+#: apps/frontend/templates/payment.html:53
+msgid "per"
+msgstr "pro"
+
+#: apps/frontend/templates/payment.html:55
+msgid "Service Period"
+msgstr "Zeitraum der Dienstleistung"
+
+#: apps/frontend/templates/payment.html:59
+#, python-format
+msgid ""
+"Contract will automatically be renewed by %(periodLengthExtension)s if it is "
+"not cancelled up until:"
+msgstr ""
+"Der Vertrag wird automatisch um %(periodLengthExtension)s verlängert, falls "
+"er nicht bis zu diesem Datum gekündigt wird:"
+
+#: apps/frontend/templates/payment.html:61
+msgid "Contract will end on:"
+msgstr "Der Vertrag läuft aus am:"
+
+#: apps/frontend/templates/payment.html:68
+msgid "Order now"
+msgstr "Jetzt zahlungspflichtig bestellen"
+
+#: apps/frontend/templates/payment.html:78
+msgid "Cancel Contract"
+msgstr "Vertrag beenden"
+
+#: apps/frontend/templates/plan.html:15
 msgid "selected"
 msgstr "ausgewählt"
 
-#: templates/plan.html:20 templates/pricing.html:21
+#: apps/frontend/templates/plan.html:20 apps/frontend/templates/pricing.html:22
 msgid "free"
 msgstr "Kostenlos"
 
-#: templates/plan.html:26 templates/pricing.html:27
+#: apps/frontend/templates/plan.html:26 apps/frontend/templates/pricing.html:28
 msgid "per month"
 msgstr "pro Monat"
 
-#: templates/plan.html:27 templates/pricing.html:28
+#: apps/frontend/templates/plan.html:27 apps/frontend/templates/pricing.html:29
 msgid "per quarter"
 msgstr "pro Quartal"
 
-#: templates/plan.html:28 templates/pricing.html:29
+#: apps/frontend/templates/plan.html:28 apps/frontend/templates/pricing.html:30
 msgid "per year"
 msgstr "pro Jahr"
 
-#: templates/plan.html:43
+#: apps/frontend/templates/plan.html:43
 msgid "Choose"
 msgstr "Auswählen"
 
-#: templates/pricing.html:16
+#: apps/frontend/templates/pricing.html:17
 msgid "popular"
 msgstr "beliebt"
 
-#: templates/pricing.html:44
+#: apps/frontend/templates/pricing.html:45
 msgid "Register"
 msgstr "Registrieren"
+
+#: apps/frontend/views.py:98
+msgid "year"
+msgstr "Jahr"
+
+#: apps/frontend/views.py:100 apps/frontend/views.py:106
+msgid "month"
+msgstr "Monat"
+
+#: apps/frontend/views.py:102
+msgid "months"
+msgstr "Monate"
+
+#: apps/frontend/views.py:108
+msgid "weeks"
+msgstr "Wochen"
+
+#: apps/frontend/views.py:110
+msgid "days"
+msgstr "Tage"
+
+#: apps/frontend/views.py:119
+msgid "another month"
+msgstr "einen weiteren Monat"
+
+#: apps/frontend/views.py:121
+msgid "another quarter"
+msgstr "ein weiteres Quartal"
+
+#: apps/frontend/views.py:123
+msgid "another year"
+msgstr "ein weiteres Jahr"
+
+#~ msgid "First name"
+#~ msgstr "Vorname"
+
+#~ msgid "Last name"
+#~ msgstr "Nachname"
+
+#~ msgid "E-Mail"
+#~ msgstr "E-Mail"
+
+#~ msgid "Street and house number"
+#~ msgstr "Straße und Hausnummer"
+
+#~ msgid "Post code"
+#~ msgstr "PLZ"
+
+#~ msgid "City"
+#~ msgstr "Ort"
+
+#~ msgid "Country"
+#~ msgstr "Land"

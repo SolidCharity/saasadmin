@@ -1,5 +1,8 @@
+python-dateutil
+requests
 django
 djangorestframework
 django-registration
+django-countries
 # mysqlclient
 # psycopg2

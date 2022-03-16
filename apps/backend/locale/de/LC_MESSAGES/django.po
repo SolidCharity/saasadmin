@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-18 06:02+0100\n"
+"POT-Creation-Date: 2022-03-15 07:32+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,18 +18,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/django_registration/registration_form.html:30
+#: apps/backend/templates/customers.html:7
+msgid "Customers"
+msgstr ""
+
+#: apps/backend/templates/django_registration/registration_form.html:30
 msgid "Register"
 msgstr "Zugang einrichten"
 
-#: templates/registration/login.html:31
+#: apps/backend/templates/instances.html:6
+msgid "Instances"
+msgstr ""
+
+#: apps/backend/templates/plans.html:7
+msgid "Plans"
+msgstr ""
+
+#: apps/backend/templates/products.html:7
+msgid "Products"
+msgstr ""
+
+#: apps/backend/templates/registration/login.html:31
 msgid "login"
 msgstr "Anmelden"
 
-#: templates/registration/login.html:36
+#: apps/backend/templates/registration/login.html:36
 msgid "Lost password?"
 msgstr "Passwort vergessen?"
 
-#: templates/registration/login.html:37
+#: apps/backend/templates/registration/login.html:37
 msgid "Create a free account"
 msgstr "Einen kostenlosen Zugang einrichten"

@@ -19,15 +19,15 @@
 
 <div class="pricing-price">
 	<span class="pricing-currency">
-		{% if plan.costPerPeriod == 0 %} {%translate "free"%}
+		{% if plan.cost_per_period == 0 %} {%translate "free"%}
 		{%else%}
-			{%if plan.currencyCode == 'EUR' %}{{plan.costPerPeriod.normalize}}&euro;
-			{%elif plan.currencyCode == 'USD'%}${{plan.costPerPeriod.normalize}}
-			{%else%}{{plan.costPerPeriod.normalize}} {{plan.currencyCode}}
+			{%if plan.currency_code == 'EUR' %}{{plan.cost_per_period.normalize}}&euro;
+			{%elif plan.currency_code == 'USD'%}${{plan.cost_per_period.normalize}}
+			{%else%}{{plan.cost_per_period.normalize}} {{plan.currency_code}}
 			{%endif%}
-			{%if plan.periodLengthInMonths == 1 %}{% translate "per month" %}
-			{%elif plan.periodLengthInMonths == 3 %}{% translate "per quarter" %}
-			{%elif plan.periodLengthInMonths == 12 %}{% translate "per year" %}
+			{%if plan.period_length_in_months == 1 %}{% translate "per month" %}
+			{%elif plan.period_length_in_months == 3 %}{% translate "per quarter" %}
+			{%elif plan.period_length_in_months == 12 %}{% translate "per year" %}
 			{%endif%}
 		{% endif %}</span>
 	<span class="pricing-date">{{plan.descr_caption}}</span>
