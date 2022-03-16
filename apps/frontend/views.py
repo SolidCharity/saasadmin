@@ -78,7 +78,7 @@ def select_plan(request, plan_id):
 
     # load booked plan from the database
     if current_plan:
-        plan_id = current_plan.name
+        plan_id = current_plan.slug
     else:
         plan_id = ''
 

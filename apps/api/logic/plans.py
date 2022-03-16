@@ -9,4 +9,4 @@ class LogicPlans:
 
     def get_plan(self, product, plan_id):
         plans = self.get_plans(product)
-        return plans.filter(name=plan_id).first()
+        return plans.filter(slug=plan_id).first()

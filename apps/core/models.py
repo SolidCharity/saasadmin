@@ -70,6 +70,7 @@ class SaasProductLanguage (models.Model):
         db_table = "saas_product_language"
 
 class SaasPlan (models.Model):
+    slug = models.CharField(_("slug"), max_length=16)
     name = models.CharField(_("name"), max_length=16)
     product = models.ForeignKey(
         SaasProduct,
@@ -78,7 +79,7 @@ class SaasPlan (models.Model):
         related_name="%(app_label)s_%(class)s_list",
     )
     period_length_in_months = models.IntegerField(_("Period Length in Months"))
-    currency_code = models.CharField(_("currency"), max_length= 3, default= "EUR")
+    currency_code = models.CharField(_("Currency"), max_length= 3, default= "EUR")
     cost_per_period = models.DecimalField(_("Cost per Period"), max_digits= 10, decimal_places= 2)
     notice_period_in_days = models.IntegerField(_("Notice Period in Days"))
     descr_target = (models.CharField(_("Description Target"), max_length=200, default = "TODO"))
