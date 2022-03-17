@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 20:25+0100\n"
+"POT-Creation-Date: 2022-03-17 22:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: apps/api/logic/customers.py:27
 #, python-format
 msgid "Missing free instance for %s"
@@ -27,21 +28,21 @@ msgstr ""
 msgid "Assigning of %s instance for customer %d failed"
 msgstr ""
 
-#: apps/api/logic/customers.py:45
+#: apps/api/logic/customers.py:47
 msgid "SaasAdmin Error during activation"
 msgstr ""
 
-#: apps/api/logic/customers.py:45
+#: apps/api/logic/customers.py:47
 #, python-format
 msgid "Failed activation of %s instance %s for customer %d"
 msgstr ""
 
-#: apps/api/logic/customers.py:52
+#: apps/api/logic/customers.py:54
 #, python-format
 msgid "Instance for %s assigned"
 msgstr ""
 
-#: apps/api/logic/customers.py:52
+#: apps/api/logic/customers.py:54
 #, python-format
 msgid "Nice, an instance of %s was booked for customer %d"
 msgstr ""

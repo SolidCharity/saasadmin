@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 20:25+0100\n"
+"POT-Creation-Date: 2022-03-17 22:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps/core/models.py:7 apps/core/models.py:49 apps/core/models.py:74
+#: apps/core/models.py:7 apps/core/models.py:49 apps/core/models.py:61
 msgid "name"
 msgstr ""
 
@@ -110,7 +110,7 @@ msgstr "E-Mail Adresse"
 msgid "is_active"
 msgstr ""
 
-#: apps/core/models.py:48 apps/core/models.py:73
+#: apps/core/models.py:48 apps/core/models.py:60
 msgid "slug"
 msgstr ""
 
@@ -136,114 +136,132 @@ msgstr ""
 msgid "instance prefix"
 msgstr ""
 
-#: apps/core/models.py:66
-msgid "language"
-msgstr ""
-
-#: apps/core/models.py:67
-#, fuzzy
-#| msgid "Payment Details"
-msgid "payment_details"
-msgstr "Zahlungsweise"
-
-#: apps/core/models.py:81
+#: apps/core/models.py:68
 msgid "Period Length in Months"
 msgstr ""
 
-#: apps/core/models.py:82
+#: apps/core/models.py:69
 msgid "Currency"
 msgstr ""
 
-#: apps/core/models.py:83
+#: apps/core/models.py:70
 msgid "Cost per Period"
 msgstr ""
 
-#: apps/core/models.py:84
+#: apps/core/models.py:71
 msgid "Notice Period in Days"
 msgstr ""
 
-#: apps/core/models.py:85
+#: apps/core/models.py:72
 msgid "Description Target"
 msgstr ""
 
-#: apps/core/models.py:86
+#: apps/core/models.py:73
 msgid "Description Caption"
 msgstr ""
 
-#: apps/core/models.py:87
+#: apps/core/models.py:74
 msgid "Description 1"
 msgstr ""
 
-#: apps/core/models.py:88
+#: apps/core/models.py:75
 msgid "Description 2"
 msgstr ""
 
-#: apps/core/models.py:89
+#: apps/core/models.py:76
 msgid "Description 3"
 msgstr ""
 
-#: apps/core/models.py:90
+#: apps/core/models.py:77
 msgid "Description 4"
 msgstr ""
 
-#: apps/core/models.py:97
+#: apps/core/models.py:84
 msgid "identifier"
 msgstr ""
 
-#: apps/core/models.py:106
+#: apps/core/models.py:93
 msgid "hostname"
 msgstr ""
 
-#: apps/core/models.py:107
+#: apps/core/models.py:94
 msgid "pacuser"
 msgstr ""
 
-#: apps/core/models.py:108
+#: apps/core/models.py:95
 msgid "channel"
 msgstr ""
 
-#: apps/core/models.py:109
+#: apps/core/models.py:96
 msgid "first port"
 msgstr ""
 
-#: apps/core/models.py:110
+#: apps/core/models.py:97
 msgid "last port"
 msgstr ""
 
-#: apps/core/models.py:114
+#: apps/core/models.py:101
 msgid "Status"
 msgstr ""
 
-#: apps/core/models.py:115
+#: apps/core/models.py:102
 msgid "DB Password"
 msgstr ""
 
-#: apps/core/models.py:116
+#: apps/core/models.py:103
 msgid "Initial Password"
 msgstr ""
 
-#: apps/core/models.py:117
+#: apps/core/models.py:104
 msgid "Last Interaction"
 msgstr ""
 
-#: apps/core/models.py:119
+#: apps/core/models.py:106
 msgid "Reserved Until"
 msgstr ""
 
-#: apps/core/models.py:156
+#: apps/core/models.py:143
 msgid "start_date"
 msgstr ""
 
-#: apps/core/models.py:157
+#: apps/core/models.py:144
 msgid "end_date"
 msgstr ""
 
-#: apps/core/models.py:158
+#: apps/core/models.py:145
 msgid "latest_cancel_date"
 msgstr ""
 
-#: apps/core/models.py:159
+#: apps/core/models.py:146
 msgid "auto_renew"
+msgstr ""
+
+#: apps/core/models.py:147
+msgid "confirmed"
+msgstr ""
+
+#: apps/core/models.py:149
+#, fuzzy
+#| msgid "Payment Details"
+msgid "Payment Method"
+msgstr "Zahlungsweise"
+
+#: apps/core/models.py:150
+#, fuzzy
+#| msgid "country"
+msgid "Account Owner"
+msgstr "Land"
+
+#: apps/core/models.py:151
+msgid "Account IBAN"
+msgstr ""
+
+#: apps/core/models.py:152
+msgid "SEPA Mandate"
+msgstr ""
+
+#: apps/core/models.py:153
+msgid "Date of SEPA Mandate"
 msgstr ""
 
 #: apps/core/templates/base.html:5 apps/core/templates/base.html:17
@@ -279,23 +297,30 @@ msgid "Payment Details"
 msgstr "Zahlungsweise"
 
 #: apps/core/templates/base.html:30
-#, fuzzy
-#| msgid "Instances"
-msgid "Instance Details"
-msgstr "Instanzen"
+msgid "Contract"
+msgstr "Vertrag"
 
-#: apps/core/templates/base.html:32
+#: apps/core/templates/base.html:31
+msgid "Instance Details"
+msgstr "Zugangsdaten"
+
+#: apps/core/templates/base.html:33
 msgid "Logout"
 msgstr "Abmelden"
 
-#: apps/core/templates/base.html:33 apps/core/templates/base.html:39
+#: apps/core/templates/base.html:34 apps/core/templates/base.html:40
 msgid "Fork me"
 msgstr "Zum Code"
 
-#: apps/core/templates/base.html:38
+#: apps/core/templates/base.html:39
 msgid "Login"
 msgstr "Anmelden"
 
-#: apps/core/templates/base.html:40
+#: apps/core/templates/base.html:41
 msgid "Pricing"
 msgstr "Preise"
+
+#, fuzzy
+#~| msgid "Payment Details"
+#~ msgid "payment_details"
+#~ msgstr "Zahlungsweise"

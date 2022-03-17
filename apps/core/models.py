@@ -56,19 +56,6 @@ class SaasProduct (models.Model):
     class Meta:
         db_table = "saas_product"
 
-class SaasProductLanguage (models.Model):
-    product = models.ForeignKey(
-        SaasProduct,
-        null=False, blank=False, default=None,
-        on_delete=models.CASCADE,
-        related_name="%(app_label)s_%(class)s_list",
-    )
-    language = (models.CharField(_("language"), max_length=10, default = "DE"))
-    payment_details = (models.CharField(_("payment_details"), max_length=300, default = ""))
-
-    class Meta:
-        db_table = "saas_product_language"
-
 class SaasPlan (models.Model):
     slug = models.CharField(_("slug"), max_length=16)
     name = models.CharField(_("name"), max_length=16)
@@ -82,12 +69,12 @@ class SaasPlan (models.Model):
     currency_code = models.CharField(_("Currency"), max_length= 3, default= "EUR")
     cost_per_period = models.DecimalField(_("Cost per Period"), max_digits= 10, decimal_places= 2)
     notice_period_in_days = models.IntegerField(_("Notice Period in Days"))
-    descr_target = (models.CharField(_("Description Target"), max_length=200, default = "TODO"))
-    descr_caption = (models.CharField(_("Description Caption"), max_length=200, default = "TODO"))
-    descr_1 = (models.CharField(_("Description 1"), max_length=200, default = "TODO"))
-    descr_2 = (models.CharField(_("Description 2"), max_length=200, default = "TODO"))
-    descr_3 = (models.CharField(_("Description 3"), max_length=200, default = "TODO"))
-    descr_4 = (models.CharField(_("Description 4"), max_length=200, default = "TODO"))
+    descr_target = models.CharField(_("Description Target"), max_length=200, default = "TODO")
+    descr_caption = models.CharField(_("Description Caption"), max_length=200, default = "TODO")
+    descr_1 = models.CharField(_("Description 1"), max_length=200, default = "TODO")
+    descr_2 = models.CharField(_("Description 2"), max_length=200, default = "TODO")
+    descr_3 = models.CharField(_("Description 3"), max_length=200, default = "TODO")
+    descr_4 = models.CharField(_("Description 4"), max_length=200, default = "TODO")
 
     class Meta:
         db_table = "saas_plan"
@@ -145,10 +132,10 @@ class SaasContract(models.Model):
         on_delete=models.CASCADE,
         related_name="%(app_label)s_%(class)s_list",
     )
-    #instance_id
+
     instance = models.ForeignKey(
         SaasInstance,
-        null=False, blank=False, default=None,
+        null=True, blank=False, default=None,
         on_delete=models.CASCADE,
         related_name="%(app_label)s_%(class)s_list",
     )
@@ -156,7 +143,14 @@ class SaasContract(models.Model):
     start_date = models.DateField(_("start_date"), null=True )
     end_date = models.DateField(_("end_date"), null=True)
     latest_cancel_date = models.DateField(_("latest_cancel_date"), null=True)
-    auto_renew = models.BooleanField(_("auto_renew"), default= True)
+    auto_renew = models.BooleanField(_("auto_renew"), default=True)
+    confirmed = models.BooleanField(_("confirmed"), default=False)
+
+    payment_method = models.CharField(_("Payment Method"), max_length=20, default="SEPA_TRANSFER") 
+    account_owner = models.CharField(_("Account Owner"), max_length=200, default="")
+    account_iban = models.CharField(_("Account IBAN"), max_length=64, default="")
+    sepa_mandate = models.CharField(_("SEPA Mandate"), max_length=64, default="")
+    sepa_mandate_date = models.DateField(_("Date of SEPA Mandate"), null=True)
 
     class Meta:
         db_table = "saas_contract"

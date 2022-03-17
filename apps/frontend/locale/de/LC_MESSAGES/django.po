@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-16 20:25+0100\n"
+"POT-Creation-Date: 2022-03-17 22:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,11 +26,121 @@ msgstr "Persönliche Daten"
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
+#: apps/frontend/templates/contract.html:14
+msgid "Contract Details"
+msgstr "Vertrag"
+
+#: apps/frontend/templates/contract.html:22
+msgid "This is a free test, limited for 24 hours."
+msgstr "Das ist ein kostenloser Test, auf 24 Stunden beschränkt."
+
+#: apps/frontend/templates/contract.html:23
+msgid "There is no backup."
+msgstr "Es gibt keine Datensicherung."
+
+#: apps/frontend/templates/contract.html:24
+msgid ""
+"You can upgrade your contract within the test period to continue using your "
+"data."
+msgstr ""
+"Sie können Ihren Vertrag innerhalb des Testzeitraums auf einen bezahlten "
+"Vertrag umstellen, um Ihre Daten weiter zu benutzen."
+
+#: apps/frontend/templates/contract.html:28
+msgid "Confirm"
+msgstr "Bestätigen"
+
+#: apps/frontend/templates/contract.html:35
+msgid ""
+"We will send you an invoice per E-Mail, and you can please pay that invoice "
+"within 14 days."
+msgstr ""
+"Wir werden Ihnen eine Rechnung per E-Mail schicken, und Sie bezahlen diese "
+"Rechnung bitte innerhalb von 14 Tagen."
+
+#: apps/frontend/templates/contract.html:37
+msgid ""
+"We will send you an invoice per E-Mail, and will withdraw the money from "
+"your account 14 days later."
+msgstr ""
+"Wir werden Ihnen eine Rechnung per E-Mail schicken, und werden 14 Tage "
+"später den Betrag per Bankeinzug einziehen."
+
+#: apps/frontend/templates/contract.html:41
+msgid ""
+"The current month is free, that means the payment covers the month that "
+"follows the date of your order."
+msgstr ""
+"Der aktuelle Monat ist kostenlos, d.h. die Bezahlung ist ab dem Monat, der "
+"dem Tag Ihrer Bestellung folgt."
+
+#: apps/frontend/templates/contract.html:43
+#, python-format
+msgid ""
+"Up until %(noticePeriod)s before the end of the paid period, you can cancel "
+"the contract by E-Mail. We will provide you with a backup of your data from "
+"your instance."
+msgstr ""
+"Sie können den Vertrag bis %(noticePeriod)s vor dem Ende der bezahlten "
+"Laufzeit kündigen.  Wir stellen Ihnen eine Datensicherung der Daten von "
+"Ihrer Instanz bereit."
+
+#: apps/frontend/templates/contract.html:45
+#, python-format
+msgid ""
+"If you don't cancel the contract, the contract will be automatically renewed "
+"for %(periodLengthExtension)s, and we will send you a new invoice per E-Mail."
+msgstr ""
+"Falls Sie den Vertrag nicht beenden, wird der Vertrag automatisch um "
+"%(periodLengthExtension)s verlängert, und wir werden Ihnen dann eine neue "
+"Rechnung per E-Mail senden."
+
+#: apps/frontend/templates/contract.html:47
+msgid ""
+"If you downgrade your product, then this will affect the next payment "
+"period. You will not receive a refund."
+msgstr ""
+"Wenn Sie einen kleineren Vertrag wählen, wird das bei der nächsten Rechnung "
+"berücksichtigt. Wir erstatten keine Beträge zurück."
+
+#: apps/frontend/templates/contract.html:51
+msgid "To be paid"
+msgstr "Zu zahlen"
+
+#: apps/frontend/templates/contract.html:52
+msgid "per"
+msgstr "pro"
+
+#: apps/frontend/templates/contract.html:54
+msgid "Service Period"
+msgstr "Zeitraum der Dienstleistung"
+
+#: apps/frontend/templates/contract.html:58
+#, python-format
+msgid ""
+"Contract will automatically be renewed by %(periodLengthExtension)s if it is "
+"not cancelled up until:"
+msgstr ""
+"Der Vertrag wird automatisch um %(periodLengthExtension)s verlängert, falls "
+"er nicht bis zu diesem Datum gekündigt wird:"
+
+#: apps/frontend/templates/contract.html:60
+msgid "Contract will end on:"
+msgstr "Der Vertrag läuft aus am:"
+
+#: apps/frontend/templates/contract.html:67
+msgid "Order now"
+msgstr "Jetzt zahlungspflichtig bestellen"
+
+#: apps/frontend/templates/contract.html:79
+msgid "Cancel Contract"
+msgstr "Vertrag beenden"
+
 #: apps/frontend/templates/instance.html:9
 msgid "Details of your instance"
 msgstr "Infos über Ihre Instanz"
 
-#: apps/frontend/templates/payment.html:15
+#: apps/frontend/templates/payment.html:13
 msgid "Payment Details"
 msgstr "Zahlungsweise"
 
@@ -42,116 +152,57 @@ msgstr "Bitte wählen Sie, wie Sie die Rechnung bezahlen wollen:"
 msgid "You transfer the money via SEPA"
 msgstr "Sie überweisen das Geld mittels SEPA Banküberweisung oder Dauerauftrag"
 
-#: apps/frontend/templates/payment.html:29
+#: apps/frontend/templates/payment.html:28
 msgid "You allow us to debit your bank account via SEPA"
 msgstr ""
 "Sie geben uns eine Einzugsermächtigung, damit wir den Betrag per SEPA "
 "einziehen können"
 
-#: apps/frontend/templates/payment.html:34
+#: apps/frontend/templates/payment.html:37
+msgid "Account Owner"
+msgstr "Kontoinhaber"
+
+#: apps/frontend/templates/payment.html:39
+msgid "Account IBAN"
+msgstr "IBAN des Kontos"
+
+#: apps/frontend/templates/payment.html:45
 msgid "You transfer the money via Paypal"
 msgstr "Sie übermitteln das Geld über Paypal"
 
-#: apps/frontend/templates/payment.html:41
-msgid ""
-"We will send you an invoice per E-Mail, and you can please pay that invoice "
-"within 14 days."
-msgstr ""
-"Wir werden Ihnen eine Rechnung per E-Mail schicken, und Sie bezahlen diese "
-"Rechnung bitte innerhalb von 14 Tagen, bzw. wir ziehen den Betrag von Ihrem "
-"Konto ein."
-
-#: apps/frontend/templates/payment.html:42
-msgid ""
-"The current month is free, that means the payment covers the month that "
-"follows the date of your order."
-msgstr ""
-"Der aktuelle Monat ist kostenlos, d.h. die Bezahlung ist ab dem Monat, der "
-"dem Tag Ihrer Bestellung folgt."
-
-#: apps/frontend/templates/payment.html:44
-#, python-format
-msgid ""
-"Up until %(noticePeriod)s before the end of the paid period, you can cancel "
-"the contract by E-Mail. We will provide you with a backup of your data from "
-"your instance."
-msgstr ""
-"Sie können den Vertrag bis %(noticePeriod)s vor dem Ende der bezahlten "
-"Laufzeit kündigen.  Wir stellen Ihnen eine Datensicherung der Daten von "
-"Ihrer Instanz bereit."
-
-#: apps/frontend/templates/payment.html:46
-#, python-format
-msgid ""
-"If you don't cancel the contract, the contract will be automatically renewed "
-"for %(periodLengthExtension)s, and we will send you a new invoice per E-Mail."
-msgstr ""
-"Falls Sie den Vertrag nicht beenden, wird der Vertrag automatisch um "
-"%(periodLengthExtension)s verlängert, und wir werden Ihnen dann eine neue "
-"Rechnung per E-Mail senden."
-
-#: apps/frontend/templates/payment.html:48
-msgid ""
-"If you downgrade your product, then this will affect the next payment "
-"period. You will not receive a refund."
-msgstr ""
-"Wenn Sie einen kleineren Vertrag wählen, wird das bei der nächsten Rechnung "
-"berücksichtigt. Wir erstatten keine Beträge zurück."
-
 #: apps/frontend/templates/payment.html:52
-msgid "To be paid"
-msgstr "Zu zahlen"
+msgid "Confirm and Continue to next page"
+msgstr "Bestätigen und zur nächsten Seite gehen"
 
-#: apps/frontend/templates/payment.html:53
-msgid "per"
-msgstr "pro"
-
-#: apps/frontend/templates/payment.html:55
-msgid "Service Period"
-msgstr "Zeitraum der Dienstleistung"
-
-#: apps/frontend/templates/payment.html:59
-#, python-format
-msgid ""
-"Contract will automatically be renewed by %(periodLengthExtension)s if it is "
-"not cancelled up until:"
-msgstr ""
-"Der Vertrag wird automatisch um %(periodLengthExtension)s verlängert, falls "
-"er nicht bis zu diesem Datum gekündigt wird:"
-
-#: apps/frontend/templates/payment.html:61
-msgid "Contract will end on:"
-msgstr "Der Vertrag läuft aus am:"
-
-#: apps/frontend/templates/payment.html:68
-msgid "Order now"
-msgstr "Jetzt zahlungspflichtig bestellen"
-
-#: apps/frontend/templates/payment.html:78
-msgid "Cancel Contract"
-msgstr "Vertrag beenden"
+#: apps/frontend/templates/payment.html:54
+msgid "Confirm Payment Method"
+msgstr "Zahlungsweise bestätigen"
 
 #: apps/frontend/templates/plan.html:15
 msgid "selected"
 msgstr "ausgewählt"
 
-#: apps/frontend/templates/plan.html:20 apps/frontend/templates/pricing.html:23
+#: apps/frontend/templates/plan.html:21 apps/frontend/templates/pricing.html:23
 msgid "free"
 msgstr "Kostenlos"
 
-#: apps/frontend/templates/plan.html:26 apps/frontend/templates/pricing.html:30
+#: apps/frontend/templates/plan.html:22 apps/frontend/templates/pricing.html:24
+msgid "for one day"
+msgstr "für einen Tag"
+
+#: apps/frontend/templates/plan.html:28 apps/frontend/templates/pricing.html:30
 msgid "per month"
 msgstr "pro Monat"
 
-#: apps/frontend/templates/plan.html:27 apps/frontend/templates/pricing.html:31
+#: apps/frontend/templates/plan.html:29 apps/frontend/templates/pricing.html:31
 msgid "per quarter"
 msgstr "pro Quartal"
 
-#: apps/frontend/templates/plan.html:28 apps/frontend/templates/pricing.html:32
+#: apps/frontend/templates/plan.html:30 apps/frontend/templates/pricing.html:32
 msgid "per year"
 msgstr "pro Jahr"
 
-#: apps/frontend/templates/plan.html:43
+#: apps/frontend/templates/plan.html:45
 msgid "Choose"
 msgstr "Auswählen"
 
@@ -159,51 +210,51 @@ msgstr "Auswählen"
 msgid "popular"
 msgstr "beliebt"
 
-#: apps/frontend/templates/pricing.html:24
-msgid "for one day"
-msgstr ""
-
 #: apps/frontend/templates/pricing.html:48
 msgid "Register"
 msgstr "Registrieren"
 
-#: apps/frontend/views.py:98
+#: apps/frontend/views.py:110
+msgid "Please specify account owner and IBAN"
+msgstr "Bitte den Kontoinhaber und die IBAN angeben"
+
+#: apps/frontend/views.py:133
 msgid "year"
 msgstr "Jahr"
 
-#: apps/frontend/views.py:100 apps/frontend/views.py:106
+#: apps/frontend/views.py:135 apps/frontend/views.py:141
 msgid "month"
 msgstr "Monat"
 
-#: apps/frontend/views.py:102
+#: apps/frontend/views.py:137
 msgid "months"
 msgstr "Monate"
 
-#: apps/frontend/views.py:108
+#: apps/frontend/views.py:143
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/frontend/views.py:110
+#: apps/frontend/views.py:145
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:119
+#: apps/frontend/views.py:173
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:121
+#: apps/frontend/views.py:175
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:123
+#: apps/frontend/views.py:177
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/frontend/views.py:168
+#: apps/frontend/views.py:246
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/frontend/views.py:192
+#: apps/frontend/views.py:270
 msgid "Error: no instance has been assigned yet."
 msgstr ""
 

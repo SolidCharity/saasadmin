@@ -28,3 +28,8 @@ div.withborder {
   padding: 5px;
   border-width: 1px;
 }
+
+div.error {
+    color: red;
+    font-weight: bolder;
+}

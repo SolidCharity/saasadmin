@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
-    
+
 {% block content %}
 
-
-<!-- personal info -->
 <div details>
-  <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;" id="account_field">
+  <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;">
 
     <div class="container paymentform" payment="">
 
@@ -14,71 +12,55 @@
         <div class="col">
           <h2 class="text-center">{% translate "Payment Details" %}</h2>
 
-          <form method="POST" class="post-form" action="/contract/{{product.slug}}/{{plan.name}}/add">
+          {%if no_payment%}
+          {%translate "Your current contract is for free, there is no payment." %}
+          {%else%}
+
+          <form method="POST" class="post-form" action="/paymentmethod">
           {% csrf_token %}
+
+          <input type="hidden" name="plan" value="{{plan.slug}}">
 
           <!-- payment options -->
           <div class="center-item-row">
             {%translate "Please choose how you want to pay the invoice:" %}
             <br/><br/>
-            <input type="radio" id="sepa_transfer" name="paymentMethod" value="sepa_transfer" checked="" {%if not is_new_order%}disabled="disabled" {%endif%}>
+            <input type="radio" id="sepa_transfer" name="payment_method" value="SEPA_TRANSFER" {%if contract.payment_method == 'SEPA_TRANSFER'%} checked=""{%endif%}>
             <label for="sepa_transfer">{%translate "You transfer the money via SEPA" %}</label>
+            <br/>
+            <input type="radio" id="sepa_directdebit" name="payment_method" value="SEPA_DIRECTDEBIT" {%if contract.payment_method == 'SEPA_DIRECTDEBIT'%} checked=""{%endif%}>
+            <label for="sepa_directdebit">{%translate "You allow us to debit your bank account via SEPA"%}:</label>
+            <br/>
+            <ul style="display:inline-block;margin-left:1em;">
+                {%if errormessage %}
+                <div class="error">
+                    {{errormessage}}
+                </div>
+                {%endif%}
+
+                <label for="account_owner">{%translate "Account Owner" %}</label>
+                <input type="text" id="account_owner" name="account_owner" value="{{contract.account_owner}}">
+                <label for="account_iban">{%translate "Account IBAN" %}</label>
+                <input type="text" id="account_iban" name="account_iban" value="{{contract.account_iban}}">
+            </ul>
             <!--
             <br/>
-            <input type="radio" id="sepa_directdebit" name="paymentMethod" value="sepa_directdebit" {%if not is_new_order%}disabled="disabled" {%endif%}>
-            <label for="sepa_directdebit">{%translate "You allow us to debit your bank account via SEPA"%}</label>
-            -->
-            <!--
-            <br/>
-            <input type="radio" id="paypal" name="paymentMethod" value="paypal">
+            <input type="radio" id="paypal" name="payment_method" value="PAYPAL_TRANSFER">
             <label for="paypal">{%translate "You transfer the money via Paypal"%}</label>
             -->
             <br/>
-            <br/>
           </div>
 
-          <div class="center-item-row">
-            <span>{% blocktrans %}We will send you an invoice per E-Mail, and you can please pay that invoice within 14 days.{% endblocktrans %}</span>
-            <span>{% blocktrans %}The current month is free, that means the payment covers the month that follows the date of your order.{% endblocktrans %}</span>
-            <br>
-            <span>{% blocktrans %}Up until {{ noticePeriod }} before the end of the paid period, you can cancel the contract by E-Mail. We will provide you with a backup of your data from your instance.{% endblocktrans %}</span>
-            <br>
-            <span>{% blocktrans %}If you don't cancel the contract, the contract will be automatically renewed for {{ periodLengthExtension }}, and we will send you a new invoice per E-Mail.{% endblocktrans %}</span>
-            <br>
-            <span>{% blocktrans %}If you downgrade your product, then this will affect the next payment period. You will not receive a refund.{% endblocktrans %}</span>
-            <br><br>
-          </div>
-
-          <div>{%translate "To be paid"%}</div>
-          <div class='withborder'>{{plan.cost_per_period}} {{plan.currency_code}} {%translate "per"%} {{periodLength}}</div>
-
-          <div>{%translate "Service Period"%}</div>
-          <div class='withborder'>{{contract.start_date|date}} - {{contract.end_date|date}}</div>
-
-          {%if contract.auto_renew %}
-          <div>{% blocktrans %}Contract will automatically be renewed by {{periodLengthExtension}} if it is not cancelled up until:{% endblocktrans %} {{ contract.latest_cancel_date|date }}</div>
-          {%else%}
-          <div>{% blocktrans %}Contract will end on:{% endblocktrans %} {{contract.end_date|date}}</div>
-          {%endif%}
-
-          <br/>
-
-          {%if is_new_order%}
           <div class="col-6">
-            <button type="confirm" class="button-primary" onclick="save_changes(this)">{%translate "Order now"%}</button>
+              {%if is_new_contract%}
+              <button type="confirm" class="button-primary">{%translate "Confirm and Continue to next page"%}</button>
+              {%else%}
+              <button type="confirm" class="button-primary">{%translate "Confirm Payment Method"%}</button>
+              {%endif%}
           </div>
-          {%endif%}
+        </form>
 
-          </form>
-
-          {%if contract_exists%}
-          <form method="POST" class="post-form" action="/contract/{{product.slug}}/cancel">
-            {% csrf_token %}
-            <div class="col-6">
-              <button type="button" class="btn danger">{%translate "Cancel Contract"%}</button>
-            </div>
-          </form>
-          {%endif%}
+        {%endif%}
 
         </div>
       </div>

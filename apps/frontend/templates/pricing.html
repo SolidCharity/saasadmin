@@ -18,31 +18,34 @@
 <h4 class="pricing-title">{{plan.name}}</h4>
 
 <div class="pricing-price">
-	<span class="pricing-currency">
-		{% if plan.cost_per_period == 0 %} {%translate "free"%}
-		{%else%}
-			{%if plan.currency_code == 'EUR' %}{{plan.cost_per_period.normalize}}&euro;
-			{%elif plan.currency_code == 'USD'%}${{plan.cost_per_period.normalize}}
-			{%else%}{{plan.cost_per_period.normalize}} {{plan.currency_code}}
-			{%endif%}
-			{%if plan.period_length_in_months == 1 %}{% translate "per month" %}
-			{%elif plan.period_length_in_months == 3 %}{% translate "per quarter" %}
-			{%elif plan.period_length_in_months == 12 %}{% translate "per year" %}
-			{%endif%}
-		{% endif %}</span>
-	<span class="pricing-date">{{plan.descr_caption}}</span>
+    <span class="pricing-currency">
+        {% if plan.cost_per_period == 0 %}
+            {%translate "free"%}
+            {%if plan.period_length_in_months == 0 %}{% translate "for one day" %}{%endif%}
+        {%else%}
+            {%if plan.currency_code == 'EUR' %}{{plan.cost_per_period.normalize}}&euro;
+            {%elif plan.currency_code == 'USD'%}${{plan.cost_per_period.normalize}}
+            {%else%}{{plan.cost_per_period.normalize}} {{plan.currency_code}}
+            {%endif%}
+            {%if plan.period_length_in_months == 1 %}{% translate "per month" %}
+            {%elif plan.period_length_in_months == 3 %}{% translate "per quarter" %}
+            {%elif plan.period_length_in_months == 12 %}{% translate "per year" %}
+            {%endif%}
+        {%endif%}
+        </span>
+    <span class="pricing-date">{{plan.descr_caption}}</span>
 </div>
 <span class="pricing-subtitle">{{plan.descr_target}}</span>
 
 <ul class="pricing-list-wrapper">
-	<li class="pricing-list">{{plan.descr_1|safe}}</li>
-	<li class="pricing-list">{{plan.descr_2|safe}}</li>
-	<li class="pricing-list">{{plan.descr_3|safe}}</li>
-	<li class="pricing-list">{{plan.descr_4|safe}}</li>
+    <li class="pricing-list">{{plan.descr_1|safe}}</li>
+    <li class="pricing-list">{{plan.descr_2|safe}}</li>
+    <li class="pricing-list">{{plan.descr_3|safe}}</li>
+    <li class="pricing-list">{{plan.descr_4|safe}}</li>
 </ul>
 
 <div class="pricing-btn">
-	<a href="/accounts/register" class="customize-unpreviewable">{%translate "Register"%}</a>
+    <a href="/accounts/register" class="customize-unpreviewable">{%translate "Register"%}</a>
 </div>
 </div>
 </div>

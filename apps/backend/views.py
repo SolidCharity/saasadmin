@@ -88,7 +88,7 @@ def addinstances(request, product):
 @staff_member_required
 def plans(request, product):
     product = SaasProduct.objects.filter(slug = product).first()
-    plans = SaasPlan.objects.filter(product = product)
+    plans = SaasPlan.objects.filter(product = product).order_by('cost_per_period')
 
     return render(request,"plans.html",
             { 'plans': plans, 'product': product })
