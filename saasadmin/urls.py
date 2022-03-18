@@ -57,9 +57,8 @@ urlpatterns = [
     path('plan/<str:plan_id>', frontend_views.plan_select),
     path('paymentmethod', frontend_views.paymentmethod_select),
     path('contract', frontend_views.contract_view),
-    path('contract/<str:product_id>/<str:plan_id>', frontend_views.contract_select),
-    path('contract/<str:product_id>/<str:plan_id>/add', frontend_views.contract_subscribe),
-    path('contract/<str:product_id>/cancel', frontend_views.contract_cancel),
+    path('contract/add/<str:product_id>/<str:plan_id>', frontend_views.contract_subscribe),
+    path('contract/cancel/<str:product_id>', frontend_views.contract_cancel),
     path('instance', frontend_views.instance_view),
     path('pricing', frontend_views.display_pricing),
 ]

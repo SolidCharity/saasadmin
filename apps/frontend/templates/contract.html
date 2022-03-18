@@ -13,7 +13,7 @@
         <div class="col">
           <h2 class="text-center">{% translate "Contract Details" %}</h2>
 
-          <form method="POST" class="post-form" action="/contract/{{product.slug}}/{{plan.slug}}/add">
+          <form method="POST" class="post-form" action="/contract/add/{{product.slug}}/{{plan.slug}}">
           {% csrf_token %}
 
           {%if is_free_test%}
@@ -57,7 +57,7 @@
           {%if contract.is_auto_renew %}
           <div>{% blocktrans %}Contract will automatically be renewed by {{periodLengthExtension}} if it is not cancelled up until:{% endblocktrans %} {{ contract.latest_cancel_date|date }}</div>
           {%else%}
-          <div>{% blocktrans %}Contract will end on the end of the day: {% endblocktrans %} {{contract.end_date|date}}</div>
+          <div><br/><br/>{% blocktrans %}Contract will end on the end of the day: {% endblocktrans %} {{contract.end_date|date}}</div>
           {%endif%}
 
           <br/>
@@ -74,11 +74,11 @@
 
           </form>
 
-          {%if not is_new_order %}
-          <form method="POST" class="post-form" action="/contract/{{product.slug}}/cancel">
+          {%if can_cancel_contract %}
+          <form method="POST" class="post-form" action="/contract/cancel/{{product.slug}}">
             {% csrf_token %}
             <div class="col-6">
-              <button type="button" class="btn danger">{%translate "Cancel Contract"%}</button>
+              <button type="confirm" class="button btn-danger">{%translate "Cancel Contract"%}</button>
             </div>
           </form>
           {%endif%}

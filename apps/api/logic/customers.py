@@ -90,8 +90,6 @@ class LogicCustomers:
             nextMonthFirstDay = (contract.start_date.replace(day=1) + timedelta(days=32)).replace(day=1)
             contract.end_date = nextMonthFirstDay + relativedelta(months=plan.period_length_in_months) - timedelta(days=1)
             contract.latest_cancel_date = contract.end_date - timedelta(days=plan.notice_period_in_days)
-            print(contract.end_date)
-            print(contract.latest_cancel_date)
             contract.is_auto_renew = True
 
         contract.is_confirmed = False
@@ -115,3 +113,4 @@ class LogicCustomers:
         contract.is_auto_renew = new_contract.is_auto_renew
 
         return contract
+

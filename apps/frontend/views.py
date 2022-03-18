@@ -184,13 +184,13 @@ def show_contract(request, product, current_plan, new_plan):
     elif new_plan.period_length_in_months == 12:
         periodLengthExtension = _("another year")
     isNewOrder = current_plan is None or current_plan.slug != new_plan.slug or contract.is_confirmed == False
-    canCancelContract = not isNewOrder and contract.is_confirmed
+    canCancelContract = not isNewOrder and contract.is_confirmed and contract.is_auto_renew
     noticePeriod = readablePeriodsInDays(new_plan.notice_period_in_days)
     if not contract:
         # get new contract from logic
         contract = LogicCustomers().get_new_contract(customer, product, new_plan)
     else:
-        # calculate new dates for this new plan
+        # calculate new dates for this new plan; does not save the modified contract
         contract = LogicCustomers().modify_contract(customer, product, new_plan)
 
     return render(request, 'contract.html',
@@ -213,19 +213,6 @@ def contract_view(request):
         return redirect("/plan/current")
 
     return show_contract(request, product, contract.plan, None)
-
-def contract_select(request, product_id, plan_id):
-    logic = LogicCustomers()
-    customer = SaasCustomer.objects.filter(user=request.user).first()
-    product = SaasProduct.objects.filter(slug = product_id).first()
-    if not product:
-        raise Exception('invalid product')
-    current_plan = LogicContracts().get_current_plan(request, product)
-    plan = LogicPlans().get_plan(product, plan_id)
-    if not plan:
-        raise Exception('invalid plan')
-
-    return show_contract(request, product, current_plan, plan)
 
 def contract_subscribe(request, product_id, plan_id):
     logic = LogicCustomers()
@@ -263,14 +250,15 @@ def contract_cancel(request, product_id):
     product = SaasProduct.objects.filter(slug = product_id).first()
     plan = LogicContracts().get_current_plan(request, product)
 
-    # cancel the contract
-    if product and logic.has_instance(customer, product):
+    if product:
+        # cancel the contract
         contract = logic.get_contract(customer, product)
-        contract.is_auto_renew = False
-        contract.save()
+        if contract:
+            contract.is_auto_renew = False
+            contract.save()
 
-    # TODO: show cancelled contract?
-    return show_paymentmethod(request, product, plan, None)
+    # show cancelled contract
+    return show_contract(request, product, plan, None)
 
 
 def instance_view(request):
