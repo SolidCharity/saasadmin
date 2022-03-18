@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 06:59+0100\n"
+"POT-Creation-Date: 2022-03-18 07:12+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -144,41 +144,41 @@ msgstr "Infos über Ihre Instanz"
 msgid "Payment Details"
 msgstr "Zahlungsweise"
 
-#: apps/frontend/templates/payment.html:16
+#: apps/frontend/templates/payment.html:21
 msgid "Your current contract is for free, there is no payment."
 msgstr "Ihr aktueller Vertrag ist kostenlos, es gibt keine Zahlungen."
 
-#: apps/frontend/templates/payment.html:26
+#: apps/frontend/templates/payment.html:31
 msgid "Please choose how you want to pay the invoice:"
 msgstr "Bitte wählen Sie, wie Sie die Rechnung bezahlen wollen:"
 
-#: apps/frontend/templates/payment.html:29
+#: apps/frontend/templates/payment.html:34
 msgid "You transfer the money via SEPA"
 msgstr "Sie überweisen das Geld mittels SEPA Banküberweisung oder Dauerauftrag"
 
-#: apps/frontend/templates/payment.html:32
+#: apps/frontend/templates/payment.html:37
 msgid "You allow us to debit your bank account via SEPA"
 msgstr ""
 "Sie geben uns eine Einzugsermächtigung, damit wir den Betrag per SEPA "
 "einziehen können"
 
-#: apps/frontend/templates/payment.html:41
+#: apps/frontend/templates/payment.html:46
 msgid "Account Owner"
 msgstr "Kontoinhaber"
 
-#: apps/frontend/templates/payment.html:43
+#: apps/frontend/templates/payment.html:48
 msgid "Account IBAN"
 msgstr "IBAN des Kontos"
 
-#: apps/frontend/templates/payment.html:49
+#: apps/frontend/templates/payment.html:54
 msgid "You transfer the money via Paypal"
 msgstr "Sie übermitteln das Geld über Paypal"
 
-#: apps/frontend/templates/payment.html:56
+#: apps/frontend/templates/payment.html:61
 msgid "Confirm and Continue to next page"
 msgstr "Bestätigen und zur nächsten Seite gehen"
 
-#: apps/frontend/templates/payment.html:58
+#: apps/frontend/templates/payment.html:63
 msgid "Confirm Payment Method"
 msgstr "Zahlungsweise bestätigen"
 
@@ -222,43 +222,47 @@ msgstr "Registrieren"
 msgid "Please specify account owner and IBAN"
 msgstr "Bitte den Kontoinhaber und die IBAN angeben"
 
-#: apps/frontend/views.py:133
+#: apps/frontend/views.py:125
+msgid "Changes Saved"
+msgstr "Änderungen gespeichert"
+
+#: apps/frontend/views.py:135
 msgid "year"
 msgstr "Jahr"
 
-#: apps/frontend/views.py:135 apps/frontend/views.py:141
+#: apps/frontend/views.py:137 apps/frontend/views.py:143
 msgid "month"
 msgstr "Monat"
 
-#: apps/frontend/views.py:137
+#: apps/frontend/views.py:139
 msgid "months"
 msgstr "Monate"
 
-#: apps/frontend/views.py:143
+#: apps/frontend/views.py:145
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/frontend/views.py:145
+#: apps/frontend/views.py:147
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:178
+#: apps/frontend/views.py:181
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:180
+#: apps/frontend/views.py:183
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:182
+#: apps/frontend/views.py:185
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/frontend/views.py:252
+#: apps/frontend/views.py:255
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/frontend/views.py:277
+#: apps/frontend/views.py:280
 msgid "Error: no instance has been assigned yet."
 msgstr "Fehler: es wurde noch keine Instanz zugeordnet."
 

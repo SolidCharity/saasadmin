@@ -33,3 +33,8 @@ div.error {
     color: red;
     font-weight: bolder;
 }
+
+div.success {
+    color: green;
+    font-weight: bolder;
+}

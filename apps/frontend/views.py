@@ -98,8 +98,8 @@ def paymentmethod_select(request):
         values = request.POST.copy()
         logic = LogicCustomers()
         contract = logic.get_contract(customer, product)
+        new_plan = LogicPlans().get_plan(product, values["plan"])
         if not contract:
-            new_plan = LogicPlans().get_plan(product, values["plan"])
             contract = logic.get_new_contract(customer, product, new_plan)
 
         contract.payment_method = values["payment_method"]
@@ -118,9 +118,11 @@ def paymentmethod_select(request):
             contract.sepa_mandate = ''
         contract.save()
 
-        # TODO need to pass new plan, because that is not stored in upgrade process
-        if not contract.is_confirmed:
-            return redirect('/contract')
+        if not contract.is_confirmed or contract.plan.slug != new_plan.slug:
+            return show_contract(request, product, contract.plan, new_plan)
+
+        # confirm to user that storing worked
+        return show_paymentmethod(request, product, contract.plan, None, successmessage = _("Changes Saved"))
 
     current_plan = LogicContracts().get_current_plan(request, product)
     if current_plan is None:
@@ -145,7 +147,7 @@ def readablePeriodsInDays(periodLength):
         return str(periodLength) + " " + _("days")
 
 
-def show_paymentmethod(request, product, current_plan, new_plan, errormessage=""):
+def show_paymentmethod(request, product, current_plan, new_plan, errormessage="", successmessage=""):
     if new_plan is None:
         new_plan = current_plan
     new_contract = new_plan != current_plan
@@ -162,6 +164,7 @@ def show_paymentmethod(request, product, current_plan, new_plan, errormessage=""
         'plan': new_plan,
         'contract': contract,
         'no_payment': new_plan.cost_per_period == 0,
+        'successmessage': successmessage,
         'errormessage': errormessage})
 
 

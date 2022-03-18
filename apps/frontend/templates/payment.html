@@ -12,6 +12,11 @@
         <div class="col">
           <h2 class="text-center">{% translate "Payment Details" %}</h2>
 
+          <div class="success">
+            {{successmessage}}
+          </div>
+
+
           {%if no_payment%}
           {%translate "Your current contract is for free, there is no payment." %}
           {%else%}
