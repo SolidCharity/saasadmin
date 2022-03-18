@@ -96,11 +96,10 @@ def paymentmethod_select(request):
 
     if request.method == "POST":
         values = request.POST.copy()
-        logic = LogicCustomers()
-        contract = logic.get_contract(customer, product)
+        contract = LogicContracts().get_contract(customer, product)
         new_plan = LogicPlans().get_plan(product, values["plan"])
         if not contract:
-            contract = logic.get_new_contract(customer, product, new_plan)
+            contract = LogicContracts().get_new_contract(customer, product, new_plan)
 
         contract.payment_method = values["payment_method"]
         contract.account_owner = values['account_owner']
@@ -153,10 +152,10 @@ def show_paymentmethod(request, product, current_plan, new_plan, errormessage=""
     new_contract = new_plan != current_plan
 
     customer = SaasCustomer.objects.filter(user=request.user).first()
-    contract = LogicCustomers().get_contract(customer, product)
+    contract = LogicContracts().get_contract(customer, product)
     if not contract:
         # get new contract from logic
-        contract = LogicCustomers().get_new_contract(customer, product, new_plan)
+        contract = LogicContracts().get_new_contract(customer, product, new_plan)
 
     return render(request, 'payment.html',
         {'contract': contract,
@@ -172,7 +171,7 @@ def show_contract(request, product, current_plan, new_plan):
     if new_plan is None:
         new_plan = current_plan
     customer = SaasCustomer.objects.filter(user=request.user).first()
-    contract = LogicCustomers().get_contract(customer, product)
+    contract = LogicContracts().get_contract(customer, product)
     periodLength = readablePeriodsInMonths(new_plan.period_length_in_months)
     payment_invoice = contract and contract.payment_method != "SEPA_DIRECTDEBIT"
     periodLengthExtension = ''
@@ -188,10 +187,10 @@ def show_contract(request, product, current_plan, new_plan):
     noticePeriod = readablePeriodsInDays(new_plan.notice_period_in_days)
     if not contract:
         # get new contract from logic
-        contract = LogicCustomers().get_new_contract(customer, product, new_plan)
+        contract = LogicContracts().get_new_contract(customer, product, new_plan)
     else:
         # calculate new dates for this new plan; does not save the modified contract
-        contract = LogicCustomers().modify_contract(customer, product, new_plan)
+        contract = LogicContracts().modify_contract(customer, product, new_plan)
 
     return render(request, 'contract.html',
         {'product': product,
@@ -208,14 +207,13 @@ def show_contract(request, product, current_plan, new_plan):
 def contract_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request)
-    contract = LogicCustomers().get_contract(customer, product)
+    contract = LogicContracts().get_contract(customer, product)
     if not contract:
         return redirect("/plan/current")
 
     return show_contract(request, product, contract.plan, None)
 
 def contract_subscribe(request, product_id, plan_id):
-    logic = LogicCustomers()
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = SaasProduct.objects.filter(slug = product_id).first()
     if not product:
@@ -224,11 +222,11 @@ def contract_subscribe(request, product_id, plan_id):
     if not plan:
         raise Exception('invalid plan')
 
-    contract = logic.get_contract(customer, product)
+    contract = LogicContracts().get_contract(customer, product)
     if contract and contract.is_confirmed:
 
         # update existing contract
-        contract = logic.modify_contract(customer, product, plan)
+        contract = LogicContracts().modify_contract(customer, product, plan)
         contract.save()
 
         # redirect to instance details page
@@ -236,7 +234,7 @@ def contract_subscribe(request, product_id, plan_id):
 
     else:
         # assign a new instance
-        if logic.assign_instance(customer, product, plan):
+        if LogicCustomers().assign_instance(customer, product, plan):
             # redirect to instance details page
             return redirect('/instance')
         else:
@@ -245,14 +243,13 @@ def contract_subscribe(request, product_id, plan_id):
 
 
 def contract_cancel(request, product_id):
-    logic = LogicCustomers()
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = SaasProduct.objects.filter(slug = product_id).first()
     plan = LogicContracts().get_current_plan(request, product)
 
     if product:
         # cancel the contract
-        contract = logic.get_contract(customer, product)
+        contract = LogicContracts().get_contract(customer, product)
         if contract:
             contract.is_auto_renew = False
             contract.save()
@@ -262,10 +259,9 @@ def contract_cancel(request, product_id):
 
 
 def instance_view(request):
-    logic = LogicCustomers()
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request)
-    contract = logic.get_contract(customer, product)
+    contract = LogicContracts().get_contract(customer, product)
     if not contract:
         return render(request, 'error.html', {'message': _("Error: no instance has been assigned yet.")})
     return render(request, 'instance.html', {'instance': contract.instance})
