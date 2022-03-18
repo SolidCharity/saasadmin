@@ -34,7 +34,7 @@ class LogicCustomers:
             # TODO: do we have already a contract?
             contract = self.get_new_contract(customer, product, plan)
             contract.instance = instance
-            contract.confirmed = True
+            contract.is_confirmed = True
             contract.save()
             instance.status = 'assigned'
             instance.save()
@@ -81,14 +81,14 @@ class LogicCustomers:
         contract.customer = customer
         contract.instance = None
         contract.plan = plan
-        contract.auto_renew = plan.period_length_in_months > 0
+        contract.is_auto_renew = plan.period_length_in_months > 0
 
         contract.start_date = datetime.today()
         nextMonthFirstDay = (contract.start_date.replace(day=1) + timedelta(days=32)).replace(day=1)
         contract.end_date = nextMonthFirstDay + relativedelta(months=plan.period_length_in_months) - timedelta(days=1)
         contract.latest_cancel_date = contract.end_date - timedelta(days=plan.notice_period_in_days)
 
-        contract.confirmed = False
+        contract.is_confirmed = False
 
         return contract
 

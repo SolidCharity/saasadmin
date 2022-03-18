@@ -8,10 +8,10 @@ class InstanceSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_instance_url(self, instance):
       prod = instance.product
-      return prod.instance_url.replace('%prefix', prod.instance_prefix).replace('%identifier', instance.identifier)
+      return prod.instance_url.replace('%prefix', prod.prefix).replace('%identifier', instance.identifier)
 
     def get_prefix(self, instance):
-      return instance.product.instance_prefix
+      return instance.product.prefix
 
     class Meta:
         model = SaasInstance

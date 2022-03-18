@@ -14,7 +14,7 @@
 <div class="one-third column">
 
 <div class="pricing-table-wrapper-0 pricing-table-wrapper">
-<span class="pricing-as-popular {%if popular_plan != plan.slug%}hidden{%endif%}">{%translate "popular"%}</span>
+<span class="pricing-as-popular {%if not plan.is_favourite%}hidden{%endif%}">{%translate "popular"%}</span>
 <h4 class="pricing-title">{{plan.name}}</h4>
 
 <div class="pricing-price">

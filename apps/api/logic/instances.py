@@ -70,11 +70,15 @@ class LogicInstances:
             PasswordResetToken = User.objects.make_random_password(length=16)
             url = url.replace('#PasswordResetToken', PasswordResetToken)
 
+        # for local tests
+        if "example.org" in url:
+            return [True, PasswordResetToken]
+
         if instance.activation_token:
             url = url.replace('#SaasActivationPassword', instance.activation_token)
 
         url = url. \
-            replace('#Prefix', product.instance_prefix). \
+            replace('#Prefix', product.prefix). \
             replace('#Identifier', instance.identifier). \
             replace('#UserEmailAddress', customer.email_address)
 

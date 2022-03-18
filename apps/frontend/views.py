@@ -119,7 +119,7 @@ def paymentmethod_select(request):
         contract.save()
 
         # TODO need to pass new plan, because that is not stored in upgrade process
-        if not contract.confirmed:
+        if not contract.is_confirmed:
             return redirect('/contract')
 
     current_plan = LogicContracts().get_current_plan(request, product)
@@ -171,7 +171,7 @@ def show_contract(request, product, current_plan, new_plan):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     contract = LogicCustomers().get_contract(customer, product)
     periodLength = readablePeriodsInMonths(new_plan.period_length_in_months)
-    payment_invoice = contract.payment_method != "SEPA_DIRECTDEBIT"
+    payment_invoice = contract and contract.payment_method != "SEPA_DIRECTDEBIT"
     periodLengthExtension = ''
     isFreeTest = new_plan.period_length_in_months == 0
     if new_plan.period_length_in_months == 1:
@@ -180,8 +180,8 @@ def show_contract(request, product, current_plan, new_plan):
         periodLengthExtension = _("another quarter")
     elif new_plan.period_length_in_months == 12:
         periodLengthExtension = _("another year")
-    isNewOrder = current_plan is None or current_plan.slug != new_plan.slug or contract.confirmed == False
-    canCancelContract = not isNewOrder and contract.confirmed
+    isNewOrder = current_plan is None or current_plan.slug != new_plan.slug or contract.is_confirmed == False
+    canCancelContract = not isNewOrder and contract.is_confirmed
     noticePeriod = readablePeriodsInDays(new_plan.notice_period_in_days)
     if not contract:
         # get new contract from logic
@@ -204,7 +204,7 @@ def contract_view(request):
     product = LogicProducts().get_product(request)
     contract = LogicCustomers().get_contract(customer, product)
     if not contract:
-        return redirect("/plans")
+        return redirect("/plan/current")
 
     return show_contract(request, product, contract.plan, None)
 
@@ -232,7 +232,7 @@ def contract_subscribe(request, product_id, plan_id):
         raise Exception('invalid plan')
 
     contract = logic.get_contract(customer, product)
-    if contract and contract.confirmed:
+    if contract and contract.is_confirmed:
         # TODO upgrade or downgrade the plan?
         contract = logic.get_contract(customer, product)
         contract.plan = plan
@@ -261,7 +261,7 @@ def contract_cancel(request, product_id):
     # cancel the contract
     if product and logic.has_instance(customer, product):
         contract = logic.get_contract(customer, product)
-        contract.auto_renew = False
+        contract.is_auto_renew = False
         contract.save()
 
     # TODO: show cancelled contract?
@@ -290,4 +290,4 @@ def display_pricing(request):
 
     plans = LogicPlans().get_plans(product)
 
-    return render(request, 'pricing.html', {'product': product, 'plans': plans, 'popular_plan': plans[1].slug})
+    return render(request, 'pricing.html', {'product': product, 'plans': plans})
