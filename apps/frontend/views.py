@@ -189,6 +189,9 @@ def show_contract(request, product, current_plan, new_plan):
     if not contract:
         # get new contract from logic
         contract = LogicCustomers().get_new_contract(customer, product, new_plan)
+    else:
+        # calculate new dates for this new plan
+        contract = LogicCustomers().modify_contract(customer, product, new_plan)
 
     return render(request, 'contract.html',
         {'product': product,
@@ -236,15 +239,14 @@ def contract_subscribe(request, product_id, plan_id):
 
     contract = logic.get_contract(customer, product)
     if contract and contract.is_confirmed:
-        # TODO upgrade or downgrade the plan?
-        contract = logic.get_contract(customer, product)
-        contract.plan = plan
+
+        # update existing contract
+        contract = logic.modify_contract(customer, product, plan)
         contract.save()
 
         # redirect to instance details page
         return redirect('/instance')
 
-    # TODO should not get here, have selected payment before? or for free contract? if has_instance???
     else:
         # assign a new instance
         if logic.assign_instance(customer, product, plan):

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 07:12+0100\n"
+"POT-Creation-Date: 2022-03-18 20:41+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -46,11 +46,7 @@ msgstr ""
 "Sie können Ihren Vertrag innerhalb des Testzeitraums auf einen bezahlten "
 "Vertrag umstellen, um Ihre Daten weiter zu benutzen."
 
-#: apps/frontend/templates/contract.html:31
-msgid "Confirm"
-msgstr "Bestätigen"
-
-#: apps/frontend/templates/contract.html:39
+#: apps/frontend/templates/contract.html:34
 msgid ""
 "We will send you an invoice per E-Mail, and you can please pay that invoice "
 "within 14 days."
@@ -58,7 +54,7 @@ msgstr ""
 "Wir werden Ihnen eine Rechnung per E-Mail schicken, und Sie bezahlen diese "
 "Rechnung bitte innerhalb von 14 Tagen."
 
-#: apps/frontend/templates/contract.html:41
+#: apps/frontend/templates/contract.html:36
 msgid ""
 "We will send you an invoice per E-Mail, and will withdraw the money from "
 "your account 14 days later."
@@ -66,7 +62,7 @@ msgstr ""
 "Wir werden Ihnen eine Rechnung per E-Mail schicken, und werden 14 Tage "
 "später den Betrag per Bankeinzug einziehen."
 
-#: apps/frontend/templates/contract.html:45
+#: apps/frontend/templates/contract.html:40
 msgid ""
 "The current month is free, that means the payment covers the month that "
 "follows the date of your order."
@@ -74,7 +70,7 @@ msgstr ""
 "Der aktuelle Monat ist kostenlos, d.h. die Bezahlung ist ab dem Monat, der "
 "dem Tag Ihrer Bestellung folgt."
 
-#: apps/frontend/templates/contract.html:47
+#: apps/frontend/templates/contract.html:42
 #, python-format
 msgid ""
 "Up until %(noticePeriod)s before the end of the paid period, you can cancel "
@@ -85,7 +81,7 @@ msgstr ""
 "Laufzeit kündigen.  Wir stellen Ihnen eine Datensicherung der Daten von "
 "Ihrer Instanz bereit."
 
-#: apps/frontend/templates/contract.html:49
+#: apps/frontend/templates/contract.html:44
 #, python-format
 msgid ""
 "If you don't cancel the contract, the contract will be automatically renewed "
@@ -95,7 +91,7 @@ msgstr ""
 "%(periodLengthExtension)s verlängert, und wir werden Ihnen dann eine neue "
 "Rechnung per E-Mail senden."
 
-#: apps/frontend/templates/contract.html:51
+#: apps/frontend/templates/contract.html:46
 msgid ""
 "If you downgrade your product, then this will affect the next payment "
 "period. You will not receive a refund."
@@ -103,19 +99,19 @@ msgstr ""
 "Wenn Sie einen kleineren Vertrag wählen, wird das bei der nächsten Rechnung "
 "berücksichtigt. Wir erstatten keine Beträge zurück."
 
-#: apps/frontend/templates/contract.html:55
+#: apps/frontend/templates/contract.html:50
 msgid "To be paid"
 msgstr "Zu zahlen"
 
-#: apps/frontend/templates/contract.html:56
+#: apps/frontend/templates/contract.html:51
 msgid "per"
 msgstr "pro"
 
-#: apps/frontend/templates/contract.html:58
+#: apps/frontend/templates/contract.html:54
 msgid "Service Period"
 msgstr "Zeitraum der Dienstleistung"
 
-#: apps/frontend/templates/contract.html:62
+#: apps/frontend/templates/contract.html:58
 #, python-format
 msgid ""
 "Contract will automatically be renewed by %(periodLengthExtension)s if it is "
@@ -124,15 +120,19 @@ msgstr ""
 "Der Vertrag wird automatisch um %(periodLengthExtension)s verlängert, falls "
 "er nicht bis zu diesem Datum gekündigt wird:"
 
-#: apps/frontend/templates/contract.html:64
-msgid "Contract will end on:"
-msgstr "Der Vertrag läuft aus am:"
+#: apps/frontend/templates/contract.html:60
+msgid "Contract will end on the end of the day: "
+msgstr "Der Vertrag läuft aus am Ende des Tages:"
 
-#: apps/frontend/templates/contract.html:71
+#: apps/frontend/templates/contract.html:68
+msgid "Confirm"
+msgstr "Bestätigen"
+
+#: apps/frontend/templates/contract.html:70
 msgid "Order now"
 msgstr "Jetzt zahlungspflichtig bestellen"
 
-#: apps/frontend/templates/contract.html:83
+#: apps/frontend/templates/contract.html:81
 msgid "Cancel Contract"
 msgstr "Vertrag beenden"
 
@@ -258,11 +258,11 @@ msgstr "ein weiteres Quartal"
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/frontend/views.py:255
+#: apps/frontend/views.py:257
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/frontend/views.py:280
+#: apps/frontend/views.py:282
 msgid "Error: no instance has been assigned yet."
 msgstr "Fehler: es wurde noch keine Instanz zugeordnet."
 

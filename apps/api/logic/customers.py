@@ -68,7 +68,6 @@ class LogicCustomers:
 
 
     def notify_administrators(self, subject, message):
-        print('notify admin ' + subject)
         mail_admins(
             subject,
             message,
@@ -81,16 +80,38 @@ class LogicCustomers:
         contract.customer = customer
         contract.instance = None
         contract.plan = plan
-        contract.is_auto_renew = plan.period_length_in_months > 0
 
         contract.start_date = datetime.today()
-        nextMonthFirstDay = (contract.start_date.replace(day=1) + timedelta(days=32)).replace(day=1)
-        contract.end_date = nextMonthFirstDay + relativedelta(months=plan.period_length_in_months) - timedelta(days=1)
-        contract.latest_cancel_date = contract.end_date - timedelta(days=plan.notice_period_in_days)
+        if plan.period_length_in_months == 0:
+            contract.end_date = contract.start_date + timedelta(days=1)
+            contract.latest_cancel_date = None
+            contract.is_auto_renew = False
+        else:
+            nextMonthFirstDay = (contract.start_date.replace(day=1) + timedelta(days=32)).replace(day=1)
+            contract.end_date = nextMonthFirstDay + relativedelta(months=plan.period_length_in_months) - timedelta(days=1)
+            contract.latest_cancel_date = contract.end_date - timedelta(days=plan.notice_period_in_days)
+            print(contract.end_date)
+            print(contract.latest_cancel_date)
+            contract.is_auto_renew = True
 
         contract.is_confirmed = False
 
         return contract
 
 
-    # TODO: modify_contract
+    def modify_contract(self, customer, product, plan):
+
+        contract = self.get_contract(customer, product)
+
+        # no change is necessary
+        if contract.plan == plan:
+            return contract
+
+        new_contract = self.get_new_contract(customer, product, plan)
+        contract.plan = new_contract.plan
+        contract.start_date = new_contract.start_date
+        contract.end_date = new_contract.end_date
+        contract.latest_cancel_date = new_contract.latest_cancel_date
+        contract.is_auto_renew = new_contract.is_auto_renew
+
+        return contract

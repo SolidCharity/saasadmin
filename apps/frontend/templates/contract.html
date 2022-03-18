@@ -26,11 +26,6 @@
                 {% blocktrans %}You can upgrade your contract within the test period to continue using your data.{% endblocktrans %}
             </span>
             <br><br>
-            {%if is_new_order%}
-            <div class="col-6">
-                <button type="confirm" class="button-primary">{%translate "Confirm"%}</button>
-            </div>
-            {%endif%}
 
           {%else%}
           <div class="center-item-row">
@@ -54,6 +49,7 @@
 
           <div>{%translate "To be paid"%}</div>
           <div class='withborder'>{{plan.cost_per_period}} {{plan.currency_code}} {%translate "per"%} {{periodLength}}</div>
+          {%endif%}
 
           <div>{%translate "Service Period"%}</div>
           <div class='withborder'>{{contract.start_date|date}} - {{contract.end_date|date}}</div>
@@ -61,22 +57,24 @@
           {%if contract.is_auto_renew %}
           <div>{% blocktrans %}Contract will automatically be renewed by {{periodLengthExtension}} if it is not cancelled up until:{% endblocktrans %} {{ contract.latest_cancel_date|date }}</div>
           {%else%}
-          <div>{% blocktrans %}Contract will end on:{% endblocktrans %} {{contract.end_date|date}}</div>
+          <div>{% blocktrans %}Contract will end on the end of the day: {% endblocktrans %} {{contract.end_date|date}}</div>
           {%endif%}
 
           <br/>
 
           {%if is_new_order%}
           <div class="col-6">
-            <button type="confirm" class="button-primary">{%translate "Order now"%}</button>
+            {%if is_free_test%}
+                <button type="confirm" class="button-primary">{%translate "Confirm"%}</button>
+            {%else%}
+                <button type="confirm" class="button-primary">{%translate "Order now"%}</button>
+            {%endif%}
           </div>
-          {%endif%}
-
           {%endif%}
 
           </form>
 
-          {%if canCancelContract %}
+          {%if not is_new_order %}
           <form method="POST" class="post-form" action="/contract/{{product.slug}}/cancel">
             {% csrf_token %}
             <div class="col-6">
