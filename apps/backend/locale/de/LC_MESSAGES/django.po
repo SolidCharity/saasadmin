@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 06:38+0100\n"
+"POT-Creation-Date: 2022-03-18 06:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,6 +21,27 @@ msgstr ""
 #: apps/backend/templates/customers.html:7
 msgid "Customers"
 msgstr ""
+
+#: apps/backend/templates/django_registration/activation_complete.html:6
+#: apps/backend/templates/django_registration/registration_complete.html:6
+msgid "Success!"
+msgstr "Erfolg!"
+
+#: apps/backend/templates/django_registration/activation_complete.html:8
+msgid "Now you can login:"
+msgstr "Jetzt können Sie sich anmelden:"
+
+#: apps/backend/templates/django_registration/activation_complete.html:8
+msgid "Login"
+msgstr "Anmelden"
+
+#: apps/backend/templates/django_registration/registration_complete.html:8
+msgid ""
+"An E-Mail has been sent to you. Please confirm by clicking on the link in "
+"that E-Mail!"
+msgstr ""
+"Es wurde eine E-Mail an Sie verschickt. Bitte bestätigen Sie Ihre "
+"Registrierung, in dem Sie auf den Verweis in der E-Mail klicken!"
 
 #: apps/backend/templates/django_registration/registration_form.html:30
 msgid "Register"
@@ -60,19 +81,19 @@ msgstr ""
 
 #: apps/backend/templates/plans.html:31 apps/backend/templates/products.html:13
 msgid "Action"
-msgstr ""
+msgstr "Aktion"
 
 #: apps/backend/templates/plans.html:42 apps/backend/templates/products.html:21
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: apps/backend/templates/plans.html:43 apps/backend/templates/products.html:22
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: apps/backend/templates/plans.html:49 apps/backend/templates/products.html:27
 msgid "Add New Record"
-msgstr ""
+msgstr "Neuen Eintrag hinzufügen"
 
 #: apps/backend/templates/products.html:7
 msgid "Products"

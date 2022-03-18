@@ -145,9 +145,9 @@ class SaasContract(models.Model):
     is_confirmed = models.BooleanField(_("Is Confirmed"), default=False)
 
     payment_method = models.CharField(_("Payment Method"), max_length=20, default="SEPA_TRANSFER") 
-    account_owner = models.CharField(_("Account Owner"), max_length=200, null=True)
-    account_iban = models.CharField(_("Account IBAN"), max_length=64, null=True)
-    sepa_mandate = models.CharField(_("SEPA Mandate"), max_length=64, null=True)
+    account_owner = models.CharField(_("Account Owner"), max_length=200, null=True, default="")
+    account_iban = models.CharField(_("Account IBAN"), max_length=64, null=True, default="")
+    sepa_mandate = models.CharField(_("SEPA Mandate"), max_length=64, null=True, default="")
     sepa_mandate_date = models.DateField(_("Date of SEPA Mandate"), null=True)
 
     class Meta:
