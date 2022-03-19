@@ -4,8 +4,14 @@ INSERT INTO auth_user ("id", "password", "is_superuser", "is_staff", "username",
     (3,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',false,false,'customer2','werner@example.org',true,'','',date('now')),
     (4,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',false,false,'customer3','bernd.s@example.org',true,'','',date('now')),
     (5,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',false,false,'customer4','gunter.meier@example.org',true,'','',date('now'));
-INSERT INTO saas_product ("id", "slug", "name", "prefix", "activation_url", "instance_url", "is_active", "number_of_ports") VALUES
-	(1, 'kanboard', 'Kanboard', 'kb', 'https://#Prefix#Identifier.example.org/activate', 'https://#Prefix#Identifier.example.org/', true, 0);
+INSERT INTO saas_product ("id", "slug", "name", "prefix",
+    "activation_url", "deactivation_url", "instance_url",
+    "is_active", "number_of_ports") VALUES
+	(1, 'kanboard', 'Kanboard', 'kb',
+    'https://#Prefix#Identifier.example.org/saas_activate.php',
+    'https://#Prefix#Identifier.example.org/saas_deactivate.php',
+    'https://#Prefix#Identifier.example.org/',
+    true, 0);
 INSERT INTO saas_plan ("id","product_id","period_length_in_months","currency_code","cost_per_period","notice_period_in_days",
     "slug",
     "is_favourite",

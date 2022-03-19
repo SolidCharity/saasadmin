@@ -60,7 +60,7 @@ class LogicContracts:
 
     # to be called by a cronjob each night
     def update_dates_of_contracts(self):
-        contracts = SaasContract.objects.filter(is_confirmed = True).filter(is_auto_renew = True).filter(latest_cancel_date < datetime.today())
+        contracts = SaasContract.objects.filter(is_confirmed = True, is_auto_renew = True, latest_cancel_date__lt = datetime.today())
         for contract in contracts:
             temp_contract = self.get_new_contract(contract.customer, contract.product, contract.plan)
             contract.end_date = temp_contract.end_date

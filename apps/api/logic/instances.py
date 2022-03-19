@@ -1,11 +1,12 @@
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 import random
 import requests
 from django.contrib.auth.models import User
 from django.db import connection
 from django.db import transaction
 from django.conf import settings
-from apps.core.models import SaasInstance
-from apps.core.models import SaasProduct
+from apps.core.models import SaasInstance, SaasProduct, SaasContract
 
 class LogicInstances:
     @transaction.atomic
@@ -92,3 +93,51 @@ class LogicInstances:
             return [False, None]
 
         return [True, PasswordResetToken]
+
+    def deactivate_instance(self, product, instance):
+        """call web request: deactivate_url"""
+        url = product.deactivation_url
+
+        # for local tests
+        if "example.org" in url:
+            return True
+
+        if instance.activation_token:
+            url = url.replace('#SaasActivationPassword', instance.activation_token)
+
+        url = url. \
+            replace('#Prefix', product.prefix). \
+            replace('#Identifier', instance.identifier)
+
+        try:
+            resp = requests.get(url=url)
+            data = resp.json()
+            if not data['success']:
+                return False
+        except Exception as ex:
+            print('Exception in activate_instance: %s' % (ex,))
+            return False
+
+    def deactivate_expired_instances(self):
+        """ to be called by a cronjob each night """
+        contracts = SaasContract.objects.filter(is_confirmed = True, \
+            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'assigned')
+        for contract in contracts:
+            instance = contract.instance
+            if self.deactivate_instance(contract.product, instance):
+                instance.status = "expired"
+                instance.save()
+
+    def mark_deactivated_instances_for_deletion(self):
+        """ to be called by a cronjob each night """
+        contracts = SaasContract.objects.filter(is_confirmed = True, \
+            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'expired')
+        for contract in contracts:
+            days = 30
+            if contract.plan.period_length_in_months == 0:
+                # for the one day test instance, remove it immediately
+                days = 0
+            if contract.end_date + timedelta(days=days) < datetime.today():
+                instance = contract.instance
+                instance.status = "to_be_removed"
+                instance.save()

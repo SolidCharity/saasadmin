@@ -46,6 +46,7 @@ class SaasProduct (models.Model):
     name = models.CharField(_("Name"), max_length=16)
     prefix = models.CharField(_("Prefix"), max_length=10, default='xy')
     activation_url = models.CharField(_("Activation URL"), max_length=250, default = "https://%prefix%identifier.example.org/activate")
+    deactivation_url = models.CharField(_("Deativation URL"), max_length=250, default = "https://%prefix%identifier.example.org/deactivate")
     instance_url = models.CharField(_("Instance URL"), max_length=250, default = "https://%prefix%identifier.example.org")
     is_active = models.BooleanField(_("Is Active"), default=False)
     number_of_ports = models.IntegerField(_("Number of Ports"), default=1)

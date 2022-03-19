@@ -8,6 +8,7 @@ from apps.core.models import SaasCustomer
 from apps.core.models import SaasPlan
 from apps.core.models import SaasProduct
 from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm
+from apps.api.logic.contracts import LogicContracts
 from apps.api.logic.products import LogicProducts
 from apps.api.logic.instances import LogicInstances
 from django.db.models import Q
@@ -201,3 +202,9 @@ def deleteproduct(request, id):
     product = SaasProduct.objects.get(id=id)
     product.delete()
     return redirect("/products")
+
+
+def cronjob(request):
+    LogicContracts().update_dates_of_contracts()
+    LogicInstances().deactivate_expired_instances()
+    LogicInstances().mark_deactivated_instances_for_deletion()
