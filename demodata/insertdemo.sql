@@ -60,12 +60,12 @@ INSERT INTO saas_customer ("id","user_id","is_newsletter_subscribed","newsletter
 	(3,4,true,'2021-05-01',NULL,'DE','Gartensparte Schneckenhain','Mr','Bernd','Schmitz','Am Berg 2','01234','Plauen','DE','bernd.s@example.org',true),
 	(4,5,true,'2021-05-01',NULL,'DE','Sportverein Trimm Dich','Mr','Gunter','Meier','An der Elster 22','01234','Plauen','DE','gunter.meier@example.org',true);
 INSERT INTO saas_instance ("id","product_id","identifier","hostname","pacuser","channel","status","last_interaction","reserved_token","reserved_until","reserved_for_user_id","initial_password","db_password","first_port","last_port") VALUES
-	(1,1,'344567','host0001','xyz00','stable','active',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
-	(2,1,'238978','host0001','xyz00','stable','active',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
-	(3,1,'785275','host0001','xyz00','stable','active',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
-	(4,1,'862344','host0001','xyz00','stable','free',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
-	(5,1,'119287','host0002','xyz01','stable','active',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
-	(6,1,'239399','host0002','xyz01','stable','free',NULL,NULL,NULL,NULL,'','topsecret',-1,-1);
+	(1,1,'344567','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
+	(2,1,'238978','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
+	(3,1,'785275','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
+	(4,1,'862344','host0001','xyz00','stable','FREE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
+	(5,1,'119287','host0002','xyz01','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
+	(6,1,'239399','host0002','xyz01','stable','FREE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1);
 INSERT INTO saas_contract ("id","start_date","end_date","is_auto_renew","is_confirmed","customer_id","instance_id","plan_id","payment_method") VALUES
 	(1,'2021-06-05',NULL,true,true,1,1,2,'SEPA_TRANSFER'),
 	(2,'2021-06-01',NULL,true,true,2,2,3,'SEPA_TRANSFER'),

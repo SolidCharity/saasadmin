@@ -56,7 +56,7 @@ class LogicInstances:
           last_port = last_port,
           initial_password = new_password,
           db_password = db_password,
-          status = 'in_preparation')
+          status = SaasInstance().IN_PREPARATION)
 
         # return the result
         return True, {'new_id': new_id, 'new_password': new_password, 'db_password': db_password, 'hostname': hostname, 'port': new_port};
@@ -125,7 +125,7 @@ class LogicInstances:
         for contract in contracts:
             instance = contract.instance
             if self.deactivate_instance(contract.product, instance):
-                instance.status = "expired"
+                instance.status = instance.EXPIRED
                 instance.save()
 
     def mark_deactivated_instances_for_deletion(self):
@@ -139,5 +139,5 @@ class LogicInstances:
                 days = 0
             if contract.end_date + timedelta(days=days) < datetime.today():
                 instance = contract.instance
-                instance.status = "to_be_removed"
+                instance.status = instance.TO_BE_REMOVED
                 instance.save()

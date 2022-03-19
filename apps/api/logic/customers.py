@@ -27,7 +27,7 @@ class LogicCustomers:
             contract.instance = instance
             contract.is_confirmed = True
             contract.save()
-            instance.status = 'assigned'
+            instance.status = instance.ASSIGNED
             instance.save()
 
             # call activation url of hosted application

@@ -96,8 +96,11 @@ class SaasInstance(models.Model):
     last_port = models.IntegerField(_("Last Port"), default=-1)
     activation_token = models.CharField(max_length=64, null=True)
 
-    # possible values: in_preparation, new, active, expired, cancelled, to_be_removed, deleted
+    # possible values for status
+    IN_PREPARATION, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
+        ('IN_PREPARATION', 'AVAILABLE', 'RESERVED', 'ASSIGNED', 'EXPIRED', 'TO_BE_REMOVED', 'REMOVED')
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
+
     db_password = models.CharField(_("DB Password"), max_length=64, default='topsecret')
     initial_password = models.CharField(_("Initial Password"), max_length=64, default='topsecret')
     last_interaction = models.DateTimeField(_("Last Interaction"), null=True)
