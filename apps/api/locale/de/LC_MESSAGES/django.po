@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 21:07+0100\n"
+"POT-Creation-Date: 2022-03-19 16:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,26 +18,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps/api/logic/customers.py:27
+#: apps/api/logic/customers.py:18
 #, python-format
 msgid "Missing free instance for %s"
 msgstr ""
 
-#: apps/api/logic/customers.py:27
+#: apps/api/logic/customers.py:18
 #, python-format
 msgid "Assigning of %s instance for customer %d failed"
 msgstr ""
 
-#: apps/api/logic/customers.py:47
+#: apps/api/logic/customers.py:38
 msgid "SaasAdmin Error during activation"
 msgstr ""
 
-#: apps/api/logic/customers.py:47
+#: apps/api/logic/customers.py:38
 #, python-format
 msgid "Failed activation of %s instance %s for customer %d"
 msgstr ""
 
-#: apps/api/logic/customers.py:54
+#: apps/api/logic/customers.py:48
+#, python-format
+msgid "Welcome to your %s instance"
+msgstr ""
+
+#: apps/api/logic/customers.py:49
+#, python-format
+msgid "Please go to this link to activate your login for user %s: %s"
+msgstr ""
+
+#: apps/api/logic/customers.py:53
 #, python-format
 msgid "Instance for %s assigned"
 msgstr ""
@@ -45,4 +55,9 @@ msgstr ""
 #: apps/api/logic/customers.py:54
 #, python-format
 msgid "Nice, an instance of %s was booked for customer %d"
+msgstr ""
+
+#: apps/api/logic/customers.py:55
+#, python-brace-format
+msgid "Still {d} instances are available for new customers."
 msgstr ""

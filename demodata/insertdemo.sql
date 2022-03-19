@@ -6,11 +6,14 @@ INSERT INTO auth_user ("id", "password", "is_superuser", "is_staff", "username",
     (5,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',false,false,'customer4','gunter.meier@example.org',true,'','',date('now'));
 INSERT INTO saas_product ("id", "slug", "name", "prefix",
     "activation_url", "deactivation_url", "instance_url",
+    "instance_password_reset_url", "instance_admin_user",
     "is_active", "number_of_ports") VALUES
 	(1, 'kanboard', 'Kanboard', 'kb',
-    'https://#Prefix#Identifier.example.org/saas_activate.php',
-    'https://#Prefix#Identifier.example.org/saas_deactivate.php',
+    'https://#Prefix#Identifier.example.org/saas_activate.php?SaasActivationPassword=#SaasActivationPassword&PasswordResetToken=#PasswordResetToken',
+    'https://#Prefix#Identifier.example.org/saas_deactivate.php?SaasActivationPassword=#SaasActivationPassword',
     'https://#Prefix#Identifier.example.org/',
+    'https://#Prefix#Identifier.example.org/?controller=PasswordResetController&action=change&token=#PasswordResetToken',
+    'admin',
     true, 0);
 INSERT INTO saas_plan ("id","product_id","period_length_in_months","currency_code","cost_per_period","notice_period_in_days",
     "slug",
@@ -63,11 +66,11 @@ INSERT INTO saas_instance ("id","product_id","identifier","hostname","pacuser","
 	(1,1,'344567','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
 	(2,1,'238978','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
 	(3,1,'785275','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
-	(4,1,'862344','host0001','xyz00','stable','FREE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
+	(4,1,'862344','host0001','xyz00','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
 	(5,1,'119287','host0002','xyz01','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1),
-	(6,1,'239399','host0002','xyz01','stable','FREE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1);
-INSERT INTO saas_contract ("id","start_date","end_date","is_auto_renew","is_confirmed","customer_id","instance_id","plan_id","payment_method") VALUES
-	(1,'2021-06-05',NULL,true,true,1,1,2,'SEPA_TRANSFER'),
-	(2,'2021-06-01',NULL,true,true,2,2,3,'SEPA_TRANSFER'),
-	(3,'2021-06-01',NULL,true,true,3,3,3,'SEPA_TRANSFER'),
-	(4,'2021-06-01',NULL,true,true,4,5,3,'SEPA_TRANSFER');
+	(6,1,'239399','host0002','xyz01','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1);
+INSERT INTO saas_contract ("id","start_date","end_date","latest_cancel_date","is_auto_renew","is_confirmed","customer_id","instance_id","plan_id","payment_method") VALUES
+	(1,'2021-06-05','2021-07-31','2021-07-14',true,true,1,1,2,'SEPA_TRANSFER'),
+	(2,'2021-06-01','2021-07-31','2021-07-14',true,true,2,2,3,'SEPA_TRANSFER'),
+	(3,'2021-06-01','2021-07-31','2021-07-14',true,true,3,3,3,'SEPA_TRANSFER'),
+	(4,'2021-06-01','2021-07-31','2021-07-14',true,true,4,5,3,'SEPA_TRANSFER');

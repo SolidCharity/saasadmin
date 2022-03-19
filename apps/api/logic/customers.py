@@ -12,7 +12,7 @@ class LogicCustomers:
     def assign_instance(self, customer, product, plan):
 
         # check for first available instance
-        instance = SaasInstance.objects.filter(product=product).filter(status='free').first()
+        instance = SaasInstance.objects.filter(product=product).filter(status=SaasInstance().AVAILABLE).first()
         if not instance:
             # send message to administrator
             self.notify_administrators(_("Missing free instance for %s") % (product.name,), _("Assigning of %s instance for customer %d failed") % (product.name, customer.id))
@@ -22,9 +22,12 @@ class LogicCustomers:
             return False
         else:
             # assign a free instance
-            # TODO: do we have already a contract?
-            contract = LogicContracts().get_new_contract(customer, product, plan)
+            # there might be an unconfirmed contract already
+            contract = LogicContracts().get_contract(customer, product)
+            if not contract:
+                contract = LogicContracts().get_new_contract(customer, product, plan)
             contract.instance = instance
+            contract.plan = plan
             contract.is_confirmed = True
             contract.save()
             instance.status = instance.ASSIGNED
@@ -38,11 +41,23 @@ class LogicCustomers:
                 self.notify_administrators(_("SaasAdmin Error during activation"), _("Failed activation of %s instance %s for customer %d") % (product.name, instance.identifier, customer.id))
                 return False
 
-            # TODO send notification email to customer, with password reset token
-            # self.notify_customer(customer, _(""))
+            # send notification email to customer, with password reset token
+            reseturl = product.instance_password_reset_url. \
+                replace('#Prefix', product.prefix). \
+                replace('#Identifier', instance.identifier)
+            if PasswordResetToken and '#PasswordResetToken' in reseturl:
+                # TODO
+                reseturl = reseturl.replace('#PasswordResetToken', PasswordResetToken)
+
+            # TODO use template, similar to registration?
+            self.notify_customer(customer, _("Welcome to your %s instance") % (product.name,),
+                _("Please go to this link to activate your login for user %s: %s") % (product.instance_admin_user, reseturl))
 
             # send message to administrator
-            self.notify_administrators(_("Instance for %s assigned") % (product.name,), _("Nice, an instance of %s was booked for customer %d") % (product.name, customer.id))
+            instances_available = LogicInstances().get_number_of_available_instances(product)
+            self.notify_administrators(_("Instance for %s assigned") % (product.name,),
+                _("Nice, an instance of %s was booked for customer %d") % (product.name, customer.id) + "\n" +
+                _("Still %d instances are available for new customers.") % (instances_available,))
 
             # TODO send invoice to customer, or send it later in batch processing?
             return True

@@ -61,6 +61,8 @@ class LogicInstances:
         # return the result
         return True, {'new_id': new_id, 'new_password': new_password, 'db_password': db_password, 'hostname': hostname, 'port': new_port};
 
+    def get_number_of_available_instances(self, product):
+        return SaasInstance.objects.filter(product=product).filter(status=SaasInstance().AVAILABLE).count()
 
     def activate_instance(self, customer, product, instance):
 

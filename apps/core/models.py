@@ -48,6 +48,8 @@ class SaasProduct (models.Model):
     activation_url = models.CharField(_("Activation URL"), max_length=250, default = "https://%prefix%identifier.example.org/activate")
     deactivation_url = models.CharField(_("Deativation URL"), max_length=250, default = "https://%prefix%identifier.example.org/deactivate")
     instance_url = models.CharField(_("Instance URL"), max_length=250, default = "https://%prefix%identifier.example.org")
+    instance_password_reset_url = models.CharField(_("Password Reset URL"), max_length=250, default = "https://%prefix%identifier.example.org/reset_password?token=#PasswordResetToken")
+    instance_admin_user = models.CharField(_("Instance Admin User"), max_length=100, default = "admin")
     is_active = models.BooleanField(_("Is Active"), default=False)
     number_of_ports = models.IntegerField(_("Number of Ports"), default=1)
 

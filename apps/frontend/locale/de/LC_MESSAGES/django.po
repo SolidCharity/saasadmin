@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-18 21:07+0100\n"
+"POT-Creation-Date: 2022-03-19 16:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -140,6 +140,10 @@ msgstr "Vertrag kündigen"
 msgid "Details of your instance"
 msgstr "Infos über Ihre Instanz"
 
+#: apps/frontend/templates/instance.html:10
+msgid "You can use your instance at this URL:"
+msgstr "Ihre Instanz finden Sie unter dieser Adresse:"
+
 #: apps/frontend/templates/payment.html:13
 msgid "Payment Details"
 msgstr "Zahlungsweise"
@@ -218,51 +222,51 @@ msgstr "beliebt"
 msgid "Register"
 msgstr "Registrieren"
 
-#: apps/frontend/views.py:110
+#: apps/frontend/views.py:109
 msgid "Please specify account owner and IBAN"
 msgstr "Bitte den Kontoinhaber und die IBAN angeben"
 
-#: apps/frontend/views.py:125
+#: apps/frontend/views.py:124
 msgid "Changes Saved"
 msgstr "Änderungen gespeichert"
 
-#: apps/frontend/views.py:135
+#: apps/frontend/views.py:134
 msgid "year"
 msgstr "Jahr"
 
-#: apps/frontend/views.py:137 apps/frontend/views.py:143
+#: apps/frontend/views.py:136 apps/frontend/views.py:142
 msgid "month"
 msgstr "Monat"
 
-#: apps/frontend/views.py:139
+#: apps/frontend/views.py:138
 msgid "months"
 msgstr "Monate"
 
-#: apps/frontend/views.py:145
+#: apps/frontend/views.py:144
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/frontend/views.py:147
+#: apps/frontend/views.py:146
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:181
+#: apps/frontend/views.py:180
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:183
+#: apps/frontend/views.py:182
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:185
+#: apps/frontend/views.py:184
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/frontend/views.py:257
+#: apps/frontend/views.py:242
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/frontend/views.py:282
+#: apps/frontend/views.py:266
 msgid "Error: no instance has been assigned yet."
 msgstr "Fehler: es wurde noch keine Instanz zugeordnet."
 

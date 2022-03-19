@@ -262,9 +262,13 @@ def instance_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request)
     contract = LogicContracts().get_contract(customer, product)
-    if not contract:
+    if not contract or not contract.instance:
         return render(request, 'error.html', {'message': _("Error: no instance has been assigned yet.")})
-    return render(request, 'instance.html', {'instance': contract.instance})
+    url = product.instance_url. \
+            replace('#Prefix', product.prefix). \
+            replace('#Identifier', contract.instance.identifier)
+
+    return render(request, 'instance.html', {'instance': contract.instance, 'instance_url': url})
 
 
 def display_pricing(request):
