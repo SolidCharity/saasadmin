@@ -12,23 +12,25 @@
 <div class="one-third column">
 
 <div class="pricing-table-wrapper-0 pricing-table-wrapper">
-<span class="pricing-as-popular {%if selected_plan != plan.name%}hidden{%endif%}">{%translate "selected"%}</span>
+<span class="pricing-as-popular {%if selected_plan != plan.slug%}hidden{%endif%}">{%translate "selected"%}</span>
 <h4 class="pricing-title">{{plan.name}}</h4>
 
 <div class="pricing-price">
-	<span class="pricing-currency">
-		{% if plan.cost_per_period == 0 %} {%translate "free"%}
-		{%else%}
-			{%if plan.currency_code == 'EUR' %}{{plan.cost_per_period.normalize}}&euro;
-			{%elif plan.currency_code == 'USD'%}${{plan.cost_per_period.normalize}}
-			{%else%}{{plan.cost_per_period.normalize}} {{plan.currency_code}}
-			{%endif%}
-			{%if plan.period_length_in_months == 1 %}{% translate "per month" %}
-			{%elif plan.period_length_in_months == 3 %}{% translate "per quarter" %}
-			{%elif plan.period_length_in_months == 12 %}{% translate "per year" %}
-			{%endif%}
-		{% endif %}</span>
-	<span class="pricing-date">{{plan.descr_caption}}</span>
+    <span class="pricing-currency">
+        {% if plan.cost_per_period == 0 %}
+            {%translate "free"%}
+            {%if plan.period_length_in_months == 0 %}{% translate "for one day" %}{%endif%}
+        {%else%}
+            {%if plan.currency_code == 'EUR' %}{{plan.cost_per_period.normalize}}&euro;
+            {%elif plan.currency_code == 'USD'%}${{plan.cost_per_period.normalize}}
+            {%else%}{{plan.cost_per_period.normalize}} {{plan.currency_code}}
+            {%endif%}
+            {%if plan.period_length_in_months == 1 %}{% translate "per month" %}
+            {%elif plan.period_length_in_months == 3 %}{% translate "per quarter" %}
+            {%elif plan.period_length_in_months == 12 %}{% translate "per year" %}
+            {%endif%}
+        {% endif %}</span>
+    <span class="pricing-date">{{plan.descr_caption}}</span>
 </div>
 <span class="pricing-subtitle">{{plan.descr_target}}</span>
 
@@ -40,7 +42,7 @@
 </ul>
 
 <div class="pricing-btn">
-<a href="/plan/{{plan.name}}" id="changebtn_test" class="customize-unpreviewable disabled">{% translate "Choose" %}</a>
+<a href="/plan/{{plan.slug}}" id="changebtn_test" class="customize-unpreviewable disabled">{% translate "Choose" %}</a>
 </div>
 </div>
 </div>

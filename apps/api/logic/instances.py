@@ -1,11 +1,12 @@
+from datetime import datetime, timedelta
+from dateutil.relativedelta import relativedelta
 import random
 import requests
 from django.contrib.auth.models import User
 from django.db import connection
 from django.db import transaction
 from django.conf import settings
-from apps.core.models import SaasInstance
-from apps.core.models import SaasProduct
+from apps.core.models import SaasInstance, SaasProduct, SaasContract
 
 class LogicInstances:
     @transaction.atomic
@@ -55,11 +56,13 @@ class LogicInstances:
           last_port = last_port,
           initial_password = new_password,
           db_password = db_password,
-          status = 'in_preparation')
+          status = SaasInstance().IN_PREPARATION)
 
         # return the result
         return True, {'new_id': new_id, 'new_password': new_password, 'db_password': db_password, 'hostname': hostname, 'port': new_port};
 
+    def get_number_of_available_instances(self, product):
+        return SaasInstance.objects.filter(product=product).filter(status=SaasInstance().AVAILABLE).count()
 
     def activate_instance(self, customer, product, instance):
 
@@ -70,11 +73,15 @@ class LogicInstances:
             PasswordResetToken = User.objects.make_random_password(length=16)
             url = url.replace('#PasswordResetToken', PasswordResetToken)
 
+        # for local tests
+        if "example.org" in url:
+            return [True, PasswordResetToken]
+
         if instance.activation_token:
             url = url.replace('#SaasActivationPassword', instance.activation_token)
 
         url = url. \
-            replace('#Prefix', product.instance_prefix). \
+            replace('#Prefix', product.prefix). \
             replace('#Identifier', instance.identifier). \
             replace('#UserEmailAddress', customer.email_address)
 
@@ -88,3 +95,51 @@ class LogicInstances:
             return [False, None]
 
         return [True, PasswordResetToken]
+
+    def deactivate_instance(self, product, instance):
+        """call web request: deactivate_url"""
+        url = product.deactivation_url
+
+        # for local tests
+        if "example.org" in url:
+            return True
+
+        if instance.activation_token:
+            url = url.replace('#SaasActivationPassword', instance.activation_token)
+
+        url = url. \
+            replace('#Prefix', product.prefix). \
+            replace('#Identifier', instance.identifier)
+
+        try:
+            resp = requests.get(url=url)
+            data = resp.json()
+            if not data['success']:
+                return False
+        except Exception as ex:
+            print('Exception in activate_instance: %s' % (ex,))
+            return False
+
+    def deactivate_expired_instances(self):
+        """ to be called by a cronjob each night """
+        contracts = SaasContract.objects.filter(is_confirmed = True, \
+            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'assigned')
+        for contract in contracts:
+            instance = contract.instance
+            if self.deactivate_instance(contract.product, instance):
+                instance.status = instance.EXPIRED
+                instance.save()
+
+    def mark_deactivated_instances_for_deletion(self):
+        """ to be called by a cronjob each night """
+        contracts = SaasContract.objects.filter(is_confirmed = True, \
+            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'expired')
+        for contract in contracts:
+            days = 30
+            if contract.plan.period_length_in_months == 0:
+                # for the one day test instance, remove it immediately
+                days = 0
+            if contract.end_date + timedelta(days=days) < datetime.today():
+                instance = contract.instance
+                instance.status = instance.TO_BE_REMOVED
+                instance.save()

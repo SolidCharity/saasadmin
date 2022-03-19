@@ -1,7 +1,7 @@
 from django import forms  
 import sys
 import datetime
-from apps.core.models import SaasCustomer
+from apps.core.models import SaasCustomer, SaasContract
 
 class CustomerForm(forms.ModelForm):
     class Meta:

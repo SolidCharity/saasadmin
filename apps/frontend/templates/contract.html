@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+
+<div details>
+  <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;">
+
+    <div class="container contractform"
+
+      <div class="row">
+        <div class="col">
+          <h2 class="text-center">{% translate "Contract Details" %}</h2>
+
+          <form method="POST" class="post-form" action="/contract/add/{{product.slug}}/{{plan.slug}}">
+          {% csrf_token %}
+
+          {%if is_free_test%}
+          <div class="center-item-row">
+            <span>
+                {% blocktrans %}This is a free test, limited for 24 hours.{% endblocktrans %}
+                <br/>
+                {% blocktrans %}There is no backup.{% endblocktrans %}
+                <br/>
+                {% blocktrans %}You can upgrade your contract within the test period to continue using your data.{% endblocktrans %}
+            </span>
+            <br><br>
+
+          {%else%}
+          <div class="center-item-row">
+            <span>
+                {%if payment_invoice%}
+                {% blocktrans %}We will send you an invoice per E-Mail, and you can please pay that invoice within 14 days.{% endblocktrans %}
+                {%else%}
+                {% blocktrans %}We will send you an invoice per E-Mail, and will withdraw the money from your account 14 days later.{% endblocktrans %}
+                {%endif%}
+            </span>
+            <br/>
+            <span>{% blocktrans %}The current month is free, that means the payment covers the month that follows the date of your order.{% endblocktrans %}</span>
+            <br>
+            <span>{% blocktrans %}Up until {{ noticePeriod }} before the end of the paid period, you can cancel the contract by E-Mail. We will provide you with a backup of your data from your instance.{% endblocktrans %}</span>
+            <br>
+            <span>{% blocktrans %}If you don't cancel the contract, the contract will be automatically renewed for {{ periodLengthExtension }}, and we will send you a new invoice per E-Mail.{% endblocktrans %}</span>
+            <br>
+            <span>{% blocktrans %}If you downgrade your product, then this will affect the next payment period. You will not receive a refund.{% endblocktrans %}</span>
+            <br><br>
+          </div>
+
+          <div>{%translate "To be paid"%}</div>
+          <div class='withborder'>{{plan.cost_per_period}} {{plan.currency_code}} {%translate "per"%} {{periodLength}}</div>
+          {%endif%}
+
+          <div>{%translate "Service Period"%}</div>
+          <div class='withborder'>{{contract.start_date|date}} - {{contract.end_date|date}}</div>
+
+          {%if contract.is_auto_renew %}
+          <div>{% blocktrans %}Contract will automatically be renewed by {{periodLengthExtension}} if it is not cancelled up until:{% endblocktrans %} {{ contract.latest_cancel_date|date }}</div>
+          {%else%}
+          <div><br/><br/>{% blocktrans %}Contract will end on the end of the day: {% endblocktrans %} {{contract.end_date|date}}</div>
+          {%endif%}
+
+          <br/>
+
+          {%if is_new_order%}
+          <div class="col-6">
+            {%if is_free_test%}
+                <button type="confirm" class="button-primary">{%translate "Confirm"%}</button>
+            {%else%}
+                <button type="confirm" class="button-primary">{%translate "Order now"%}</button>
+            {%endif%}
+          </div>
+          {%endif%}
+
+          </form>
+
+          {%if can_cancel_contract %}
+          <form method="POST" class="post-form" action="/contract/cancel/{{product.slug}}">
+            {% csrf_token %}
+            <div class="col-6">
+              <button type="confirm" class="button btn-danger">{%translate "Cancel Contract"%}</button>
+            </div>
+          </form>
+          {%endif%}
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

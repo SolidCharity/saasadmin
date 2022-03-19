@@ -8,6 +8,7 @@ from apps.core.models import SaasCustomer
 from apps.core.models import SaasPlan
 from apps.core.models import SaasProduct
 from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm
+from apps.api.logic.contracts import LogicContracts
 from apps.api.logic.products import LogicProducts
 from apps.api.logic.instances import LogicInstances
 from django.db.models import Q
@@ -46,7 +47,7 @@ def customers(request, product):
 @staff_member_required
 def instances(request, product):
     product = SaasProduct.objects.filter(slug = product).first()
-    unused_instances = SaasInstance.objects.filter(product = product).filter(Q(status='free') | Q(status='in_preparation'))
+    unused_instances = SaasInstance.objects.filter(product = product).filter(Q(status=SaasInstance().AVAILABLE) | Q(status=SaasInstance().IN_PREPARATION))
 
     return render(request,"instances.html",
             {'unused_instances': unused_instances, 'product': product })
@@ -88,7 +89,7 @@ def addinstances(request, product):
 @staff_member_required
 def plans(request, product):
     product = SaasProduct.objects.filter(slug = product).first()
-    plans = SaasPlan.objects.filter(product = product)
+    plans = SaasPlan.objects.filter(product = product).order_by('cost_per_period')
 
     return render(request,"plans.html",
             { 'plans': plans, 'product': product })
@@ -201,3 +202,9 @@ def deleteproduct(request, id):
     product = SaasProduct.objects.get(id=id)
     product.delete()
     return redirect("/products")
+
+
+def cronjob(request):
+    LogicContracts().update_dates_of_contracts()
+    LogicInstances().deactivate_expired_instances()
+    LogicInstances().mark_deactivated_instances_for_deletion()

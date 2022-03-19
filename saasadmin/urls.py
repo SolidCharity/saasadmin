@@ -28,6 +28,12 @@ urlpatterns = [
     # API
     path('', include('apps.api.urls')),
 
+    # i18n
+    path('i18n/', include('django.conf.urls.i18n')),
+
+    # cron job
+    path('cronjob', backend_views.cronjob),
+
     # SaasAdmin Backend
     path('backend', backend_views.products),
     path('customers/<str:product>/', backend_views.customers),
@@ -51,10 +57,11 @@ urlpatterns = [
     path('home/', frontend_views.home),
     path('account', frontend_views.account_view),
     path('account/update', frontend_views.account_update),
-    path('plan/<str:plan_id>', frontend_views.select_plan),
-    path('payment', frontend_views.select_payment),
-    path('contract/<str:product_id>/<str:plan_id>/add', frontend_views.subscribe),
-    path('contract/<str:product_id>/cancel', frontend_views.cancel),
+    path('plan/<str:plan_id>', frontend_views.plan_select),
+    path('paymentmethod', frontend_views.paymentmethod_select),
+    path('contract', frontend_views.contract_view),
+    path('contract/add/<str:product_id>/<str:plan_id>', frontend_views.contract_subscribe),
+    path('contract/cancel/<str:product_id>', frontend_views.contract_cancel),
     path('instance', frontend_views.instance_view),
     path('pricing', frontend_views.display_pricing),
 ]

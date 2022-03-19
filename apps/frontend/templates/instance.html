@@ -7,8 +7,9 @@
 
     <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;" id="account_field">
         <h2 class="text-center">{% translate "Details of your instance" %}</h2>
-
-        {{instance.identifier}}
+        {% translate "You can use your instance at this URL:"%}
+        <br/>
+        <a href="{{instance_url}}">{{instance_url}}</a>
     </div>
 </div>
 

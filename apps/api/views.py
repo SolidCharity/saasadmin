@@ -29,8 +29,19 @@ class InstanceApiView(APIView):
     def get(self, request, *args, **kwargs):
         hostname = self.getParam(request, 'hostname', '')
         product = LogicProducts().get_product(request, False)
+        action = self.getParam(request, 'action', '')
+
+        if action == "install":
+            status = [SaasInstance().IN_PREPARATION,]
+        elif action == "update":
+            status = [SaasInstance().AVAILABLE, SaasInstance().RESERVED, SaasInstance().ASSIGNED, SaasInstance().EXPIRED, SaasInstance().TO_BE_REMOVED,]
+        elif action == "remove":
+            status = [SaasInstance().TO_BE_REMOVED,]
+        else:
+            raise Exception('please specify valid action')
+
         if hostname and product:
-            rows = SaasInstance.objects.filter(hostname=hostname, product=product).order_by('id')
+            rows = SaasInstance.objects.filter(hostname=hostname, product=product, status__in=status).order_by('id')
         else:
             raise Exception('please specify hostname and product_name')
         serializer = InstanceSerializer(rows, many=True)
@@ -60,14 +71,19 @@ class InstanceApiView(APIView):
 
         if hostname and product and status and instance_id:
             instance = SaasInstance.objects. \
-                filter(Q(identifier=instance_id)&Q(hostname=hostname)&Q(product=product)&Q(status='in_preparation')). \
+                filter(Q(identifier=instance_id)&Q(hostname=hostname)&Q(product=product)). \
                 first()
 
         if not instance:
             raise Exception('please specify hostname and product_name and instance_id and status')
 
-        if instance.status == 'in_preparation' and new_status == 'free':
-            instance.status = 'free'
+        if instance.status == instance.IN_PREPARATION and new_status == instance.AVAILABLE:
+            instance.status = instance.AVAILABLE
+            instance.save()
+            return Response({'success':'true'}, status=status.HTTP_200_OK)
+
+        if instance.status == instance.TO_BE_REMOVED and new_status == instance.REMOVED:
+            instance.status = instance.REMOVED
             instance.save()
             return Response({'success':'true'}, status=status.HTTP_200_OK)
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-15 07:32+0100\n"
+"POT-Creation-Date: 2022-03-19 16:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,27 @@ msgstr ""
 msgid "Customers"
 msgstr ""
 
+#: apps/backend/templates/django_registration/activation_complete.html:6
+#: apps/backend/templates/django_registration/registration_complete.html:6
+msgid "Success!"
+msgstr "Erfolg!"
+
+#: apps/backend/templates/django_registration/activation_complete.html:8
+msgid "Now you can login:"
+msgstr "Jetzt können Sie sich anmelden:"
+
+#: apps/backend/templates/django_registration/activation_complete.html:8
+msgid "Login"
+msgstr "Anmelden"
+
+#: apps/backend/templates/django_registration/registration_complete.html:8
+msgid ""
+"An E-Mail has been sent to you. Please confirm by clicking on the link in "
+"that E-Mail!"
+msgstr ""
+"Es wurde eine E-Mail an Sie verschickt. Bitte bestätigen Sie Ihre "
+"Registrierung, in dem Sie auf den Verweis in der E-Mail klicken!"
+
 #: apps/backend/templates/django_registration/registration_form.html:30
 msgid "Register"
 msgstr "Zugang einrichten"
@@ -34,8 +55,60 @@ msgstr ""
 msgid "Plans"
 msgstr ""
 
+#: apps/backend/templates/plans.html:25
+msgid "slug"
+msgstr ""
+
+#: apps/backend/templates/plans.html:26
+msgid "name"
+msgstr ""
+
+#: apps/backend/templates/plans.html:27
+msgid "Cost per Period"
+msgstr ""
+
+#: apps/backend/templates/plans.html:28
+msgid "Currency"
+msgstr ""
+
+#: apps/backend/templates/plans.html:29
+msgid "Period Length in Months"
+msgstr ""
+
+#: apps/backend/templates/plans.html:30
+msgid "Notice Period in Days"
+msgstr ""
+
+#: apps/backend/templates/plans.html:31 apps/backend/templates/products.html:13
+msgid "Action"
+msgstr "Aktion"
+
+#: apps/backend/templates/plans.html:42 apps/backend/templates/products.html:21
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: apps/backend/templates/plans.html:43 apps/backend/templates/products.html:22
+msgid "Delete"
+msgstr "Löschen"
+
+#: apps/backend/templates/plans.html:49 apps/backend/templates/products.html:27
+msgid "Add New Record"
+msgstr "Neuen Eintrag hinzufügen"
+
 #: apps/backend/templates/products.html:7
 msgid "Products"
+msgstr ""
+
+#: apps/backend/templates/products.html:11
+msgid "Name"
+msgstr ""
+
+#: apps/backend/templates/products.html:12
+msgid "Is Active"
+msgstr ""
+
+#: apps/backend/templates/products.html:20
+msgid "Select"
 msgstr ""
 
 #: apps/backend/templates/registration/login.html:31

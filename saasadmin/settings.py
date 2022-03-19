@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_registration',
     'django_countries',
+    'modeltranslation',
     'rest_framework',
     'rest_framework.authtoken',
     'apps.core',
@@ -119,6 +120,12 @@ LOCALE_PATHS = [os.path.join(BASE_DIR, "locale")]
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+
+gettext = lambda s: s
+LANGUAGES = (
+    ('de', gettext('German')),
+    ('en', gettext('English')),
+)
 
 USE_L10N = True
 

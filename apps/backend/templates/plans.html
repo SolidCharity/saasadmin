@@ -4,32 +4,49 @@
 {% block content %}
 
 <div class="container">
-<h3>{%translate "Plans"%} {{product.name}}</h3>
-<table>
+    <h3>{%translate "Plans"%} {{product.name}}</h3>
 
-<tr>
-		<th>name</th>
-		<th>language</th>
-		<th>costPerPeriod</th>
-		<th>currencyCode</th>
-		<th>periodLengthInMonths </th>
-		<th>noticePeriodInDays</th>
-		<th>Action</th>
-</tr>
-      {% for plan in plans %}
-<tr>
-		<td>{{ plan.name }} </td>
-		<td>{{ plan.language }} </td>
-		<td> {{ plan.cost_per_period}}</td>
-		<td>{{ plan.currency_code}} </td>
-		<td>{{ plan.period_length_in_months}} </td>
-		<td>{{ plan.notice_period_in_days}} </td>
-		<td><a href="/plans/edit/{{ plan.id }}" class="button button-primary">Edit</a></td>
-        <td><a href="/plans/delete/{{ plan.id }}" class="button button-danger">delete</a></td>
-</tr>
-{% endfor %}
-</table>
-<center><a href="/plans/{{product.slug}}/add" class="button button-primary">Add New Record</a></center>
+    <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+        <input name="next" type="hidden" value="{{ redirect_to }}">
+        <select name="language" onchange="this.form.submit()">
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+                <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                    {{ language.name_local }} ({{ language.code }})
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <table>
+    <tr>
+        <th>{%translate "slug"%}</th>
+        <th>{%translate "name"%}</th>
+        <th>{%translate "Cost per Period"%}</th>
+        <th>{%translate "Currency"%}</th>
+        <th>{%translate "Period Length in Months"%}</th>
+        <th>{%translate "Notice Period in Days"%}</th>
+        <th>{%translate "Action"%}</th>
+    </tr>
+
+    {% for plan in plans %}
+    <tr>
+        <td>{{ plan.slug }} </td>
+        <td>{{ plan.name }} </td>
+        <td>{{ plan.cost_per_period}}</td>
+        <td>{{ plan.currency_code}} </td>
+        <td>{{ plan.period_length_in_months}} </td>
+        <td>{{ plan.notice_period_in_days}} </td>
+        <td><a href="/plans/edit/{{ plan.id }}" class="button button-primary">{%translate "Edit"%}</a></td>
+        <td><a href="/plans/delete/{{ plan.id }}" class="button button-danger">{%translate "Delete"%}</a></td>
+    </tr>
+    {% endfor %}
+
+    </table>
+
+    <center><a href="/plans/{{product.slug}}/add" class="button button-primary">{%translate "Add New Record"%}</a></center>
 </div>
 
 {% endblock %}
