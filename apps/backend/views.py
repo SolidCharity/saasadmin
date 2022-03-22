@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
+from django.http import HttpResponse
 from apps.core.models import SaasInstance
 from apps.core.models import SaasCustomer
 from apps.core.models import SaasPlan
@@ -208,3 +209,4 @@ def cronjob(request):
     LogicContracts().update_dates_of_contracts()
     LogicInstances().deactivate_expired_instances()
     LogicInstances().mark_deactivated_instances_for_deletion()
+    return HttpResponse("cronjob has run")
