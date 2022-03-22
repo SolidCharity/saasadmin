@@ -203,10 +203,3 @@ def deleteproduct(request, id):
     product = SaasProduct.objects.get(id=id)
     product.delete()
     return redirect("/products")
-
-
-def cronjob(request):
-    LogicContracts().update_dates_of_contracts()
-    LogicInstances().deactivate_expired_instances()
-    LogicInstances().mark_deactivated_instances_for_deletion()
-    return HttpResponse("cronjob has run")

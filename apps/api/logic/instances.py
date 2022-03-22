@@ -126,7 +126,7 @@ class LogicInstances:
             is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'assigned')
         for contract in contracts:
             instance = contract.instance
-            if self.deactivate_instance(contract.product, instance):
+            if self.deactivate_instance(instance.product, instance):
                 instance.status = instance.EXPIRED
                 instance.save()
 
