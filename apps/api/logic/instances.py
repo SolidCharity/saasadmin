@@ -9,7 +9,7 @@ from django.conf import settings
 from apps.core.models import SaasInstance, SaasProduct, SaasContract
 
 class LogicInstances:
-    def random_password(withSpecialChars):
+    def random_password(self, withSpecialChars):
         # add some lowercase characters
         pwd = User.objects.make_random_password(length=6, allowed_chars='abcdefghijklmnopqrstuvwxyz')
         # add some uppercase characters
