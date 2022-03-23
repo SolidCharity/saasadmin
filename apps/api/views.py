@@ -32,16 +32,16 @@ class InstanceApiView(APIView):
         action = self.getParam(request, 'action', '')
 
         if action == "install":
-            status = [SaasInstance().IN_PREPARATION,]
+            instance_status = [SaasInstance().IN_PREPARATION,]
         elif action == "update":
-            status = [SaasInstance().AVAILABLE, SaasInstance().RESERVED, SaasInstance().ASSIGNED, SaasInstance().EXPIRED, SaasInstance().TO_BE_REMOVED,]
+            instance_status = [SaasInstance().AVAILABLE, SaasInstance().RESERVED, SaasInstance().ASSIGNED, SaasInstance().EXPIRED, SaasInstance().TO_BE_REMOVED,]
         elif action == "remove":
-            status = [SaasInstance().TO_BE_REMOVED,]
+            instance_status = [SaasInstance().TO_BE_REMOVED,]
         else:
             raise Exception('please specify valid action')
 
         if hostname and product:
-            rows = SaasInstance.objects.filter(hostname=hostname, product=product, status__in=status).order_by('id')
+            rows = SaasInstance.objects.filter(hostname=hostname, product=product, status__in=instance_status).order_by('id')
         else:
             raise Exception('please specify hostname and product_name')
         serializer = InstanceSerializer(rows, many=True)
