@@ -23,16 +23,14 @@ class LogicInstances:
         random.shuffle(pwd)
         return pwd
 
-
-
     @transaction.atomic
     def create_new_instance(self, hostname, pacuser, product):
         # generate new password
-        new_password = self.random_password(withSpecialChars=False)
+        new_password = self.random_password(False)
         # generate the db password
-        db_password = self.random_password(withSpecialChars=False)
+        db_password = self.random_password(False)
         # the activation token that allows us to activate the instance
-        activation_token = self.random_password(withSpecialChars=False)
+        activation_token = self.random_password(False)
 
         # find new available identifier
         instance_id_start = settings.INSTANCE_ID_START
