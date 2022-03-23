@@ -61,7 +61,8 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
 
 def setup_instances(config, url, admin_token, host_name, product_slug, ansible_path, action):
     params = dict(format='json', hostname=host_name, product=product_slug, action=action)
-    resp = requests.get(url=url + '/api/v1/instances/', params=params, headers={'Authorization': f'Token {admin_token}'})
+    url += '/api/v1/instances/'
+    resp = requests.get(url=url, params=params, headers={'Authorization': f'Token {admin_token}'})
     data = resp.json()
 
     if 'detail' in data:
