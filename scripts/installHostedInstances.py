@@ -44,7 +44,8 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
         return_code = process.poll()
         if return_code is not None:
             print('RETURN CODE', return_code)
-            print(template_content)
+            if return_code:
+                print(template_content)
             # Process has finished, read rest of the output
             for output in process.stdout.readlines():
                 print(output.strip().decode())
