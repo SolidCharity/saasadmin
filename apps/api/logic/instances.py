@@ -20,8 +20,9 @@ class LogicInstances:
             # add some special characters
             pwd += User.objects.make_random_password(length=2, allowed_chars='!§$%&/=?:;.,_-<>{}[]()')
         # now shuffle
-        random.shuffle(pwd)
-        return pwd
+        list_pwd = list(pwd)
+        random.shuffle(list_pwd)
+        return ''.join(list_pwd)
 
     @transaction.atomic
     def create_new_instance(self, hostname, pacuser, product):
