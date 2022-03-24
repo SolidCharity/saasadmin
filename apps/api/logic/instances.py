@@ -9,14 +9,29 @@ from django.conf import settings
 from apps.core.models import SaasInstance, SaasProduct, SaasContract
 
 class LogicInstances:
+    def random_password(self, withSpecialChars):
+        # add some lowercase characters
+        pwd = User.objects.make_random_password(length=6, allowed_chars='abcdefghijklmnopqrstuvwxyz')
+        # add some uppercase characters
+        pwd += User.objects.make_random_password(length=6, allowed_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        # add some digits
+        pwd += User.objects.make_random_password(length=2, allowed_chars='123456789')
+        if withSpecialChars:
+            # add some special characters
+            pwd += User.objects.make_random_password(length=2, allowed_chars='!§$%&/=?:;.,_-<>{}[]()')
+        # now shuffle
+        list_pwd = list(pwd)
+        random.shuffle(list_pwd)
+        return ''.join(list_pwd)
+
     @transaction.atomic
     def create_new_instance(self, hostname, pacuser, product):
         # generate new password
-        new_password = User.objects.make_random_password(length=16)
+        new_password = self.random_password(False)
         # generate the db password
-        db_password = User.objects.make_random_password(length=16)
+        db_password = self.random_password(False)
         # the activation token that allows us to activate the instance
-        activation_token = User.objects.make_random_password(length=16)
+        activation_token = self.random_password(False)
 
         # find new available identifier
         instance_id_start = settings.INSTANCE_ID_START
@@ -126,7 +141,7 @@ class LogicInstances:
             is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'assigned')
         for contract in contracts:
             instance = contract.instance
-            if self.deactivate_instance(contract.product, instance):
+            if self.deactivate_instance(instance.product, instance):
                 instance.status = instance.EXPIRED
                 instance.save()
 

@@ -14,9 +14,15 @@ IN_PREPARATION, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED =
 def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
     # prepare the inventory.yml for this instance
     with open('tmp.inventory.yml', 'w') as f:
-        f.write(ansible_inventory_template
+        domain = (instance['instance_url']
+            .replace('https://', '')
+            .replace('http://', '')
+            .rstrip('/')
+            .replace('#Prefix', instance['prefix'])
+            .replace('#Identifier', instance['identifier']))
+        template_content = (ansible_inventory_template
             .replace('{{pac}}', instance['pacuser'])
-            .replace('{{domain}}', instance['instance_url'].replace('https://', '').replace('http://', '').rstrip('/'))
+            .replace('{{domain}}', domain)
             .replace('{{username}}', instance['prefix'] + instance['identifier'])
             .replace('{{password}}', instance['db_password'])
             .replace('{{SaasActivationPassword}}', instance['activation_token'])
@@ -25,6 +31,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .replace('{{smtp_host}}', config['saasadmin']['smtp_host'])
             .replace('{{smtp_user}}', config['saasadmin']['smtp_user'])
             .replace('{{smtp_pwd}}', config['saasadmin']['smtp_pwd']))
+        f.write(template_content)
 
     # call ansible script to install/update instance
     process = subprocess.Popen(['ansible-playbook', '-i',
@@ -37,6 +44,8 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
         return_code = process.poll()
         if return_code is not None:
             print('RETURN CODE', return_code)
+            if return_code:
+                print(template_content)
             # Process has finished, read rest of the output
             for output in process.stdout.readlines():
                 print(output.strip().decode())
@@ -52,7 +61,8 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
 
 def setup_instances(config, url, admin_token, host_name, product_slug, ansible_path, action):
     params = dict(format='json', hostname=host_name, product=product_slug, action=action)
-    resp = requests.get(url=url + '/api/v1/instances/', params=params, headers={'Authorization': f'Token {admin_token}'})
+    url += '/api/v1/instances/'
+    resp = requests.get(url=url, params=params, headers={'Authorization': f'Token {admin_token}'})
     data = resp.json()
 
     if 'detail' in data:

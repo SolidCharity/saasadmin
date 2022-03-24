@@ -43,7 +43,7 @@ To get started:
 apt-get install git make
 git clone https://github.com/SolidCharity/saasadmin.git
 cd saasadmin
-make install
+make quickstart
 make runserver
 ```
 
