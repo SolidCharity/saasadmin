@@ -1,4 +1,4 @@
-{% blocktrans %}Hello {{ user.username }},{% endblocktrans %}
+{% load i18n %}{% blocktrans with username=user.username %}Hello {{ username }},{% endblocktrans %}
 
 {% blocktrans %}you have registered at {{ site }}{% endblocktrans %}
 
@@ -7,7 +7,7 @@
 {% blocktrans %}If you want to activate your account at https://{{ site }}, please click on the following link:{% endblocktrans %}
 
 {% autoescape off %}
-{% blocktrans %}Please click on the link to confirm your registration{% endblocktrans %} https://{{ site }}{% url 'django_registration_activate' activation_key=activation_key %}
+https://{{ site }}{% url 'django_registration_activate' activation_key=activation_key %}
 {% endautoescape %}
 
 {% blocktrans %}All the best!{% endblocktrans %}
