@@ -1,1 +1,1 @@
-Confirm your registration for {{ site }}
+{% blocktrans %}Confirm your registration for {{ site }}{% endblocktrans %}

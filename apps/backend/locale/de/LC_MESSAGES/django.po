@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-19 16:27+0100\n"
+"POT-Creation-Date: 2022-03-25 06:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps/backend/templates/customers.html:7
 msgid "Customers"
-msgstr ""
+msgstr "Kunden"
 
 #: apps/backend/templates/django_registration/activation_complete.html:6
 #: apps/backend/templates/django_registration/registration_complete.html:6
@@ -32,8 +32,72 @@ msgid "Now you can login:"
 msgstr "Jetzt können Sie sich anmelden:"
 
 #: apps/backend/templates/django_registration/activation_complete.html:8
+#: apps/backend/templates/django_registration/activation_failed.html:9
 msgid "Login"
 msgstr "Anmelden"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:1
+#, python-format
+msgid "Hello %(user.username)s,"
+msgstr "Hallo %(user.username)s,"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:3
+#, python-format
+msgid "you have registered at %(site)s"
+msgstr "Du hast dich auf %(site)s registriert."
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:5
+msgid "If this was not you, please ignore this email!"
+msgstr "Falls Du das nicht getan hast, ignoriere bitte diese E-Mail!"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:7
+#, python-format
+msgid ""
+"If you want to activate your account at https://%(site)s, please click on "
+"the following link:"
+msgstr ""
+"Falls du den Zugang für https://%(site)s bestätigen willst, klicke bitte auf "
+"den folgenden Link:"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:10
+msgid "Please click on the link to confirm your registration"
+msgstr "Bitte klicke auf den Link, um die Anmeldung zu bestätigen"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:13
+msgid "All the best!"
+msgstr "Alles Gute!"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:15
+#, python-format
+msgid "The team at %(site)s"
+msgstr "Das Team von %(site)s"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:17
+msgid "PS: this is an automated E-Mail, please do not reply."
+msgstr ""
+"PS: Dies ist eine automatisch erzeugte E-Mail, bitte nicht darauf antworten."
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:18
+#, python-format
+msgid "You can contact us at info@%(site)s"
+msgstr "Wir sind per E-Mail erreichbar unter der Adresse info@%(site)s"
+
+#: apps/backend/templates/django_registration/activation_email_subject.txt:1
+#, python-format
+msgid "Confirm your registration for %(site)s"
+msgstr "Anmeldung für %(site)s bestätigen"
+
+#: apps/backend/templates/django_registration/activation_failed.html:5
+msgid "Something went wrong."
+msgstr "Das hat nicht funktioniert."
+
+#: apps/backend/templates/django_registration/activation_failed.html:7
+msgid "Perhaps you have confirmed already?"
+msgstr "Vielleicht wurde die Anmeldung bereits bestätigt?"
+
+#: apps/backend/templates/django_registration/activation_failed.html:9
+msgid "Please try to Login:"
+msgstr "Bitte versuche dich anzumelden:"
 
 #: apps/backend/templates/django_registration/registration_complete.html:8
 msgid ""
@@ -49,11 +113,11 @@ msgstr "Zugang einrichten"
 
 #: apps/backend/templates/instances.html:6
 msgid "Instances"
-msgstr ""
+msgstr "Instanzen"
 
 #: apps/backend/templates/plans.html:7
 msgid "Plans"
-msgstr ""
+msgstr "Angebote"
 
 #: apps/backend/templates/plans.html:25
 msgid "slug"
