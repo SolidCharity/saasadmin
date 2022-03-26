@@ -138,6 +138,10 @@ def main(product, hostname, ansiblepath, admintoken, url, configfile, action):
     if url is None:
         url=config['saasadmin']['url']
 
+    if action not in ['install', 'remove', 'update']:
+        print('action must be one of these values: install, remove, or update')
+        exit(-1)
+
     setup_instances(config, url, admintoken, hostname, product, ansiblepath, action)
 
 if __name__ == '__main__':
