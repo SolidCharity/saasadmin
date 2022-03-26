@@ -5,11 +5,18 @@ import requests
 import yaml
 import os
 import subprocess
+import string
+import random
 
 # possible values for status; see core/model.py for the same constants
 IN_PREPARATION, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
     ('IN_PREPARATION', 'AVAILABLE', 'RESERVED', 'ASSIGNED', 'EXPIRED', 'TO_BE_REMOVED', 'REMOVED')
 
+def random_password(length):
+    # get random password with letters, and digits
+    characters = string.ascii_letters + string.digits
+    password = ''.join(random.choice(characters) for i in range(length))
+    return password
 
 def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
     # prepare the inventory.yml for this instance
@@ -27,6 +34,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .replace('{{password}}', instance['db_password'])
             .replace('{{SaasActivationPassword}}', instance['activation_token'])
             .replace('{{SaasInstanceStatus}}', instance['status'])
+            .replace('{{RandomPassword}}', random_password(16))
             .replace('{{smtp_from}}', config['saasadmin']['smtp_from'])
             .replace('{{smtp_host}}', config['saasadmin']['smtp_host'])
             .replace('{{smtp_user}}', config['saasadmin']['smtp_user'])
