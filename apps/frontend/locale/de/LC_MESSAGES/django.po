@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-25 18:04+0100\n"
+"POT-Creation-Date: 2022-03-30 10:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,10 +161,10 @@ msgid "You transfer the money via SEPA"
 msgstr "Sie überweisen das Geld mittels SEPA Banküberweisung oder Dauerauftrag"
 
 #: apps/frontend/templates/payment.html:37
-msgid "You allow us to debit your bank account via SEPA"
+msgid "You allow us to debit your bank account via SEPA Direct Debit"
 msgstr ""
 "Sie geben uns eine Einzugsermächtigung, damit wir den Betrag per SEPA "
-"einziehen können"
+"Lastschrift einziehen können"
 
 #: apps/frontend/templates/payment.html:46
 msgid "Account Owner"
