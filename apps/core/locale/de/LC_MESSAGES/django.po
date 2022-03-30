@@ -121,7 +121,7 @@ msgid "Activation URL"
 msgstr ""
 
 #: apps/core/models.py:49
-msgid "Deativation URL"
+msgid "Deactivation URL"
 msgstr ""
 
 #: apps/core/models.py:50

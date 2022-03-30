@@ -46,7 +46,7 @@ class SaasProduct (models.Model):
     name = models.CharField(_("Name"), max_length=16)
     prefix = models.CharField(_("Prefix"), max_length=10, default='xy')
     activation_url = models.CharField(_("Activation URL"), max_length=250, default = "https://%prefix%identifier.example.org/activate")
-    deactivation_url = models.CharField(_("Deativation URL"), max_length=250, default = "https://%prefix%identifier.example.org/deactivate")
+    deactivation_url = models.CharField(_("Deactivation URL"), max_length=250, default = "https://%prefix%identifier.example.org/deactivate")
     instance_url = models.CharField(_("Instance URL"), max_length=250, default = "https://%prefix%identifier.example.org")
     instance_password_reset_url = models.CharField(_("Password Reset URL"), max_length=250, default = "https://%prefix%identifier.example.org/reset_password?token=#PasswordResetToken")
     instance_admin_user = models.CharField(_("Instance Admin User"), max_length=100, default = "admin")
