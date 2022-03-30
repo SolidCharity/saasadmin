@@ -1,3 +1,6 @@
 .venv
 config.yaml
+config-dev.yaml
+config-test.yaml
+config-prod.yaml
 tmp.inventory.yml
