@@ -25,9 +25,28 @@
       </tr>
       <tr>
         <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
+        <td><input type="password" name="password" autocomplete="current-password" required="" id="Passwort"></td>
+        <td><input type="checkbox" id="checkpw" onclick="zeigePasswort()"></td>
+   
+       <td> 
+         
+          <script>
+          // Passwort im Klartext anzeigen
+          
+          function zeigePasswort() {
+           if (document.getElementById("checkpw").checked == true) {
+            document.getElementById("Passwort").type = "text";
+           }
+           else {
+            document.getElementById("Passwort").type = "password";
+           }
+          }
+          </script>
+                  
+           
+        </td>
       </tr>
-    </table>
+      </table>
     <input type="submit" value="{%translate "login"%}" />
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
