@@ -41,18 +41,6 @@ class LogicCustomers:
                 self.notify_administrators(_("SaasAdmin Error during activation"), _("Failed activation of %s instance %s for customer %d") % (product.name, instance.identifier, customer.id))
                 return False
 
-            # send notification email to customer, with password reset token
-            reseturl = product.instance_password_reset_url. \
-                replace('#Prefix', product.prefix). \
-                replace('#Identifier', instance.identifier)
-            if PasswordResetToken and '#PasswordResetToken' in reseturl:
-                # TODO
-                reseturl = reseturl.replace('#PasswordResetToken', PasswordResetToken)
-
-            # TODO use template, similar to registration?
-            self.notify_customer(customer, _("Welcome to your %s instance") % (product.name,),
-                _("Please go to this link to activate your login for user %s: %s") % (product.instance_admin_user, reseturl))
-
             # send message to administrator
             instances_available = LogicInstances().get_number_of_available_instances(product)
             self.notify_administrators(_("Instance for %s assigned") % (product.name,),

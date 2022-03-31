@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-30 10:54+0200\n"
+"POT-Creation-Date: 2022-03-31 11:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -143,6 +143,46 @@ msgstr "Infos über Ihre Instanz"
 #: apps/frontend/templates/instance.html:10
 msgid "You can use your instance at this URL:"
 msgstr "Ihre Instanz finden Sie unter dieser Adresse:"
+
+#: apps/frontend/templates/instance.html:15
+#, python-format
+msgid ""
+"Your administration user is <code>%(adminuser)s</code>, with email address "
+"<code>%(adminemail)s</code>."
+msgstr ""
+"Ihr Benutzer mit Administrationsrechten ist <code>%(adminuser)s</code>, mit "
+"der E-Mail Adresse <code>%(adminemail)s</code>."
+
+#: apps/frontend/templates/instance.html:18
+msgid ""
+"If you have not done so already, you must first get a password for this "
+"user, by resetting the password. See the link below for doing that."
+msgstr ""
+"Falls nicht bereits geschehen, müssen Sie zuerst ein Passwort für diesen "
+"Benutzer festlegen. Das geschieht über die Funktion <b>Passwort "
+"zurücksetzen</b>, die über den Link unten angestoßen wird."
+
+#: apps/frontend/templates/instance.html:20
+#, python-format
+msgid ""
+"After that you can login as user <code>%(adminuser)s</code>, and create "
+"unprivileged users for daily usage."
+msgstr ""
+"Danach können Sie sich als Benutzer <code>%(adminuser)s</code> anmelden, und "
+"dann weitere normale Benutzer für den alltäglichen Gebrauch einrichten."
+
+#: apps/frontend/templates/instance.html:23
+#, python-format
+msgid ""
+"You can reset the password for the user <code>%(adminuser)s</code> by "
+"visiting this url:"
+msgstr ""
+"Sie können das Passwort für den Benutzer <code>%(adminuser)s</code> über "
+"diesen Link zurücksetzen:"
+
+#: apps/frontend/templates/instance.html:25
+msgid "Reset password"
+msgstr "Passwort zurücksetzen"
 
 #: apps/frontend/templates/payment.html:13
 msgid "Payment Details"

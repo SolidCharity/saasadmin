@@ -267,8 +267,19 @@ def instance_view(request):
     url = product.instance_url. \
             replace('#Prefix', product.prefix). \
             replace('#Identifier', contract.instance.identifier)
+    if product.instance_password_reset_url.startswith('/'):
+        pwd_reset_url = url + product.instance_password_reset_url[1:]
+    else:
+        pwd_reset_url = product.instance_password_reset_url
+    adminuser = product.instance_admin_user
+    adminemail = customer.email_address
 
-    return render(request, 'instance.html', {'instance': contract.instance, 'instance_url': url})
+    return render(request, 'instance.html',
+        {'instance': contract.instance,
+        'instance_url': url,
+        'adminuser': adminuser,
+        'adminemail': adminemail,
+        'pwd_reset_url': pwd_reset_url})
 
 
 def display_pricing(request):

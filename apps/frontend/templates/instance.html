@@ -10,6 +10,19 @@
         {% translate "You can use your instance at this URL:"%}
         <br/>
         <a href="{{instance_url}}">{{instance_url}}</a>
+        <br/>
+        <br/>
+        {% blocktrans %}Your administration user is <code>{{adminuser}}</code>, with email address <code>{{adminemail}}</code>.{% endblocktrans %}
+        <br/>
+        <br/>
+        {% blocktrans %}If you have not done so already, you must first get a password for this user, by resetting the password. See the link below for doing that.{% endblocktrans %}
+        <br/>
+        {% blocktrans%}After that you can login as user <code>{{adminuser}}</code>, and create unprivileged users for daily usage.{% endblocktrans %}
+        <br/>
+        <br/>
+        {% blocktrans %}You can reset the password for the user <code>{{adminuser}}</code> by visiting this url:{% endblocktrans %}
+        <br/>
+        <a href="{{pwd_reset_url}}" target="_blank"><button>{% blocktrans %}Reset password{% endblocktrans %}</button></a>
     </div>
 </div>
 
