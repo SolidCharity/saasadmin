@@ -204,6 +204,7 @@ def show_contract(request, product, current_plan, new_plan):
         'periodLength': periodLength,
         'periodLengthExtension': periodLengthExtension})
 
+@login_required
 def contract_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request)
@@ -213,6 +214,7 @@ def contract_view(request):
 
     return show_contract(request, product, contract.plan, None)
 
+@login_required
 def contract_subscribe(request, product_id, plan_id):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = SaasProduct.objects.filter(slug = product_id).first()
@@ -241,7 +243,7 @@ def contract_subscribe(request, product_id, plan_id):
             # TODO what about the situation where there is no free instance available
             return render(request, 'error.html', {'message': _("Error: no instance available. Please try again tomorrow!")})
 
-
+@login_required
 def contract_cancel(request, product_id):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = SaasProduct.objects.filter(slug = product_id).first()
@@ -257,7 +259,7 @@ def contract_cancel(request, product_id):
     # show cancelled contract
     return show_contract(request, product, plan, None)
 
-
+@login_required
 def instance_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request)
