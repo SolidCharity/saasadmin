@@ -138,7 +138,7 @@ class LogicInstances:
     def deactivate_expired_instances(self):
         """ to be called by a cronjob each night """
         contracts = SaasContract.objects.filter(is_confirmed = True, \
-            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'assigned')
+            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = SaasInstance().ASSIGNED)
         for contract in contracts:
             instance = contract.instance
             if self.deactivate_instance(instance.product, instance):
@@ -148,7 +148,7 @@ class LogicInstances:
     def mark_deactivated_instances_for_deletion(self):
         """ to be called by a cronjob each night """
         contracts = SaasContract.objects.filter(is_confirmed = True, \
-            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'expired')
+            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = SaasInstance().EXPIRED)
         for contract in contracts:
             days = 30
             if contract.plan.period_length_in_months == 0:
