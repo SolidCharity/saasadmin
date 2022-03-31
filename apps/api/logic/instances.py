@@ -140,6 +140,8 @@ class LogicInstances:
             print('Exception in deactivate_instance: %s' % (ex,))
             return False
 
+        return True
+
     def deactivate_expired_instances(self):
         """ to be called by a cronjob each night """
         contracts = SaasContract.objects.filter(is_confirmed = True, \
@@ -159,7 +161,7 @@ class LogicInstances:
             if contract.plan.period_length_in_months == 0:
                 # for the one day test instance, remove it immediately
                 days = 0
-            if contract.end_date + timedelta(days=days) < datetime.today():
+            if contract.end_date + timedelta(days=days) < datetime.today().date():
                 instance = contract.instance
                 instance.status = instance.TO_BE_REMOVED
                 instance.save()
