@@ -70,3 +70,8 @@ demo_db:
 messages:
 	${VENV} django-admin makemessages -l de
 	${VENV} django-admin compilemessages
+
+update:
+	git pull || exit -1
+	${VENV} python manage.py migrate || exit -1
+	make messages || exit -1
