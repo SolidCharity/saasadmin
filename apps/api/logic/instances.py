@@ -82,6 +82,8 @@ class LogicInstances:
     def activate_instance(self, customer, product, instance):
 
         url = product.activation_url
+        if not url:
+            url = product.instance_url.replace("https://", "https://saas.") + "/saas_activate.php?SaasActivationPassword=#SaasActivationPassword"
 
         PasswordResetToken = None
         if '#PasswordResetToken' in url:
@@ -115,6 +117,9 @@ class LogicInstances:
         """call web request: deactivate_url"""
         url = product.deactivation_url
 
+        if not url:
+            url = product.instance_url.replace("https://", "https://saas.") + "/saas_deactivate.php?SaasActivationPassword=#SaasActivationPassword"
+
         # for local tests
         if "example.org" in url:
             return True
@@ -132,7 +137,7 @@ class LogicInstances:
             if not data['success']:
                 return False
         except Exception as ex:
-            print('Exception in activate_instance: %s' % (ex,))
+            print('Exception in deactivate_instance: %s' % (ex,))
             return False
 
     def deactivate_expired_instances(self):
