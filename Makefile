@@ -74,4 +74,4 @@ messages:
 update:
 	git pull || exit -1
 	${VENV} python manage.py migrate || exit -1
-	make messages || exit -1
+	${VENV} django-admin compilemessages || exit -1
