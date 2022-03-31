@@ -15,7 +15,7 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model = SaasProduct
         fields = ("slug", "name", "prefix",
-            "activation_url", "deactivation_url", "instance_url", "instance_password_reset_url",
+            "instance_url", "instance_password_reset_url",
             "instance_admin_user",
             "number_of_ports", "is_active")
 
