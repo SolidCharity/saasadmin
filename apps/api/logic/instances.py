@@ -83,7 +83,7 @@ class LogicInstances:
 
         url = product.activation_url
         if not url:
-            url = product.instance_url.replace("https://", "https://saas.") + "/saas_activate.php?SaasActivationPassword=#SaasActivationPassword"
+            url = product.instance_url.replace("https://", "https://saas.") + "/saas_activate.php?SaasActivationPassword=#SaasActivationPassword&UserEmailAddress=#UserEmailAddress"
 
         PasswordResetToken = None
         if '#PasswordResetToken' in url:
