@@ -25,24 +25,33 @@
       </tr>
       <tr>
         <td>{{ form.password.label_tag }}</td>
-        <td><input type="password" name="password" autocomplete="current-password" required="" id="Passwort"></td>
-        <td><input type="checkbox" id="checkpw" onclick="zeigePasswort()"></td>
-   
-       <td> 
+         <td>
+             <input type="password" name="passwort" autocomplete="current-password" required="" id="passwort"
+              class="passwort-feld"  placeholder=""  >
+        
+              <td>
+                <a>                                               
+                  <i class= "far fa-eye passwort-anzeigen-icon"></i>
+                  <i class= "far fa-eye-slash passwort-verstecken-icon"></i> 
+                </a>  
+              </td>
+              <!--<td><input type="checkbox" id="checkpw" onclick="zeigePasswort()"></td> -->
+          </td>      
+       <td>  
          
-          <script>
+         <!-- <script>
           // Passwort im Klartext anzeigen
           
-          function zeigePasswort() {
-           if (document.getElementById("checkpw").checked == true) {
-            document.getElementById("Passwort").type = "text";
-           }
-           else {
-            document.getElementById("Passwort").type = "password";
-           }
-          }
+            function zeigePasswort() {
+            if (document.getElementById("checkpw").checked == true) {
+              document.getElementById("passwort").type = "text";
+            }
+            else {
+              document.getElementById("passwort").type = "password";
+            }
+            }
           </script>
-                  
+        -->   
            
         </td>
       </tr>

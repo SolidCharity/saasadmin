@@ -44,3 +44,26 @@ div.success {
     background-color: #dc3545;
     border-color: #dc3545;
   }
+
+.passwort-verstecken-icon {
+  display: none;
+}
+
+.passwort-behaelter {
+  position: relative;
+  width: 40%;
+}
+
+.passwort-feld{
+  width: 100%;
+  padding-right: 1.5em;
+  box-sizing: border-box;
+}
+
+.passwort-button{
+  position: absolute;
+  right:0.25em;
+  top: 50%;
+  transform: translate(-50%);
+  cursor: pointer;
+}
