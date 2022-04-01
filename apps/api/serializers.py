@@ -8,7 +8,7 @@ class InstanceSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_instance_url(self, instance):
       prod = instance.product
-      return prod.instance_url.replace('%prefix', prod.prefix).replace('%identifier', instance.identifier)
+      return prod.instance_url.replace('#Prefix', prod.prefix).replace('#Identifier', instance.identifier)
 
     def get_prefix(self, instance):
       return instance.product.prefix
