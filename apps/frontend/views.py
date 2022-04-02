@@ -142,6 +142,8 @@ def readablePeriodsInDays(periodLength):
         return "1 " + _("month")
     elif periodLength == 14:
         return "2 " + _("weeks")
+    elif periodLength == 1:
+        return "1 " + _("day")
     else:
         return str(periodLength) + " " + _("days")
 
@@ -172,10 +174,16 @@ def show_contract(request, product, current_plan, new_plan):
         new_plan = current_plan
     customer = SaasCustomer.objects.filter(user=request.user).first()
     contract = LogicContracts().get_contract(customer, product)
-    periodLength = readablePeriodsInMonths(new_plan.period_length_in_months)
+    if new_plan.period_length_in_months > 0:
+        periodLength = readablePeriodsInMonths(new_plan.period_length_in_months)
+    elif new_plan.period_length_in_days > 0:
+        periodLength = readablePeriodsInDays(new_plan.period_length_in_days)
+    else:
+        periodLength = _("forever")
     payment_invoice = contract and contract.payment_method != "SEPA_DIRECTDEBIT"
     periodLengthExtension = ''
-    isFreeTest = new_plan.period_length_in_months == 0
+    isFreeTest = new_plan.cost_per_period == 0
+    isUnlimitedTest = isFreeTest and new_plan.period_length_in_months == 0 and new_plan.period_length_in_days == 0
     if new_plan.period_length_in_months == 1:
         periodLengthExtension = _("another month")
     elif new_plan.period_length_in_months == 3:
@@ -198,6 +206,7 @@ def show_contract(request, product, current_plan, new_plan):
         'contract': contract,
         'is_new_order': isNewOrder,
         'is_free_test': isFreeTest,
+        'is_unlimited_test': isUnlimitedTest,
         'can_cancel_contract': canCancelContract,
         'payment_invoice': payment_invoice,
         'noticePeriod': noticePeriod,

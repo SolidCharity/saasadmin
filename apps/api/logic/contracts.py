@@ -27,9 +27,15 @@ class LogicContracts:
 
         contract.start_date = datetime.today()
         if plan.period_length_in_months == 0:
-            contract.end_date = contract.start_date + timedelta(days=1)
-            contract.latest_cancel_date = None
-            contract.is_auto_renew = False
+            if plan.period_length_in_days > 0:
+                contract.end_date = contract.start_date + timedelta(days=plan.period_length_in_days)
+                contract.latest_cancel_date = None
+                contract.is_auto_renew = False
+            else:
+                # no limit
+                contract.end_date = None
+                contract.latest_cancel_date = None
+                contract.is_auto_renew = False
         else:
             nextMonthFirstDay = (contract.start_date.replace(day=1) + timedelta(days=32)).replace(day=1)
             contract.end_date = nextMonthFirstDay + relativedelta(months=plan.period_length_in_months) - timedelta(days=1)

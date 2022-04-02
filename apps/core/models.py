@@ -66,7 +66,9 @@ class SaasPlan (models.Model):
         related_name="%(app_label)s_%(class)s_list",
     )
     is_favourite = models.BooleanField(_("is favourite"), default=False)
-    period_length_in_months = models.IntegerField(_("Period Length in Months"))
+    # if period length in months is 0 and period length in days is 0, then this plan is unlimited, for free or one-time payment
+    period_length_in_months = models.IntegerField(_("Period Length in Months"), default = 0)
+    period_length_in_days = models.IntegerField(_("Period Length in Days"), default = 0)
     currency_code = models.CharField(_("Currency"), max_length= 3, default= "EUR")
     cost_per_period = models.DecimalField(_("Cost per Period"), max_digits= 10, decimal_places= 2)
     notice_period_in_days = models.IntegerField(_("Notice Period in Days"))

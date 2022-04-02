@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-31 14:38+0200\n"
+"POT-Creation-Date: 2022-04-02 23:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -136,22 +136,26 @@ msgid "Period Length in Months"
 msgstr "Länge des Buchungszeitraums in Monaten"
 
 #: apps/backend/templates/plans.html:30
+msgid "Period Length in Days"
+msgstr "Länge des Buchungszeitraums in Tagen"
+
+#: apps/backend/templates/plans.html:31
 msgid "Notice Period in Days"
 msgstr "Kündigungsfrist in Tagen"
 
-#: apps/backend/templates/plans.html:31 apps/backend/templates/products.html:13
+#: apps/backend/templates/plans.html:32 apps/backend/templates/products.html:13
 msgid "Action"
 msgstr "Aktion"
 
-#: apps/backend/templates/plans.html:42 apps/backend/templates/products.html:21
+#: apps/backend/templates/plans.html:44 apps/backend/templates/products.html:21
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: apps/backend/templates/plans.html:43 apps/backend/templates/products.html:22
+#: apps/backend/templates/plans.html:45 apps/backend/templates/products.html:22
 msgid "Delete"
 msgstr "Löschen"
 
-#: apps/backend/templates/plans.html:49 apps/backend/templates/products.html:27
+#: apps/backend/templates/plans.html:51 apps/backend/templates/products.html:27
 msgid "Add New Record"
 msgstr "Neuen Eintrag hinzufügen"
 
