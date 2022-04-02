@@ -33,7 +33,7 @@ class InstanceApiView(APIView):
 
         if action == "install":
             instance_status = [SaasInstance().IN_PREPARATION,]
-        elif action == "update":
+        elif action == "update" or action == "check":
             instance_status = [SaasInstance().AVAILABLE, SaasInstance().RESERVED, SaasInstance().ASSIGNED, SaasInstance().EXPIRED, SaasInstance().TO_BE_REMOVED,]
         elif action == "remove":
             instance_status = [SaasInstance().TO_BE_REMOVED,]

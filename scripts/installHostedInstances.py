@@ -122,6 +122,11 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
             resp = requests.patch(url=url,
                 params=params, headers={'Authorization': f'Token {admin_token}'})
 
+        elif action == "check":
+            resp = requests.get(url=instance['instance_url'])
+            if resp.status_code != 200:
+                print(resp)
+
 
 @click.command()
 @click.option('--product', default='randomapp', help='The shortname/slug of the product', prompt=True)
@@ -130,7 +135,7 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
 @click.option('--admintoken', help='The token for access to the REST API of SaasAdmin')
 @click.option('--url', help='The url for access to the REST API of SaasAdmin')
 @click.option('--configfile', default='config.yaml', help='The config file to use')
-@click.option('--action', default='install', help='The action: install, update, remove')
+@click.option('--action', default='install', help='The action: install, update, remove, check')
 def main(product, hostname, ansiblepath, admintoken, url, configfile, action):
     """run the ansible playbook for all specified instances"""
 
@@ -146,8 +151,8 @@ def main(product, hostname, ansiblepath, admintoken, url, configfile, action):
     if url is None:
         url=config['saasadmin']['url']
 
-    if action not in ['install', 'remove', 'update']:
-        print('action must be one of these values: install, remove, or update')
+    if action not in ['install', 'remove', 'update', 'check']:
+        print('action must be one of these values: install, remove, update or check')
         exit(-1)
 
     setup_instances(config, url, admintoken, hostname, product, ansiblepath, action)
