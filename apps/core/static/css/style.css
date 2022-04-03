@@ -45,7 +45,8 @@ div.success {
     border-color: #dc3545;
   }
 
-.passwort-verstecken-icon {
+.passwort-feld[type=password] ~ .passwort-button .passwort-verstecken-icon,
+.passwort-feld[type=text] ~ .passwort-button .passwort-anzeigen-icon {
   display: none;
 }
 
