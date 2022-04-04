@@ -52,7 +52,7 @@ div.success {
 
 .passwort-behaelter {
   position: relative;
-  width: 40%;
+  width: 100%;
 }
 
 .passwort-feld{
@@ -63,8 +63,8 @@ div.success {
 
 .passwort-button{
   position: absolute;
-  right:0.25em;
-  top: 50%;
-  transform: translate(-50%);
+  right:0.5em;
+  top: 35%;
+  transform: translateY(-50%);
   cursor: pointer;
 }
