@@ -45,23 +45,24 @@ div.success {
     border-color: #dc3545;
   }
 
-.passwort-feld[type=password] ~ .passwort-button .passwort-verstecken-icon,
-.passwort-feld[type=text] ~ .passwort-button .passwort-anzeigen-icon {
+
+.password-field[type=password] ~ .password-button .password-show-icon,
+.password-field[type=text] ~ .password-button .password-hidden-icon {
   display: none;
 }
 
-.passwort-behaelter {
+.password-container {
   position: relative;
   width: 100%;
 }
 
-.passwort-feld{
+.password-field{
   width: 100%;
   padding-right: 1.5em;
   box-sizing: border-box;
 }
 
-.passwort-button{
+.password-button{
   position: absolute;
   right:0.5em;
   top: 35%;

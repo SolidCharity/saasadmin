@@ -26,27 +26,26 @@
       <tr>
         <td>{{ form.password.label_tag }}</td>
           <td>
-           <div class="passwort-behaelter">   
-                <input name="passwort" id="passwort" type="password"
-                  class="passwort-feld"  placeholder="Passwort" autocomplete="current-password" required="">
+           <div class="password-container">   
+                <input name="password" id="password" type="password"
+                  class="password-field"  placeholder="Password" autocomplete="current-password" required="">
               
               
-                      <a role="button" class="passwort-button"
-                      onclick="passwortSichtbarkeitUmschalten('passwort')" >  
+                      <a role="button" class="password-button"
+                      onclick="passwordVisibilitySwitch('password')" >  
                                                                    
-                        <i class= "far fa-eye passwort-anzeigen-icon"></i>
-                        <i class= "far fa-eye-slash passwort-verstecken-icon"></i> 
+                        <i class= "far fa-eye password-show-icon"></i>
+                        <i class= "far fa-eye-slash password-hidden-icon"></i> 
                       </a>
             </div>              
           <script>
-          // Passwort im Klartext anzeigen
-         
-          function passwortSichtbarkeitUmschalten(eingabefeldId) {
-            const passwortFeld = document.getElementById(eingabefeldId);
-            if(passwortFeld.type === "password") {
-                passwortFeld.type = "text";
+                   
+          function passwordVisibilitySwitch(inputfieldId) {
+            const passwordField = document.getElementById(inputfieldId);
+            if(passwordField.type === "text") {
+                passwordField.type = "password";
             } else {
-                passwortFeld.type = "password";
+                passwordField.type = "text";
             }
           }
           </script>
