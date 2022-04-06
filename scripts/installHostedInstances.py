@@ -9,8 +9,8 @@ import string
 import random
 
 # possible values for status; see core/model.py for the same constants
-IN_PREPARATION, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
-    ('IN_PREPARATION', 'AVAILABLE', 'RESERVED', 'ASSIGNED', 'EXPIRED', 'TO_BE_REMOVED', 'REMOVED')
+IN_PREPARATION, READY, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
+    ('IN_PREPARATION', 'READY', 'AVAILABLE', 'RESERVED', 'ASSIGNED', 'EXPIRED', 'TO_BE_REMOVED', 'REMOVED')
 
 def random_password(length):
     # get random password with letters, and digits
@@ -98,8 +98,8 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
             if return_code:
                 continue
 
-            # on success of ansible: change status to "AVAILABLE"
-            params = dict(format='json', hostname=host_name, product=product_slug, instance_id=instance['identifier'], status=AVAILABLE)
+            # on success of ansible: change status to "READY"
+            params = dict(format='json', hostname=host_name, product=product_slug, instance_id=instance['identifier'], status=READY)
             resp = requests.patch(url=url,
                 params=params, headers={'Authorization': f'Token {admin_token}'})
 
@@ -126,6 +126,11 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
             resp = requests.get(url=instance['instance_url'])
             if resp.status_code != 200:
                 print(resp)
+            elif instance['status'] == READY:
+                # on success of check: change status to "AVAILABLE"
+                params = dict(format='json', hostname=host_name, product=product_slug, instance_id=instance['identifier'], status=AVAILABLE)
+                resp = requests.patch(url=url,
+                    params=params, headers={'Authorization': f'Token {admin_token}'})
 
 
 @click.command()

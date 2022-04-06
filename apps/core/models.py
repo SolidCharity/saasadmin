@@ -101,8 +101,8 @@ class SaasInstance(models.Model):
     activation_token = models.CharField(max_length=64, null=True)
 
     # possible values for status
-    IN_PREPARATION, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
-        ('IN_PREPARATION', 'AVAILABLE', 'RESERVED', 'ASSIGNED', 'EXPIRED', 'TO_BE_REMOVED', 'REMOVED')
+    IN_PREPARATION, READY, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
+        ('IN_PREPARATION', 'READY', 'AVAILABLE', 'RESERVED', 'ASSIGNED', 'EXPIRED', 'TO_BE_REMOVED', 'REMOVED')
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
 
     db_password = models.CharField(_("DB Password"), max_length=64, default='topsecret')
