@@ -256,14 +256,13 @@ def contract_subscribe(request, product_id, plan_id):
 def contract_cancel(request, product_id):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = SaasProduct.objects.filter(slug = product_id).first()
-    plan = LogicContracts().get_current_plan(request, product)
+    contract = LogicContracts().get_contract(customer, product)
+    plan = contract.plan
 
-    if product:
-        # cancel the contract
-        contract = LogicContracts().get_contract(customer, product)
-        if contract:
-            contract.is_auto_renew = False
-            contract.save()
+    # cancel the contract
+    if contract and contract.is_auto_renew:
+        contract.is_auto_renew = False
+        contract.save()
 
     # show cancelled contract
     return show_contract(request, product, plan, None)
