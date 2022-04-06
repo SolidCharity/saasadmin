@@ -123,10 +123,18 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
                 params=params, headers={'Authorization': f'Token {admin_token}'})
 
         elif action == "check":
-            resp = requests.get(url=instance['instance_url'])
-            if resp.status_code != 200:
-                print(resp)
-            elif instance['status'] == READY:
+            canRead = False
+            try:
+                resp = requests.get(url=instance['instance_url'])
+                if resp.status_code != 200:
+                    print(resp)
+                else:
+                    canRead = True
+            except:
+                print("Cannot read %s" % (instance['identifier'],))
+                canRead = False
+
+            if instance['status'] == READY and canRead:
                 # on success of check: change status to "AVAILABLE"
                 params = dict(format='json', hostname=host_name, product=product_slug, instance_id=instance['identifier'], status=AVAILABLE)
                 resp = requests.patch(url=url,

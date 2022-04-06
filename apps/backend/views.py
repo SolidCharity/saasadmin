@@ -48,7 +48,7 @@ def customers(request, product):
 @staff_member_required
 def instances(request, product):
     product = SaasProduct.objects.filter(slug = product).first()
-    unused_instances = SaasInstance.objects.filter(product = product).filter(Q(status=SaasInstance().AVAILABLE) | Q(status=SaasInstance().IN_PREPARATION))
+    unused_instances = SaasInstance.objects.filter(product = product).filter(Q(status=SaasInstance().AVAILABLE) | Q(status=SaasInstance().READY) | Q(status=SaasInstance().IN_PREPARATION))
 
     return render(request,"instances.html",
             {'unused_instances': unused_instances, 'product': product })
