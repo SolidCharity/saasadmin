@@ -162,6 +162,9 @@ class LogicInstances:
                 if contract.plan.period_length_in_days == 1:
                     # for the one day test instance, remove it immediately
                     days = 0
+                elif contract.plan.period_length_in_days > 0:
+                    # for other test instances, remove it after 3 days
+                    days = 3
 
             if contract.end_date + timedelta(days=days) < datetime.today().date():
                 instance = contract.instance
