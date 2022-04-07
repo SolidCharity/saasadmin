@@ -52,7 +52,7 @@ class LogicInstances:
               cursor.execute(sql, [hostname,])
               port_result = cursor.fetchone()
               if port_result:
-                new_port = port_result[0]
+                new_port = port_result[0] + 1
           if new_port < startport:
             new_port = startport
           last_port = new_port + product.number_of_ports - 1
