@@ -48,7 +48,7 @@ class LogicInstances:
         if product.number_of_ports > 0:
           if SaasInstance.objects.filter(hostname=hostname).exists():
             with connection.cursor() as cursor:
-              sql = """SELECT MAX(last_port) FROM `saas_instance` WHERE hostname = %s"""
+              sql = """SELECT MAX(last_port) FROM saas_instance WHERE hostname = %s"""
               cursor.execute(sql, [hostname,])
               port_result = cursor.fetchone()
               if port_result:
