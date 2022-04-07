@@ -69,3 +69,53 @@ div.success {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+
+.password-field1[type=password] ~ .password-button1 .password-show-icon,
+.password-field1[type=text] ~ .password-button1 .password-hidden-icon {
+  display: none;
+}
+
+.password-container1 {
+  position: relative;
+  width: 100%;
+}
+
+.password-field1{
+  width: 100%;
+  padding-right: 1.5em;
+  box-sizing: border-box;
+}
+
+.password-button1{
+  position: absolute;
+  right:0.5em;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+.password-field2[type=password] ~ .password-button2 .password-show-icon,
+.password-field2[type=tex] ~ .password-button2 .password-hidden-icon {
+  display: none;
+}
+
+.password-container2 {
+  position: relative;
+  width: 100%;
+}
+
+.password-field2{
+  width: 100%;
+  padding-right: 1.5em;
+  box-sizing: border-box;
+}
+
+.password-button2{
+  position: absolute;
+  right:0.5em;
+  top: 35%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

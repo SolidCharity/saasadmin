@@ -20,11 +20,62 @@
       </tr>
       <tr>
         <td>{{ form.password1.label_tag }}</td>
-        <td>{{ form.password1 }}</td>
+        <td>
+          <div class="password-container1">   
+               <input name="password" id="password" type="password"
+                 class="password-field1"  placeholder="" autocomplete="current-password" required="">
+             
+             
+                     <a role="button" class="password-button1"
+                     onclick="passwordVisibilitySwitch('password')" >  
+                                                                  
+                       <i class= "far fa-eye password-show-icon"></i>
+                       <i class= "far fa-eye-slash password-hidden-icon"></i> 
+                     </a>
+           </div>              
+           <script>
+                  
+            function passwordVisibilitySwitch(inputfieldId) {
+              const passwordField = document.getElementById(inputfieldId);
+              if(passwordField.type === "text") {
+                  passwordField.type = "password";
+              } else {
+                  passwordField.type = "text";
+              }
+            }
+            </script>      
+        </td>
       </tr>
       <tr>
         <td>{{ form.password2.label_tag }}</td>
-        <td>{{ form.password2 }}</td>
+        <td>
+            <div class="password-container2">   
+               <input name="password" id="password" type="password"
+                 class="password-field2"  placeholder="" autocomplete="current-password" required="">
+             
+             
+                     <a role="button" class="password-button2"
+                     onclick="passwordVisibilitySwitch('password')" >  
+                                                                  
+                       <i class= "far fa-eye password-show-icon"></i>
+                       <i class= "far fa-eye-slash password-hidden-icon"></i> 
+                     </a>
+            </div>  
+           
+            <!-- <script>
+                  
+            function passwordVisibilitySwitch(inputfieldId) {
+              const passwordField = document.getElementById(inputfieldId);
+              if(passwordField.type === "text") {
+                  passwordField.type = "password";
+              } else {
+                  passwordField.type = "text";
+              }
+            }
+            </script>   -->
+         
+          </td>
+      
       </tr>
     </table>
     <input type="submit" value="{%translate "Register"%}" />
