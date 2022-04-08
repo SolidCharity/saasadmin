@@ -97,7 +97,7 @@ div.success {
 
 
 .password-field2[type=password] ~ .password-button2 .password-show-icon,
-.password-field2[type=tex] ~ .password-button2 .password-hidden-icon {
+.password-field2[type=text] ~ .password-button2 .password-hidden-icon {
   display: none;
 }
 
