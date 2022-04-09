@@ -66,6 +66,7 @@ class SaasPlan (models.Model):
         related_name="%(app_label)s_%(class)s_list",
     )
     is_favourite = models.BooleanField(_("is favourite"), default=False)
+    is_public = models.BooleanField(_("is public"), default=True)
     # if period length in months is 0 and period length in days is 0, then this plan is unlimited, for free or one-time payment
     period_length_in_months = models.IntegerField(_("Period Length in Months"), default = 0)
     period_length_in_days = models.IntegerField(_("Period Length in Days"), default = 0)
@@ -78,6 +79,8 @@ class SaasPlan (models.Model):
     descr_2 = models.CharField(_("Description 2"), max_length=200, default = "TODO")
     descr_3 = models.CharField(_("Description 3"), max_length=200, default = "TODO")
     descr_4 = models.CharField(_("Description 4"), max_length=200, default = "TODO")
+    quota_storage = models.CharField(_("Quota for Storage"), max_length=20, default = "0M")
+    quota_app = models.CharField(_("Quota for Application"), max_length=20, default = "500M")
 
     class Meta:
         db_table = "saas_plan"

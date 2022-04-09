@@ -15,6 +15,16 @@ class LogicContracts:
             return contracts.first().plan
         return None
 
+    def get_plan_of_instance(self, instance):
+        # needed for the quota of the instance
+        contract = SaasContract.objects.filter(instance=instance).first()
+        if contract:
+            return contract.plan
+        else:
+            # return the first public plan for this product, with lowest price
+            plan = SaasPlan.objects.filter(product=instance.product).filter(is_public=True).order_by('cost_per_period').first()
+            return plan
+
     def get_contract(self, customer, product):
         plans = SaasPlan.objects.filter(product=product).all()
         return SaasContract.objects.filter(customer=customer).filter(plan__in=plans).order_by('start_date').last()
