@@ -70,6 +70,8 @@ class LogicInstances:
           first_port = new_port,
           last_port = last_port,
           initial_password = new_password,
+          password1 = self.random_password(False),
+          password2 = self.random_password(False),
           db_password = db_password,
           status = SaasInstance().IN_PREPARATION)
 

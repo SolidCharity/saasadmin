@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 
 import click
-import requests
-import yaml
 import os
+import random
+import requests
 import subprocess
 import string
-import random
+import socket
+import yaml
 
 # possible values for status; see core/model.py for the same constants
 IN_PREPARATION, READY, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
@@ -28,7 +29,17 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .replace('#Prefix', instance['prefix'])
             .replace('#Identifier', instance['identifier']))
         template_content = (ansible_inventory_template
+            .replace('{{hostname}}', instance['hostname'])
+            .replace('{{hostname_ip}}', socket.gethostbyname(instance['hostname']))
             .replace('{{pac}}', instance['pacuser'])
+            .replace('{{pac_ip}}', socket.gethostbyname(instance['pacuser'] + '.hostsharing.net'))
+            .replace('{{port1}}', instance['first_port'])
+            .replace('{{port2}}', instance['first_port'] + 1)
+            .replace('{{port3}}', instance['first_port'] + 2)
+            .replace('{{port4}}', instance['first_port'] + 3)
+            .replace('{{initial_password}}', instance['initial_password'])
+            .replace('{{password1}}', instance['password1'])
+            .replace('{{password2}}', instance['password2'])
             .replace('{{domain}}', domain)
             .replace('{{username}}', instance['prefix'] + instance['identifier'])
             .replace('{{password}}', instance['db_password'])

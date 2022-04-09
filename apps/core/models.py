@@ -107,6 +107,10 @@ class SaasInstance(models.Model):
 
     db_password = models.CharField(_("DB Password"), max_length=64, default='topsecret')
     initial_password = models.CharField(_("Initial Password"), max_length=64, default='topsecret')
+    # for example nextcloud: redis password
+    password1 = models.CharField(_("Password1"), max_length=64, default='topsecret')
+    # for example nextcloud: turn server password
+    password2 = models.CharField(_("Password2"), max_length=64, default='topsecret')
     last_interaction = models.DateTimeField(_("Last Interaction"), null=True)
     reserved_token = models.CharField(_("Reserved Token"), max_length=64, null=True)
     reserved_until = models.DateTimeField(_("Reserved Until"), null=True)
