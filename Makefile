@@ -75,3 +75,4 @@ update:
 	git pull || exit -1
 	${VENV} python manage.py migrate || exit -1
 	${VENV} django-admin compilemessages || exit -1
+	${VENV} (echo "yes" | python manage.py collectstatic) || exit -1
