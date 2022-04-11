@@ -25,9 +25,33 @@
       </tr>
       <tr>
         <td>{{ form.password.label_tag }}</td>
-        <td>{{ form.password }}</td>
+          <td>
+           <div class="password-container">   
+                <input name="password" id="password" type="password"
+                  class="password-field"  placeholder="" autocomplete="current-password" required="">
+              
+              
+                      <a role="button" class="password-button"
+                      onclick="passwordVisibilitySwitch('password')" >  
+                                                                   
+                        <i class= "far fa-eye password-show-icon"></i>
+                        <i class= "far fa-eye-slash password-hidden-icon"></i> 
+                      </a>
+            </div>              
+          <script>
+                   
+          function passwordVisibilitySwitch(inputfieldId) {
+            const passwordField = document.getElementById(inputfieldId);
+            if(passwordField.type === "text") {
+                passwordField.type = "password";
+            } else {
+                passwordField.type = "text";
+            }
+          }
+          </script>
+        </td>
       </tr>
-    </table>
+      </table>
     <input type="submit" value="{%translate "login"%}" />
     <input type="hidden" name="next" value="{{ next }}" />
   </form>
