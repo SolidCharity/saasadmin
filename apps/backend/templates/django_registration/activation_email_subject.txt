@@ -1,1 +1,2 @@
-Confirm your registration for {{ site }}
+{% load i18n %}
+{% blocktrans %}Confirm your registration for {{ site }}{% endblocktrans %}

@@ -1,18 +1,18 @@
-Hello {{ user.username }},
+{% load i18n %}{% blocktrans with username=user.username %}Hello {{ username }},{% endblocktrans %}
 
-you have registered at {{ site }}
+{% blocktrans %}you have registered at {{ site }}{% endblocktrans %}
 
-If this was not you, please ignore this email!
+{% blocktrans %}If this was not you, please ignore this email!{% endblocktrans %}
 
-If you want to activate your account at https://{{ site }}, please click on this link:
+{% blocktrans %}If you want to activate your account at https://{{ site }}, please click on the following link:{% endblocktrans %}
 
 {% autoescape off %}
-Please click on the link to confirm your registration, https://{{ site }}{% url 'django_registration_activate' activation_key=activation_key %}
+https://{{ site }}{% url 'django_registration_activate' activation_key=activation_key %}
 {% endautoescape %}
 
-All the best!
+{% blocktrans %}All the best!{% endblocktrans %}
 
-The team at {{ site }}
+{% blocktrans %}The team at {{ site }}{% endblocktrans %}
 
-PS: this is an automated E-Mail, please do not reply.
-You can contact us at info@{{ site }}
+{% blocktrans %}PS: this is an automated E-Mail, please do not reply.{% endblocktrans %}
+{% blocktrans %}You can contact us at info@{{ site }}{% endblocktrans %}

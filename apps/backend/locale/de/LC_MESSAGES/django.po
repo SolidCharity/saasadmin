@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-19 16:27+0100\n"
+"POT-Creation-Date: 2022-04-02 23:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,7 +20,7 @@ msgstr ""
 
 #: apps/backend/templates/customers.html:7
 msgid "Customers"
-msgstr ""
+msgstr "Kunden"
 
 #: apps/backend/templates/django_registration/activation_complete.html:6
 #: apps/backend/templates/django_registration/registration_complete.html:6
@@ -32,8 +32,68 @@ msgid "Now you can login:"
 msgstr "Jetzt können Sie sich anmelden:"
 
 #: apps/backend/templates/django_registration/activation_complete.html:8
+#: apps/backend/templates/django_registration/activation_failed.html:9
 msgid "Login"
 msgstr "Anmelden"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:1
+#, python-format
+msgid "Hello %(username)s,"
+msgstr "Hallo %(username)s,"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:3
+#, python-format
+msgid "you have registered at %(site)s"
+msgstr "Du hast dich auf %(site)s registriert."
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:5
+msgid "If this was not you, please ignore this email!"
+msgstr "Falls Du das nicht getan hast, ignoriere bitte diese E-Mail!"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:7
+#, python-format
+msgid ""
+"If you want to activate your account at https://%(site)s, please click on "
+"the following link:"
+msgstr ""
+"Falls du den Zugang für https://%(site)s bestätigen willst, klicke bitte auf "
+"den folgenden Link:"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:13
+msgid "All the best!"
+msgstr "Alles Gute!"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:15
+#, python-format
+msgid "The team at %(site)s"
+msgstr "Das Team von %(site)s"
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:17
+msgid "PS: this is an automated E-Mail, please do not reply."
+msgstr ""
+"PS: Dies ist eine automatisch erzeugte E-Mail, bitte nicht darauf antworten."
+
+#: apps/backend/templates/django_registration/activation_email_body.txt:18
+#, python-format
+msgid "You can contact us at info@%(site)s"
+msgstr "Wir sind per E-Mail erreichbar unter der Adresse info@%(site)s"
+
+#: apps/backend/templates/django_registration/activation_email_subject.txt:2
+#, python-format
+msgid "Confirm your registration for %(site)s"
+msgstr "Anmeldung für %(site)s bestätigen"
+
+#: apps/backend/templates/django_registration/activation_failed.html:5
+msgid "Something went wrong."
+msgstr "Das hat nicht funktioniert."
+
+#: apps/backend/templates/django_registration/activation_failed.html:7
+msgid "Perhaps you have confirmed already?"
+msgstr "Vielleicht wurde die Anmeldung bereits bestätigt?"
+
+#: apps/backend/templates/django_registration/activation_failed.html:9
+msgid "Please try to Login:"
+msgstr "Bitte versuche dich anzumelden:"
 
 #: apps/backend/templates/django_registration/registration_complete.html:8
 msgid ""
@@ -49,76 +109,97 @@ msgstr "Zugang einrichten"
 
 #: apps/backend/templates/instances.html:6
 msgid "Instances"
-msgstr ""
+msgstr "Instanzen"
 
 #: apps/backend/templates/plans.html:7
 msgid "Plans"
-msgstr ""
+msgstr "Angebote"
 
 #: apps/backend/templates/plans.html:25
 msgid "slug"
-msgstr ""
+msgstr "Kurzname"
 
 #: apps/backend/templates/plans.html:26
 msgid "name"
-msgstr ""
+msgstr "Name"
 
 #: apps/backend/templates/plans.html:27
 msgid "Cost per Period"
-msgstr ""
+msgstr "Kosten pro Buchungszeitraum"
 
 #: apps/backend/templates/plans.html:28
 msgid "Currency"
-msgstr ""
+msgstr "Währung"
 
 #: apps/backend/templates/plans.html:29
 msgid "Period Length in Months"
-msgstr ""
+msgstr "Länge des Buchungszeitraums in Monaten"
 
 #: apps/backend/templates/plans.html:30
-msgid "Notice Period in Days"
-msgstr ""
+msgid "Period Length in Days"
+msgstr "Länge des Buchungszeitraums in Tagen"
 
-#: apps/backend/templates/plans.html:31 apps/backend/templates/products.html:13
+#: apps/backend/templates/plans.html:31
+msgid "Notice Period in Days"
+msgstr "Kündigungsfrist in Tagen"
+
+#: apps/backend/templates/plans.html:32 apps/backend/templates/products.html:13
 msgid "Action"
 msgstr "Aktion"
 
-#: apps/backend/templates/plans.html:42 apps/backend/templates/products.html:21
+#: apps/backend/templates/plans.html:44 apps/backend/templates/products.html:21
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: apps/backend/templates/plans.html:43 apps/backend/templates/products.html:22
+#: apps/backend/templates/plans.html:45 apps/backend/templates/products.html:22
 msgid "Delete"
 msgstr "Löschen"
 
-#: apps/backend/templates/plans.html:49 apps/backend/templates/products.html:27
+#: apps/backend/templates/plans.html:51 apps/backend/templates/products.html:27
 msgid "Add New Record"
 msgstr "Neuen Eintrag hinzufügen"
 
 #: apps/backend/templates/products.html:7
 msgid "Products"
-msgstr ""
+msgstr "Produkte"
 
 #: apps/backend/templates/products.html:11
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: apps/backend/templates/products.html:12
 msgid "Is Active"
-msgstr ""
+msgstr "Ist Aktiv"
 
 #: apps/backend/templates/products.html:20
 msgid "Select"
-msgstr ""
+msgstr "Auswählen"
 
-#: apps/backend/templates/registration/login.html:31
+#: apps/backend/templates/registration/login.html:7
+msgid "Your username and password didn't match. Please try again."
+msgstr ""
+"Der Benutzername und das Passwort stimmen nicht. Bitte nochmal probieren."
+
+#: apps/backend/templates/registration/login.html:12
+msgid ""
+"Your account doesn't have access to this page. To proceed, please login with "
+"an account that has access."
+msgstr ""
+"Dieser Zugang hat keine Rechte für diese Seite. Um fortzufahren, bitte mit "
+"einem Zugang anmelden, der Zugriff hat."
+
+#: apps/backend/templates/registration/login.html:14
+msgid "Please login to see this page."
+msgstr "Bitte anmelden, um diese Seite zu sehen."
+
+#: apps/backend/templates/registration/login.html:30
 msgid "login"
 msgstr "Anmelden"
 
-#: apps/backend/templates/registration/login.html:36
+#: apps/backend/templates/registration/login.html:35
 msgid "Lost password?"
 msgstr "Passwort vergessen?"
 
-#: apps/backend/templates/registration/login.html:37
+#: apps/backend/templates/registration/login.html:36
 msgid "Create a free account"
 msgstr "Einen kostenlosen Zugang einrichten"

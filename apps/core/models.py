@@ -45,10 +45,10 @@ class SaasProduct (models.Model):
     slug = models.CharField(_("Slug"), max_length=50, default = "invalid", unique=True)
     name = models.CharField(_("Name"), max_length=16)
     prefix = models.CharField(_("Prefix"), max_length=10, default='xy')
-    activation_url = models.CharField(_("Activation URL"), max_length=250, default = "https://%prefix%identifier.example.org/activate")
-    deactivation_url = models.CharField(_("Deativation URL"), max_length=250, default = "https://%prefix%identifier.example.org/deactivate")
-    instance_url = models.CharField(_("Instance URL"), max_length=250, default = "https://%prefix%identifier.example.org")
-    instance_password_reset_url = models.CharField(_("Password Reset URL"), max_length=250, default = "https://%prefix%identifier.example.org/reset_password?token=#PasswordResetToken")
+    activation_url = models.CharField(_("Activation URL"), max_length=250, default = "")
+    deactivation_url = models.CharField(_("Deactivation URL"), max_length=250, default = "")
+    instance_url = models.CharField(_("Instance URL"), max_length=250, default = "https://#Prefix#Identifier.example.org")
+    instance_password_reset_url = models.CharField(_("Password Reset URL"), max_length=250, default = "/reset_password")
     instance_admin_user = models.CharField(_("Instance Admin User"), max_length=100, default = "admin")
     is_active = models.BooleanField(_("Is Active"), default=False)
     number_of_ports = models.IntegerField(_("Number of Ports"), default=1)
@@ -66,7 +66,10 @@ class SaasPlan (models.Model):
         related_name="%(app_label)s_%(class)s_list",
     )
     is_favourite = models.BooleanField(_("is favourite"), default=False)
-    period_length_in_months = models.IntegerField(_("Period Length in Months"))
+    is_public = models.BooleanField(_("is public"), default=True)
+    # if period length in months is 0 and period length in days is 0, then this plan is unlimited, for free or one-time payment
+    period_length_in_months = models.IntegerField(_("Period Length in Months"), default = 0)
+    period_length_in_days = models.IntegerField(_("Period Length in Days"), default = 0)
     currency_code = models.CharField(_("Currency"), max_length= 3, default= "EUR")
     cost_per_period = models.DecimalField(_("Cost per Period"), max_digits= 10, decimal_places= 2)
     notice_period_in_days = models.IntegerField(_("Notice Period in Days"))
@@ -76,6 +79,8 @@ class SaasPlan (models.Model):
     descr_2 = models.CharField(_("Description 2"), max_length=200, default = "TODO")
     descr_3 = models.CharField(_("Description 3"), max_length=200, default = "TODO")
     descr_4 = models.CharField(_("Description 4"), max_length=200, default = "TODO")
+    quota_storage = models.CharField(_("Quota for Storage"), max_length=20, default = "0M")
+    quota_app = models.CharField(_("Quota for Application"), max_length=20, default = "500M")
 
     class Meta:
         db_table = "saas_plan"
@@ -99,12 +104,16 @@ class SaasInstance(models.Model):
     activation_token = models.CharField(max_length=64, null=True)
 
     # possible values for status
-    IN_PREPARATION, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
-        ('IN_PREPARATION', 'AVAILABLE', 'RESERVED', 'ASSIGNED', 'EXPIRED', 'TO_BE_REMOVED', 'REMOVED')
+    IN_PREPARATION, READY, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
+        ('IN_PREPARATION', 'READY', 'AVAILABLE', 'RESERVED', 'ASSIGNED', 'EXPIRED', 'TO_BE_REMOVED', 'REMOVED')
     status = models.CharField(_("Status"), max_length=16, default='in_preparation')
 
     db_password = models.CharField(_("DB Password"), max_length=64, default='topsecret')
     initial_password = models.CharField(_("Initial Password"), max_length=64, default='topsecret')
+    # for example nextcloud: redis password
+    password1 = models.CharField(_("Password1"), max_length=64, default='topsecret')
+    # for example nextcloud: turn server password
+    password2 = models.CharField(_("Password2"), max_length=64, default='topsecret')
     last_interaction = models.DateTimeField(_("Last Interaction"), null=True)
     reserved_token = models.CharField(_("Reserved Token"), max_length=64, null=True)
     reserved_until = models.DateTimeField(_("Reserved Until"), null=True)

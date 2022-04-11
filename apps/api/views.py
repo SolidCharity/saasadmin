@@ -33,8 +33,8 @@ class InstanceApiView(APIView):
 
         if action == "install":
             instance_status = [SaasInstance().IN_PREPARATION,]
-        elif action == "update":
-            instance_status = [SaasInstance().AVAILABLE, SaasInstance().RESERVED, SaasInstance().ASSIGNED, SaasInstance().EXPIRED, SaasInstance().TO_BE_REMOVED,]
+        elif action == "update" or action == "check":
+            instance_status = [SaasInstance().READY, SaasInstance().AVAILABLE, SaasInstance().RESERVED, SaasInstance().ASSIGNED, SaasInstance().EXPIRED, SaasInstance().TO_BE_REMOVED,]
         elif action == "remove":
             instance_status = [SaasInstance().TO_BE_REMOVED,]
         else:
@@ -77,13 +77,18 @@ class InstanceApiView(APIView):
         if not instance:
             raise Exception('please specify hostname and product_name and instance_id and status')
 
-        if instance.status == instance.IN_PREPARATION and new_status == instance.AVAILABLE:
-            instance.status = instance.AVAILABLE
+        if instance.status == instance.IN_PREPARATION and new_status == instance.READY:
+            instance.status = new_status
+            instance.save()
+            return Response({'success':'true'}, status=status.HTTP_200_OK)
+
+        if instance.status == instance.READY and new_status == instance.AVAILABLE:
+            instance.status = new_status
             instance.save()
             return Response({'success':'true'}, status=status.HTTP_200_OK)
 
         if instance.status == instance.TO_BE_REMOVED and new_status == instance.REMOVED:
-            instance.status = instance.REMOVED
+            instance.status = new_status
             instance.save()
             return Response({'success':'true'}, status=status.HTTP_200_OK)
 

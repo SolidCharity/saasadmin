@@ -34,7 +34,7 @@
             <label for="sepa_transfer">{%translate "You transfer the money via SEPA" %}</label>
             <br/>
             <input type="radio" id="sepa_directdebit" name="payment_method" value="SEPA_DIRECTDEBIT" {%if contract.payment_method == 'SEPA_DIRECTDEBIT'%} checked=""{%endif%}>
-            <label for="sepa_directdebit">{%translate "You allow us to debit your bank account via SEPA"%}:</label>
+            <label for="sepa_directdebit">{%translate "You allow us to debit your bank account via SEPA Direct Debit"%}:</label>
             <br/>
             <ul style="display:inline-block;margin-left:1em;">
                 {%if errormessage %}

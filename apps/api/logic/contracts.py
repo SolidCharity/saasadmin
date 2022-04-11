@@ -15,6 +15,16 @@ class LogicContracts:
             return contracts.first().plan
         return None
 
+    def get_plan_of_instance(self, instance):
+        # needed for the quota of the instance
+        contract = SaasContract.objects.filter(instance=instance).first()
+        if contract:
+            return contract.plan
+        else:
+            # return the first public plan for this product, with lowest price
+            plan = SaasPlan.objects.filter(product=instance.product).filter(is_public=True).order_by('cost_per_period').first()
+            return plan
+
     def get_contract(self, customer, product):
         plans = SaasPlan.objects.filter(product=product).all()
         return SaasContract.objects.filter(customer=customer).filter(plan__in=plans).order_by('start_date').last()
@@ -27,9 +37,15 @@ class LogicContracts:
 
         contract.start_date = datetime.today()
         if plan.period_length_in_months == 0:
-            contract.end_date = contract.start_date + timedelta(days=1)
-            contract.latest_cancel_date = None
-            contract.is_auto_renew = False
+            if plan.period_length_in_days > 0:
+                contract.end_date = contract.start_date + timedelta(days=plan.period_length_in_days)
+                contract.latest_cancel_date = None
+                contract.is_auto_renew = False
+            else:
+                # no limit
+                contract.end_date = None
+                contract.latest_cancel_date = None
+                contract.is_auto_renew = False
         else:
             nextMonthFirstDay = (contract.start_date.replace(day=1) + timedelta(days=32)).replace(day=1)
             contract.end_date = nextMonthFirstDay + relativedelta(months=plan.period_length_in_months) - timedelta(days=1)

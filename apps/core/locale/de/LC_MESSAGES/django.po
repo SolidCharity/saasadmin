@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-19 16:27+0100\n"
+"POT-Creation-Date: 2022-04-02 23:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -121,7 +121,7 @@ msgid "Activation URL"
 msgstr ""
 
 #: apps/core/models.py:49
-msgid "Deativation URL"
+msgid "Deactivation URL"
 msgstr ""
 
 #: apps/core/models.py:50
@@ -152,137 +152,141 @@ msgstr ""
 msgid "is favourite"
 msgstr ""
 
-#: apps/core/models.py:69
+#: apps/core/models.py:70
 msgid "Period Length in Months"
 msgstr ""
 
-#: apps/core/models.py:70
-msgid "Currency"
-msgstr ""
-
 #: apps/core/models.py:71
-msgid "Cost per Period"
+msgid "Period Length in Days"
 msgstr ""
 
 #: apps/core/models.py:72
-msgid "Notice Period in Days"
+msgid "Currency"
 msgstr ""
 
 #: apps/core/models.py:73
-msgid "Description Target"
+msgid "Cost per Period"
 msgstr ""
 
 #: apps/core/models.py:74
-msgid "Description Caption"
+msgid "Notice Period in Days"
 msgstr ""
 
 #: apps/core/models.py:75
-msgid "Description 1"
+msgid "Description Target"
 msgstr ""
 
 #: apps/core/models.py:76
-msgid "Description 2"
+msgid "Description Caption"
 msgstr ""
 
 #: apps/core/models.py:77
-msgid "Description 3"
+msgid "Description 1"
 msgstr ""
 
 #: apps/core/models.py:78
+msgid "Description 2"
+msgstr ""
+
+#: apps/core/models.py:79
+msgid "Description 3"
+msgstr ""
+
+#: apps/core/models.py:80
 msgid "Description 4"
 msgstr ""
 
-#: apps/core/models.py:85
+#: apps/core/models.py:87
 msgid "identifier"
 msgstr ""
 
-#: apps/core/models.py:94
+#: apps/core/models.py:96
 #, fuzzy
 #| msgid "last_name"
 msgid "Hostname"
 msgstr "Nachname"
 
-#: apps/core/models.py:95
+#: apps/core/models.py:97
 msgid "Packet User"
 msgstr ""
 
-#: apps/core/models.py:96
+#: apps/core/models.py:98
 msgid "Channel"
 msgstr ""
 
-#: apps/core/models.py:97
+#: apps/core/models.py:99
 msgid "First Port"
 msgstr ""
 
-#: apps/core/models.py:98
+#: apps/core/models.py:100
 msgid "Last Port"
 msgstr ""
 
-#: apps/core/models.py:104
+#: apps/core/models.py:106
 msgid "Status"
 msgstr ""
 
-#: apps/core/models.py:106
+#: apps/core/models.py:108
 msgid "DB Password"
 msgstr ""
 
-#: apps/core/models.py:107
+#: apps/core/models.py:109
 msgid "Initial Password"
 msgstr ""
 
-#: apps/core/models.py:108
+#: apps/core/models.py:110
 msgid "Last Interaction"
 msgstr ""
 
-#: apps/core/models.py:109
+#: apps/core/models.py:111
 msgid "Reserved Token"
 msgstr ""
 
-#: apps/core/models.py:110
+#: apps/core/models.py:112
 msgid "Reserved Until"
 msgstr ""
 
-#: apps/core/models.py:147
+#: apps/core/models.py:149
 msgid "Start Date"
 msgstr ""
 
-#: apps/core/models.py:148
+#: apps/core/models.py:150
 msgid "End Date"
 msgstr ""
 
-#: apps/core/models.py:149
+#: apps/core/models.py:151
 msgid "Latest Cancel Date"
 msgstr ""
 
-#: apps/core/models.py:150
+#: apps/core/models.py:152
 msgid "Is Renewing Automatically"
 msgstr ""
 
-#: apps/core/models.py:151
+#: apps/core/models.py:153
 msgid "Is Confirmed"
 msgstr ""
 
-#: apps/core/models.py:153
+#: apps/core/models.py:155
 #, fuzzy
 #| msgid "Payment Details"
 msgid "Payment Method"
 msgstr "Zahlungsweise"
 
-#: apps/core/models.py:154
+#: apps/core/models.py:156
 #, fuzzy
 #| msgid "country"
 msgid "Account Owner"
 msgstr "Land"
 
-#: apps/core/models.py:155
+#: apps/core/models.py:157
 msgid "Account IBAN"
 msgstr ""
 
-#: apps/core/models.py:156
+#: apps/core/models.py:158
 msgid "SEPA Mandate"
 msgstr ""
 
-#: apps/core/models.py:157
+#: apps/core/models.py:159
 msgid "Date of SEPA Mandate"
 msgstr ""
 

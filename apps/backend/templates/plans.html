@@ -27,6 +27,7 @@
         <th>{%translate "Cost per Period"%}</th>
         <th>{%translate "Currency"%}</th>
         <th>{%translate "Period Length in Months"%}</th>
+        <th>{%translate "Period Length in Days"%}</th>
         <th>{%translate "Notice Period in Days"%}</th>
         <th>{%translate "Action"%}</th>
     </tr>
@@ -38,6 +39,7 @@
         <td>{{ plan.cost_per_period}}</td>
         <td>{{ plan.currency_code}} </td>
         <td>{{ plan.period_length_in_months}} </td>
+        <td>{{ plan.period_length_in_days}} </td>
         <td>{{ plan.notice_period_in_days}} </td>
         <td><a href="/plans/edit/{{ plan.id }}" class="button button-primary">{%translate "Edit"%}</a></td>
         <td><a href="/plans/delete/{{ plan.id }}" class="button button-danger">{%translate "Delete"%}</a></td>

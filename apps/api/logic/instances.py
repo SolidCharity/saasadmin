@@ -48,11 +48,11 @@ class LogicInstances:
         if product.number_of_ports > 0:
           if SaasInstance.objects.filter(hostname=hostname).exists():
             with connection.cursor() as cursor:
-              sql = """SELECT MAX(last_port) FROM `saas_instance` WHERE hostname = %s"""
+              sql = """SELECT MAX(last_port) FROM saas_instance WHERE hostname = %s"""
               cursor.execute(sql, [hostname,])
               port_result = cursor.fetchone()
               if port_result:
-                new_port = port_result[0]
+                new_port = port_result[0] + 1
           if new_port < startport:
             new_port = startport
           last_port = new_port + product.number_of_ports - 1
@@ -70,6 +70,8 @@ class LogicInstances:
           first_port = new_port,
           last_port = last_port,
           initial_password = new_password,
+          password1 = self.random_password(False),
+          password2 = self.random_password(False),
           db_password = db_password,
           status = SaasInstance().IN_PREPARATION)
 
@@ -82,6 +84,8 @@ class LogicInstances:
     def activate_instance(self, customer, product, instance):
 
         url = product.activation_url
+        if not url:
+            url = product.instance_url.replace("https://", "https://saas.") + "/saas_activate.php?SaasActivationPassword=#SaasActivationPassword&UserEmailAddress=#UserEmailAddress"
 
         PasswordResetToken = None
         if '#PasswordResetToken' in url:
@@ -115,6 +119,9 @@ class LogicInstances:
         """call web request: deactivate_url"""
         url = product.deactivation_url
 
+        if not url:
+            url = product.instance_url.replace("https://", "https://saas.") + "/saas_deactivate.php?SaasActivationPassword=#SaasActivationPassword"
+
         # for local tests
         if "example.org" in url:
             return True
@@ -132,13 +139,15 @@ class LogicInstances:
             if not data['success']:
                 return False
         except Exception as ex:
-            print('Exception in activate_instance: %s' % (ex,))
+            print('Exception in deactivate_instance: %s' % (ex,))
             return False
+
+        return True
 
     def deactivate_expired_instances(self):
         """ to be called by a cronjob each night """
         contracts = SaasContract.objects.filter(is_confirmed = True, \
-            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'assigned')
+            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = SaasInstance().ASSIGNED)
         for contract in contracts:
             instance = contract.instance
             if self.deactivate_instance(instance.product, instance):
@@ -148,13 +157,18 @@ class LogicInstances:
     def mark_deactivated_instances_for_deletion(self):
         """ to be called by a cronjob each night """
         contracts = SaasContract.objects.filter(is_confirmed = True, \
-            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = 'expired')
+            is_auto_renew = False, end_date__lt = datetime.today(), instance__status = SaasInstance().EXPIRED)
         for contract in contracts:
             days = 30
             if contract.plan.period_length_in_months == 0:
-                # for the one day test instance, remove it immediately
-                days = 0
-            if contract.end_date + timedelta(days=days) < datetime.today():
+                if contract.plan.period_length_in_days == 1:
+                    # for the one day test instance, remove it immediately
+                    days = 0
+                elif contract.plan.period_length_in_days > 0:
+                    # for other test instances, remove it after 3 days
+                    days = 3
+
+            if contract.end_date + timedelta(days=days) < datetime.today().date():
                 instance = contract.instance
                 instance.status = instance.TO_BE_REMOVED
                 instance.save()

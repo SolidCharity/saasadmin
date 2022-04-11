@@ -144,6 +144,8 @@ def readablePeriodsInDays(periodLength):
         return "1 " + _("month")
     elif periodLength == 14:
         return "2 " + _("weeks")
+    elif periodLength == 1:
+        return "1 " + _("day")
     else:
         return str(periodLength) + " " + _("days")
 
@@ -174,10 +176,16 @@ def show_contract(request, product, current_plan, new_plan):
         new_plan = current_plan
     customer = SaasCustomer.objects.filter(user=request.user).first()
     contract = LogicContracts().get_contract(customer, product)
-    periodLength = readablePeriodsInMonths(new_plan.period_length_in_months)
+    if new_plan.period_length_in_months > 0:
+        periodLength = readablePeriodsInMonths(new_plan.period_length_in_months)
+    elif new_plan.period_length_in_days > 0:
+        periodLength = readablePeriodsInDays(new_plan.period_length_in_days)
+    else:
+        periodLength = _("forever")
     payment_invoice = contract and contract.payment_method != "SEPA_DIRECTDEBIT"
     periodLengthExtension = ''
-    isFreeTest = new_plan.period_length_in_months == 0
+    isFreeTest = new_plan.cost_per_period == 0
+    isUnlimitedTest = isFreeTest and new_plan.period_length_in_months == 0 and new_plan.period_length_in_days == 0
     if new_plan.period_length_in_months == 1:
         periodLengthExtension = _("another month")
     elif new_plan.period_length_in_months == 3:
@@ -200,12 +208,14 @@ def show_contract(request, product, current_plan, new_plan):
         'contract': contract,
         'is_new_order': isNewOrder,
         'is_free_test': isFreeTest,
+        'is_unlimited_test': isUnlimitedTest,
         'can_cancel_contract': canCancelContract,
         'payment_invoice': payment_invoice,
         'noticePeriod': noticePeriod,
         'periodLength': periodLength,
         'periodLengthExtension': periodLengthExtension})
 
+@login_required
 def contract_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request)
@@ -215,6 +225,7 @@ def contract_view(request):
 
     return show_contract(request, product, contract.plan, None)
 
+@login_required
 def contract_subscribe(request, product_id, plan_id):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = SaasProduct.objects.filter(slug = product_id).first()
@@ -243,23 +254,22 @@ def contract_subscribe(request, product_id, plan_id):
             # TODO what about the situation where there is no free instance available
             return render(request, 'error.html', {'message': _("Error: no instance available. Please try again tomorrow!")})
 
-
+@login_required
 def contract_cancel(request, product_id):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = SaasProduct.objects.filter(slug = product_id).first()
-    plan = LogicContracts().get_current_plan(request, product)
+    contract = LogicContracts().get_contract(customer, product)
+    plan = contract.plan
 
-    if product:
-        # cancel the contract
-        contract = LogicContracts().get_contract(customer, product)
-        if contract:
-            contract.is_auto_renew = False
-            contract.save()
+    # cancel the contract
+    if contract and contract.is_auto_renew:
+        contract.is_auto_renew = False
+        contract.save()
 
     # show cancelled contract
     return show_contract(request, product, plan, None)
 
-
+@login_required
 def instance_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request)
@@ -269,8 +279,19 @@ def instance_view(request):
     url = product.instance_url. \
             replace('#Prefix', product.prefix). \
             replace('#Identifier', contract.instance.identifier)
+    if product.instance_password_reset_url.startswith('/'):
+        pwd_reset_url = url + product.instance_password_reset_url[1:]
+    else:
+        pwd_reset_url = product.instance_password_reset_url
+    adminuser = product.instance_admin_user
+    adminemail = customer.email_address
 
-    return render(request, 'instance.html', {'instance': contract.instance, 'instance_url': url})
+    return render(request, 'instance.html',
+        {'instance': contract.instance,
+        'instance_url': url,
+        'adminuser': adminuser,
+        'adminemail': adminemail,
+        'pwd_reset_url': pwd_reset_url})
 
 
 def display_pricing(request):

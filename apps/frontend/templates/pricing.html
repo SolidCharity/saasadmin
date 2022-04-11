@@ -21,7 +21,9 @@
     <span class="pricing-currency">
         {% if plan.cost_per_period == 0 %}
             {%translate "free"%}
-            {%if plan.period_length_in_months == 0 %}{% translate "for one day" %}{%endif%}
+            {%if plan.period_length_in_months == 0 and plan.period_length_in_days == 0 %}{% translate "for forever" %}{%endif%}
+            {%if plan.period_length_in_months == 0 and plan.period_length_in_days == 1 %}{% translate "for one day" %}{%endif%}
+            {%if plan.period_length_in_months == 0 and plan.period_length_in_days > 1 %}{%blocktrans with periodLength=plan.period_length_in_days%}for {{periodLength}} days{%endblocktrans%}{%endif%}
         {%else%}
             {%if plan.currency_code == 'EUR' %}{{plan.cost_per_period.normalize}}&euro;
             {%elif plan.currency_code == 'USD'%}${{plan.cost_per_period.normalize}}
