@@ -62,7 +62,9 @@ def account_update(request):
     form = CustomerForm(values, instance = customer)
     if form.is_valid():
         form.save()
-        return redirect('/account')
+        
+        return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang, 'successmessage': _("Changes Saved")})
+
     return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
 
 
