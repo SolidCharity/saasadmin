@@ -37,6 +37,7 @@ urlpatterns = [
     path('instances/<str:product>/', backend_views.instances),
     path('instances/<str:product>/add', backend_views.addinstances),
     path('plans/<str:product>/', backend_views.plans),
+    path('plans/<str:product>/preview', backend_views.preview_pricing),
     path('plans/<str:product>/add', backend_views.addplan),
     path('plans/edit/<int:id>', backend_views.editplan),
     path('plans/update/<int:id>', backend_views.updateplan),

@@ -97,6 +97,15 @@ def plans(request, product):
 
 @login_required
 @staff_member_required
+def preview_pricing(request, product):
+    product = SaasProduct.objects.filter(slug = product).first()
+    plans = SaasPlan.objects.filter(product = product).order_by('cost_per_period')
+
+    return render(request,"pricing.html",
+            { 'plans': plans, 'product': product })
+
+@login_required
+@staff_member_required
 def addplan(request, product):
     product = SaasProduct.objects.filter(slug = product).first()
 
