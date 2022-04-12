@@ -11,6 +11,7 @@
 
 
 {% for plan in plans %}
+{% if plan.is_public %}
 <div class="one-third column">
 
 <div class="pricing-table-wrapper-0 pricing-table-wrapper">
@@ -51,6 +52,7 @@
 </div>
 </div>
 </div>
+{% endif %}
 {% endfor %}
 
 </div>
