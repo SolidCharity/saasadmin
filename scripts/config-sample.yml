@@ -7,3 +7,6 @@ saasadmin:
   smtp_host: xyz00.hostsharing.net
   smtp_user: xyz00-myemailaccount
   smtp_pwd: topsecret
+
+  pacuser: xyz00
+  pacpwd: topsecret
