@@ -11,6 +11,8 @@ import yaml
 from hs.admin.api import API
 
 def convert_to_mb(value):
+    if not value:
+        return None
     if value.endswith('M'):
         return value[:-1]
     elif value.endswith('G'):
@@ -53,6 +55,8 @@ def maintain_quota(config, url, admin_token, host_name, product_slug, pac_user, 
         # compare current quota with quota from saasadmin
         new_quota_softlimit = convert_to_mb(instance['quota_app'])
         new_storage_softlimit = convert_to_mb(instance['quota_storage'])
+        if not new_quota_softlimit or not new_storage_softlimit:
+            continue
         username = pac_user + '-' + instance['prefix'] + instance['identifier']
         current_hsuser = api.user.search(where={'name': username})[0]
         need_change = False
