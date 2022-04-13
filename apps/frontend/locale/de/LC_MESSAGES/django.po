@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-12 10:49+0200\n"
+"POT-Creation-Date: 2022-04-13 07:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -291,6 +291,10 @@ msgstr "beliebt"
 #: apps/frontend/templates/pricing.html:51
 msgid "Register"
 msgstr "Registrieren"
+
+#: apps/frontend/templates/pricing.html:58
+msgid "All prices already include the VAT."
+msgstr "Alle Preise verstehen sich inkl. Umsatzsteuer."
 
 #: apps/frontend/views.py:66 apps/frontend/views.py:126
 msgid "Changes Saved"
