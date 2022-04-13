@@ -65,6 +65,7 @@ class SaasPlan (models.Model):
         on_delete=models.CASCADE,
         related_name="%(app_label)s_%(class)s_list",
     )
+    priority = models.IntegerField(_("Sorting Order"), default = 0)
     is_favourite = models.BooleanField(_("is favourite"), default=False)
     is_public = models.BooleanField(_("is public"), default=True)
     # if period length in months is 0 and period length in days is 0, then this plan is unlimited, for free or one-time payment
