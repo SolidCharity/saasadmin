@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-02 23:12+0200\n"
+"POT-Creation-Date: 2022-04-13 07:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,7 +103,7 @@ msgstr ""
 "Es wurde eine E-Mail an Sie verschickt. Bitte bestätigen Sie Ihre "
 "Registrierung, in dem Sie auf den Verweis in der E-Mail klicken!"
 
-#: apps/backend/templates/django_registration/registration_form.html:30
+#: apps/backend/templates/django_registration/registration_form.html:69
 msgid "Register"
 msgstr "Zugang einrichten"
 
@@ -159,6 +159,10 @@ msgstr "Löschen"
 msgid "Add New Record"
 msgstr "Neuen Eintrag hinzufügen"
 
+#: apps/backend/templates/plans.html:52
+msgid "Preview Pricing"
+msgstr "Vorschau der Angebotsliste"
+
 #: apps/backend/templates/products.html:7
 msgid "Products"
 msgstr "Produkte"
@@ -192,14 +196,14 @@ msgstr ""
 msgid "Please login to see this page."
 msgstr "Bitte anmelden, um diese Seite zu sehen."
 
-#: apps/backend/templates/registration/login.html:30
+#: apps/backend/templates/registration/login.html:54
 msgid "login"
 msgstr "Anmelden"
 
-#: apps/backend/templates/registration/login.html:35
+#: apps/backend/templates/registration/login.html:59
 msgid "Lost password?"
 msgstr "Passwort vergessen?"
 
-#: apps/backend/templates/registration/login.html:36
+#: apps/backend/templates/registration/login.html:60
 msgid "Create a free account"
 msgstr "Einen kostenlosen Zugang einrichten"

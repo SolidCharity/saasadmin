@@ -47,7 +47,7 @@ class SaasProduct (models.Model):
     prefix = models.CharField(_("Prefix"), max_length=10, default='xy')
     activation_url = models.CharField(_("Activation URL"), max_length=250, default = "")
     deactivation_url = models.CharField(_("Deactivation URL"), max_length=250, default = "")
-    instance_url = models.CharField(_("Instance URL"), max_length=250, default = "https://#Prefix#Identifier.example.org")
+    instance_url = models.CharField(_("Instance URL"), max_length=250, default = "https://#Prefix#Identifier.example.org/")
     instance_password_reset_url = models.CharField(_("Password Reset URL"), max_length=250, default = "/reset_password")
     instance_admin_user = models.CharField(_("Instance Admin User"), max_length=100, default = "admin")
     is_active = models.BooleanField(_("Is Active"), default=False)
@@ -65,6 +65,7 @@ class SaasPlan (models.Model):
         on_delete=models.CASCADE,
         related_name="%(app_label)s_%(class)s_list",
     )
+    priority = models.IntegerField(_("Sorting Order"), default = 0)
     is_favourite = models.BooleanField(_("is favourite"), default=False)
     is_public = models.BooleanField(_("is public"), default=True)
     # if period length in months is 0 and period length in days is 0, then this plan is unlimited, for free or one-time payment

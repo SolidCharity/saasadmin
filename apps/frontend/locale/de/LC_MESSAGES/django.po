@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-02 23:12+0200\n"
+"POT-Creation-Date: 2022-04-13 07:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps/frontend/templates/account.html:25
+#: apps/frontend/templates/account.html:27
 msgid "Personal Details"
 msgstr "Persönliche Daten"
 
-#: apps/frontend/templates/account.html:42
+#: apps/frontend/templates/account.html:44
 msgid "Save changes"
 msgstr "Änderungen speichern"
 
@@ -247,104 +247,108 @@ msgstr "Bestätigen und zur nächsten Seite gehen"
 msgid "Confirm Payment Method"
 msgstr "Zahlungsweise bestätigen"
 
-#: apps/frontend/templates/plan.html:15
+#: apps/frontend/templates/plan.html:16
 msgid "selected"
 msgstr "ausgewählt"
 
-#: apps/frontend/templates/plan.html:21 apps/frontend/templates/pricing.html:23
+#: apps/frontend/templates/plan.html:22 apps/frontend/templates/pricing.html:24
 msgid "free"
 msgstr "Kostenlos"
 
-#: apps/frontend/templates/plan.html:22 apps/frontend/templates/pricing.html:24
+#: apps/frontend/templates/plan.html:23 apps/frontend/templates/pricing.html:25
 msgid "for forever"
 msgstr "für immer"
 
-#: apps/frontend/templates/plan.html:23 apps/frontend/templates/pricing.html:25
+#: apps/frontend/templates/plan.html:24 apps/frontend/templates/pricing.html:26
 msgid "for one day"
 msgstr "für einen Tag"
 
-#: apps/frontend/templates/plan.html:24 apps/frontend/templates/pricing.html:26
+#: apps/frontend/templates/plan.html:25 apps/frontend/templates/pricing.html:27
 #, python-format
 msgid "for %(periodLength)s days"
 msgstr "für %(periodLength)s Tage"
 
-#: apps/frontend/templates/plan.html:30 apps/frontend/templates/pricing.html:32
+#: apps/frontend/templates/plan.html:31 apps/frontend/templates/pricing.html:33
 msgid "per month"
 msgstr "pro Monat"
 
-#: apps/frontend/templates/plan.html:31 apps/frontend/templates/pricing.html:33
+#: apps/frontend/templates/plan.html:32 apps/frontend/templates/pricing.html:34
 msgid "per quarter"
 msgstr "pro Quartal"
 
-#: apps/frontend/templates/plan.html:32 apps/frontend/templates/pricing.html:34
+#: apps/frontend/templates/plan.html:33 apps/frontend/templates/pricing.html:35
 msgid "per year"
 msgstr "pro Jahr"
 
-#: apps/frontend/templates/plan.html:47
+#: apps/frontend/templates/plan.html:48
 msgid "Choose"
 msgstr "Auswählen"
 
-#: apps/frontend/templates/pricing.html:17
+#: apps/frontend/templates/pricing.html:18
 msgid "popular"
 msgstr "beliebt"
 
-#: apps/frontend/templates/pricing.html:50
+#: apps/frontend/templates/pricing.html:51
 msgid "Register"
 msgstr "Registrieren"
 
-#: apps/frontend/views.py:109
-msgid "Please specify account owner and IBAN"
-msgstr "Bitte den Kontoinhaber und die IBAN angeben"
+#: apps/frontend/templates/pricing.html:58
+msgid "All prices already include the VAT."
+msgstr "Alle Preise verstehen sich inkl. Umsatzsteuer."
 
-#: apps/frontend/views.py:124
+#: apps/frontend/views.py:66 apps/frontend/views.py:126
 msgid "Changes Saved"
 msgstr "Änderungen gespeichert"
 
-#: apps/frontend/views.py:134
+#: apps/frontend/views.py:111
+msgid "Please specify account owner and IBAN"
+msgstr "Bitte den Kontoinhaber und die IBAN angeben"
+
+#: apps/frontend/views.py:136
 msgid "year"
 msgstr "Jahr"
 
-#: apps/frontend/views.py:136 apps/frontend/views.py:142
+#: apps/frontend/views.py:138 apps/frontend/views.py:144
 msgid "month"
 msgstr "Monat"
 
-#: apps/frontend/views.py:138
+#: apps/frontend/views.py:140
 msgid "months"
 msgstr "Monate"
 
-#: apps/frontend/views.py:144
+#: apps/frontend/views.py:146
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/frontend/views.py:146
+#: apps/frontend/views.py:148
 msgid "day"
 msgstr "Tag"
 
-#: apps/frontend/views.py:148
+#: apps/frontend/views.py:150
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:182
+#: apps/frontend/views.py:184
 msgid "forever"
 msgstr "immer"
 
-#: apps/frontend/views.py:188
+#: apps/frontend/views.py:190
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:190
+#: apps/frontend/views.py:192
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:192
+#: apps/frontend/views.py:194
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/frontend/views.py:253
+#: apps/frontend/views.py:255
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/frontend/views.py:277
+#: apps/frontend/views.py:278
 msgid "Error: no instance has been assigned yet."
 msgstr "Fehler: es wurde noch keine Instanz zugeordnet."
 
