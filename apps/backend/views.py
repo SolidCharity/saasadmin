@@ -23,10 +23,13 @@ def customers(request, product):
     product = SaasProduct.objects.filter(slug = product).first()
     with connection.cursor() as cursor:
 
-        sql = """SELECT email_address, first_name, last_name, saas_instance.identifier as instance_identifier
-            FROM saas_customer, saas_instance, saas_contract
+        sql = """SELECT email_address, first_name, last_name,
+            saas_instance.identifier as instance_identifier,
+            saas_plan.name as plan_name
+            FROM saas_customer, saas_instance, saas_contract, saas_plan
             WHERE saas_contract.customer_id = saas_customer.id
             AND saas_contract.instance_id = saas_instance.id
+            AND saas_contract.plan_id = saas_plan.id
             AND saas_instance.product_id = %s"""
 
         cursor.execute(sql, [product.id,])

@@ -7,7 +7,7 @@
   <h3>{%translate "Customers"%} {{product.name}}</h3>
   <ul>
   {% for customer in customers %}
-    <li>{{ customer.email_address }}: {{ customer.instance_identifier }} {{ customer.last_name }}</li>
+    <li>{{ customer.last_name }} {{ customer.email_address }}: {{ customer.instance_identifier }} {{customer.plan_name}}</li>
 
   {% endfor %}
 
