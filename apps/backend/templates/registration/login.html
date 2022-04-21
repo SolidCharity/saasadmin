@@ -52,8 +52,8 @@
         </td>
       </tr>
       </table>
-    <input type="submit" value="{%translate "login"%}" />
-    <input type="hidden" name="next" value="{{ next }}" />
+      <button type="confirm" class="button-primary">{% translate "login" %}</button>
+      <input type="hidden" name="next" value="{{ next }}" />
   </form>
 
   {# Assumes you setup the password_reset view in your URLconf #}

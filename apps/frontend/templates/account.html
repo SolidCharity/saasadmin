@@ -18,12 +18,12 @@
 </style>
 
 <div details>
-  <div class="success">
-    {{successmessage}}
-  </div>
+  
   <!-- personal info -->
   <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;" id="account_field">
-
+    <div class="success">
+      {{successmessage}}
+    </div>
     <h2 class="text-center">{% translate "Personal Details" %}</h2>
 
     <form method="POST" class="post-form" action="/account/update">
@@ -41,7 +41,7 @@
 
     <div class="row">
       <div class="col-6">
-        <button type="submit" class="btn stylish-color">{% translate "Save changes" %}</button>
+        <button type="confirm" class="button-primary">{% translate "Save changes" %}</button>
       </div>
     </div>
 
