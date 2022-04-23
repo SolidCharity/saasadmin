@@ -70,8 +70,10 @@ def account_update(request):
 
 @login_required
 def plan_select(request, plan_id):
-    product = LogicProducts().get_product(request)
+    product = LogicProducts().get_product(request, False)
     current_plan = LogicContracts().get_current_plan(request, product)
+    if current_plan is None and not product.is_active:
+        product = None
     plans = LogicPlans().get_plans(product)
 
     # the customer has selected a plan
@@ -93,7 +95,7 @@ def plan_select(request, plan_id):
 
 @login_required
 def paymentmethod_select(request):
-    product = LogicProducts().get_product(request)
+    product = LogicProducts().get_product(request, False)
     customer = SaasCustomer.objects.filter(user=request.user).first()
 
     if request.method == "POST":
@@ -218,7 +220,7 @@ def show_contract(request, product, current_plan, new_plan):
 @login_required
 def contract_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
-    product = LogicProducts().get_product(request)
+    product = LogicProducts().get_product(request, False)
     contract = LogicContracts().get_contract(customer, product)
     if not contract:
         return redirect("/plan/current")
@@ -272,7 +274,7 @@ def contract_cancel(request, product_id):
 @login_required
 def instance_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
-    product = LogicProducts().get_product(request)
+    product = LogicProducts().get_product(request, False)
     contract = LogicContracts().get_contract(customer, product)
     if not contract or not contract.instance:
         return render(request, 'error.html', {'message': _("Error: no instance has been assigned yet.")})
