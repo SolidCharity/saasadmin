@@ -37,6 +37,7 @@ div.error {
 div.success {
     color: green;
     font-weight: bolder;
+    text-align: center;
 }
 
 .btn-danger {
