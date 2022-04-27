@@ -16,7 +16,7 @@ class ProductForm(forms.ModelForm):
         fields = ("slug", "name", "prefix",
             "instance_url", "instance_password_reset_url",
             "instance_admin_user",
-            "number_of_ports", "is_active")
+            "number_of_ports", "is_active", "description")
 
 
 class AddInstancesForm(forms.Form):
