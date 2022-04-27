@@ -52,6 +52,7 @@ class SaasProduct (models.Model):
     instance_admin_user = models.CharField(_("Instance Admin User"), max_length=100, default = "admin")
     is_active = models.BooleanField(_("Is Active"), default=False)
     number_of_ports = models.IntegerField(_("Number of Ports"), default=1)
+    description = models.CharField(_("Description"), max_length=250, default="")
 
     class Meta:
         db_table = "saas_product"

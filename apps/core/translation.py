@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import SaasPlan, SaasConfiguration
+from .models import SaasPlan, SaasProduct, SaasConfiguration
 
 @register(SaasPlan)
 class SaasPlanTranslationOptions(TranslationOptions):
@@ -8,3 +8,7 @@ class SaasPlanTranslationOptions(TranslationOptions):
 @register(SaasConfiguration)
 class SaasConfigurationTranslationOptions(TranslationOptions):
     fields = ('value',)
+
+@register(SaasProduct)
+class SaasProductTranslationOptions(TranslationOptions):
+    fields = ('description',)
