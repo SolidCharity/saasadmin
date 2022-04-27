@@ -5,11 +5,13 @@ INSERT INTO auth_user ("id", "password", "is_superuser", "is_staff", "username",
     (4,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',false,false,'customer3','bernd.s@example.org',true,'','',date('now')),
     (5,'pbkdf2_sha256$260000$gbppPUYGKnb6W0o7w1CVW1$PR01ycCSgSGyQWek6UjFyDDky00mZWLKbm1QrGBAcxE=',false,false,'customer4','gunter.meier@example.org',true,'','',date('now'));
 INSERT INTO saas_product ("id", "slug", "name", "prefix",
+    "description",
     "activation_url","deactivation_url",
     "instance_url",
     "instance_password_reset_url", "instance_admin_user",
     "is_active", "number_of_ports") VALUES
     (1, 'kanboard', 'Kanboard', 'kb',
+    'Kanboard is a free and open source Kanban project management software. See [Webseite](https://kanboard.org/).',
     '','',
     'https://#Prefix#Identifier.example.org/',
     '/?controller=PasswordResetController&action=create',
