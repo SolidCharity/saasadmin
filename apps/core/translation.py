@@ -11,4 +11,4 @@ class SaasConfigurationTranslationOptions(TranslationOptions):
 
 @register(SaasProduct)
 class SaasProductTranslationOptions(TranslationOptions):
-    fields = ('description',)
+    fields = ('description', 'upstream_url')

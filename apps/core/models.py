@@ -21,8 +21,7 @@ class SaasCustomer(models.Model):
     MR, MRS, MRDR, MRSDR = ('Mr', 'Mrs', 'Mr Dr', 'Mrs Dr')
     TITLE_CHOICES = (
         (MR, _("Mr")),
-        (MRS, _("Mrs")),
-        (MRDR, _("Mr Dr")),
+        (MRS, _("Mrs")),        (MRDR, _("Mr Dr")),
         (MRSDR, _("Mrs Dr")),
     )
     title = models.CharField(
@@ -53,7 +52,8 @@ class SaasProduct (models.Model):
     is_active = models.BooleanField(_("Is Active"), default=False)
     number_of_ports = models.IntegerField(_("Number of Ports"), default=1)
     description = models.CharField(_("Description"), max_length=250, default="")
-
+    upstream_url= models.CharField(_("Upstream_URL"), max_length=250, default = "https://example.org")
+    
     class Meta:
         db_table = "saas_product"
 
