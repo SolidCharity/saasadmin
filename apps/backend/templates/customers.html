@@ -5,11 +5,25 @@
 
 <div class="container">
   <h3>{%translate "Customers"%} {{product.name}}</h3>
-  <ul>
-  {% for customer in customers %}
-    <li>{{ customer.last_name }} {{ customer.email_address }}: {{ customer.instance_identifier }} {{customer.plan_name}}</li>
 
-  {% endfor %}
+  <table>
+    <tr>
+        <th>{%translate "Name"%}</th>
+        <th>{%translate "E-Mail"%}</th>
+        <th>{%translate "Instance"%}</th>
+        <th>{%translate "Plan"%}</th>
+        <th>{%translate "Contract"%}</th>
+    </tr>
+    {% for customer in customers %}
+    <tr>
+        <td>{{ customer.last_name }}</td>
+        <td><a href="mailto:{{ customer.email_address }}">{{ customer.email_address }}</a></td>
+        <td>{{ customer.instance_identifier }}</td>
+        <td>{{ customer.plan_name }}</td>
+        <td>{{ customer.contract_finish }}</td>
+    </tr>
+    {% endfor %}
+</table>
 
   </ul>
 </div>

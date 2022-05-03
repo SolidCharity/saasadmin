@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.utils.translation import gettext as _
 from apps.core.models import SaasInstance
 from apps.core.models import SaasCustomer
 from apps.core.models import SaasPlan
@@ -25,7 +26,10 @@ def customers(request, product):
 
         sql = """SELECT email_address, first_name, last_name,
             saas_instance.identifier as instance_identifier,
-            saas_plan.name as plan_name
+            saas_contract.end_date as contract_end_date,
+            saas_contract.is_auto_renew as contract_auto_renew,
+            saas_plan.name as plan_name,
+            saas_contract.plan_id
             FROM saas_customer, saas_instance, saas_contract, saas_plan
             WHERE saas_contract.customer_id = saas_customer.id
             AND saas_contract.instance_id = saas_instance.id
@@ -39,6 +43,14 @@ def customers(request, product):
         for row in result:
             # create an associative array
             a = dict(zip([c[0] for c in cursor.description], row))
+            if a['contract_auto_renew']:
+                a['contract_finish'] = _('contract will be auto renewed')
+            elif not a['contract_end_date']:
+                a['contract_finish'] = _('contract is indefinite')
+            else:
+                a['contract_finish'] = _('contract ends on %s') % a['contract_end_date']
+            plan = SaasPlan.objects.get(id=a['plan_id'])
+            a['plan_name'] = plan.name
             # create an object
             o = namedtuple("customer", a.keys())(*a.values())
             # add the object to resulting array
