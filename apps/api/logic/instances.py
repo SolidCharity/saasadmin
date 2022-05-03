@@ -39,7 +39,7 @@ class LogicInstances:
         startport = settings.PORT_START
         endport = settings.PORT_END
         new_id = random.randrange(instance_id_start, instance_id_end)
-        while SaasInstance.objects.filter(identifier=str(new_id), product = product).exists():
+        while SaasInstance.objects.filter(identifier=str(new_id)).exists():
           new_id = random.randrange(instance_id_start, instance_id_end)
 
         # find new available port on that host, independant of the product
