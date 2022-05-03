@@ -21,7 +21,8 @@ class SaasCustomer(models.Model):
     MR, MRS, MRDR, MRSDR = ('Mr', 'Mrs', 'Mr Dr', 'Mrs Dr')
     TITLE_CHOICES = (
         (MR, _("Mr")),
-        (MRS, _("Mrs")),        (MRDR, _("Mr Dr")),
+        (MRS, _("Mrs")),
+        (MRDR, _("Mr Dr")),
         (MRSDR, _("Mrs Dr")),
     )
     title = models.CharField(
