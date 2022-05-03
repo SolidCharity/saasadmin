@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-04-13 07:52+0200\n"
+"POT-Creation-Date: 2022-05-03 11:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,6 +22,44 @@ msgstr ""
 msgid "Customers"
 msgstr "Kunden"
 
+#: apps/backend/templates/customers.html:11
+#: apps/backend/templates/products.html:11
+msgid "Name"
+msgstr "Name"
+
+#: apps/backend/templates/customers.html:12
+msgid "E-Mail"
+msgstr ""
+
+#: apps/backend/templates/customers.html:13
+#, fuzzy
+#| msgid "Instances"
+msgid "Instance"
+msgstr "Instanzen"
+
+#: apps/backend/templates/customers.html:14
+#, fuzzy
+#| msgid "Plans"
+msgid "Plan"
+msgstr "Angebote"
+
+#: apps/backend/templates/customers.html:15
+msgid "Contract"
+msgstr ""
+
+#: apps/backend/templates/customers.html:16
+#: apps/backend/templates/plans.html:32 apps/backend/templates/products.html:13
+msgid "Action"
+msgstr "Aktion"
+
+#: apps/backend/templates/customers.html:26
+msgid "Extend Test by 14 days"
+msgstr ""
+
+#: apps/backend/templates/customers.html:27
+msgid "Switch to Unlimited Test"
+msgstr ""
+
 #: apps/backend/templates/django_registration/activation_complete.html:6
 #: apps/backend/templates/django_registration/registration_complete.html:6
 msgid "Success!"
@@ -32,7 +70,7 @@ msgid "Now you can login:"
 msgstr "Jetzt können Sie sich anmelden:"
 
 #: apps/backend/templates/django_registration/activation_complete.html:8
-#: apps/backend/templates/django_registration/activation_failed.html:9
+#: apps/backend/templates/django_registration/activation_failed.html:10
 msgid "Login"
 msgstr "Anmelden"
 
@@ -83,15 +121,15 @@ msgstr "Wir sind per E-Mail erreichbar unter der Adresse info@%(site)s"
 msgid "Confirm your registration for %(site)s"
 msgstr "Anmeldung für %(site)s bestätigen"
 
-#: apps/backend/templates/django_registration/activation_failed.html:5
+#: apps/backend/templates/django_registration/activation_failed.html:6
 msgid "Something went wrong."
 msgstr "Das hat nicht funktioniert."
 
-#: apps/backend/templates/django_registration/activation_failed.html:7
+#: apps/backend/templates/django_registration/activation_failed.html:8
 msgid "Perhaps you have confirmed already?"
 msgstr "Vielleicht wurde die Anmeldung bereits bestätigt?"
 
-#: apps/backend/templates/django_registration/activation_failed.html:9
+#: apps/backend/templates/django_registration/activation_failed.html:10
 msgid "Please try to Login:"
 msgstr "Bitte versuche dich anzumelden:"
 
@@ -143,10 +181,6 @@ msgstr "Länge des Buchungszeitraums in Tagen"
 msgid "Notice Period in Days"
 msgstr "Kündigungsfrist in Tagen"
 
-#: apps/backend/templates/plans.html:32 apps/backend/templates/products.html:13
-msgid "Action"
-msgstr "Aktion"
-
 #: apps/backend/templates/plans.html:44 apps/backend/templates/products.html:21
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -166,10 +200,6 @@ msgstr "Vorschau der Angebotsliste"
 #: apps/backend/templates/products.html:7
 msgid "Products"
 msgstr "Produkte"
-
-#: apps/backend/templates/products.html:11
-msgid "Name"
-msgstr "Name"
 
 #: apps/backend/templates/products.html:12
 msgid "Is Active"
@@ -207,3 +237,16 @@ msgstr "Passwort vergessen?"
 #: apps/backend/templates/registration/login.html:60
 msgid "Create a free account"
 msgstr "Einen kostenlosen Zugang einrichten"
+
+#: apps/backend/views.py:46
+msgid "contract will be auto renewed"
+msgstr ""
+
+#: apps/backend/views.py:48
+msgid "contract is indefinite"
+msgstr ""
+
+#: apps/backend/views.py:50
+#, python-format
+msgid "contract ends on %s"
+msgstr ""

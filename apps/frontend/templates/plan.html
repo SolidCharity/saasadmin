@@ -8,7 +8,7 @@
 <div class="container pricing">
 <h2>{{product.name}}</h2>
 <h5>{{product.description}}</h5>
-<p>Siehe <a href="{{product.upstream_url}}">Webseite von {{product.name}}</a></p>
+<p>{%translate "See" %} <a href="{{product.upstream_url}}" target="_blank">{%translate "Website of"%} {{product.name}}</a></p>
 <div class="row" id="spacious_pricing_table_widget-5" class="widget_table_pricing">
 
 {% for plan in plans %}
