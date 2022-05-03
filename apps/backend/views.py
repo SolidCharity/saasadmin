@@ -1,3 +1,4 @@
+from datetime import timedelta, date
 from django.contrib.auth import authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
@@ -5,10 +6,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils.translation import gettext as _
-from apps.core.models import SaasInstance
-from apps.core.models import SaasCustomer
-from apps.core.models import SaasPlan
-from apps.core.models import SaasProduct
+from apps.core.models import SaasContract, SaasCustomer, SaasInstance, SaasPlan, SaasProduct
 from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm
 from apps.api.logic.contracts import LogicContracts
 from apps.api.logic.products import LogicProducts
@@ -26,6 +24,7 @@ def customers(request, product):
 
         sql = """SELECT email_address, first_name, last_name,
             saas_instance.identifier as instance_identifier,
+            saas_contract.id as contract_id,
             saas_contract.end_date as contract_end_date,
             saas_contract.is_auto_renew as contract_auto_renew,
             saas_plan.name as plan_name,
@@ -51,6 +50,7 @@ def customers(request, product):
                 a['contract_finish'] = _('contract ends on %s') % a['contract_end_date']
             plan = SaasPlan.objects.get(id=a['plan_id'])
             a['plan_name'] = plan.name
+            a['plan_cost'] = plan.cost_per_period
             # create an object
             o = namedtuple("customer", a.keys())(*a.values())
             # add the object to resulting array
@@ -58,6 +58,28 @@ def customers(request, product):
 
     return render(request,"customers.html",
             {'customers': customers, 'product': product})
+
+
+@login_required
+@staff_member_required
+def editcontract(request, id, newplan):
+    contract = SaasContract.objects.get(id=id)
+    plan = contract.plan
+
+    if plan.cost_per_period == 0:
+        if newplan == "AddTest14":
+            contract.end_date += timedelta(days=14)
+            contract.save()
+        elif newplan == "MakeFree" and not contract.end_date is None:
+            # find the plan that has no limit and is free
+            freeplan = SaasPlan.objects.filter(product = plan.product, cost_per_period = 0, period_length_in_months=0, period_length_in_days=0).first()
+            if freeplan:
+                contract.end_date = None
+                contract.plan_id = freeplan.id
+                contract.save()
+
+    return redirect("/customers/%s/" % (plan.product.slug,))
+
 
 @login_required
 @staff_member_required
