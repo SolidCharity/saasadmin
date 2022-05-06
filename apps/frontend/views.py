@@ -71,6 +71,8 @@ def account_update(request):
 @login_required
 def plan_select(request, plan_id):
     product = LogicProducts().get_product(request, False)
+    if product is None:
+        return redirect('/pricing')
     current_plan = LogicContracts().get_current_plan(request, product)
     if current_plan is None and not product.is_active:
         product = None
@@ -275,6 +277,8 @@ def contract_cancel(request, product_id):
 def instance_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request, False)
+    if product is None:
+        return redirect('/pricing')
     contract = LogicContracts().get_contract(customer, product)
     if not contract or not contract.instance:
         return render(request, 'error.html', {'message': _("Error: no instance has been assigned yet.")})

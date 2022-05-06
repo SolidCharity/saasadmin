@@ -41,10 +41,18 @@
 <span class="pricing-subtitle">{{plan.descr_target}}</span>
 
 <ul class="pricing-list-wrapper">
-	<li class="pricing-list">{{plan.descr_1|safe}}</li>
-	<li class="pricing-list">{{plan.descr_2|safe}}</li>
-	<li class="pricing-list">{{plan.descr_3|safe}}</li>
-	<li class="pricing-list">{{plan.descr_4|safe}}</li>
+    {%if plan.descr_1 != 'TODO' and plan.descr_1 != 'EMPTY' %}
+    <li class="pricing-list">{{plan.descr_1|safe}}</li>
+    {%endif%}
+    {%if plan.descr_2 != 'TODO' and plan.descr_2 != 'EMPTY' %}
+    <li class="pricing-list">{{plan.descr_2|safe}}</li>
+    {%endif%}
+    {%if plan.descr_3 != 'TODO' and plan.descr_3 != 'EMPTY' %}
+    <li class="pricing-list">{{plan.descr_3|safe}}</li>
+    {%endif%}
+    {%if plan.descr_4 != 'TODO' and plan.descr_4 != 'EMPTY' %}
+    <li class="pricing-list">{{plan.descr_4|safe}}</li>
+    {%endif%}
 </ul>
 
 <div class="pricing-btn">
