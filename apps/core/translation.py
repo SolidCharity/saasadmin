@@ -7,7 +7,7 @@ class SaasPlanTranslationOptions(TranslationOptions):
 
 @register(SaasConfiguration)
 class SaasConfigurationTranslationOptions(TranslationOptions):
-    fields = ('value',)
+    fields = ('value', 'name',)
 
 @register(SaasProduct)
 class SaasProductTranslationOptions(TranslationOptions):
