@@ -18,10 +18,14 @@ class InstanceSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_quota_storage(self, instance):
       plan = LogicContracts().get_plan_of_instance(instance)
+      if not plan:
+          raise Exception('Missing plan for product')
       return plan.quota_storage
 
     def get_quota_app(self, instance):
       plan = LogicContracts().get_plan_of_instance(instance)
+      if not plan:
+          raise Exception('Missing plan for product')
       return plan.quota_app
 
     class Meta:
