@@ -31,7 +31,7 @@ class InstanceApiView(APIView):
         product = LogicProducts().get_product(request, False)
         action = self.getParam(request, 'action', '')
 
-        if action == "install":
+        if action == "install" or action == "init":
             instance_status = [SaasInstance().IN_PREPARATION,]
         elif action == "update" or action == "check" or action == "quota":
             instance_status = [SaasInstance().READY, SaasInstance().AVAILABLE, SaasInstance().RESERVED, SaasInstance().ASSIGNED, SaasInstance().EXPIRED, SaasInstance().TO_BE_REMOVED,]
