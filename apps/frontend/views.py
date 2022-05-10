@@ -286,6 +286,7 @@ def instance_view(request):
             replace('#Prefix', product.prefix). \
             replace('#Identifier', contract.instance.identifier)
     pwd_reset_url = product.instance_password_reset_url
+    initialadminpassword = ''
     if pwd_reset_url == 'password1':
         # Tryton does not have a password reset functionality for the admin user
         initialadminpassword = contract.instance.password1
