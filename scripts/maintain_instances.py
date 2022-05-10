@@ -100,6 +100,11 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
         print(instance['identifier'] + ' ' + instance['status'])
         # print(instance)
 
+        if action == "init" and instance['status'] == IN_PREPARATION:
+            return_code = run_ansible(config, ansible_inventory_template, ansible_path + '/playbook-init.yml', instance)
+            if return_code:
+                continue
+
         if action == "install" and instance['status'] == IN_PREPARATION:
             return_code = run_ansible(config, ansible_inventory_template, ansible_path + '/playbook-install.yml', instance)
             if return_code:
@@ -159,7 +164,7 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
 @click.option('--admintoken', help='The token for access to the REST API of SaasAdmin')
 @click.option('--url', help='The url for access to the REST API of SaasAdmin')
 @click.option('--configfile', default='config.yaml', help='The config file to use')
-@click.option('--action', default='install', help='The action: install, update, remove, check')
+@click.option('--action', default='install', help='The action: init, install, update, remove, check')
 def main(product, hostname, ansiblepath, admintoken, url, configfile, action):
     """run the ansible playbook for all specified instances"""
 
@@ -175,7 +180,7 @@ def main(product, hostname, ansiblepath, admintoken, url, configfile, action):
     if url is None:
         url=config['saasadmin']['url']
 
-    if action not in ['install', 'remove', 'update', 'check']:
+    if action not in ['init', 'install', 'remove', 'update', 'check']:
         print('action must be one of these values: install, remove, update or check')
         exit(-1)
 
