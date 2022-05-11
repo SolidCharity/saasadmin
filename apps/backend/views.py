@@ -6,7 +6,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils.translation import gettext as _
-from apps.core.models import SaasContract, SaasCustomer, SaasInstance, SaasPlan, SaasProduct
+from apps.core.models import SaasContract, SaasCustomer, SaasInstance, SaasPlan, SaasProduct, SaasConfiguration
 from apps.core.models import SaasConfiguration
 from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm, ConfigurationForm
 from apps.api.logic.contracts import LogicContracts
@@ -276,3 +276,19 @@ def addconfiguration(request):
         form = ConfigurationForm()
     return render(request,'addconfiguration.html',{'form': form})
 
+@login_required
+@staff_member_required
+def editconfiguration(request, id):
+    configuration = SaasConfiguration.objects.get(id=id)
+    form = ConfigurationForm(request.POST or None, instance = configuration)
+    return render(request,'editconfiguration.html', {'configuration':configuration, 'form': form})
+
+@login_required
+@staff_member_required
+def updateconfiguration(request, id):
+    configuration = SaasConfiguration.objects.get(id=id)
+    form = ConfigurationForm(request.POST or None, instance = configuration)
+    if form.is_valid():
+        form.save()
+        return redirect("/configurations")
+    return render(request, 'editconfiguration.html', {'configuration': configuration, 'form': form})
