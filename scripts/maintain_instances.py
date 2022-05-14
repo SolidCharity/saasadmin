@@ -120,11 +120,7 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
                 params=params, headers={'Authorization': f'Token {admin_token}'})
 
         elif action == "update" and instance['status'] != IN_PREPARATION and instance['status'] != REMOVED:
-            return_code = run_ansible(config, ansible_inventory_template, ansible_path + '/playbook-install.yml', instance)
-            if return_code:
-                continue
-
-            return_code = run_ansible(config, ansible_inventory_template, ansible_path + '/playbook-saas.yml', instance)
+            return_code = run_ansible(config, ansible_inventory_template, ansible_path + '/playbook-update.yml', instance)
             if return_code:
                 continue
 
