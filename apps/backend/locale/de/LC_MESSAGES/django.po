@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-11 11:36+0200\n"
+"POT-Creation-Date: 2022-05-16 17:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: apps/backend/templates/addconfiguration.html:27
+msgid "Add Configuration"
+msgstr "Konfiguration Hinzufügen"
+
+#: apps/backend/templates/addconfiguration.html:35
+msgid "Submit"
+msgstr "Bestätigen"
 
 #: apps/backend/templates/configurations.html:7
 msgid "Configuration"
@@ -169,7 +177,7 @@ msgid "Register"
 msgstr "Zugang einrichten"
 
 #: apps/backend/templates/editconfiguration.html:27
-msgid "Update Configurations"
+msgid "Update Configuration"
 msgstr "Konfiguration Bearbeiten"
 
 #: apps/backend/templates/editconfiguration.html:35
