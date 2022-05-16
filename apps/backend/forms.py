@@ -1,6 +1,6 @@
 from django import forms
 import datetime
-from apps.core.models import SaasPlan, SaasProduct
+from apps.core.models import SaasPlan, SaasProduct, SaasConfiguration
 
 
 class PlanForm(forms.ModelForm):
@@ -24,3 +24,10 @@ class AddInstancesForm(forms.Form):
     hostname = forms.CharField(max_length=128)
     pacuser = forms.CharField(max_length=128)
     count = forms.IntegerField()
+
+class ConfigurationForm(forms.ModelForm):
+
+    class Meta:
+        model = SaasConfiguration
+        fields = ("name", "value")
+

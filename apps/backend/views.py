@@ -6,8 +6,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils.translation import gettext as _
-from apps.core.models import SaasContract, SaasCustomer, SaasInstance, SaasPlan, SaasProduct
-from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm
+from apps.core.models import SaasContract, SaasCustomer, SaasInstance, SaasPlan, SaasProduct, SaasConfiguration
+from apps.core.models import SaasConfiguration
+from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm, ConfigurationForm
 from apps.api.logic.contracts import LogicContracts
 from apps.api.logic.products import LogicProducts
 from apps.api.logic.instances import LogicInstances
@@ -249,3 +250,45 @@ def deleteproduct(request, id):
     product = SaasProduct.objects.get(id=id)
     product.delete()
     return redirect("/products")
+
+@login_required
+@staff_member_required
+def configurations(request):
+    configurations = SaasConfiguration.objects.all()
+
+    return render(request,"configurations.html",
+            { 'configurations': configurations })
+
+@login_required
+@staff_member_required
+def addconfiguration(request):
+    if request.method == "POST":
+        # request.POST is immutable, so make a copy
+        values = request.POST.copy()
+        form = ConfigurationForm(values)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect("/configurations/")
+            except:
+                pass
+    else:
+        form = ConfigurationForm()
+    return render(request,'addconfiguration.html',{'form': form})
+
+@login_required
+@staff_member_required
+def editconfiguration(request, id):
+    configuration = SaasConfiguration.objects.get(id=id)
+    form = ConfigurationForm(request.POST or None, instance = configuration)
+    return render(request,'editconfiguration.html', {'configuration':configuration, 'form': form})
+
+@login_required
+@staff_member_required
+def updateconfiguration(request, id):
+    configuration = SaasConfiguration.objects.get(id=id)
+    form = ConfigurationForm(request.POST or None, instance = configuration)
+    if form.is_valid():
+        form.save()
+        return redirect("/configurations")
+    return render(request, 'editconfiguration.html', {'configuration': configuration, 'form': form})
