@@ -71,6 +71,8 @@ def account_update(request):
 @login_required
 def plan_select(request, plan_id):
     product = LogicProducts().get_product(request, False)
+    if product is None:
+        return redirect('/pricing')
     current_plan = LogicContracts().get_current_plan(request, product)
     if current_plan is None and not product.is_active:
         product = None
@@ -275,16 +277,21 @@ def contract_cancel(request, product_id):
 def instance_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request, False)
+    if product is None:
+        return redirect('/pricing')
     contract = LogicContracts().get_contract(customer, product)
     if not contract or not contract.instance:
         return render(request, 'error.html', {'message': _("Error: no instance has been assigned yet.")})
     url = product.instance_url. \
             replace('#Prefix', product.prefix). \
             replace('#Identifier', contract.instance.identifier)
-    if product.instance_password_reset_url.startswith('/'):
-        pwd_reset_url = url + product.instance_password_reset_url[1:]
-    else:
-        pwd_reset_url = product.instance_password_reset_url
+    pwd_reset_url = product.instance_password_reset_url
+    if pwd_reset_url == 'password1':
+        # Tryton does not have a password reset functionality for the admin user
+        initialadminpassword = contract.instance.password1
+        pwd_reset_url = None
+    elif pwd_reset_url.startswith('/'):
+        pwd_reset_url = url + pwd_reset_url[1:]
     adminuser = product.instance_admin_user
     adminemail = customer.email_address
 
@@ -293,6 +300,7 @@ def instance_view(request):
         'instance_url': url,
         'adminuser': adminuser,
         'adminemail': adminemail,
+        'initialadminpassword': initialadminpassword,
         'pwd_reset_url': pwd_reset_url})
 
 

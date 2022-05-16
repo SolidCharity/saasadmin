@@ -3,6 +3,52 @@
 
 {% block content %}
 
+<script>
+function ShowCopySuccess() {
+    el = document.getElementById("copied");
+    el.style.display = "inline";
+    setTimeout(function() {
+        el.style.display = "none";
+    }, 5000);
+}
+
+function fallbackCopyTextToClipboard(text) {
+    var textArea = document.createElement("textarea");
+    textArea.value = text;
+
+    // Avoid scrolling to bottom
+    textArea.style.top = "0";
+    textArea.style.left = "0";
+    textArea.style.position = "fixed";
+
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+
+    try {
+      var successful = document.execCommand('copy');
+      var msg = successful ? 'successful' : 'unsuccessful';
+      ShowCopySuccess();
+    } catch (err) {
+      console.error('Fallback: Oops, unable to copy', err);
+    }
+
+    document.body.removeChild(textArea);
+}
+
+function CopyToClipboard(text) {
+    if (!navigator.clipboard) {
+        fallbackCopyTextToClipboard(text);
+        return;
+    }
+    navigator.clipboard.writeText(text).then(function() {
+        ShowCopySuccess();
+      }, function(err) {
+        console.error('Async: Could not copy text: ', err);
+      });
+}
+</script>
+
 <div details>
 
     <div class="" style="margin:5% 10%;background:rgba(255,255,255,0.75);padding:1em;border-radius:5px;" id="account_field">
@@ -15,6 +61,19 @@
         {% blocktrans %}Your administration user is <code>{{adminuser}}</code>, with email address <code>{{adminemail}}</code>.{% endblocktrans %}
         <br/>
         <br/>
+
+        {% if pwd_reset_url is None %}
+        {% blocktrans %}The initial password for the user <code>{{adminuser}}</code> is:{% endblocktrans %}
+        <span title="{%translate "click to copy"%}" onclick="CopyToClipboard('{{initialadminpassword}}')">
+        <code>{{initialadminpassword}}</code>
+        <i class="fa fa-copy" aria-hidden="true"></i>
+        <div id="copied" style="display:none;background-color:lightgreen">{%translate "Copied!"%}</div>
+        </span>
+        <br/>
+        {% blocktrans %}Please login as that user <code>{{adminuser}}</code>, and immediately change the password.{% endblocktrans %}
+        <br/>
+        {% blocktrans %}Once you changed the password, you can create unprivileged users for daily usage.{% endblocktrans %}
+        {%else%}
         {% blocktrans %}If you have not done so already, you must first get a password for this user, by resetting the password. See the link below for doing that.{% endblocktrans %}
         <br/>
         {% blocktrans%}After that you can login as user <code>{{adminuser}}</code>, and create unprivileged users for daily usage.{% endblocktrans %}
@@ -23,6 +82,7 @@
         {% blocktrans %}You can reset the password for the user <code>{{adminuser}}</code> by visiting this url:{% endblocktrans %}
         <br/>
         <a href="{{pwd_reset_url}}" target="_blank"><button>{% blocktrans %}Reset password{% endblocktrans %}</button></a>
+        {%endif%}
     </div>
 </div>
 

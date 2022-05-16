@@ -157,15 +157,15 @@ msgstr "Jetzt zahlungspflichtig bestellen"
 msgid "Cancel Contract"
 msgstr "Vertrag kündigen"
 
-#: apps/frontend/templates/instance.html:9
+#: apps/frontend/templates/instance.html:55
 msgid "Details of your instance"
 msgstr "Infos über Ihre Instanz"
 
-#: apps/frontend/templates/instance.html:10
+#: apps/frontend/templates/instance.html:56
 msgid "You can use your instance at this URL:"
 msgstr "Ihre Instanz finden Sie unter dieser Adresse:"
 
-#: apps/frontend/templates/instance.html:15
+#: apps/frontend/templates/instance.html:61
 #, python-format
 msgid ""
 "Your administration user is <code>%(adminuser)s</code>, with email address "
@@ -174,7 +174,38 @@ msgstr ""
 "Ihr Benutzer mit Administrationsrechten ist <code>%(adminuser)s</code>, mit "
 "der E-Mail Adresse <code>%(adminemail)s</code>."
 
-#: apps/frontend/templates/instance.html:18
+#: apps/frontend/templates/instance.html:66
+#, python-format
+msgid "The initial password for the user <code>%(adminuser)s</code> is:"
+msgstr ""
+"Zu Beginn lautet das Passwort für den Benutzer <code>%(adminuser)s</code>:"
+
+#: apps/frontend/templates/instance.html:67
+msgid "click to copy"
+msgstr "Klicken um zu kopieren"
+
+#: apps/frontend/templates/instance.html:70
+msgid "Copied!"
+msgstr "Wurde kopiert!"
+
+#: apps/frontend/templates/instance.html:73
+#, python-format
+msgid ""
+"Please login as that user <code>%(adminuser)s</code>, and immediately change "
+"the password."
+msgstr ""
+"Bitte melden Sie sich mit diesem Benutzer <code>%(adminuser)s</code> an, und "
+"dann ändern Sie bitte sofort das Passwort."
+
+#: apps/frontend/templates/instance.html:75
+msgid ""
+"Once you changed the password, you can create unprivileged users for daily "
+"usage."
+msgstr ""
+"Nach dem Ändern des Passwortes können Sie dann weitere normale Benutzer für "
+"den alltäglichen Gebrauch einrichten."
+
+#: apps/frontend/templates/instance.html:77
 msgid ""
 "If you have not done so already, you must first get a password for this "
 "user, by resetting the password. See the link below for doing that."
@@ -183,7 +214,7 @@ msgstr ""
 "Benutzer festlegen. Das geschieht über die Funktion <b>Passwort "
 "zurücksetzen</b>, die über den Link unten angestoßen wird."
 
-#: apps/frontend/templates/instance.html:20
+#: apps/frontend/templates/instance.html:79
 #, python-format
 msgid ""
 "After that you can login as user <code>%(adminuser)s</code>, and create "
@@ -192,7 +223,7 @@ msgstr ""
 "Danach können Sie sich als Benutzer <code>%(adminuser)s</code> anmelden, und "
 "dann weitere normale Benutzer für den alltäglichen Gebrauch einrichten."
 
-#: apps/frontend/templates/instance.html:23
+#: apps/frontend/templates/instance.html:82
 #, python-format
 msgid ""
 "You can reset the password for the user <code>%(adminuser)s</code> by "
@@ -201,7 +232,7 @@ msgstr ""
 "Sie können das Passwort für den Benutzer <code>%(adminuser)s</code> über "
 "diesen Link zurücksetzen:"
 
-#: apps/frontend/templates/instance.html:25
+#: apps/frontend/templates/instance.html:84
 msgid "Reset password"
 msgstr "Passwort zurücksetzen"
 
@@ -288,11 +319,11 @@ msgstr "pro Quartal"
 msgid "per year"
 msgstr "pro Jahr"
 
-#: apps/frontend/templates/plan.html:51
+#: apps/frontend/templates/plan.html:59
 msgid "Choose"
 msgstr "Auswählen"
 
-#: apps/frontend/templates/plan.html:60 apps/frontend/templates/pricing.html:62
+#: apps/frontend/templates/plan.html:68 apps/frontend/templates/pricing.html:70
 msgid "All prices already include the VAT."
 msgstr "Alle Preise verstehen sich inkl. Umsatzsteuer."
 
@@ -300,63 +331,63 @@ msgstr "Alle Preise verstehen sich inkl. Umsatzsteuer."
 msgid "popular"
 msgstr "beliebt"
 
-#: apps/frontend/templates/pricing.html:53
+#: apps/frontend/templates/pricing.html:61
 msgid "Register"
 msgstr "Registrieren"
 
-#: apps/frontend/views.py:66 apps/frontend/views.py:128
+#: apps/frontend/views.py:66 apps/frontend/views.py:130
 msgid "Changes Saved"
 msgstr "Änderungen gespeichert"
 
-#: apps/frontend/views.py:113
+#: apps/frontend/views.py:115
 msgid "Please specify account owner and IBAN"
 msgstr "Bitte den Kontoinhaber und die IBAN angeben"
 
-#: apps/frontend/views.py:138
+#: apps/frontend/views.py:140
 msgid "year"
 msgstr "Jahr"
 
-#: apps/frontend/views.py:140 apps/frontend/views.py:146
+#: apps/frontend/views.py:142 apps/frontend/views.py:148
 msgid "month"
 msgstr "Monat"
 
-#: apps/frontend/views.py:142
+#: apps/frontend/views.py:144
 msgid "months"
 msgstr "Monate"
 
-#: apps/frontend/views.py:148
+#: apps/frontend/views.py:150
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/frontend/views.py:150
+#: apps/frontend/views.py:152
 msgid "day"
 msgstr "Tag"
 
-#: apps/frontend/views.py:152
+#: apps/frontend/views.py:154
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:186
+#: apps/frontend/views.py:188
 msgid "forever"
 msgstr "immer"
 
-#: apps/frontend/views.py:192
+#: apps/frontend/views.py:194
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:194
+#: apps/frontend/views.py:196
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:196
+#: apps/frontend/views.py:198
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/frontend/views.py:257
+#: apps/frontend/views.py:259
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/frontend/views.py:280
+#: apps/frontend/views.py:284
 msgid "Error: no instance has been assigned yet."
 msgstr "Fehler: es wurde noch keine Instanz zugeordnet."
 
