@@ -34,7 +34,9 @@
             {% endif %}
             <a class="right" href="/accounts/logout/">{%translate "Logout"%}</a>
             <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">{%translate "Fork me"%}</a>
+            {% if user.is_staff %}
             <a class="right" href="/configurations/">{%translate "Configuration"%}</a>
+            {% endif %}
         </nav>
         {% else %}
         <nav class="topnav">
