@@ -37,8 +37,6 @@ urlpatterns = [
     path('instances/<str:product>/', backend_views.instances),
     path('instances/<str:product>/add', backend_views.addinstances),
     path('plans/<str:product>/', backend_views.plans),
-    path('configurations/', backend_views.configurations),
-    path('configurations/add', backend_views.addconfiguration),
     path('plans/<str:product>/preview', backend_views.preview_pricing),
     path('plans/<str:product>/add', backend_views.addplan),
     path('plans/edit/<int:id>', backend_views.editplan),
@@ -52,6 +50,8 @@ urlpatterns = [
     path('products/edit/<int:id>', backend_views.editproduct),
     path('products/update/<int:id>', backend_views.updateproduct),
     path('products/delete/<int:id>', backend_views.deleteproduct),
+
+    path('configurations/', backend_views.configurations),
     path('configurations/add', backend_views.addconfiguration),
     path('configurations/edit/<int:id>', backend_views.editconfiguration),
     path('configurations/update/<int:id>', backend_views.updateconfiguration),
