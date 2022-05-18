@@ -77,13 +77,13 @@ INSERT INTO saas_customer ("id","user_id","is_newsletter_subscribed","newsletter
 	(2,3,true,'2021-05-01',NULL,'DE','Gartensparte zum Spaten','Mr','Werner','Schmidt','Am Wasser 7','01234','Plauen','DE','werner@example.org',true),
 	(3,4,true,'2021-05-01',NULL,'DE','Gartensparte Schneckenhain','Mr','Bernd','Schmitz','Am Berg 2','01234','Plauen','DE','bernd.s@example.org',true),
 	(4,5,true,'2021-05-01',NULL,'DE','Sportverein Trimm Dich','Mr','Gunter','Meier','An der Elster 22','01234','Plauen','DE','gunter.meier@example.org',true);
-INSERT INTO saas_instance ("id","product_id","identifier","hostname","pacuser","channel","status","last_interaction","reserved_token","reserved_until","reserved_for_user_id","initial_password","db_password","first_port","last_port","password1","password2") VALUES
-	(1,1,'344567','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret'),
-	(2,1,'238978','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret'),
-	(3,1,'785275','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret'),
-	(4,1,'862344','host0001','xyz00','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret'),
-	(5,1,'119287','host0002','xyz01','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret'),
-	(6,1,'239399','host0002','xyz01','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret');
+INSERT INTO saas_instance ("id","product_id","identifier","hostname","pacuser","channel","status","last_interaction","reserved_token","reserved_until","reserved_for_user_id","initial_password","db_password","first_port","last_port","password1","password2","django_secret_key") VALUES
+	(1,1,'344567','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','74$9+%23dw$e4n!b=83ot4$(vjxeldd6821@v9c#xr1p#%o%sz'),
+	(2,1,'238978','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','*y@au9s5q2%l*mu&+k08_x3k=nz0qls5or(x^59$gv35g=y_xe'),
+	(3,1,'785275','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','m&6ccr#$c8oq+7e+bb-zjo3kijrp_i8t5z31btyuw+^2vt95j='),
+	(4,1,'862344','host0001','xyz00','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','z_%i=-tq9m2-tc9n^o4!vaws=h4+*&-m&lo89tpb*!%)uva3mh'),
+	(5,1,'119287','host0002','xyz01','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','ctsw@yenna%tczw4+^c82oz6o@n2dxtvr0aty&fi(-mm6i4!ic'),
+	(6,1,'239399','host0002','xyz01','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','h=q&drbyf95o1lc5fk2r+&+i#+&2-n)tj&r!xg%)=hg+4ne2_n');
 INSERT INTO saas_contract ("id","start_date","end_date","latest_cancel_date","is_auto_renew","is_confirmed","customer_id","instance_id","plan_id","payment_method") VALUES
 	(1,'2021-06-05','2021-07-31','2021-07-14',true,true,1,1,2,'SEPA_TRANSFER'),
 	(2,'2021-06-01','2021-07-31','2021-07-14',true,true,2,2,3,'SEPA_TRANSFER'),

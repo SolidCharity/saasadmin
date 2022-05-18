@@ -3,6 +3,7 @@ from dateutil.relativedelta import relativedelta
 import random
 import requests
 from django.contrib.auth.models import User
+from django.core.management.utils import get_random_secret_key
 from django.db import connection
 from django.db import transaction
 from django.conf import settings
@@ -72,6 +73,7 @@ class LogicInstances:
           initial_password = new_password,
           password1 = self.random_password(False),
           password2 = self.random_password(False),
+          django_secret_key = get_random_secret_key(),
           db_password = db_password,
           status = SaasInstance().IN_PREPARATION)
 

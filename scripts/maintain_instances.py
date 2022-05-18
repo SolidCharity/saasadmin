@@ -40,6 +40,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .replace('{{initial_password}}', instance['initial_password'])
             .replace('{{password1}}', instance['password1'])
             .replace('{{password2}}', instance['password2'])
+            .replace('{{django_secret_key}}', instance['django_secret_key'])
             .replace('{{domain}}', domain)
             .replace('{{username}}', instance['prefix'] + instance['identifier'])
             .replace('{{password}}', instance['db_password'])
