@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-18 17:10+0200\n"
+"POT-Creation-Date: 2022-05-20 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -366,7 +366,7 @@ msgstr "Zugangsdaten"
 msgid "Logout"
 msgstr "Abmelden"
 
-#: apps/core/templates/base.html:36 apps/core/templates/base.html:46
+#: apps/core/templates/base.html:36 apps/core/templates/base.html:45
 msgid "Fork me"
 msgstr "Zum Code"
 
@@ -374,17 +374,21 @@ msgstr "Zum Code"
 msgid "Configuration"
 msgstr ""
 
-#: apps/core/templates/base.html:39 apps/core/templates/base.html:53
-msgid "Imprint"
-msgstr "Impressum"
-
-#: apps/core/templates/base.html:45
+#: apps/core/templates/base.html:44
 msgid "Login"
 msgstr "Anmelden"
 
-#: apps/core/templates/base.html:47
+#: apps/core/templates/base.html:46
 msgid "Pricing"
 msgstr "Preise"
+
+#: apps/core/templates/base.html:52
+msgid "Imprint"
+msgstr "Impressum"
+
+#: apps/core/templates/base.html:55
+msgid "About"
+msgstr "Über Uns"
 
 #~ msgid "street"
 #~ msgstr "Straße und Hausnummer"

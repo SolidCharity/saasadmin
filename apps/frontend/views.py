@@ -321,3 +321,8 @@ def display_pricing(request):
 def display_impressum(request):
     conf = SaasConfiguration.objects.filter(name='impressum').first()
     return render(request, 'impressum.html', {'conf': conf})
+
+def display_about(request):
+    conf = SaasConfiguration.objects.filter(name='about').first()
+    return render(request, 'about.html', {'conf': conf})
+

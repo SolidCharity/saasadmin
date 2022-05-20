@@ -69,4 +69,5 @@ urlpatterns = [
     path('instance', frontend_views.instance_view),
     path('pricing', frontend_views.display_pricing),
     path('impressum', frontend_views.display_impressum),
+    path('about', frontend_views.display_about),
 ]
