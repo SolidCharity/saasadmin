@@ -68,4 +68,5 @@ urlpatterns = [
     path('contract/cancel/<str:product_id>', frontend_views.contract_cancel),
     path('instance', frontend_views.instance_view),
     path('pricing', frontend_views.display_pricing),
+    path('impressum', frontend_views.display_impressum),
 ]
