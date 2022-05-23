@@ -117,6 +117,8 @@ class SaasInstance(models.Model):
     password1 = models.CharField(_("Password1"), max_length=64, default='topsecret')
     # for example nextcloud: turn server password
     password2 = models.CharField(_("Password2"), max_length=64, default='topsecret')
+    # for django installations
+    django_secret_key = models.CharField(_("Django Secret Key"), max_length=64, default='topsecret')
     last_interaction = models.DateTimeField(_("Last Interaction"), null=True)
     reserved_token = models.CharField(_("Reserved Token"), max_length=64, null=True)
     reserved_until = models.DateTimeField(_("Reserved Until"), null=True)

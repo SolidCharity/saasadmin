@@ -286,6 +286,7 @@ def instance_view(request):
             replace('#Prefix', product.prefix). \
             replace('#Identifier', contract.instance.identifier)
     pwd_reset_url = product.instance_password_reset_url
+    initialadminpassword = ''
     if pwd_reset_url == 'password1':
         # Tryton does not have a password reset functionality for the admin user
         initialadminpassword = contract.instance.password1
@@ -318,9 +319,9 @@ def display_pricing(request):
 
     return render(request, 'pricing.html', {'product': product, 'plans': plans})
 
-def display_impressum(request):
-    conf = SaasConfiguration.objects.filter(name='impressum').first()
-    return render(request, 'impressum.html', {'conf': conf})
+def display_imprint(request):
+    conf = SaasConfiguration.objects.filter(name='imprint').first()
+    return render(request, 'imprint.html', {'conf': conf})
 
 def display_about(request):
     conf = SaasConfiguration.objects.filter(name='about').first()

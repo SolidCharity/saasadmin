@@ -25,15 +25,16 @@ def customers(request, product):
 
         sql = """SELECT email_address, first_name, last_name,
             saas_instance.identifier as instance_identifier,
-            saas_contract.id as contract_id,
-            saas_contract.end_date as contract_end_date,
-            saas_contract.is_auto_renew as contract_auto_renew,
+            sc.id as contract_id,
+            sc.end_date as contract_end_date,
+            sc.is_auto_renew as contract_auto_renew,
             saas_plan.name as plan_name,
-            saas_contract.plan_id
-            FROM saas_customer, saas_instance, saas_contract, saas_plan
-            WHERE saas_contract.customer_id = saas_customer.id
-            AND saas_contract.instance_id = saas_instance.id
-            AND saas_contract.plan_id = saas_plan.id
+            sc.plan_id
+            FROM saas_customer, saas_instance, saas_contract sc, saas_plan
+            WHERE sc.customer_id = saas_customer.id
+            AND sc.instance_id = saas_instance.id
+            AND sc.plan_id = saas_plan.id
+            AND (sc.end_date is NULL or sc.end_date > current_timestamp)
             AND saas_instance.product_id = %s"""
 
         cursor.execute(sql, [product.id,])
@@ -87,9 +88,12 @@ def editcontract(request, id, newplan):
 def instances(request, product):
     product = SaasProduct.objects.filter(slug = product).first()
     unused_instances = SaasInstance.objects.filter(product = product).filter(Q(status=SaasInstance().AVAILABLE) | Q(status=SaasInstance().READY) | Q(status=SaasInstance().IN_PREPARATION))
+    to_be_removed_instances = SaasInstance.objects.filter(product = product).filter(status=SaasInstance().TO_BE_REMOVED)
 
     return render(request,"instances.html",
-            {'unused_instances': unused_instances, 'product': product })
+            {'unused_instances': unused_instances,
+             'to_be_removed_instances': to_be_removed_instances,
+             'product': product })
 
 
 @login_required

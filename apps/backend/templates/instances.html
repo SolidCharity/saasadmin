@@ -10,6 +10,12 @@
     {% endfor %}
   </ul>
 
+  <ul>
+    {% for instance in to_be_removed_instances %}
+    <li>{{ instance.hostname }} - {{ instance.pacuser}}: {{ instance.identifier }}: {{ instance.status }}</li>
+    {% endfor %}
+  </ul>
+
   <center><a href="/instances/{{product.slug}}/add" class="button button-primary">Add new Instances</a></center>
 </div>
 
