@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.utils import translation
 from django.utils.translation import gettext as _
 from apps.api.logic.products import LogicProducts
-from apps.core.models import SaasCustomer, SaasPlan, SaasProduct
+from apps.core.models import SaasCustomer, SaasPlan, SaasProduct, SaasConfiguration
 from apps.frontend.forms import CustomerForm
 from apps.api.logic.customers import LogicCustomers
 from apps.api.logic.plans import LogicPlans
@@ -318,3 +318,12 @@ def display_pricing(request):
     plans = LogicPlans().get_plans(product)
 
     return render(request, 'pricing.html', {'product': product, 'plans': plans})
+
+def display_impressum(request):
+    conf = SaasConfiguration.objects.filter(name='impressum').first()
+    return render(request, 'impressum.html', {'conf': conf})
+
+def display_about(request):
+    conf = SaasConfiguration.objects.filter(name='about').first()
+    return render(request, 'about.html', {'conf': conf})
+
