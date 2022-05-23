@@ -3,6 +3,8 @@
 
 {% block content %}
 
-{{conf.value}}
+<div class="container">
+{{conf.value |safe}}
+</div>
 
 {% endblock %}
