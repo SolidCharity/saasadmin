@@ -29,6 +29,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .replace('#Prefix', instance['prefix'])
             .replace('#Identifier', instance['identifier']))
         template_content = (ansible_inventory_template
+            .replace('{{identifier}}', instance['identifier'])
             .replace('{{hostname}}', instance['hostname'])
             .replace('{{hostname_ip}}', socket.gethostbyname(instance['hostname']))
             .replace('{{pac}}', instance['pacuser'])
