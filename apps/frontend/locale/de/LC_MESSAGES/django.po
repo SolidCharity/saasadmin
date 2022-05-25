@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-20 17:22+0200\n"
+"POT-Creation-Date: 2022-05-25 11:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -174,21 +174,25 @@ msgstr ""
 "Ihr Benutzer mit Administrationsrechten ist <code>%(adminuser)s</code>, mit "
 "der E-Mail Adresse <code>%(adminemail)s</code>."
 
-#: apps/frontend/templates/instance.html:66
+#: apps/frontend/templates/instance.html:63
+msgid "Login to your instance"
+msgstr "Bei Ihrer Instanz anmelden"
+
+#: apps/frontend/templates/instance.html:68
 #, python-format
 msgid "The initial password for the user <code>%(adminuser)s</code> is:"
 msgstr ""
 "Zu Beginn lautet das Passwort für den Benutzer <code>%(adminuser)s</code>:"
 
-#: apps/frontend/templates/instance.html:67
+#: apps/frontend/templates/instance.html:69
 msgid "click to copy"
 msgstr "Klicken um zu kopieren"
 
-#: apps/frontend/templates/instance.html:70
+#: apps/frontend/templates/instance.html:72
 msgid "Copied!"
 msgstr "Wurde kopiert!"
 
-#: apps/frontend/templates/instance.html:73
+#: apps/frontend/templates/instance.html:75
 #, python-format
 msgid ""
 "Please login as that user <code>%(adminuser)s</code>, and immediately change "
@@ -197,7 +201,7 @@ msgstr ""
 "Bitte melden Sie sich mit diesem Benutzer <code>%(adminuser)s</code> an, und "
 "dann ändern Sie bitte sofort das Passwort."
 
-#: apps/frontend/templates/instance.html:75
+#: apps/frontend/templates/instance.html:77
 msgid ""
 "Once you changed the password, you can create unprivileged users for daily "
 "usage."
@@ -205,7 +209,7 @@ msgstr ""
 "Nach dem Ändern des Passwortes können Sie dann weitere normale Benutzer für "
 "den alltäglichen Gebrauch einrichten."
 
-#: apps/frontend/templates/instance.html:77
+#: apps/frontend/templates/instance.html:79
 msgid ""
 "If you have not done so already, you must first get a password for this "
 "user, by resetting the password. See the link below for doing that."
@@ -214,7 +218,7 @@ msgstr ""
 "Benutzer festlegen. Das geschieht über die Funktion <b>Passwort "
 "zurücksetzen</b>, die über den Link unten angestoßen wird."
 
-#: apps/frontend/templates/instance.html:79
+#: apps/frontend/templates/instance.html:81
 #, python-format
 msgid ""
 "After that you can login as user <code>%(adminuser)s</code>, and create "
@@ -223,7 +227,7 @@ msgstr ""
 "Danach können Sie sich als Benutzer <code>%(adminuser)s</code> anmelden, und "
 "dann weitere normale Benutzer für den alltäglichen Gebrauch einrichten."
 
-#: apps/frontend/templates/instance.html:82
+#: apps/frontend/templates/instance.html:84
 #, python-format
 msgid ""
 "You can reset the password for the user <code>%(adminuser)s</code> by "
@@ -232,7 +236,7 @@ msgstr ""
 "Sie können das Passwort für den Benutzer <code>%(adminuser)s</code> über "
 "diesen Link zurücksetzen:"
 
-#: apps/frontend/templates/instance.html:84
+#: apps/frontend/templates/instance.html:86
 msgid "Reset password"
 msgstr "Passwort zurücksetzen"
 
