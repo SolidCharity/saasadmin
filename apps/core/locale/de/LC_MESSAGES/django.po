@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-20 17:22+0200\n"
+"POT-Creation-Date: 2022-05-25 06:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -266,59 +266,63 @@ msgstr ""
 msgid "Password2"
 msgstr ""
 
-#: apps/core/models.py:120
-msgid "Last Interaction"
-msgstr ""
-
 #: apps/core/models.py:121
-msgid "Reserved Token"
+msgid "Django Secret Key"
 msgstr ""
 
 #: apps/core/models.py:122
+msgid "Last Interaction"
+msgstr ""
+
+#: apps/core/models.py:123
+msgid "Reserved Token"
+msgstr ""
+
+#: apps/core/models.py:124
 msgid "Reserved Until"
 msgstr ""
 
-#: apps/core/models.py:159
+#: apps/core/models.py:161
 msgid "Start Date"
 msgstr ""
 
-#: apps/core/models.py:160
+#: apps/core/models.py:162
 msgid "End Date"
 msgstr ""
 
-#: apps/core/models.py:161
+#: apps/core/models.py:163
 msgid "Latest Cancel Date"
 msgstr ""
 
-#: apps/core/models.py:162
+#: apps/core/models.py:164
 msgid "Is Renewing Automatically"
 msgstr ""
 
-#: apps/core/models.py:163
+#: apps/core/models.py:165
 msgid "Is Confirmed"
 msgstr ""
 
-#: apps/core/models.py:165
+#: apps/core/models.py:167
 #, fuzzy
 #| msgid "Payment Details"
 msgid "Payment Method"
 msgstr "Zahlungsweise"
 
-#: apps/core/models.py:166
+#: apps/core/models.py:168
 #, fuzzy
 #| msgid "country"
 msgid "Account Owner"
 msgstr "Land"
 
-#: apps/core/models.py:167
+#: apps/core/models.py:169
 msgid "Account IBAN"
 msgstr ""
 
-#: apps/core/models.py:168
+#: apps/core/models.py:170
 msgid "SEPA Mandate"
 msgstr ""
 
-#: apps/core/models.py:169
+#: apps/core/models.py:171
 msgid "Date of SEPA Mandate"
 msgstr ""
 
@@ -366,27 +370,31 @@ msgstr "Zugangsdaten"
 msgid "Logout"
 msgstr "Abmelden"
 
-#: apps/core/templates/base.html:36 apps/core/templates/base.html:45
-msgid "Fork me"
-msgstr "Zum Code"
-
-#: apps/core/templates/base.html:38
+#: apps/core/templates/base.html:37
 msgid "Configuration"
 msgstr ""
 
-#: apps/core/templates/base.html:44
+#: apps/core/templates/base.html:43
 msgid "Login"
 msgstr "Anmelden"
 
-#: apps/core/templates/base.html:46
+#: apps/core/templates/base.html:44 apps/core/templates/base.html:57
+msgid "Fork me"
+msgstr "Zum Code"
+
+#: apps/core/templates/base.html:45
 msgid "Pricing"
 msgstr "Preise"
 
-#: apps/core/templates/base.html:52
+#: apps/core/templates/base.html:51
 msgid "Imprint"
 msgstr "Impressum"
 
-#: apps/core/templates/base.html:55
+#: apps/core/templates/base.html:54
+msgid "Contact"
+msgstr "Kontakt"
+
+#: apps/core/templates/base.html:56
 msgid "About"
 msgstr "Über uns"
 
