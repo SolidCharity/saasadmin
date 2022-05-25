@@ -54,6 +54,7 @@ class SaasProduct (models.Model):
     number_of_ports = models.IntegerField(_("Number of Ports"), default=1)
     description = models.CharField(_("Description"), max_length=250, default="")
     upstream_url= models.CharField(_("Upstream_URL"), max_length=250, default = "https://example.org")
+    login_url= models.CharField(_("Login_URL"), max_length=250, default = "")
     
     class Meta:
         db_table = "saas_product"
