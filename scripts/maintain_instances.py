@@ -50,6 +50,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .replace('{{RandomPassword}}', random_password(16))
             .replace('{{smtp_from}}', config['saasadmin']['smtp_from'])
             .replace('{{smtp_host}}', config['saasadmin']['smtp_host'])
+            .replace('{{smtp_port}}', config['saasadmin']['smtp_port'])
             .replace('{{smtp_user}}', config['saasadmin']['smtp_user'])
             .replace('{{smtp_pwd}}', config['saasadmin']['smtp_pwd']))
         f.write(template_content)
