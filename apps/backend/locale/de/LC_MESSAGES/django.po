@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-20 17:22+0200\n"
+"POT-Creation-Date: 2022-05-25 15:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,7 +40,8 @@ msgid "value"
 msgstr "Wert"
 
 #: apps/backend/templates/configurations.html:33
-#: apps/backend/templates/plans.html:44 apps/backend/templates/products.html:21
+#: apps/backend/templates/plans.html:44
+#: apps/backend/templates/productdashboard.html:21
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -54,6 +55,7 @@ msgid "Customers"
 msgstr "Kunden"
 
 #: apps/backend/templates/customers.html:11
+#: apps/backend/templates/productdashboard.html:11
 #: apps/backend/templates/products.html:11
 msgid "Name"
 msgstr "Name"
@@ -79,7 +81,7 @@ msgid "Contract"
 msgstr "Vertrag"
 
 #: apps/backend/templates/customers.html:16
-#: apps/backend/templates/plans.html:32 apps/backend/templates/products.html:13
+#: apps/backend/templates/plans.html:32 apps/backend/templates/products.html:14
 msgid "Action"
 msgstr "Aktion"
 
@@ -216,7 +218,8 @@ msgstr "Länge des Buchungszeitraums in Tagen"
 msgid "Notice Period in Days"
 msgstr "Kündigungsfrist in Tagen"
 
-#: apps/backend/templates/plans.html:45 apps/backend/templates/products.html:22
+#: apps/backend/templates/plans.html:45
+#: apps/backend/templates/productdashboard.html:22
 msgid "Delete"
 msgstr "Löschen"
 
@@ -224,15 +227,52 @@ msgstr "Löschen"
 msgid "Preview Pricing"
 msgstr "Vorschau der Angebotsliste"
 
+#: apps/backend/templates/productdashboard.html:7
+#, fuzzy
+#| msgid "Products"
+msgid "Product"
+msgstr "Produkte"
+
+#: apps/backend/templates/productdashboard.html:12
+#: apps/backend/templates/products.html:12
+msgid "Slug"
+msgstr ""
+
+#: apps/backend/templates/productdashboard.html:13
+#, fuzzy
+#| msgid "Is Active"
+msgid "Active"
+msgstr "Ist Aktiv"
+
+#: apps/backend/templates/productdashboard.html:14
+msgid "Prefix"
+msgstr ""
+
+#: apps/backend/templates/productdashboard.html:15
+msgid "Number of Ports"
+msgstr ""
+
+#: apps/backend/templates/productdashboard.html:16
+msgid "Description"
+msgstr ""
+
+#: apps/backend/templates/productdashboard.html:17
+msgid "Upstream URL"
+msgstr ""
+
+#: apps/backend/templates/productdashboard.html:22
+msgid "Are you sure you want to delete this item?')"
+msgstr ""
+
 #: apps/backend/templates/products.html:7
 msgid "Products"
 msgstr "Produkte"
 
-#: apps/backend/templates/products.html:12
+#: apps/backend/templates/products.html:13
 msgid "Is Active"
 msgstr "Ist Aktiv"
 
-#: apps/backend/templates/products.html:20
+#: apps/backend/templates/products.html:22
 msgid "Select"
 msgstr "Auswählen"
 
@@ -265,15 +305,15 @@ msgstr "Passwort vergessen?"
 msgid "Create a free account"
 msgstr "Einen kostenlosen Zugang einrichten"
 
-#: apps/backend/views.py:47
+#: apps/backend/views.py:48
 msgid "contract will be auto renewed"
 msgstr ""
 
-#: apps/backend/views.py:49
+#: apps/backend/views.py:50
 msgid "contract is indefinite"
 msgstr ""
 
-#: apps/backend/views.py:51
+#: apps/backend/views.py:52
 #, python-format
 msgid "contract ends on %s"
 msgstr ""
