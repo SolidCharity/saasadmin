@@ -11,6 +11,9 @@ class PlanForm(forms.ModelForm):
 
 class ProductForm(forms.ModelForm):
 
+    upstream_url = forms.URLField()
+    description = forms.CharField(widget=forms.Textarea)
+
     class Meta:
         model = SaasProduct
         fields = ("slug", "name", "prefix",
@@ -26,6 +29,7 @@ class AddInstancesForm(forms.Form):
     count = forms.IntegerField()
 
 class ConfigurationForm(forms.ModelForm):
+    value = forms.CharField(widget=forms.Textarea)
 
     class Meta:
         model = SaasConfiguration

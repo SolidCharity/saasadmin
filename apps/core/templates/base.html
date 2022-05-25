@@ -33,7 +33,6 @@
             <a class="left" href="/instance">{%translate "Instance Details"%}</a>
             {% endif %}
             <a class="right" href="/accounts/logout/">{%translate "Logout"%}</a>
-            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">{%translate "Fork me"%}</a>
             {% if user.is_staff %}
             <a class="right" href="/configurations/">{%translate "Configuration"%}</a>
             {% endif %}
@@ -48,5 +47,15 @@
         {% endif %}
         {% block content %}
         {% endblock %}
+        <nav class="bottomnav">
+            <a class="right" href="/imprint">{%translate "Imprint"%}</a>#
+            <!--
+            <a class="right" href="/#news">News</a>
+            <a class="right" href="/contact">{%translate "Contact"%}</a>
+            -->
+            <a class="right" href="/about">{%translate "About"%}</a>
+            <a class="left" href="https://github.com/solidcharity/saasadmin" target="_blank">{%translate "Fork me"%}</a>
+        </nav>
+        
     </body>
 </html>

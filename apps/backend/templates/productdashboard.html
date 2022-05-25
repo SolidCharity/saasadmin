@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
 
 <div class="container">
-<h3>Product {{ product.name }}</h3>
-</div>
+    <h3>{%translate "Product"%} {{ product.name }} ({{product.slug}})</h3>
 
+    <table>
+        <tr>
+            <td>{%translate "Name"%}</td><td>{{product.name}}</td></tr>
+            <td>{%translate "Slug"%}</td><td>{{product.slug}}</td></tr>
+            <td>{%translate "Active"%}</td><td>{{product.is_active}}</td></tr>
+            <td>{%translate "Prefix"%}</td><td>{{product.prefix}}</td></tr>
+            <td>{%translate "Number of Ports"%}</td><td>{{product.number_of_ports}}</td></tr>
+            <td>{%translate "Description"%}</td><td>{{product.description}}</td></tr>
+            <td>{%translate "Upstream URL"%}</td><td>{{product.upstream_url}}</td></tr>
+        </tr>
+    </table>
+
+    <a href="/products/edit/{{ product.id }}" class="button button-primary">{%translate "Edit"%}</a>
+    <a href="/products/delete/{{ product.id }}" class="button button-danger" onclick="return confirm('{%translate "Are you sure you want to delete this item?')"%}");">{%translate "Delete"%}</a>
+
+</div>
 {% endblock %}

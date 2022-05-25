@@ -9,7 +9,7 @@ from django.http import JsonResponse
 from django.utils import translation
 from django.utils.translation import gettext as _
 from apps.api.logic.products import LogicProducts
-from apps.core.models import SaasCustomer, SaasPlan, SaasProduct
+from apps.core.models import SaasCustomer, SaasPlan, SaasProduct, SaasConfiguration
 from apps.frontend.forms import CustomerForm
 from apps.api.logic.customers import LogicCustomers
 from apps.api.logic.plans import LogicPlans
@@ -286,6 +286,7 @@ def instance_view(request):
             replace('#Prefix', product.prefix). \
             replace('#Identifier', contract.instance.identifier)
     pwd_reset_url = product.instance_password_reset_url
+    initialadminpassword = ''
     if pwd_reset_url == 'password1':
         # Tryton does not have a password reset functionality for the admin user
         initialadminpassword = contract.instance.password1
@@ -318,3 +319,12 @@ def display_pricing(request):
     plans = LogicPlans().get_plans(product)
 
     return render(request, 'pricing.html', {'product': product, 'plans': plans})
+
+def display_imprint(request):
+    conf = SaasConfiguration.objects.filter(name='imprint').first()
+    return render(request, 'imprint.html', {'conf': conf})
+
+def display_about(request):
+    conf = SaasConfiguration.objects.filter(name='about').first()
+    return render(request, 'about.html', {'conf': conf})
+
