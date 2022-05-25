@@ -113,7 +113,7 @@ class LogicInstances:
                 return [False, None]
         except Exception as ex:
             print('Exception in activate_instance: %s' % (ex,))
-            return [False, None]
+            return [False, 'Exception in activate_instance: %s' % (ex,)]
 
         return [True, PasswordResetToken]
 

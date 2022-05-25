@@ -37,8 +37,9 @@ class LogicCustomers:
             [success, PasswordResetToken] = LogicInstances().activate_instance(customer, product, instance)
 
             if not success:
+                ExceptionMessage = PasswordResetToken
                 # send message to administrator
-                self.notify_administrators(_("SaasAdmin Error during activation"), _("Failed activation of %s instance %s for customer %d") % (product.name, instance.identifier, customer.id))
+                self.notify_administrators(_("SaasAdmin Error during activation"), _("Failed activation of %s instance %s for customer %d Exception: %s") % (product.name, instance.identifier, customer.id, ExceptionMessage))
                 return False
 
             # send message to administrator
