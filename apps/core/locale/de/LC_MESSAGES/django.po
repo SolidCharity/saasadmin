@@ -388,7 +388,7 @@ msgstr "Impressum"
 
 #: apps/core/templates/base.html:55
 msgid "About"
-msgstr "Über Uns"
+msgstr "Über uns"
 
 #~ msgid "street"
 #~ msgstr "Straße und Hausnummer"
