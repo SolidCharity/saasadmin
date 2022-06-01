@@ -60,6 +60,8 @@ function CopyToClipboard(text) {
         <br/>
         {% blocktrans %}Your administration user is <code>{{adminuser}}</code>, with email address <code>{{adminemail}}</code>.{% endblocktrans %}
         <br/>
+        <a href="{{login_url}}" target="_blank"><button>{% blocktrans %}Login to your instance{% endblocktrans %}</button></a>
+        <br/>
         <br/>
 
         {% if pwd_reset_url is None %}
