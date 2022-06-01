@@ -322,9 +322,15 @@ def display_pricing(request):
 
 def display_imprint(request):
     conf = SaasConfiguration.objects.filter(name='imprint').first()
-    return render(request, 'imprint.html', {'conf': conf})
+    return render(request, 'display_value.html', {'conf': conf})
 
 def display_about(request):
     conf = SaasConfiguration.objects.filter(name='about').first()
-    return render(request, 'about.html', {'conf': conf})
+    return render(request, 'display_value.html', {'conf': conf})
+
+def display_contact(request):
+    conf = SaasConfiguration.objects.filter(name='contact').first()
+    return render(request, 'display_value.html', {'conf': conf})
+
+
 
