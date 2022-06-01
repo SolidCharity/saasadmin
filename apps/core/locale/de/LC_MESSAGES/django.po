@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-25 11:41+0200\n"
+"POT-Creation-Date: 2022-06-01 07:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,10 +153,8 @@ msgid "Upstream_URL"
 msgstr ""
 
 #: apps/core/models.py:57
-#, fuzzy
-#| msgid "Login"
 msgid "Login_URL"
-msgstr "Anmelden"
+msgstr "URL für Anmeldung"
 
 #: apps/core/models.py:63
 msgid "slug"
@@ -397,8 +395,6 @@ msgid "Imprint"
 msgstr "Impressum"
 
 #: apps/core/templates/base.html:54
-#, fuzzy
-#| msgid "Contract"
 msgid "Contact"
 msgstr "Vertrag"
 

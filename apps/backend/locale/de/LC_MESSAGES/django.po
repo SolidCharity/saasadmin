@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-25 11:41+0200\n"
+"POT-Creation-Date: 2022-06-01 07:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -228,10 +228,8 @@ msgid "Preview Pricing"
 msgstr "Vorschau der Angebotsliste"
 
 #: apps/backend/templates/productdashboard.html:7
-#, fuzzy
-#| msgid "Products"
 msgid "Product"
-msgstr "Produkte"
+msgstr "Produkt"
 
 #: apps/backend/templates/productdashboard.html:12
 #: apps/backend/templates/products.html:12
@@ -239,10 +237,8 @@ msgid "Slug"
 msgstr ""
 
 #: apps/backend/templates/productdashboard.html:13
-#, fuzzy
-#| msgid "Is Active"
 msgid "Active"
-msgstr "Ist Aktiv"
+msgstr "Aktiv"
 
 #: apps/backend/templates/productdashboard.html:14
 msgid "Prefix"
