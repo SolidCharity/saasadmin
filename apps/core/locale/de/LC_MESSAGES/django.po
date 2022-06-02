@@ -1,4 +1,4 @@
-# SOME DESCRIPTIVE TITLE.
+# SOME DESCRIPTIVE TITLE. 
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-25 15:03+0200\n"
+"POT-Creation-Date: 2022-06-02 10:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,15 +20,15 @@ msgstr ""
 
 #: apps/core/models.py:7 apps/core/models.py:63
 msgid "name"
-msgstr ""
+msgstr "name"
 
 #: apps/core/models.py:8
 msgid "value"
-msgstr ""
+msgstr "Wert"
 
 #: apps/core/models.py:15
 msgid "Subscribed to newsletter"
-msgstr ""
+msgstr "Newsletter abonniert"
 
 #: apps/core/models.py:16
 msgid "newsletter_subscribed_on"
@@ -40,7 +40,7 @@ msgstr ""
 
 #: apps/core/models.py:18
 msgid "language_code"
-msgstr ""
+msgstr "Sprachcode"
 
 #: apps/core/models.py:19
 msgid "organisation_name"
@@ -67,264 +67,248 @@ msgid "Title"
 msgstr "Anrede"
 
 #: apps/core/models.py:32
-#, fuzzy
-#| msgid "first_name"
 msgid "First Name"
 msgstr "Vorname"
 
 #: apps/core/models.py:33
 msgid "Last Name"
-msgstr ""
+msgstr "Nachname"
 
 #: apps/core/models.py:34
 msgid "Street and housenumber"
-msgstr ""
+msgstr "Straße und Hausnummer"
 
 #: apps/core/models.py:35
 msgid "Post Code"
-msgstr ""
+msgstr "PLZ"
 
 #: apps/core/models.py:36
 msgid "City"
-msgstr ""
+msgstr "Ort"
 
 #: apps/core/models.py:37
-#, fuzzy
-#| msgid "country"
 msgid "Country"
 msgstr "Land"
 
 #: apps/core/models.py:38
-#, fuzzy
-#| msgid "email_address"
 msgid "Email Address"
 msgstr "E-Mail Adresse"
 
 #: apps/core/models.py:39 apps/core/models.py:53
 msgid "Is Active"
-msgstr ""
+msgstr "ist aktiv"
 
 #: apps/core/models.py:45
 msgid "Slug"
-msgstr ""
+msgstr "Kurzname"
 
 #: apps/core/models.py:46
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: apps/core/models.py:47
 msgid "Prefix"
-msgstr ""
+msgstr "Präfix"
 
 #: apps/core/models.py:48
 msgid "Activation URL"
-msgstr ""
+msgstr "Aktivierungs-URL"
 
 #: apps/core/models.py:49
 msgid "Deactivation URL"
-msgstr ""
+msgstr "Deaktivierungs-URL"
 
 #: apps/core/models.py:50
-#, fuzzy
-#| msgid "Instances"
 msgid "Instance URL"
-msgstr "Instanzen"
+msgstr "Instanz-URL"
 
 #: apps/core/models.py:51
 msgid "Password Reset URL"
-msgstr ""
+msgstr "URL zum Zurücksetzen des Passworts"
 
 #: apps/core/models.py:52
-#, fuzzy
-#| msgid "Instances"
 msgid "Instance Admin User"
-msgstr "Instanzen"
+msgstr "Instanz-Admin-Benutzer"
 
 #: apps/core/models.py:54
 msgid "Number of Ports"
-msgstr ""
+msgstr "Anzahl der Ports"
 
 #: apps/core/models.py:55
 msgid "Description"
-msgstr ""
+msgstr "Beschreibung"
 
 #: apps/core/models.py:56
 msgid "Upstream_URL"
-msgstr ""
+msgstr "Upstream URL"
 
 #: apps/core/models.py:62
 msgid "slug"
-msgstr ""
+msgstr "Kurzname"
 
 #: apps/core/models.py:70
 msgid "Sorting Order"
-msgstr ""
+msgstr "Sortierreihenfolge"
 
 #: apps/core/models.py:71
 msgid "is favourite"
-msgstr ""
+msgstr "ist Favorit"
 
 #: apps/core/models.py:72
 msgid "is public"
-msgstr ""
+msgstr "ist Favorit"
 
 #: apps/core/models.py:74
 msgid "Period Length in Months"
-msgstr ""
+msgstr "Periodenlänge in Monaten"
 
 #: apps/core/models.py:75
 msgid "Period Length in Days"
-msgstr ""
+msgstr "Periodendauer in Tagen"
 
 #: apps/core/models.py:76
 msgid "Currency"
-msgstr ""
+msgstr "Währung"
 
 #: apps/core/models.py:77
 msgid "Cost per Period"
-msgstr ""
+msgstr "Kosten pro Zeitraum"
 
 #: apps/core/models.py:78
 msgid "Notice Period in Days"
-msgstr ""
+msgstr "Kündigungsfrist in Tagen"
 
 #: apps/core/models.py:79
 msgid "Description Target"
-msgstr ""
+msgstr "Beschreibung Zielgruppe"
 
 #: apps/core/models.py:80
 msgid "Description Caption"
-msgstr ""
+msgstr "Beschreibung Bildunterschrift"
 
 #: apps/core/models.py:81
 msgid "Description 1"
-msgstr ""
+msgstr "Beschreibung 1"
 
 #: apps/core/models.py:82
 msgid "Description 2"
-msgstr ""
+msgstr "Beschreibung 2"
 
 #: apps/core/models.py:83
 msgid "Description 3"
-msgstr ""
+msgstr "Beschreibung 3"
 
 #: apps/core/models.py:84
 msgid "Description 4"
-msgstr ""
+msgstr "Beschreibung 4"
 
 #: apps/core/models.py:85
 msgid "Quota for Storage"
-msgstr ""
+msgstr "Kontingent für SSD Speicher"
 
 #: apps/core/models.py:86
 msgid "Quota for Application"
-msgstr ""
+msgstr "Kontingent für HDD Speicher"
 
 #: apps/core/models.py:93
 msgid "identifier"
-msgstr ""
+msgstr "Kennung"
 
 #: apps/core/models.py:102
-#, fuzzy
-#| msgid "last_name"
 msgid "Hostname"
-msgstr "Nachname"
+msgstr "Hostname"
 
 #: apps/core/models.py:103
 msgid "Packet User"
-msgstr ""
+msgstr "Paketbenutzer"
 
 #: apps/core/models.py:104
 msgid "Channel"
-msgstr ""
+msgstr "Kanal"
 
 #: apps/core/models.py:105
 msgid "First Port"
-msgstr ""
+msgstr "Erster Port"
 
 #: apps/core/models.py:106
 msgid "Last Port"
-msgstr ""
+msgstr "Letzter Port"
 
 #: apps/core/models.py:112
 msgid "Status"
-msgstr ""
+msgstr "Status"
 
 #: apps/core/models.py:114
 msgid "DB Password"
-msgstr ""
+msgstr "Datenbank Passwort"
 
 #: apps/core/models.py:115
 msgid "Initial Password"
-msgstr ""
+msgstr "Anfangs Passwort"
 
 #: apps/core/models.py:117
 msgid "Password1"
-msgstr ""
+msgstr "Passwort1"
 
 #: apps/core/models.py:119
 msgid "Password2"
-msgstr ""
+msgstr "Passwort2"
 
 #: apps/core/models.py:121
 msgid "Django Secret Key"
-msgstr ""
+msgstr "Geheimer Django-Schlüssel"
 
 #: apps/core/models.py:122
 msgid "Last Interaction"
-msgstr ""
+msgstr "Letzte Interaktion"
 
 #: apps/core/models.py:123
 msgid "Reserved Token"
-msgstr ""
+msgstr "Reservierter Token"
 
 #: apps/core/models.py:124
 msgid "Reserved Until"
-msgstr ""
+msgstr "Reserviert bis"
 
 #: apps/core/models.py:161
 msgid "Start Date"
-msgstr ""
+msgstr "Anfangsdatum"
 
 #: apps/core/models.py:162
 msgid "End Date"
-msgstr ""
+msgstr "Enddatum"
 
 #: apps/core/models.py:163
 msgid "Latest Cancel Date"
-msgstr ""
+msgstr "Spätestes Kündigungsdatum"
 
 #: apps/core/models.py:164
 msgid "Is Renewing Automatically"
-msgstr ""
+msgstr "Verlängert sich automatisch"
 
 #: apps/core/models.py:165
 msgid "Is Confirmed"
-msgstr ""
+msgstr "Ist bestätigt"
 
 #: apps/core/models.py:167
-#, fuzzy
-#| msgid "Payment Details"
 msgid "Payment Method"
 msgstr "Zahlungsweise"
 
 #: apps/core/models.py:168
-#, fuzzy
-#| msgid "country"
 msgid "Account Owner"
-msgstr "Land"
+msgstr "Kontoinhaber"
 
 #: apps/core/models.py:169
 msgid "Account IBAN"
-msgstr ""
+msgstr "Konto-IBAN"
 
 #: apps/core/models.py:170
 msgid "SEPA Mandate"
-msgstr ""
+msgstr "SEPA-Mandat"
 
 #: apps/core/models.py:171
 msgid "Date of SEPA Mandate"
-msgstr ""
+msgstr "Datum des SEPA-Mandats"
 
 #: apps/core/templates/base.html:5 apps/core/templates/base.html:19
 msgid "SaaS Admin"
@@ -372,7 +356,7 @@ msgstr "Abmelden"
 
 #: apps/core/templates/base.html:37
 msgid "Configuration"
-msgstr ""
+msgstr "Konfiguration"
 
 #: apps/core/templates/base.html:43
 msgid "Login"
@@ -407,7 +391,5 @@ msgstr "Über Uns"
 #~ msgid "city"
 #~ msgstr "Ort"
 
-#, fuzzy
-#~| msgid "Payment Details"
 #~ msgid "payment_details"
 #~ msgstr "Zahlungsweise"
