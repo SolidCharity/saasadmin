@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-06-02 10:18+0200\n"
+"POT-Creation-Date: 2022-06-02 11:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -218,7 +218,7 @@ msgstr "Kontingent für HDD Speicher"
 msgid "identifier"
 msgstr "Kennung"
 
-#: apps/core/models.py:102
+#: apps/core/models.py:103
 msgid "Hostname"
 msgstr "Hostname"
 
@@ -294,11 +294,11 @@ msgstr "Verlängert sich automatisch"
 msgid "Is Confirmed"
 msgstr "Ist bestätigt"
 
-#: apps/core/models.py:167
+#: apps/core/models.py:168
 msgid "Payment Method"
 msgstr "Zahlungsweise"
 
-#: apps/core/models.py:168
+#: apps/core/models.py:169
 msgid "Account Owner"
 msgstr "Kontoinhaber"
 
