@@ -1,4 +1,5 @@
 VENV := . .venv/bin/activate &&
+POFILES := apps/api/locale/de/LC_MESSAGES/django.po apps/backend/locale/de/LC_MESSAGES/django.po apps/core/locale/de/LC_MESSAGES/django.po apps/frontend/locale/de/LC_MESSAGES/django.po locale/de/LC_MESSAGES/django.po
 
 all:
 	@echo "help:"
@@ -58,18 +59,21 @@ runserver: collectstatic
 token:
 	${VENV} python manage.py drf_create_token -r admin
 
-translate:
-	${VENV} cd apps/core && django-admin compilemessages
-	${VENV} cd apps/backend && django-admin compilemessages
-	${VENV} cd apps/frontend && django-admin compilemessages
-
 demo_db:
 	${VENV} cat demodata/insertdemo.sql | python manage.py dbshell
 	(${VENV} cat demodata/insertdemo.psql.sql | python manage.py dbshell) || echo "ignore errors for sqlite"
 
+translate:
+	#${VENV} django-admin compilemessages
+	${VENV} cd apps/core && django-admin compilemessages
+	${VENV} cd apps/backend && django-admin compilemessages
+	${VENV} cd apps/frontend && django-admin compilemessages
+
 messages:
-	${VENV} django-admin makemessages -l de
-	${VENV} django-admin compilemessages
+	${VENV} django-admin makemessages -l de || exit -1
+	# drop "POT Creation Date" as long as this fix has not arrived yet: https://github.com/django/django/commit/4bfe8c0eec835b8eaffcda7dc1e3b203751a790a
+	for f in ${POFILES}; do sed -i '/POT-Creation-Date/d' $$f; done
+	${VENV} django-admin compilemessages || exit -1
 
 update:
 	git pull || exit -1
