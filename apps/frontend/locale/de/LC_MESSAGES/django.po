@@ -175,10 +175,8 @@ msgstr ""
 "der E-Mail Adresse <code>%(adminemail)s</code>."
 
 #: apps/frontend/templates/instance.html:63
-#, fuzzy
-#| msgid "Details of your instance"
 msgid "Login to your instance"
-msgstr "Infos über Ihre Instanz"
+msgstr "Bei Ihrer Instanz anmelden"
 
 #: apps/frontend/templates/instance.html:68
 #, python-format

@@ -299,6 +299,7 @@ def instance_view(request):
     return render(request, 'instance.html',
         {'instance': contract.instance,
         'instance_url': url,
+        'login_url': url + product.login_url,
         'adminuser': adminuser,
         'adminemail': adminemail,
         'initialadminpassword': initialadminpassword,

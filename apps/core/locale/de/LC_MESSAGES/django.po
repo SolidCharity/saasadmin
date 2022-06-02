@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps/core/models.py:7 apps/core/models.py:63
+#: apps/core/models.py:7 apps/core/models.py:64
 msgid "name"
 msgstr "name"
 
@@ -142,75 +142,79 @@ msgstr "Beschreibung"
 msgid "Upstream_URL"
 msgstr "Upstream URL"
 
-#: apps/core/models.py:62
+#: apps/core/models.py:57
+msgid "Login_URL"
+msgstr "URL für Anmeldung"
+
+#: apps/core/models.py:63
 msgid "slug"
 msgstr "Kurzname"
 
-#: apps/core/models.py:70
+#: apps/core/models.py:71
 msgid "Sorting Order"
 msgstr "Sortierreihenfolge"
 
-#: apps/core/models.py:71
+#: apps/core/models.py:72
 msgid "is favourite"
 msgstr "ist Favorit"
 
-#: apps/core/models.py:72
+#: apps/core/models.py:73
 msgid "is public"
 msgstr "ist Favorit"
 
-#: apps/core/models.py:74
+#: apps/core/models.py:75
 msgid "Period Length in Months"
 msgstr "Periodenlänge in Monaten"
 
-#: apps/core/models.py:75
+#: apps/core/models.py:76
 msgid "Period Length in Days"
 msgstr "Periodendauer in Tagen"
 
-#: apps/core/models.py:76
+#: apps/core/models.py:77
 msgid "Currency"
 msgstr "Währung"
 
-#: apps/core/models.py:77
+#: apps/core/models.py:78
 msgid "Cost per Period"
 msgstr "Kosten pro Zeitraum"
 
-#: apps/core/models.py:78
+#: apps/core/models.py:79
 msgid "Notice Period in Days"
 msgstr "Kündigungsfrist in Tagen"
 
-#: apps/core/models.py:79
+#: apps/core/models.py:80
 msgid "Description Target"
 msgstr "Beschreibung Zielgruppe"
 
-#: apps/core/models.py:80
+#: apps/core/models.py:81
 msgid "Description Caption"
 msgstr "Beschreibung Bildunterschrift"
 
-#: apps/core/models.py:81
+#: apps/core/models.py:82
 msgid "Description 1"
 msgstr "Beschreibung 1"
 
-#: apps/core/models.py:82
+#: apps/core/models.py:83
 msgid "Description 2"
 msgstr "Beschreibung 2"
 
-#: apps/core/models.py:83
+#: apps/core/models.py:84
 msgid "Description 3"
 msgstr "Beschreibung 3"
 
-#: apps/core/models.py:84
+#: apps/core/models.py:85
 msgid "Description 4"
 msgstr "Beschreibung 4"
 
-#: apps/core/models.py:85
+#: apps/core/models.py:86
 msgid "Quota for Storage"
 msgstr "Kontingent für SSD Speicher"
 
-#: apps/core/models.py:86
+#: apps/core/models.py:87
 msgid "Quota for Application"
 msgstr "Kontingent für HDD Speicher"
 
-#: apps/core/models.py:93
+#: apps/core/models.py:94
 msgid "identifier"
 msgstr "Kennung"
 
@@ -218,75 +222,75 @@ msgstr "Kennung"
 msgid "Hostname"
 msgstr "Hostname"
 
-#: apps/core/models.py:103
+#: apps/core/models.py:104
 msgid "Packet User"
 msgstr "Paketbenutzer"
 
-#: apps/core/models.py:104
+#: apps/core/models.py:105
 msgid "Channel"
 msgstr "Kanal"
 
-#: apps/core/models.py:105
+#: apps/core/models.py:106
 msgid "First Port"
 msgstr "Erster Port"
 
-#: apps/core/models.py:106
+#: apps/core/models.py:107
 msgid "Last Port"
 msgstr "Letzter Port"
 
-#: apps/core/models.py:112
+#: apps/core/models.py:113
 msgid "Status"
 msgstr "Status"
 
-#: apps/core/models.py:114
+#: apps/core/models.py:115
 msgid "DB Password"
 msgstr "Datenbank Passwort"
 
-#: apps/core/models.py:115
+#: apps/core/models.py:116
 msgid "Initial Password"
 msgstr "Anfangs Passwort"
 
-#: apps/core/models.py:117
+#: apps/core/models.py:118
 msgid "Password1"
 msgstr "Passwort1"
 
-#: apps/core/models.py:119
+#: apps/core/models.py:120
 msgid "Password2"
 msgstr "Passwort2"
 
-#: apps/core/models.py:121
+#: apps/core/models.py:122
 msgid "Django Secret Key"
 msgstr "Geheimer Django-Schlüssel"
 
-#: apps/core/models.py:122
+#: apps/core/models.py:123
 msgid "Last Interaction"
 msgstr "Letzte Interaktion"
 
-#: apps/core/models.py:123
+#: apps/core/models.py:124
 msgid "Reserved Token"
 msgstr "Reservierter Token"
 
-#: apps/core/models.py:124
+#: apps/core/models.py:125
 msgid "Reserved Until"
 msgstr "Reserviert bis"
 
-#: apps/core/models.py:161
+#: apps/core/models.py:162
 msgid "Start Date"
 msgstr "Anfangsdatum"
 
-#: apps/core/models.py:162
+#: apps/core/models.py:163
 msgid "End Date"
 msgstr "Enddatum"
 
-#: apps/core/models.py:163
+#: apps/core/models.py:164
 msgid "Latest Cancel Date"
 msgstr "Spätestes Kündigungsdatum"
 
-#: apps/core/models.py:164
+#: apps/core/models.py:165
 msgid "Is Renewing Automatically"
 msgstr "Verlängert sich automatisch"
 
-#: apps/core/models.py:165
+#: apps/core/models.py:166
 msgid "Is Confirmed"
 msgstr "Ist bestätigt"
 
@@ -298,15 +302,15 @@ msgstr "Zahlungsweise"
 msgid "Account Owner"
 msgstr "Kontoinhaber"
 
-#: apps/core/models.py:169
+#: apps/core/models.py:170
 msgid "Account IBAN"
 msgstr "Konto-IBAN"
 
-#: apps/core/models.py:170
+#: apps/core/models.py:171
 msgid "SEPA Mandate"
 msgstr "SEPA-Mandat"
 
-#: apps/core/models.py:171
+#: apps/core/models.py:172
 msgid "Date of SEPA Mandate"
 msgstr "Datum des SEPA-Mandats"
 
