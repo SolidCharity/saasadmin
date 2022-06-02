@@ -65,9 +65,10 @@ demo_db:
 
 translate:
 	#${VENV} django-admin compilemessages
-	${VENV} cd apps/core && django-admin compilemessages
-	${VENV} cd apps/backend && django-admin compilemessages
-	${VENV} cd apps/frontend && django-admin compilemessages
+	${VENV} cd apps/api && django-admin compilemessages || exit -1
+	${VENV} cd apps/backend && django-admin compilemessages || exit -1
+	${VENV} cd apps/core && django-admin compilemessages || exit -1
+	${VENV} cd apps/frontend && django-admin compilemessages || exit -1
 
 messages:
 	${VENV} django-admin makemessages -l de || exit -1
