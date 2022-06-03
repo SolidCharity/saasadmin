@@ -106,6 +106,7 @@ class SaasInstance(models.Model):
     first_port = models.IntegerField(_("First Port"), default=-1)
     last_port = models.IntegerField(_("Last Port"), default=-1)
     activation_token = models.CharField(max_length=64, null=True)
+    custom_domain = models.CharField(_("Custom Domain"),max_length=250, default = "")
 
     # possible values for status
     IN_PREPARATION, READY, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \

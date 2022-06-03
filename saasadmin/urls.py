@@ -56,6 +56,9 @@ urlpatterns = [
     path('configurations/edit/<int:id>', backend_views.editconfiguration),
     path('configurations/update/<int:id>', backend_views.updateconfiguration),
 
+    path('instances/edit/<int:id>', backend_views.editinstance),
+    path('instances/update/<int:id>', backend_views.updateinstance),
+
     # SaasAdmin Frontend
     path('', frontend_views.home),
     path('home/', frontend_views.home),
@@ -71,5 +74,6 @@ urlpatterns = [
     path('imprint', frontend_views.display_imprint),
     path('about', frontend_views.display_about),
     path('contact', frontend_views.display_contact),
+
 
 ]
