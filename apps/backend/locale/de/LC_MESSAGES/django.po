@@ -61,6 +61,7 @@ msgid "value"
 msgstr "Wert"
 
 #: apps/backend/templates/configurations.html:33
+#: apps/backend/templates/customers.html:30
 #: apps/backend/templates/plans.html:44
 #: apps/backend/templates/productdashboard.html:21
 msgid "Edit"
@@ -199,10 +200,15 @@ msgid "Update Configuration"
 msgstr "Konfiguration Bearbeiten"
 
 #: apps/backend/templates/editconfiguration.html:35
+#: apps/backend/templates/editinstance.html:35
 #: apps/backend/templates/editplan.html:35
 #: apps/backend/templates/editproduct.html:35
 msgid "Update"
 msgstr "Speichern"
+
+#: apps/backend/templates/editinstance.html:27
+msgid "Update Instance"
+msgstr "Instanz aktualisieren"
 
 #: apps/backend/templates/editplan.html:27
 msgid "Update Plan"
@@ -327,15 +333,15 @@ msgstr "Passwort vergessen?"
 msgid "Create a free account"
 msgstr "Einen kostenlosen Zugang einrichten"
 
-#: apps/backend/views.py:48
+#: apps/backend/views.py:50
 msgid "contract will be auto renewed"
 msgstr ""
 
-#: apps/backend/views.py:50
+#: apps/backend/views.py:52
 msgid "contract is indefinite"
 msgstr ""
 
-#: apps/backend/views.py:52
+#: apps/backend/views.py:54
 #, python-format
 msgid "contract ends on %s"
 msgstr ""

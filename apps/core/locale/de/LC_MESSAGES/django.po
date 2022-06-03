@@ -237,79 +237,83 @@ msgstr "Erster Port"
 msgid "Last Port"
 msgstr "Letzter Port"
 
-#: apps/core/models.py:113
+#: apps/core/models.py:109
+msgid "Custom Domain"
+msgstr "Eigene Domäne"
+
+#: apps/core/models.py:114
 msgid "Status"
 msgstr "Status"
 
-#: apps/core/models.py:115
+#: apps/core/models.py:116
 msgid "DB Password"
 msgstr "Datenbank Passwort"
 
-#: apps/core/models.py:116
+#: apps/core/models.py:117
 msgid "Initial Password"
 msgstr "Anfangs Passwort"
 
-#: apps/core/models.py:118
+#: apps/core/models.py:119
 msgid "Password1"
 msgstr "Passwort1"
 
-#: apps/core/models.py:120
+#: apps/core/models.py:121
 msgid "Password2"
 msgstr "Passwort2"
 
-#: apps/core/models.py:122
+#: apps/core/models.py:123
 msgid "Django Secret Key"
 msgstr "Geheimer Django-Schlüssel"
 
-#: apps/core/models.py:123
+#: apps/core/models.py:124
 msgid "Last Interaction"
 msgstr "Letzte Interaktion"
 
-#: apps/core/models.py:124
+#: apps/core/models.py:125
 msgid "Reserved Token"
 msgstr "Reservierter Token"
 
-#: apps/core/models.py:125
+#: apps/core/models.py:126
 msgid "Reserved Until"
 msgstr "Reserviert bis"
 
-#: apps/core/models.py:162
+#: apps/core/models.py:163
 msgid "Start Date"
 msgstr "Anfangsdatum"
 
-#: apps/core/models.py:163
+#: apps/core/models.py:164
 msgid "End Date"
 msgstr "Enddatum"
 
-#: apps/core/models.py:164
+#: apps/core/models.py:165
 msgid "Latest Cancel Date"
 msgstr "Spätestes Kündigungsdatum"
 
-#: apps/core/models.py:165
+#: apps/core/models.py:166
 msgid "Is Renewing Automatically"
 msgstr "Verlängert sich automatisch"
 
-#: apps/core/models.py:166
+#: apps/core/models.py:167
 msgid "Is Confirmed"
 msgstr "Ist bestätigt"
 
-#: apps/core/models.py:168
+#: apps/core/models.py:169
 msgid "Payment Method"
 msgstr "Zahlungsweise"
 
-#: apps/core/models.py:169
+#: apps/core/models.py:170
 msgid "Account Owner"
 msgstr "Kontoinhaber"
 
-#: apps/core/models.py:170
+#: apps/core/models.py:171
 msgid "Account IBAN"
 msgstr "Konto-IBAN"
 
-#: apps/core/models.py:171
+#: apps/core/models.py:172
 msgid "SEPA Mandate"
 msgstr "SEPA-Mandat"
 
-#: apps/core/models.py:172
+#: apps/core/models.py:173
 msgid "Date of SEPA Mandate"
 msgstr "Datum des SEPA-Mandats"
 
