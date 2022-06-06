@@ -331,6 +331,9 @@ def display_about(request):
 
 def display_contact(request):
     conf = SaasConfiguration.objects.filter(name='contact').first()
+    if not conf:
+        return None
+    conf.value = conf.value.replace('#Website', request.get_host())
     return render(request, 'display_value.html', {'conf': conf})
 
 
