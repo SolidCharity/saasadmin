@@ -187,7 +187,7 @@ msgstr "Beschreibung Zielgruppe"
 
 #: apps/core/models.py:81
 msgid "Description Caption"
-msgstr "Beschreibung Bildunterschrift"
+msgstr "Beschreibung Überschrift"
 
 #: apps/core/models.py:82
 msgid "Description 1"
