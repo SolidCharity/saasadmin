@@ -1,5 +1,6 @@
 from django import template
 from apps.core.models import SaasConfiguration
+import tldextract
 
 register = template.Library()
 
@@ -16,7 +17,11 @@ def get_main_url(request):
     hostname = request.META['HTTP_HOST']
     if hostname.startswith("www."):
         hostname = hostname.replace('www.','')
-    print(request.META['HTTP_HOST'][request.META['HTTP_HOST'].find(request.META['SERVER_NAME']):])
-    print(hostname)
 
-    return "//" + request.META['HTTP_HOST'][request.META['HTTP_HOST'].find(request.META['SERVER_NAME']):]
+    servername = request.META['SERVER_NAME']
+    # only use the main domain with top level domain, without subdomains
+    ext = tldextract.extract(servername)
+    if ext.suffix:
+        servername = f"{ext.domain}.{ext.suffix}"
+
+    return "//" + request.META['HTTP_HOST'][request.META['HTTP_HOST'].find(servername):]
