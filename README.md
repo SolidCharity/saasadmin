@@ -3,9 +3,9 @@ SolidCharity SaasAdmin
 
 This is a tool to provide the administration for publishing your Software as a Service.
 
-This software is brought to you by SolidCharity. We use it to publish OpenPetra as a Service.
+This software is brought to you by SolidCharity. We use it to publish OpenPetra and other Open Source Software as a Service.
 
-WARNING: this is work in progress! We have just started. Stay tuned for the first version ready for production!
+WARNING: this is work in progress! We have just started. Quite a number of features is still missing.
 
 
 Feature Description
@@ -51,4 +51,6 @@ make runserver
 What we still need to do
 ------------------------
 
-- Still a lot todo. This is not ready for use yet.
+- create and send invoices to customers
+- export SEPA Direct Debit file
+- ...
