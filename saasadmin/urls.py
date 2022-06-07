@@ -44,7 +44,7 @@ urlpatterns = [
     path('plans/delete/<int:id>', backend_views.deleteplan),
     path('contracts/edit/<int:id>/<str:newplan>', backend_views.editcontract),
 
-    path('products', backend_views.products),
+    path('backend/products', backend_views.products),
     path('products/add', backend_views.addproduct),
     path('products/<str:slug>/dashboard', backend_views.productdashboard),
     path('products/edit/<int:id>', backend_views.editproduct),
@@ -69,6 +69,7 @@ urlpatterns = [
     path('contract', frontend_views.contract_view),
     path('contract/add/<str:product_id>/<str:plan_id>', frontend_views.contract_subscribe),
     path('contract/cancel/<str:product_id>', frontend_views.contract_cancel),
+    path('products', frontend_views.display_products),
     path('instance', frontend_views.instance_view),
     path('pricing', frontend_views.display_pricing),
     path('imprint', frontend_views.display_imprint),

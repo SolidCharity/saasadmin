@@ -16,17 +16,24 @@ from apps.api.logic.plans import LogicPlans
 from apps.api.logic.contracts import LogicContracts
 
 def home(request):
+    if request.user.is_staff:
+        return redirect('/backend/products')
+    product = LogicProducts().get_product(request, False)
+    if product is None:
+        return redirect('/products')
     # if not logged in => redirect to pricing
     if not request.user.is_authenticated:
-        return redirect('/pricing')
-    if request.user.is_staff:
-        return redirect('/backend')
+        return display_pricing(request)
+
     # if logged in customer => redirect frontend view
+    customer = SaasCustomer.objects.filter(user=request.user).first()
+    if customer.last_name and customer.city and customer.street:
+        return redirect('/plan/current')
+    # customer should fill in the address details first
     return redirect('/account')
 
 @login_required
 def account_view(request):
-    lang="en"
     customer = SaasCustomer.objects.filter(user=request.user).first()
     if customer is None:
         # create a new customer for this user
@@ -36,7 +43,7 @@ def account_view(request):
         customer.save()
 
     form = CustomerForm(instance = customer)
-    return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
+    return render(request, 'account.html', {'customer': customer, 'form': form})
 
 def  clean_null(customer):
     if customer.first_name is None:
@@ -52,7 +59,6 @@ def  clean_null(customer):
 
 @login_required
 def account_update(request):
-    lang="en"
 
     customer = SaasCustomer.objects.filter(user=request.user).first()
     # request.POST is immutable, so make a copy
@@ -63,16 +69,16 @@ def account_update(request):
     if form.is_valid():
         form.save()
         
-        return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang, 'successmessage': _("Changes Saved")})
+        return render(request, 'account.html', {'customer': customer, 'form': form, 'successmessage': _("Changes Saved")})
 
-    return render(request, 'account.html', {'customer': customer, 'form': form, 'lang': lang})
+    return render(request, 'account.html', {'customer': customer, 'form': form})
 
 
 @login_required
 def plan_select(request, plan_id):
     product = LogicProducts().get_product(request, False)
     if product is None:
-        return redirect('/pricing')
+        return redirect('/products')
     current_plan = LogicContracts().get_current_plan(request, product)
     if current_plan is None and not product.is_active:
         product = None
@@ -278,7 +284,7 @@ def instance_view(request):
     customer = SaasCustomer.objects.filter(user=request.user).first()
     product = LogicProducts().get_product(request, False)
     if product is None:
-        return redirect('/pricing')
+        return redirect('/products')
     contract = LogicContracts().get_contract(customer, product)
     if not contract or not contract.instance:
         return render(request, 'error.html', {'message': _("Error: no instance has been assigned yet.")})
@@ -313,15 +319,16 @@ def instance_view(request):
         'pwd_reset_url': pwd_reset_url})
 
 
+def display_products(request):
+    products = LogicProducts().get_products()
+    return render(request, 'select_product.html', {'products': products})
+
+
 def display_pricing(request):
     product = LogicProducts().get_product(request)
 
     if product is None:
-        products = LogicProducts().get_products()
-        hostname = request.META['HTTP_HOST']
-        if hostname.startswith("www."):
-            hostname = hostname.replace('www.','')
-        return render(request, 'select_product.html', {'products': products, 'hostname': hostname})
+        return display_products(request)
 
     plans = LogicPlans().get_plans(product)
 

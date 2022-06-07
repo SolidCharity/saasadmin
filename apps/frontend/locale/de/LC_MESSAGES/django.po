@@ -338,6 +338,10 @@ msgstr "beliebt"
 msgid "Register"
 msgstr "Registrieren"
 
+#: apps/frontend/templates/select_product.html:8
+msgid "Available Products"
+msgstr "Angebotene Produkte"
+
 #: apps/frontend/views.py:66 apps/frontend/views.py:130
 msgid "Changes Saved"
 msgstr "Änderungen gespeichert"

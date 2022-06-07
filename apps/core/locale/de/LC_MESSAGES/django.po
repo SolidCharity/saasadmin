@@ -317,86 +317,70 @@ msgstr "SEPA-Mandat"
 msgid "Date of SEPA Mandate"
 msgstr "Datum des SEPA-Mandats"
 
-#: apps/core/templates/base.html:5 apps/core/templates/base.html:19
-msgid "SaaS Admin"
-msgstr "SaaS Admin"
-
-#: apps/core/templates/base.html:21
+#: apps/core/templates/base.html:26
 msgid "Products"
 msgstr "Produkte"
 
-#: apps/core/templates/base.html:24
+#: apps/core/templates/base.html:29
 msgid "Plans"
 msgstr "Angebote"
 
-#: apps/core/templates/base.html:25
+#: apps/core/templates/base.html:30
 msgid "Instances"
 msgstr "Instanzen"
 
-#: apps/core/templates/base.html:26
+#: apps/core/templates/base.html:31
 msgid "Customers"
 msgstr "Kunden"
 
-#: apps/core/templates/base.html:29
+#: apps/core/templates/base.html:34
 msgid "Personal Details"
 msgstr "Persönliche Daten"
 
-#: apps/core/templates/base.html:30
+#: apps/core/templates/base.html:35
 msgid "Selected Plan"
 msgstr "Ausgewähltes Angebot"
 
-#: apps/core/templates/base.html:31
+#: apps/core/templates/base.html:36
 msgid "Payment Details"
 msgstr "Zahlungsweise"
 
-#: apps/core/templates/base.html:32
+#: apps/core/templates/base.html:37
 msgid "Contract"
 msgstr "Vertrag"
 
-#: apps/core/templates/base.html:33
+#: apps/core/templates/base.html:38
 msgid "Instance Details"
 msgstr "Zugangsdaten"
 
-#: apps/core/templates/base.html:35
+#: apps/core/templates/base.html:40
 msgid "Logout"
 msgstr "Abmelden"
 
-#: apps/core/templates/base.html:37
+#: apps/core/templates/base.html:42
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: apps/core/templates/base.html:43
+#: apps/core/templates/base.html:48
 msgid "Login"
 msgstr "Anmelden"
 
-#: apps/core/templates/base.html:44
+#: apps/core/templates/base.html:49
 msgid "Pricing"
 msgstr "Preise"
 
-#: apps/core/templates/base.html:50
+#: apps/core/templates/base.html:55
 msgid "Imprint"
 msgstr "Impressum"
 
-#: apps/core/templates/base.html:54
+#: apps/core/templates/base.html:59
 msgid "Contact"
 msgstr "Kontakt"
 
-#: apps/core/templates/base.html:55
+#: apps/core/templates/base.html:60
 msgid "About"
 msgstr "Über uns"
 
-#: apps/core/templates/base.html:58
+#: apps/core/templates/base.html:63
 msgid "Powered by SaasAdmin and Django"
 msgstr "Betrieben mit SaasAdmin und Django"
-
-#~ msgid "street"
-#~ msgstr "Straße und Hausnummer"
-
-#~ msgid "post_code"
-#~ msgstr "PLZ"
-
-#~ msgid "city"
-#~ msgstr "Ort"
-
-#~ msgid "payment_details"
-#~ msgstr "Zahlungsweise"

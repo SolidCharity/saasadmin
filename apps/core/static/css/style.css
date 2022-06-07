@@ -125,3 +125,9 @@ div.center {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+.tilegrid {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: repeat(auto-fit, 200px);
+}

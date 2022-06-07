@@ -24,4 +24,10 @@ def get_main_url(request):
     if ext.suffix:
         servername = f"{ext.domain}.{ext.suffix}"
 
-    return "//" + request.META['HTTP_HOST'][request.META['HTTP_HOST'].find(servername):]
+    return request.META['HTTP_HOST'][request.META['HTTP_HOST'].find(servername):]
+
+@register.simple_tag
+def get_topnav_active(request, active_url):
+    if active_url in request.path:
+        return "active"
+    return ""
