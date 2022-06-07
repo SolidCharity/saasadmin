@@ -387,7 +387,7 @@ msgstr "Kontakt"
 
 #: apps/core/templates/base.html:56
 msgid "About"
-msgstr "Über Uns"
+msgstr "Über uns"
 
 #~ msgid "street"
 #~ msgstr "Straße und Hausnummer"

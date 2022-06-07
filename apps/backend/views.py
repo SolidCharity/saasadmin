@@ -245,7 +245,7 @@ def updateproduct(request, id):
     form = ProductForm(values, instance = product)
     if form.is_valid():
         form.save()
-        return redirect("/products")
+        return productdashboard(request, product.slug)
     return render(request, 'editproduct.html', {'product': product, 'form': form})
 
 @login_required

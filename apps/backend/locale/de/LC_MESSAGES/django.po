@@ -61,7 +61,7 @@ msgid "value"
 msgstr "Wert"
 
 #: apps/backend/templates/configurations.html:33
-#: apps/backend/templates/customers.html:30
+#: apps/backend/templates/customers.html:29
 #: apps/backend/templates/plans.html:44
 #: apps/backend/templates/productdashboard.html:21
 msgid "Edit"
@@ -282,11 +282,13 @@ msgstr "Präfix"
 
 #: apps/backend/templates/productdashboard.html:15
 msgid "Number of Ports"
-msgstr "Anzahl der Ports"
+msgstr "Anzahl von Ports"
 
 #: apps/backend/templates/productdashboard.html:22
+#, fuzzy
+#| msgid "Are you sure you want to delete this item?')"
 msgid "Are you sure you want to delete this item?"
-msgstr "Möchten Sie dieses Element wirklich löschen?"
+msgstr "Bist du dir sicher, dass das gelöscht werden soll?"
 
 #: apps/backend/templates/products.html:7
 msgid "Products"
@@ -333,15 +335,15 @@ msgstr "Passwort vergessen?"
 msgid "Create a free account"
 msgstr "Einen kostenlosen Zugang einrichten"
 
-#: apps/backend/views.py:50
+#: apps/backend/views.py:49
 msgid "contract will be auto renewed"
 msgstr ""
 
-#: apps/backend/views.py:52
+#: apps/backend/views.py:51
 msgid "contract is indefinite"
 msgstr ""
 
-#: apps/backend/views.py:54
+#: apps/backend/views.py:53
 #, python-format
 msgid "contract ends on %s"
 msgstr ""

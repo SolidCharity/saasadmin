@@ -110,10 +110,10 @@ class LogicInstances:
             resp = requests.get(url=url)
             data = resp.json()
             if not data['success']:
-                return [False, None]
+                return [False, data]
         except Exception as ex:
             print('Exception in activate_instance: %s' % (ex,))
-            return [False, None]
+            return [False, 'Exception in activate_instance: %s' % (ex,)]
 
         return [True, PasswordResetToken]
 

@@ -5,7 +5,7 @@ from django_countries.fields import CountryField
 
 class SaasConfiguration(models.Model):
     name = models.CharField(_("name"), max_length=64)
-    value = models.CharField(_("value"), max_length=250)
+    value = models.CharField(_("value"), max_length=5000)
 
     class Meta:
         db_table = "saas_configuration"

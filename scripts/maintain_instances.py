@@ -29,6 +29,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .replace('#Prefix', instance['prefix'])
             .replace('#Identifier', instance['identifier']))
         template_content = (ansible_inventory_template
+            .replace('{{identifier}}', instance['identifier'])
             .replace('{{hostname}}', instance['hostname'])
             .replace('{{hostname_ip}}', socket.gethostbyname(instance['hostname']))
             .replace('{{pac}}', instance['pacuser'])
@@ -49,6 +50,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .replace('{{RandomPassword}}', random_password(16))
             .replace('{{smtp_from}}', config['saasadmin']['smtp_from'])
             .replace('{{smtp_host}}', config['saasadmin']['smtp_host'])
+            .replace('{{smtp_port}}', config['saasadmin']['smtp_port'])
             .replace('{{smtp_user}}', config['saasadmin']['smtp_user'])
             .replace('{{smtp_pwd}}', config['saasadmin']['smtp_pwd']))
         f.write(template_content)
@@ -79,7 +81,8 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
     return return_code
 
 
-def setup_instances(config, url, admin_token, host_name, product_slug, ansible_path, action):
+def setup_instances(config, url, admin_token, host_name, product_slug, ansible_path, action, limit_to_status):
+
     params = dict(format='json', hostname=host_name, product=product_slug, action=action)
     url += '/api/v1/instances/'
     resp = requests.get(url=url, params=params, headers={'Authorization': f'Token {admin_token}'})
@@ -96,6 +99,9 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
     return_code = None
     for instance in data:
         if return_code:
+            continue
+
+        if limit_to_status is not None and instance['status'] != limit_to_status:
             continue
 
         print(instance['identifier'] + ' ' + instance['status'])
@@ -162,7 +168,8 @@ def setup_instances(config, url, admin_token, host_name, product_slug, ansible_p
 @click.option('--url', help='The url for access to the REST API of SaasAdmin')
 @click.option('--configfile', default='config.yaml', help='The config file to use')
 @click.option('--action', default='install', help='The action: init, install, update, remove, check')
-def main(product, hostname, ansiblepath, admintoken, url, configfile, action):
+@click.option('--limit_to_status', default=None, help='Only consider instances with this status, eg. READY')
+def main(product, hostname, ansiblepath, admintoken, url, configfile, action, limit_to_status):
     """run the ansible playbook for all specified instances"""
 
     # load from config.yml file
@@ -181,7 +188,7 @@ def main(product, hostname, ansiblepath, admintoken, url, configfile, action):
         print('action must be one of these values: install, remove, update or check')
         exit(-1)
 
-    setup_instances(config, url, admintoken, hostname, product, ansiblepath, action)
+    setup_instances(config, url, admintoken, hostname, product, ansiblepath, action, limit_to_status)
 
 if __name__ == '__main__':
     main()
