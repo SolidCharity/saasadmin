@@ -297,13 +297,16 @@ def instance_view(request):
         pwd_reset_url = None
     elif pwd_reset_url.startswith('/'):
         pwd_reset_url = url + pwd_reset_url[1:]
+    login_url = url
+    if product.login_url.startswith('/'):
+        login_url = url + product.login_url[1:]
     adminuser = product.instance_admin_user
     adminemail = customer.email_address
 
     return render(request, 'instance.html',
         {'instance': contract.instance,
         'instance_url': url,
-        'login_url': url + product.login_url,
+        'login_url': login_url,
         'adminuser': adminuser,
         'adminemail': adminemail,
         'initialadminpassword': initialadminpassword,
