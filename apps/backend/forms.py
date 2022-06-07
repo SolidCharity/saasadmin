@@ -1,6 +1,7 @@
 from django import forms
+from django.utils.translation import gettext_lazy as _
 import datetime
-from apps.core.models import SaasPlan, SaasProduct, SaasConfiguration
+from apps.core.models import SaasPlan, SaasProduct, SaasConfiguration, SaasInstance
 
 
 class PlanForm(forms.ModelForm):
@@ -11,8 +12,8 @@ class PlanForm(forms.ModelForm):
 
 class ProductForm(forms.ModelForm):
 
-    upstream_url = forms.URLField()
-    description = forms.CharField(widget=forms.Textarea)
+    upstream_url = forms.URLField(label=_("Upstream URL"))
+    description = forms.CharField(widget=forms.Textarea, label=_("Description"))
 
     class Meta:
         model = SaasProduct
@@ -29,9 +30,16 @@ class AddInstancesForm(forms.Form):
     count = forms.IntegerField()
 
 class ConfigurationForm(forms.ModelForm):
-    value = forms.CharField(widget=forms.Textarea)
+    value = forms.CharField(widget=forms.Textarea, label=_("Value"))
 
     class Meta:
         model = SaasConfiguration
         fields = ("name", "value")
+
+class InstanceForm(forms.ModelForm):
+
+    class Meta:
+        model = SaasInstance
+        fields = ("custom_domain",)
+
 

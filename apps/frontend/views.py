@@ -282,7 +282,10 @@ def instance_view(request):
     contract = LogicContracts().get_contract(customer, product)
     if not contract or not contract.instance:
         return render(request, 'error.html', {'message': _("Error: no instance has been assigned yet.")})
-    url = product.instance_url. \
+    if contract.instance.custom_domain:
+        url = f"https://{contract.instance.custom_domain}/"
+    else:
+        url = product.instance_url. \
             replace('#Prefix', product.prefix). \
             replace('#Identifier', contract.instance.identifier)
     pwd_reset_url = product.instance_password_reset_url. \

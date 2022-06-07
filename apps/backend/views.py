@@ -6,9 +6,9 @@ from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.utils.translation import gettext as _
-from apps.core.models import SaasContract, SaasCustomer, SaasInstance, SaasPlan, SaasProduct, SaasConfiguration
+from apps.core.models import SaasContract, SaasCustomer, SaasInstance, SaasPlan, SaasProduct, SaasConfiguration, SaasInstance
 from apps.core.models import SaasConfiguration
-from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm, ConfigurationForm
+from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm, ConfigurationForm, InstanceForm
 from apps.api.logic.contracts import LogicContracts
 from apps.api.logic.products import LogicProducts
 from apps.api.logic.instances import LogicInstances
@@ -26,6 +26,7 @@ def customers(request, product):
         sql = """SELECT email_address, first_name, last_name,
             saas_instance.identifier as instance_identifier,
             sc.id as contract_id,
+            saas_instance.id as instance_id,
             sc.end_date as contract_end_date,
             sc.is_auto_renew as contract_auto_renew,
             saas_plan.name as plan_name,
@@ -206,7 +207,6 @@ def products(request):
 @staff_member_required
 def addproduct(request):
 
-
     if request.method == "POST":
         # request.POST is immutable, so make a copy
         values = request.POST.copy()
@@ -296,3 +296,22 @@ def updateconfiguration(request, id):
         form.save()
         return redirect("/configurations")
     return render(request, 'editconfiguration.html', {'configuration': configuration, 'form': form})
+
+@login_required
+@staff_member_required
+def editinstance(request, id):
+    instance = SaasInstance.objects.get(id=id)
+    form = InstanceForm(request.POST or None, instance = instance)
+    return render(request,'editinstance.html', {'instance':instance, 'form': form})
+
+@login_required
+@staff_member_required
+def updateinstance(request, id):
+    instance = SaasInstance.objects.get(id=id)
+    # request.POST is immutable, so make a copy
+    values = request.POST.copy()
+    form = InstanceForm(values, instance = instance)
+    if form.is_valid():
+        form.save()
+        return redirect(f"/customers/{instance.product.slug}/")
+    return render(request, 'editinstance.html', {'instance': instance, 'form': form})

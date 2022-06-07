@@ -2,9 +2,10 @@
 {% load i18n %}
 {% block content %}
 <div class="form-box">
-<form method="POST" class="post-form" action="/plans/{{product.slug}}/add">
+<form method="POST" class="post-form" action="/instances/update/{{instance.id}}">
 		{% csrf_token %}
 	<div class="container">
+
 <br>
 {% if form.errors %}
 	{% for field in form %}
@@ -22,9 +23,8 @@
 {% endif %}
 
 	<div class="form-group row">
-		<label class="col-sm-1 col-form-label"></label>
 		<div class="col-sm-4">
-			<h3>{%translate "Add plan"%}</h3>
+		<h3>{%translate "Update Instance"%}</h3>
 		</div>
 	</div>
 
@@ -32,12 +32,11 @@
 
 	<div class="form-group row">
 		<div class="col-sm-4">
-			<button type="submit" class="button button-primary">{%translate "Submit" %}</button>
+			<center><button type="submit" class="button button-primary">{%translate "Update" %}</button></center>
 		</div>
 	</div>
 
 	</div>
-
 </form>
 </div>
 {% endblock %}
