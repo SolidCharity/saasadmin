@@ -160,6 +160,10 @@ div+ div.td .pricing-price {
     height: 100%;
 }
 
+div.td ul.pricing-list-wrapper {
+    height: 100%;
+}
+
 div.td .pricing-list-wrapper .pricing-list {
     margin: 0px;
     padding-top: 20px;
