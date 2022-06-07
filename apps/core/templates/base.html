@@ -41,8 +41,7 @@
         <nav class="topnav">
             <a href="/">SaaS Admin</a>
             <a class="right" href="/accounts/login/">{%translate "Login"%}</a>
-            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">{%translate "Fork me"%}</a>
-            <a class="right" href="/pricing" target="_blank">{%translate "Pricing"%}</a>
+            <a class="right" href="/pricing">{%translate "Pricing"%}</a>
         </nav>
         {% endif %}
         {% block content %}
@@ -54,8 +53,10 @@
             -->
             <a class="right" href="/contact">{%translate "Contact"%}</a>
             <a class="right" href="/about">{%translate "About"%}</a>
-            <a class="left" href="https://github.com/solidcharity/saasadmin" target="_blank">{%translate "Fork me"%}</a>
         </nav>
-        
+        <div class="center">
+            <a href="https://github.com/solidcharity/saasadmin" target="_blank">{%translate "Powered by SaasAdmin and Django"%}</a>
+        </div>
+
     </body>
 </html>

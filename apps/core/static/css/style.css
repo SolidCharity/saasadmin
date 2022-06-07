@@ -40,6 +40,11 @@ div.success {
     text-align: center;
 }
 
+div.center {
+    width: 100%;
+    text-align: center;
+}
+
 .btn-danger {
     color: #fff;
     background-color: #dc3545;
