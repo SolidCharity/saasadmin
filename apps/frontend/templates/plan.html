@@ -9,14 +9,15 @@
 <h2>{{product.name}}</h2>
 <h5>{{product.description}}</h5>
 <p>{%translate "See" %} <a href="{{product.upstream_url}}" target="_blank">{%translate "Website of"%} {{product.name}}</a></p>
-<div class="row" id="spacious_pricing_table_widget-5" class="widget_table_pricing">
 
+<div class="table widget_table_pricing">
+
+<div class="row tr" id="spacious_pricing_table_widget-5">
 {% for plan in plans %}
 {% if plan.is_public or selected_plan == plan.slug %}
-<div class="one-third column">
-
+<div class="one-third column td bottom-arrow">
 <div class="pricing-table-wrapper-0 pricing-table-wrapper">
-<span class="pricing-as-popular {%if selected_plan != plan.slug%}hidden{%endif%}">{%translate "selected"%}</span>
+<span class="pricing-as-popular {%if selected_plan != plan.name%}hidden{%endif%}">{%translate "selected"%}</span>
 <h4 class="pricing-title">{{plan.name}}</h4>
 
 <div class="pricing-price">
@@ -35,37 +36,73 @@
             {%elif plan.period_length_in_months == 3 %}{% translate "per quarter" %}
             {%elif plan.period_length_in_months == 12 %}{% translate "per year" %}
             {%endif%}
-        {% endif %}</span>
+        {%endif%}
+    </span>
     <span class="pricing-date">{{plan.descr_caption}}</span>
 </div>
-<span class="pricing-subtitle">{{plan.descr_target}}</span>
+</div>
+</div> <!-- div.td -->
+{% endif %}
+{% endfor %}
+</div> <!-- div.tr -->
 
-<ul class="pricing-list-wrapper">
-    {%if plan.descr_1 != 'TODO' and plan.descr_1 != 'EMPTY' %}
-    <li class="pricing-list">{{plan.descr_1|safe}}</li>
-    {%endif%}
-    {%if plan.descr_2 != 'TODO' and plan.descr_2 != 'EMPTY' %}
-    <li class="pricing-list">{{plan.descr_2|safe}}</li>
-    {%endif%}
-    {%if plan.descr_3 != 'TODO' and plan.descr_3 != 'EMPTY' %}
-    <li class="pricing-list">{{plan.descr_3|safe}}</li>
-    {%endif%}
-    {%if plan.descr_4 != 'TODO' and plan.descr_4 != 'EMPTY' %}
-    <li class="pricing-list">{{plan.descr_4|safe}}</li>
-    {%endif%}
-</ul>
+<div class="row tr" id="spacious_pricing_table_widget-5">
+    {% for plan in plans %}
+    {% if plan.is_public or selected_plan == plan.slug %}
+    <div class="one-third column td">
+        <div class="pricing-table-wrapper-0 pricing-table-wrapper">
+            <span class="pricing-subtitle">{{plan.descr_target}}</span>
+        </div>
+    </div> <!-- div.td -->
+    {% endif %}
+    {% endfor %}
+</div> <!-- div.tr -->
 
-<div class="pricing-btn">
-<a href="/plan/{{plan.slug}}" id="changebtn_test" class="customize-unpreviewable disabled">{% translate "Choose" %}</a>
-</div>
-</div>
-</div>
+<div class="row tr" id="spacious_pricing_table_widget-5">
+{% for plan in plans %}
+{% if plan.is_public or selected_plan == plan.slug %}
+<div class="one-third column td">
+
+    <ul class="pricing-list-wrapper">
+        {%if plan.descr_1 != 'TODO' and plan.descr_1 != 'EMPTY' %}
+        <li class="pricing-list">{{plan.descr_1|safe}}</li>
+        {%endif%}
+        {%if plan.descr_2 != 'TODO' and plan.descr_2 != 'EMPTY' %}
+        <li class="pricing-list">{{plan.descr_2|safe}}</li>
+        {%endif%}
+        {%if plan.descr_3 != 'TODO' and plan.descr_3 != 'EMPTY' %}
+        <li class="pricing-list">{{plan.descr_3|safe}}</li>
+        {%endif%}
+        {%if plan.descr_4 != 'TODO' and plan.descr_4 != 'EMPTY' %}
+        <li class="pricing-list">{{plan.descr_4|safe}}</li>
+        {%endif%}
+    </ul>
+
+</div> <!-- div.td -->
 {% endif %}
 {% endfor %}
 
-</div>
+</div> <!-- div.tr -->
+
+<div class="row tr" id="spacious_pricing_table_widget-5">
+{% for plan in plans %}
+{% if plan.is_public or selected_plan == plan.slug %}
+<div class="one-third column td">
+    <div class="pricing-table-wrapper-0 pricing-table-wrapper">
+    <div class="pricing-btn">
+        <a href="/plan/{{plan.slug}}" id="changebtn_test" class="customize-unpreviewable disabled">{% translate "Choose" %}</a>
+    </div>
+    </div>
+</div> <!-- div.td -->
+{% endif %}
+{% endfor %}
+
+</div> <!-- div.tr -->
+
+</div> <!-- div.table -->
 
 <p>{%translate "All prices already include the VAT."%}</p>
 
 </div>
+
 {% endblock %}

@@ -131,3 +131,57 @@ div.center {
     grid-gap: 15px;
     grid-template-columns: repeat(auto-fit, 200px);
 }
+
+div.table {
+    display: table;
+    margin-bottom: 2.5rem;
+}
+
+div.tr {
+    padding: 0px;
+    display: table-row;
+}
+
+.pricing .table div.td {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    display: table-cell;
+}
+
+.pricing div.td ul {
+    margin-bottom: 0;
+}
+
+div.td .pricing-table-wrapper {
+    height: 100%;
+}
+
+div+ div.td .pricing-price {
+    height: 100%;
+}
+
+div.td .pricing-list-wrapper .pricing-list {
+    margin: 0px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.bottom-arrow {
+    position: relative;
+    border-bottom: 8px solid white;
+}
+
+.bottom-arrow:after {
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    content: "";
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #79cc8c;
+}
