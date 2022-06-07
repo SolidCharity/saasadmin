@@ -75,5 +75,4 @@ urlpatterns = [
     path('about', frontend_views.display_about),
     path('contact', frontend_views.display_contact),
 
-
 ]

@@ -38,7 +38,6 @@ def customers(request, product):
             AND (sc.end_date is NULL or sc.end_date > current_timestamp)
             AND saas_instance.product_id = %s"""
 
-        
         cursor.execute(sql, [product.id,])
         result = cursor.fetchall()
 
@@ -207,7 +206,6 @@ def products(request):
 @login_required
 @staff_member_required
 def addproduct(request):
-
 
     if request.method == "POST":
         # request.POST is immutable, so make a copy
