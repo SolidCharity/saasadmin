@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
 import datetime
-from apps.core.models import SaasPlan, SaasProduct, SaasConfiguration
+from apps.core.models import SaasPlan, SaasProduct, SaasConfiguration, SaasInstance
 
 
 class PlanForm(forms.ModelForm):
@@ -35,4 +35,11 @@ class ConfigurationForm(forms.ModelForm):
     class Meta:
         model = SaasConfiguration
         fields = ("name", "value")
+
+class InstanceForm(forms.ModelForm):
+
+    class Meta:
+        model = SaasInstance
+        fields = ("custom_domain",)
+
 
