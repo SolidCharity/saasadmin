@@ -1,8 +1,13 @@
 {% load static %}
 {% load i18n %}
+{% load tags %}
 <html>
     <head>
-        <title>{%translate "SaaS Admin"%}</title>
+        {% if product %}
+        <title>{% get_brand request %}: {{product.name}}</title>
+        {% else %}
+        <title>{% get_brand request %}</title>
+        {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'Skeleton/css/normalize.css' %}">
         <link rel="stylesheet" href="{% static 'Skeleton/css/skeleton.css' %}">
@@ -16,7 +21,7 @@
     <body>
         {% if user.is_authenticated %}
         <nav class="topnav">
-            <a href="/">{%translate "SaaS Admin"%}</a>
+            <a href="{% get_main_url request %}">{% get_brand request %}</a>
             {% if user.is_staff %}
             <a class="left" href="/products">{%translate "Products"%}</a>
             {% if product %}
@@ -39,7 +44,7 @@
         </nav>
         {% else %}
         <nav class="topnav">
-            <a href="/">SaaS Admin</a>
+            <a href="{% get_main_url request %}">{% get_brand request %}</a>
             <a class="right" href="/accounts/login/">{%translate "Login"%}</a>
             <a class="right" href="/pricing">{%translate "Pricing"%}</a>
         </nav>

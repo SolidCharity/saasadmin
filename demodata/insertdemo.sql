@@ -92,4 +92,5 @@ INSERT INTO saas_contract ("id","start_date","end_date","latest_cancel_date","is
 INSERT INTO saas_configuration("id","name","value","value_de","value_en") VALUES
     (1,'about','','TODO insert about text in configurations',''),
     (2,'contact','','TODO insert contact form in configurations',''),
-    (3,'imprint','','TODO insert imprint text in configurations','');
+    (3,'imprint','','TODO insert imprint text in configurations',''),
+    (4,'brand','','SaasAdmin','');
