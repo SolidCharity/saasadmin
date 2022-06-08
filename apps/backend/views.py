@@ -197,11 +197,10 @@ def deleteplan(request, id):
 @login_required
 @staff_member_required
 def products(request):
-    products = SaasProduct.objects.all()
-    product = LogicProducts().get_product(request, False)
+    products = SaasProduct.objects.order_by('slug').all()
 
     return render(request,"products.html",
-            { 'products': products, 'product': product })
+            { 'products': products })
 
 @login_required
 @staff_member_required
