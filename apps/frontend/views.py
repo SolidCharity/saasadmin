@@ -27,10 +27,11 @@ def home(request):
 
     # if logged in customer => redirect frontend view
     customer = SaasCustomer.objects.filter(user=request.user).first()
-    if customer.last_name and customer.city and customer.street:
-        return redirect('/plan/current')
-    # customer should fill in the address details first
-    return redirect('/account')
+    if not customer:
+        # first login: need to create customer first
+        return redirect('/account')
+
+    return redirect('/plan/current')
 
 @login_required
 def account_view(request):
