@@ -12,7 +12,7 @@ class LogicProducts:
         elif 'product' in request.GET:
             products = SaasProduct.objects.filter(slug = request.GET['product'])
         else:
-            products = SaasProduct.objects.order_by('slug')
+            products = SaasProduct.objects
         if products.count() == 1:
             result = products.first()
         else:
@@ -29,6 +29,6 @@ class LogicProducts:
 
     def get_products(self, only_active = True):
         if only_active:
-            return SaasProduct.objects.filter(is_active=True)
+            return SaasProduct.objects.filter(is_active=True).order_by('slug')
         else:
-            return SaasProduct.objects.all()
+            return SaasProduct.objects.order_by('slug').all()
