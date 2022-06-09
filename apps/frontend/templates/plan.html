@@ -38,7 +38,7 @@
             {%endif%}
         {%endif%}
     </span>
-    <span class="pricing-date">{{plan.descr_caption}}</span>
+    <span class="pricing-date">{{plan.descr_caption|safe}}</span>
 </div>
 </div>
 </div> <!-- div.td -->
@@ -51,7 +51,7 @@
     {% if plan.is_public or selected_plan == plan.slug %}
     <div class="one-third column td">
         <div class="pricing-table-wrapper-0 pricing-table-wrapper">
-            <span class="pricing-subtitle">{{plan.descr_target}}</span>
+            <span class="pricing-subtitle">{{plan.descr_target|safe}}</span>
         </div>
     </div> <!-- div.td -->
     {% endif %}
