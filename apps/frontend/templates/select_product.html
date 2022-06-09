@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
+{% load tags %}
 
 {% block content %}
 
 <div class="container">
-    Select product:
+    <h2>{%translate "Available Products"%}<h2>
 
-    <ul>
-    {% for product in products %}
-        <li><a href="//{{product.slug}}.{{hostname}}/">{{product.name}}</a></li>
-    {% endfor %}
-    </ul>
-
+    <div class="tilegrid">
+        {% for product in products %}
+            <div class="tile"><a href="//{{product.slug}}.{% get_main_url request %}" class="button button-primary">{{product.name}}</a></div>
+        {% endfor %}
+    </div>
 
 </div>
 

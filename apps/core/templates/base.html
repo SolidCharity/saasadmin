@@ -1,48 +1,50 @@
 {% load static %}
 {% load i18n %}
+{% load tags %}
 <html>
     <head>
-        <title>{%translate "SaaS Admin"%}</title>
+        {% if product %}
+        <title>{% get_brand request %}: {{product.name}}</title>
+        {% else %}
+        <title>{% get_brand request %}</title>
+        {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{% static 'Skeleton/css/normalize.css' %}">
         <link rel="stylesheet" href="{% static 'Skeleton/css/skeleton.css' %}">
         <link rel="stylesheet" href="{% static 'css/skeleton-tabs.css' %}">
         <link rel="stylesheet" href="{% static 'css/style.css' %}">
         <link rel="stylesheet" href="{% static 'css/topnav.css' %}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-      
+        <script src="{% static 'fontawesomefree/js/all.min.js' %}"></script>
         <script src="{% static 'js/skeleton-tabs.js' %}"></script>
     </head>
     <body>
         {% if user.is_authenticated %}
         <nav class="topnav">
-            <a href="/">{%translate "SaaS Admin"%}</a>
+            <a href="//{% get_main_url request %}">{% get_brand request %}</a>
             {% if user.is_staff %}
-            <a class="left" href="/products">{%translate "Products"%}</a>
+            <a class="left {% get_topnav_active request '/backend/products' %}" href="/backend/products">{%translate "Products"%}</a>
             {% if product %}
-            <a class="left" href="/products/{{product.slug}}/dashboard">{{product.name}}</a>
-            <a class="left" href="/plans/{{product.slug}}/">{%translate "Plans"%}</a>
-            <a class="left" href="/instances/{{product.slug}}/">{%translate "Instances"%}</a>
-            <a class="left" href="/customers/{{product.slug}}/">{%translate "Customers"%}</a>
+            <a class="left {% get_topnav_active request '/products/' %}" href="/products/{{product.slug}}/dashboard">{{product.name}}</a>
+            <a class="left {% get_topnav_active request '/plans/' %}" href="/plans/{{product.slug}}/">{%translate "Plans"%}</a>
+            <a class="left {% get_topnav_active request '/instances/' %}" href="/instances/{{product.slug}}/">{%translate "Instances"%}</a>
+            <a class="left {% get_topnav_active request '/customers/' %}" href="/customers/{{product.slug}}/">{%translate "Customers"%}</a>
             {% endif %}
             {% else %}
-            <a class="left" href="/account">{%translate "Personal Details"%}</a>
-            <a class="left" href="/plan/current">{%translate "Selected Plan"%}</a>
-            <a class="left" href="/paymentmethod">{%translate "Payment Details"%}</a>
-            <a class="left" href="/contract">{%translate "Contract"%}</a>
-            <a class="left" href="/instance">{%translate "Instance Details"%}</a>
+            <a class="left {% get_topnav_active request '/account' %}" href="/account">{%translate "Personal Details"%}</a>
+            <a class="left {% get_topnav_active request '/plan/current' %}" href="/plan/current">{%translate "Selected Plan"%}</a>
+            <a class="left {% get_topnav_active request '/paymentmethod' %}" href="/paymentmethod">{%translate "Payment Details"%}</a>
+            <a class="left {% get_topnav_active request '/contract' %}" href="/contract">{%translate "Contract"%}</a>
+            <a class="left {% get_topnav_active request '/instance' %}" href="/instance">{%translate "Instance Details"%}</a>
             {% endif %}
             <a class="right" href="/accounts/logout/">{%translate "Logout"%}</a>
             {% if user.is_staff %}
-            <a class="right" href="/configurations/">{%translate "Configuration"%}</a>
+            <a class="right {% get_topnav_active request '/configurations/' %}" href="/configurations/">{%translate "Configuration"%}</a>
             {% endif %}
         </nav>
         {% else %}
         <nav class="topnav">
-            <a href="/">SaaS Admin</a>
+            <a href="//{% get_main_url request %}">{% get_brand request %}</a>
             <a class="right" href="/accounts/login/">{%translate "Login"%}</a>
-            <a class="right" href="https://github.com/solidcharity/saasadmin" target="_blank">{%translate "Fork me"%}</a>
-            <a class="right" href="/pricing" target="_blank">{%translate "Pricing"%}</a>
         </nav>
         {% endif %}
         {% block content %}
@@ -54,8 +56,10 @@
             -->
             <a class="right" href="/contact">{%translate "Contact"%}</a>
             <a class="right" href="/about">{%translate "About"%}</a>
-            <a class="left" href="https://github.com/solidcharity/saasadmin" target="_blank">{%translate "Fork me"%}</a>
         </nav>
-        
+        <div class="center">
+            <a href="https://github.com/solidcharity/saasadmin" target="_blank">{%translate "Powered by SaasAdmin and Django"%}</a>
+        </div>
+
     </body>
 </html>

@@ -10,8 +10,11 @@ class InstanceSerializer(serializers.HyperlinkedModelSerializer):
     quota_app = serializers.SerializerMethodField('get_quota_app')
 
     def get_instance_url(self, instance):
-      prod = instance.product
-      return prod.instance_url.replace('#Prefix', prod.prefix).replace('#Identifier', instance.identifier)
+        if instance.custom_domain:
+            return f"https://{instance.custom_domain}"
+        else:
+            prod = instance.product
+            return prod.instance_url.replace('#Prefix', prod.prefix).replace('#Identifier', instance.identifier)
 
     def get_prefix(self, instance):
       return instance.product.prefix
@@ -30,4 +33,4 @@ class InstanceSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = SaasInstance
-        fields = ('identifier', 'hostname', 'pacuser', 'activation_token', 'db_password', 'initial_password', 'first_port', 'last_port', 'status', 'instance_url', 'prefix', 'password1', 'password2', 'django_secret_key', 'quota_storage', 'quota_app')
+        fields = ('identifier', 'hostname', 'pacuser', 'activation_token', 'db_password', 'initial_password', 'first_port', 'last_port', 'status', 'instance_url', 'prefix', 'password1', 'password2', 'django_secret_key', 'quota_storage', 'quota_app', 'custom_domain')

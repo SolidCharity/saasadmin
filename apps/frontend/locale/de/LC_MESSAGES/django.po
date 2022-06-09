@@ -338,59 +338,63 @@ msgstr "beliebt"
 msgid "Register"
 msgstr "Registrieren"
 
-#: apps/frontend/views.py:66 apps/frontend/views.py:130
+#: apps/frontend/templates/select_product.html:9
+msgid "Available Products"
+msgstr "Angebotene Produkte"
+
+#: apps/frontend/views.py:72 apps/frontend/views.py:136
 msgid "Changes Saved"
 msgstr "Änderungen gespeichert"
 
-#: apps/frontend/views.py:115
+#: apps/frontend/views.py:121
 msgid "Please specify account owner and IBAN"
 msgstr "Bitte den Kontoinhaber und die IBAN angeben"
 
-#: apps/frontend/views.py:140
+#: apps/frontend/views.py:146
 msgid "year"
 msgstr "Jahr"
 
-#: apps/frontend/views.py:142 apps/frontend/views.py:148
+#: apps/frontend/views.py:148 apps/frontend/views.py:154
 msgid "month"
 msgstr "Monat"
 
-#: apps/frontend/views.py:144
+#: apps/frontend/views.py:150
 msgid "months"
 msgstr "Monate"
 
-#: apps/frontend/views.py:150
+#: apps/frontend/views.py:156
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/frontend/views.py:152
+#: apps/frontend/views.py:158
 msgid "day"
 msgstr "Tag"
 
-#: apps/frontend/views.py:154
+#: apps/frontend/views.py:160
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:188
+#: apps/frontend/views.py:194
 msgid "forever"
 msgstr "immer"
 
-#: apps/frontend/views.py:194
+#: apps/frontend/views.py:200
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:196
+#: apps/frontend/views.py:202
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:198
+#: apps/frontend/views.py:204
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/frontend/views.py:259
+#: apps/frontend/views.py:265
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/frontend/views.py:284
+#: apps/frontend/views.py:290
 msgid "Error: no instance has been assigned yet."
 msgstr "Fehler: es wurde noch keine Instanz zugeordnet."
 

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'modeltranslation',
     'rest_framework',
     'rest_framework.authtoken',
+    'fontawesomefree',
     'apps.core',
     'apps.api',
     'apps.backend',

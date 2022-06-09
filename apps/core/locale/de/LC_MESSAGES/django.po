@@ -159,7 +159,7 @@ msgstr "ist Favorit"
 
 #: apps/core/models.py:73
 msgid "is public"
-msgstr "ist Favorit"
+msgstr "ist öffentlich"
 
 #: apps/core/models.py:75
 msgid "Period Length in Months"
@@ -187,7 +187,7 @@ msgstr "Beschreibung Zielgruppe"
 
 #: apps/core/models.py:81
 msgid "Description Caption"
-msgstr "Beschreibung Bildunterschrift"
+msgstr "Beschreibung Überschrift"
 
 #: apps/core/models.py:82
 msgid "Description 1"
@@ -207,11 +207,11 @@ msgstr "Beschreibung 4"
 
 #: apps/core/models.py:86
 msgid "Quota for Storage"
-msgstr "Kontingent für SSD Speicher"
+msgstr "Kontingent für HDD Speicher (Storage)"
 
 #: apps/core/models.py:87
 msgid "Quota for Application"
-msgstr "Kontingent für HDD Speicher"
+msgstr "Kontingent für SSD Speicher (Anwendung)"
 
 #: apps/core/models.py:94
 msgid "identifier"
@@ -317,86 +317,66 @@ msgstr "SEPA-Mandat"
 msgid "Date of SEPA Mandate"
 msgstr "Datum des SEPA-Mandats"
 
-#: apps/core/templates/base.html:5 apps/core/templates/base.html:19
-msgid "SaaS Admin"
-msgstr "SaaS Admin"
-
-#: apps/core/templates/base.html:21
+#: apps/core/templates/base.html:25
 msgid "Products"
 msgstr "Produkte"
 
-#: apps/core/templates/base.html:24
+#: apps/core/templates/base.html:28
 msgid "Plans"
 msgstr "Angebote"
 
-#: apps/core/templates/base.html:25
+#: apps/core/templates/base.html:29
 msgid "Instances"
 msgstr "Instanzen"
 
-#: apps/core/templates/base.html:26
+#: apps/core/templates/base.html:30
 msgid "Customers"
 msgstr "Kunden"
 
-#: apps/core/templates/base.html:29
+#: apps/core/templates/base.html:33
 msgid "Personal Details"
 msgstr "Persönliche Daten"
 
-#: apps/core/templates/base.html:30
+#: apps/core/templates/base.html:34
 msgid "Selected Plan"
 msgstr "Ausgewähltes Angebot"
 
-#: apps/core/templates/base.html:31
+#: apps/core/templates/base.html:35
 msgid "Payment Details"
 msgstr "Zahlungsweise"
 
-#: apps/core/templates/base.html:32
+#: apps/core/templates/base.html:36
 msgid "Contract"
 msgstr "Vertrag"
 
-#: apps/core/templates/base.html:33
+#: apps/core/templates/base.html:37
 msgid "Instance Details"
 msgstr "Zugangsdaten"
 
-#: apps/core/templates/base.html:35
+#: apps/core/templates/base.html:39
 msgid "Logout"
 msgstr "Abmelden"
 
-#: apps/core/templates/base.html:37
+#: apps/core/templates/base.html:41
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: apps/core/templates/base.html:43
+#: apps/core/templates/base.html:47
 msgid "Login"
 msgstr "Anmelden"
 
-#: apps/core/templates/base.html:44 apps/core/templates/base.html:57
-msgid "Fork me"
-msgstr "Zum Code"
-
-#: apps/core/templates/base.html:45
-msgid "Pricing"
-msgstr "Preise"
-
-#: apps/core/templates/base.html:51
+#: apps/core/templates/base.html:53
 msgid "Imprint"
 msgstr "Impressum"
 
-#: apps/core/templates/base.html:55
+#: apps/core/templates/base.html:57
 msgid "Contact"
 msgstr "Kontakt"
 
-#: apps/core/templates/base.html:56
+#: apps/core/templates/base.html:58
 msgid "About"
 msgstr "Über uns"
 
-#~ msgid "street"
-#~ msgstr "Straße und Hausnummer"
-
-#~ msgid "post_code"
-#~ msgstr "PLZ"
-
-#~ msgid "city"
-#~ msgstr "Ort"
-
-#~ msgid "payment_details"
-#~ msgstr "Zahlungsweise"
+#: apps/core/templates/base.html:61
+msgid "Powered by SaasAdmin and Django"
+msgstr "Betrieben mit SaasAdmin und Django"
