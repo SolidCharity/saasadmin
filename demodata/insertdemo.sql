@@ -85,9 +85,9 @@ INSERT INTO saas_instance ("id","product_id","identifier","hostname","pacuser","
 	(5,1,'119287','host0002','xyz01','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','ctsw@yenna%tczw4+^c82oz6o@n2dxtvr0aty&fi(-mm6i4!ic',''),
 	(6,1,'239399','host0002','xyz01','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','h=q&drbyf95o1lc5fk2r+&+i#+&2-n)tj&r!xg%)=hg+4ne2_n','');
 INSERT INTO saas_contract ("id","start_date","end_date","latest_cancel_date","is_auto_renew","is_confirmed","customer_id","instance_id","plan_id","payment_method") VALUES
-	(1,'2021-06-05','2021-07-31','2021-07-14',true,true,1,1,2,'SEPA_TRANSFER'),
-	(2,'2021-06-01','2021-07-31','2021-07-14',true,true,2,2,3,'SEPA_TRANSFER'),
-	(3,'2021-06-01','2021-07-31','2021-07-14',true,true,3,3,3,'SEPA_TRANSFER'),
+	(1,'2021-06-05','2023-07-31','2023-07-14',true,true,1,1,2,'SEPA_TRANSFER'),
+	(2,'2021-06-01','2023-07-31','2023-07-14',true,true,2,2,3,'SEPA_TRANSFER'),
+	(3,'2021-06-01','2023-07-31','2023-07-14',true,true,3,3,3,'SEPA_TRANSFER'),
 	(4,'2021-06-01','2021-07-31','2021-07-14',true,true,4,5,3,'SEPA_TRANSFER');
 INSERT INTO saas_configuration("id","name","value","value_de","value_en") VALUES
     (1,'about','','TODO insert about text in configurations',''),
