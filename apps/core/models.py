@@ -85,6 +85,9 @@ class SaasPlan (models.Model):
     descr_4 = models.CharField(_("Description 4"), max_length=200, default = "TODO")
     quota_storage = models.CharField(_("Quota for Storage"), max_length=20, default = "0M")
     quota_app = models.CharField(_("Quota for Application"), max_length=20, default = "500M")
+    cost_for_storage = models.DecimalField(_("Cost for Storage"), max_digits=10, decimal_places= 2, default=0)
+    additional_storage_size = models.CharField(_("Additional Storage Size"), max_length=10, default = "")
+
 
     class Meta:
         db_table = "saas_plan"
@@ -107,6 +110,7 @@ class SaasInstance(models.Model):
     last_port = models.IntegerField(_("Last Port"), default=-1)
     activation_token = models.CharField(max_length=64, null=True)
     custom_domain = models.CharField(_("Custom Domain"),max_length=250, default = "")
+    additional_storage = models.IntegerField(_("Additional Storage"), default = 0)
 
     # possible values for status
     IN_PREPARATION, READY, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \

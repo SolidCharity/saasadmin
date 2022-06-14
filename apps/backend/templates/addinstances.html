@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block content %}
 <div class="form-box">
     <form method="POST" class="post-form" action="/instances/{{product.slug}}/add">
@@ -27,26 +27,26 @@
         <div class="form-group row">
           <label class="col-sm-1 col-form-label"></label>
           <div class="col-sm-4">
-          <h3>Add Instances</h3>
+          <h3>{%translate "Add Instances"%}</h3>
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Hostname:</label>
+          <label class="col-sm-2 col-form-label">{%translate "Hostname"%}:</label>
           <div class="col-sm-4">
             {{ form.hostname }}
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Pac User:</label>
+          <label class="col-sm-2 col-form-label">{%translate "Pac User"%} :</label>
           <div class="col-sm-4">
             {{ form.pacuser }}
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-sm-2 col-form-label">Number of Instances:</label>
+          <label class="col-sm-2 col-form-label">{%translate "Number of Instances"%}:</label>
           <div class="col-sm-4">
             {{ form.count }}
           </div>
@@ -54,7 +54,7 @@
 
         <div class="form-group row">
           <div class="col-sm-4">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="button button-primary">{%translate "Submit"%}</button>
           </div>
         </div>
 

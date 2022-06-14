@@ -289,44 +289,45 @@ msgstr "Siehe"
 msgid "Website of"
 msgstr "Webseite von"
 
-#: apps/frontend/templates/plan.html:19
+#: apps/frontend/templates/plan.html:20
 msgid "selected"
 msgstr "ausgewählt"
 
-#: apps/frontend/templates/plan.html:25 apps/frontend/templates/pricing.html:26
+#: apps/frontend/templates/plan.html:26 apps/frontend/templates/pricing.html:26
 msgid "free"
 msgstr "Kostenlos"
 
-#: apps/frontend/templates/plan.html:26 apps/frontend/templates/pricing.html:27
+#: apps/frontend/templates/plan.html:27 apps/frontend/templates/pricing.html:27
 msgid "for forever"
 msgstr "für immer"
 
-#: apps/frontend/templates/plan.html:27 apps/frontend/templates/pricing.html:28
+#: apps/frontend/templates/plan.html:28 apps/frontend/templates/pricing.html:28
 msgid "for one day"
 msgstr "für einen Tag"
 
-#: apps/frontend/templates/plan.html:28 apps/frontend/templates/pricing.html:29
+#: apps/frontend/templates/plan.html:29 apps/frontend/templates/pricing.html:29
 #, python-format
 msgid "for %(periodLength)s days"
 msgstr "für %(periodLength)s Tage"
 
-#: apps/frontend/templates/plan.html:34 apps/frontend/templates/pricing.html:35
+#: apps/frontend/templates/plan.html:35 apps/frontend/templates/pricing.html:35
 msgid "per month"
 msgstr "pro Monat"
 
-#: apps/frontend/templates/plan.html:35 apps/frontend/templates/pricing.html:36
+#: apps/frontend/templates/plan.html:36 apps/frontend/templates/pricing.html:36
 msgid "per quarter"
 msgstr "pro Quartal"
 
-#: apps/frontend/templates/plan.html:36 apps/frontend/templates/pricing.html:37
+#: apps/frontend/templates/plan.html:37 apps/frontend/templates/pricing.html:37
 msgid "per year"
 msgstr "pro Jahr"
 
-#: apps/frontend/templates/plan.html:59
+#: apps/frontend/templates/plan.html:93
 msgid "Choose"
 msgstr "Auswählen"
 
-#: apps/frontend/templates/plan.html:68 apps/frontend/templates/pricing.html:70
+#: apps/frontend/templates/plan.html:104
+#: apps/frontend/templates/pricing.html:104
 msgid "All prices already include the VAT."
 msgstr "Alle Preise verstehen sich inkl. Umsatzsteuer."
 
@@ -334,7 +335,7 @@ msgstr "Alle Preise verstehen sich inkl. Umsatzsteuer."
 msgid "popular"
 msgstr "beliebt"
 
-#: apps/frontend/templates/pricing.html:61
+#: apps/frontend/templates/pricing.html:93
 msgid "Register"
 msgstr "Registrieren"
 
@@ -342,59 +343,59 @@ msgstr "Registrieren"
 msgid "Available Products"
 msgstr "Angebotene Produkte"
 
-#: apps/frontend/views.py:72 apps/frontend/views.py:136
+#: apps/frontend/views.py:73 apps/frontend/views.py:137
 msgid "Changes Saved"
 msgstr "Änderungen gespeichert"
 
-#: apps/frontend/views.py:121
+#: apps/frontend/views.py:122
 msgid "Please specify account owner and IBAN"
 msgstr "Bitte den Kontoinhaber und die IBAN angeben"
 
-#: apps/frontend/views.py:146
+#: apps/frontend/views.py:147
 msgid "year"
 msgstr "Jahr"
 
-#: apps/frontend/views.py:148 apps/frontend/views.py:154
+#: apps/frontend/views.py:149 apps/frontend/views.py:155
 msgid "month"
 msgstr "Monat"
 
-#: apps/frontend/views.py:150
+#: apps/frontend/views.py:151
 msgid "months"
 msgstr "Monate"
 
-#: apps/frontend/views.py:156
+#: apps/frontend/views.py:157
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/frontend/views.py:158
+#: apps/frontend/views.py:159
 msgid "day"
 msgstr "Tag"
 
-#: apps/frontend/views.py:160
+#: apps/frontend/views.py:161
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:194
+#: apps/frontend/views.py:195
 msgid "forever"
 msgstr "immer"
 
-#: apps/frontend/views.py:200
+#: apps/frontend/views.py:201
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:202
+#: apps/frontend/views.py:203
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:204
+#: apps/frontend/views.py:205
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/frontend/views.py:265
+#: apps/frontend/views.py:266
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/frontend/views.py:290
+#: apps/frontend/views.py:291
 msgid "Error: no instance has been assigned yet."
 msgstr "Fehler: es wurde noch keine Instanz zugeordnet."
 
