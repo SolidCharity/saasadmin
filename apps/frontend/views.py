@@ -93,14 +93,19 @@ def plan_select(request, plan_id):
             return show_paymentmethod(request, product, current_plan, new_plan)
         else:
             return show_contract(request, product, current_plan, new_plan)
-
+    storage={}
+    for plan in plans:
+        storage[plan.id] = {}
+        for x in range(0, 10):
+             storage[plan.id][x]=f"{plan.additional_storage_size*x} GB"
+    print(storage)
     # load booked plan from the database
     if current_plan:
         plan_id = current_plan.slug
     else:
         plan_id = ''
 
-    return render(request, 'plan.html', {'product': product, 'plans': plans, 'selected_plan': plan_id})
+    return render(request, 'plan.html', {'product': product, 'plans': plans, 'storage':storage ,'selected_plan': plan_id})
 
 @login_required
 def paymentmethod_select(request):

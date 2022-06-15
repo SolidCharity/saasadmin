@@ -89,6 +89,11 @@
 {% if plan.is_public or selected_plan == plan.slug %}
 <div class="one-third column td">
     <div class="pricing-table-wrapper-0 pricing-table-wrapper">
+    <select name="additional_storage">
+        {%for st in storage.keys()[plan.id] %}
+            <option value="{{st}}" {%if st == plan.additional_storage%} selected{% endif %}>{{storage[plan.id][st]}}</option>
+        {% endfor %}
+    </select>
     <div class="pricing-btn">
         <a href="/plan/{{plan.slug}}" id="changebtn_test" class="customize-unpreviewable disabled">{% translate "Choose" %}</a>
     </div>
