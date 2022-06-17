@@ -100,7 +100,8 @@ def plan_select(request, plan_id):
             storage[plan.id] = {}
             for x in range(0, 10):
                 AdditionalSizeInGB = int(plan.additional_storage_size.replace("G",""))*x
-                storage[plan.id][x]=f"{AdditionalSizeInGB} GB"
+                additional_cost= plan.cost_for_storage*x
+                storage[plan.id][x]=f"{AdditionalSizeInGB} GB kostet {additional_cost} €"
 
     # load booked plan from the database
     if current_plan:
