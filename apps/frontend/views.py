@@ -76,6 +76,52 @@ def account_update(request):
 
 
 @login_required
+def display_plans(request):
+    product = LogicProducts().get_product(request, False)
+    if product is None:
+        return redirect('/products')
+    current_contract = LogicContracts().get_current_contract(request, product)
+    if current_contract:
+        current_plan = current_contract.plan
+    else:
+        current_plan = None
+    if current_plan is None and not product.is_active:
+        product = None
+    plans = LogicPlans().get_plans(product)
+
+    storage={}
+    for plan in plans:
+        if plan.cost_for_storage:
+            storage[plan.id] = {}
+            IncludedStorageSizeInGB = plan.get_included_storage_gb()
+            storage[plan.id][0] = _("{} GB is included in price").format(IncludedStorageSizeInGB)
+            for x in range(1, 10):
+                AdditionalSizeInGB = plan.get_additional_storage_gb()*x
+                additional_cost= plan.cost_for_storage*x
+
+                if plan.currency_code == "EUR":
+                    currency_symbol = '€'
+                else:
+                    currency_symbol = plan.currency_code
+
+                storage[plan.id][AdditionalSizeInGB]=_("+ {} GB costs +{} {}").format(AdditionalSizeInGB, additional_cost, currency_symbol)
+            storage[plan.id][999] = _("Contact us if you need more")
+
+    if current_contract:
+        selected_additional_storage = current_contract.instance.additional_storage
+    else:
+        selected_additional_storage = None
+
+    # load booked plan from the database
+    if current_plan:
+        plan_id = current_plan.slug
+    else:
+        plan_id = ''
+
+    return render(request, 'plan.html', {'product': product, 'plans': plans, 'storage':storage ,'selected_plan': plan_id, 'selected_additional_storage': selected_additional_storage})
+
+
+@login_required
 def plan_select(request, plan_id):
     product = LogicProducts().get_product(request, False)
     if product is None:
@@ -85,43 +131,38 @@ def plan_select(request, plan_id):
         product = None
     plans = LogicPlans().get_plans(product)
 
-    # the customer has selected a plan
-    if plan_id != 'current':
-        # check if this is a valid plan
-        new_plan = LogicPlans().get_plan(product, plan_id)
-        if new_plan.cost_per_period > 0:
-            return show_paymentmethod(request, product, current_plan, new_plan)
-        else:
-            return show_contract(request, product, current_plan, new_plan)
-
-    storage={}
-    for plan in plans:
-        if plan.cost_for_storage:
-            storage[plan.id] = {}
-            for x in range(0, 10):
-                AdditionalSizeInGB = int(plan.additional_storage_size.replace("G",""))*x
-                additional_cost= plan.cost_for_storage*x
-                storage[plan.id][x]=f"{AdditionalSizeInGB} GB kostet {additional_cost} €"
-
-    # load booked plan from the database
-    if current_plan:
-        plan_id = current_plan.slug
+    if "additional_storage" in request.POST:
+        additional_storage = request.POST["additional_storage"]
     else:
-        plan_id = ''
+        additional_storage = 0
+    if additional_storage == "999":
+        return display_plans(request)
 
-    return render(request, 'plan.html', {'product': product, 'plans': plans, 'storage':storage ,'selected_plan': plan_id})
+    # check if this is a valid plan
+    new_plan = LogicPlans().get_plan(product, plan_id)
+
+    if new_plan.cost_per_period > 0:
+        return show_paymentmethod(request, product, current_plan, new_plan, additional_storage=additional_storage)
+    else:
+        return show_contract(request, product, current_plan, new_plan, additional_storage)
+
 
 @login_required
 def paymentmethod_select(request):
     product = LogicProducts().get_product(request, False)
     customer = SaasCustomer.objects.filter(user=request.user).first()
+    contract = LogicContracts().get_contract(customer, product)
 
     if request.method == "POST":
+        if "additional_storage" in request.POST:
+            additional_storage = int(request.POST["additional_storage"])
+        else:
+            additional_storage = 0
+
         values = request.POST.copy()
-        contract = LogicContracts().get_contract(customer, product)
         new_plan = LogicPlans().get_plan(product, values["plan"])
         if not contract:
-            contract = LogicContracts().get_new_contract(customer, product, new_plan)
+            contract = LogicContracts().get_new_contract(customer, product, new_plan, 0)
 
         contract.payment_method = values["payment_method"]
         contract.account_owner = values['account_owner']
@@ -129,7 +170,7 @@ def paymentmethod_select(request):
         if contract.payment_method == "SEPA_DIRECTDEBIT":
             if not contract.account_owner or not contract.account_iban:
                 error = _("Please specify account owner and IBAN")
-                return show_paymentmethod(request, product, None, None, error)
+                return show_paymentmethod(request, product, None, None, additional_storage=additional_storage, errormessage=error)
 
             contract.sepa_mandate_date = datetime.today()
             # TODO: something with prefixinstance_idyyyymmdd?
@@ -139,16 +180,16 @@ def paymentmethod_select(request):
             contract.sepa_mandate = ''
         contract.save()
 
-        if not contract.is_confirmed or contract.plan.slug != new_plan.slug:
-            return show_contract(request, product, contract.plan, new_plan)
+        if not contract.is_confirmed or contract.plan.slug != new_plan.slug or contract.instance.additional_storage != additional_storage:
+            return show_contract(request, product, contract.plan, new_plan, additional_storage)
 
         # confirm to user that storing worked
-        return show_paymentmethod(request, product, contract.plan, None, successmessage = _("Changes Saved"))
+        return show_paymentmethod(request, product, contract.plan, None, additional_storage=additional_storage, successmessage = _("Changes Saved"))
 
     current_plan = LogicContracts().get_current_plan(request, product)
     if current_plan is None:
         return redirect('/plan/current')
-    return show_paymentmethod(request, product, current_plan, None)
+    return show_paymentmethod(request, product, current_plan, None, additional_storage=contract.instance.additional_storage)
 
 
 def readablePeriodsInMonths(periodLength):
@@ -170,7 +211,7 @@ def readablePeriodsInDays(periodLength):
         return str(periodLength) + " " + _("days")
 
 
-def show_paymentmethod(request, product, current_plan, new_plan, errormessage="", successmessage=""):
+def show_paymentmethod(request, product, current_plan, new_plan, additional_storage=0, errormessage="", successmessage=""):
     if new_plan is None:
         new_plan = current_plan
     new_contract = new_plan != current_plan
@@ -179,19 +220,20 @@ def show_paymentmethod(request, product, current_plan, new_plan, errormessage=""
     contract = LogicContracts().get_contract(customer, product)
     if not contract:
         # get new contract from logic
-        contract = LogicContracts().get_new_contract(customer, product, new_plan)
+        contract = LogicContracts().get_new_contract(customer, product, new_plan, 0)
 
     return render(request, 'payment.html',
         {'contract': contract,
         'is_new_contract': new_contract,
         'plan': new_plan,
         'contract': contract,
+        'additional_storage': additional_storage,
         'no_payment': new_plan.cost_per_period == 0,
         'successmessage': successmessage,
         'errormessage': errormessage})
 
 
-def show_contract(request, product, current_plan, new_plan):
+def show_contract(request, product, current_plan, new_plan, additional_storage):
     if new_plan is None:
         new_plan = current_plan
     customer = SaasCustomer.objects.filter(user=request.user).first()
@@ -212,15 +254,23 @@ def show_contract(request, product, current_plan, new_plan):
         periodLengthExtension = _("another quarter")
     elif new_plan.period_length_in_months == 12:
         periodLengthExtension = _("another year")
-    isNewOrder = current_plan is None or current_plan.slug != new_plan.slug or contract.is_confirmed == False
+    isNewOrder = (current_plan is None
+        or current_plan.slug != new_plan.slug
+        or contract.instance.additional_storage != additional_storage
+        or contract.is_confirmed == False)
     canCancelContract = not isNewOrder and contract.is_confirmed and contract.is_auto_renew
     noticePeriod = readablePeriodsInDays(new_plan.notice_period_in_days)
     if not contract:
         # get new contract from logic
-        contract = LogicContracts().get_new_contract(customer, product, new_plan)
+        contract = LogicContracts().get_new_contract(customer, product, new_plan, 0)
     else:
         # calculate new dates for this new plan; does not save the modified contract
         contract = LogicContracts().modify_contract(customer, product, new_plan)
+
+    if additional_storage:
+        additional_storage_cost = int(additional_storage)/new_plan.get_additional_storage_gb() * float(new_plan.cost_for_storage)
+    else:
+        additional_storage_cost = 0
 
     return render(request, 'contract.html',
         {'product': product,
@@ -231,6 +281,8 @@ def show_contract(request, product, current_plan, new_plan):
         'is_unlimited_test': isUnlimitedTest,
         'can_cancel_contract': canCancelContract,
         'payment_invoice': payment_invoice,
+        'additional_storage': additional_storage,
+        'additional_storage_cost': additional_storage_cost,
         'noticePeriod': noticePeriod,
         'periodLength': periodLength,
         'periodLengthExtension': periodLengthExtension})
@@ -243,7 +295,7 @@ def contract_view(request):
     if not contract:
         return redirect("/plan/current")
 
-    return show_contract(request, product, contract.plan, None)
+    return show_contract(request, product, contract.plan, None, contract.instance.additional_storage)
 
 @login_required
 def contract_subscribe(request, product_id, plan_id):
@@ -255,6 +307,11 @@ def contract_subscribe(request, product_id, plan_id):
     if not plan:
         raise Exception('invalid plan')
 
+    if "additional_storage" in request.POST:
+        additional_storage = request.POST["additional_storage"]
+    else:
+        additional_storage = 0
+
     contract = LogicContracts().get_contract(customer, product)
     if contract and contract.is_confirmed:
 
@@ -262,12 +319,18 @@ def contract_subscribe(request, product_id, plan_id):
         contract = LogicContracts().modify_contract(customer, product, plan)
         contract.save()
 
+        if additional_storage:
+            instance = contract.instance
+            if instance.additional_storage != additional_storage:
+                instance.additional_storage = additional_storage
+                instance.save()
+
         # redirect to instance details page
         return redirect('/instance')
 
     else:
         # assign a new instance
-        if LogicCustomers().assign_instance(customer, product, plan):
+        if LogicCustomers().assign_instance(customer, product, plan, additional_storage):
             # redirect to instance details page
             return redirect('/instance')
         else:
@@ -287,7 +350,7 @@ def contract_cancel(request, product_id):
         contract.save()
 
     # show cancelled contract
-    return show_contract(request, product, plan, None)
+    return show_contract(request, product, plan, None, None)
 
 @login_required
 def instance_view(request):

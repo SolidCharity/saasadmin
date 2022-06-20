@@ -15,7 +15,7 @@
 
           <form method="POST" class="post-form" action="/contract/add/{{product.slug}}/{{plan.slug}}">
           {% csrf_token %}
-
+          <input type="hidden" name="additional_storage" value="{{additional_storage}}">
           <div class="center-item-row">
           {%if is_unlimited_test%}
           <span>
@@ -54,7 +54,7 @@
           </div>
 
           <div>{%translate "To be paid"%}</div>
-          <div class='withborder'>{{plan.cost_per_period}} {{plan.currency_code}} {%translate "per"%} {{periodLength}}</div>
+          <div class='withborder'>{{plan.cost_per_period|add:additional_storage_cost }} {{plan.currency_code}} {%translate "per"%} {{periodLength}}</div>
           {%endif%}
 
           <div>{%translate "Service Period"%}</div>

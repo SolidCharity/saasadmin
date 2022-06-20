@@ -170,6 +170,15 @@ div.td .pricing-list-wrapper .pricing-list {
     padding-bottom: 20px;
 }
 
+#spacious_pricing_table_widget-5 .pricing-btn button {
+     background: #79cc8c;
+}
+
+#spacious_pricing_table_widget-5 .additional_storage {
+    width: 100%;
+}
+
+
 .bottom-arrow {
     position: relative;
     border-bottom: 8px solid white;

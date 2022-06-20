@@ -25,6 +25,7 @@
           {% csrf_token %}
 
           <input type="hidden" name="plan" value="{{plan.slug}}">
+          <input type="hidden" name="additional_storage" value="{{additional_storage}}">
 
           <!-- payment options -->
           <div class="center-item-row">

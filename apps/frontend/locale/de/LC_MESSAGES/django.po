@@ -247,37 +247,37 @@ msgstr "Zahlungsweise"
 msgid "Your current contract is for free, there is no payment."
 msgstr "Ihr aktueller Vertrag ist kostenlos, es gibt keine Zahlungen."
 
-#: apps/frontend/templates/payment.html:31
+#: apps/frontend/templates/payment.html:32
 msgid "Please choose how you want to pay the invoice:"
 msgstr "Bitte wählen Sie, wie Sie die Rechnung bezahlen wollen:"
 
-#: apps/frontend/templates/payment.html:34
+#: apps/frontend/templates/payment.html:35
 msgid "You transfer the money via SEPA"
 msgstr "Sie überweisen das Geld mittels SEPA Banküberweisung oder Dauerauftrag"
 
-#: apps/frontend/templates/payment.html:37
+#: apps/frontend/templates/payment.html:38
 msgid "You allow us to debit your bank account via SEPA Direct Debit"
 msgstr ""
 "Sie geben uns eine Einzugsermächtigung, damit wir den Betrag per SEPA "
 "Lastschrift einziehen können"
 
-#: apps/frontend/templates/payment.html:46
+#: apps/frontend/templates/payment.html:47
 msgid "Account Owner"
 msgstr "Kontoinhaber"
 
-#: apps/frontend/templates/payment.html:48
+#: apps/frontend/templates/payment.html:49
 msgid "Account IBAN"
 msgstr "IBAN des Kontos"
 
-#: apps/frontend/templates/payment.html:54
+#: apps/frontend/templates/payment.html:55
 msgid "You transfer the money via Paypal"
 msgstr "Sie übermitteln das Geld über Paypal"
 
-#: apps/frontend/templates/payment.html:61
+#: apps/frontend/templates/payment.html:62
 msgid "Confirm and Continue to next page"
 msgstr "Bestätigen und zur nächsten Seite gehen"
 
-#: apps/frontend/templates/payment.html:63
+#: apps/frontend/templates/payment.html:64
 msgid "Confirm Payment Method"
 msgstr "Zahlungsweise bestätigen"
 
@@ -322,11 +322,15 @@ msgstr "pro Quartal"
 msgid "per year"
 msgstr "pro Jahr"
 
-#: apps/frontend/templates/plan.html:93
+#: apps/frontend/templates/plan.html:95
+msgid "Additional Storage:"
+msgstr "Zusätzlicher Speicher:"
+
+#: apps/frontend/templates/plan.html:112
 msgid "Choose"
 msgstr "Auswählen"
 
-#: apps/frontend/templates/plan.html:104
+#: apps/frontend/templates/plan.html:124
 #: apps/frontend/templates/pricing.html:104
 msgid "All prices already include the VAT."
 msgstr "Alle Preise verstehen sich inkl. Umsatzsteuer."
@@ -343,59 +347,71 @@ msgstr "Registrieren"
 msgid "Available Products"
 msgstr "Angebotene Produkte"
 
-#: apps/frontend/views.py:73 apps/frontend/views.py:137
+#: apps/frontend/views.py:73 apps/frontend/views.py:187
 msgid "Changes Saved"
 msgstr "Änderungen gespeichert"
 
-#: apps/frontend/views.py:122
+#: apps/frontend/views.py:97
+msgid "{} GB is included in price"
+msgstr "{} GB sind im Preis inbegriffen"
+
+#: apps/frontend/views.py:107
+msgid "+ {} GB costs +{} {}"
+msgstr "+ {} GB kostet +{} {}"
+
+#: apps/frontend/views.py:108
+msgid "Contact us if you need more"
+msgstr "Mehr gewünscht? Bitte melden!"
+
+#: apps/frontend/views.py:172
 msgid "Please specify account owner and IBAN"
 msgstr "Bitte den Kontoinhaber und die IBAN angeben"
 
-#: apps/frontend/views.py:147
+#: apps/frontend/views.py:197
 msgid "year"
 msgstr "Jahr"
 
-#: apps/frontend/views.py:149 apps/frontend/views.py:155
+#: apps/frontend/views.py:199 apps/frontend/views.py:205
 msgid "month"
 msgstr "Monat"
 
-#: apps/frontend/views.py:151
+#: apps/frontend/views.py:201
 msgid "months"
 msgstr "Monate"
 
-#: apps/frontend/views.py:157
+#: apps/frontend/views.py:207
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/frontend/views.py:159
+#: apps/frontend/views.py:209
 msgid "day"
 msgstr "Tag"
 
-#: apps/frontend/views.py:161
+#: apps/frontend/views.py:211
 msgid "days"
 msgstr "Tage"
 
-#: apps/frontend/views.py:195
+#: apps/frontend/views.py:246
 msgid "forever"
 msgstr "immer"
 
-#: apps/frontend/views.py:201
+#: apps/frontend/views.py:252
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/frontend/views.py:203
+#: apps/frontend/views.py:254
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/frontend/views.py:205
+#: apps/frontend/views.py:256
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/frontend/views.py:266
+#: apps/frontend/views.py:338
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/frontend/views.py:291
+#: apps/frontend/views.py:363
 msgid "Error: no instance has been assigned yet."
 msgstr "Fehler: es wurde noch keine Instanz zugeordnet."
 

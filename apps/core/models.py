@@ -92,6 +92,22 @@ class SaasPlan (models.Model):
     class Meta:
         db_table = "saas_plan"
 
+
+    def get_included_storage_gb(self):
+        if not self.quota_storage:
+            return 0
+        if not self.quota_storage.endswith("G"):
+            raise Exception("Expected trailing G for quota storage")
+        return int(self.quota_storage.replace("G",""))
+
+
+    def get_additional_storage_gb(self):
+        if not self.additional_storage_size:
+            return 0
+        if not self.additional_storage_size.endswith("G"):
+            raise Exception("Expected trailing G for additional storage size")
+        return int(self.additional_storage_size.replace("G",""))
+
 # this is the saas instance rented by the customer
 class SaasInstance(models.Model):
     identifier = models.CharField(_("identifier"), max_length=16)
