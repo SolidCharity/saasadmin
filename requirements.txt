@@ -5,6 +5,7 @@ djangorestframework
 django-registration
 django-countries
 django-modeltranslation
+django-simple-history
 tldextract
 fontawesomefree==6.1
 # mysqlclient

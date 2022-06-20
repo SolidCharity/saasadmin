@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
+from simple_history.models import HistoricalRecords
 
 class SaasConfiguration(models.Model):
     name = models.CharField(_("name"), max_length=64)
@@ -11,6 +12,8 @@ class SaasConfiguration(models.Model):
         db_table = "saas_configuration"
 
 class SaasCustomer(models.Model):
+    history = HistoricalRecords()
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_newsletter_subscribed = models.BooleanField(_("Subscribed to newsletter"), default=False)
     newsletter_subscribed_on = models.DateTimeField(_("newsletter_subscribed_on"), null=True)
@@ -60,6 +63,7 @@ class SaasProduct (models.Model):
         db_table = "saas_product"
 
 class SaasPlan (models.Model):
+
     slug = models.CharField(_("slug"), max_length=16)
     name = models.CharField(_("name"), max_length=16)
     product = models.ForeignKey(
@@ -110,6 +114,8 @@ class SaasPlan (models.Model):
 
 # this is the saas instance rented by the customer
 class SaasInstance(models.Model):
+    history = HistoricalRecords()
+
     identifier = models.CharField(_("identifier"), max_length=16)
 
     product = models.ForeignKey(
@@ -158,6 +164,7 @@ class SaasInstance(models.Model):
         ]
 
 class SaasContract(models.Model):
+    history = HistoricalRecords()
 
     plan = models.ForeignKey(
         SaasPlan,
