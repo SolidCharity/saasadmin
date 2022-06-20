@@ -319,6 +319,10 @@ def contract_subscribe(request, product_id, plan_id):
         contract = LogicContracts().modify_contract(customer, product, plan)
         contract.save()
 
+        # send email to admin
+        LogicCustomers().notify_administrators(_("Contract for %s upgraded") % (product.name,),
+                _("Nice, a contract of %s was upgraded for customer %d") % (product.name, customer.id))
+
         if additional_storage:
             instance = contract.instance
             if instance.additional_storage != additional_storage:
