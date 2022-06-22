@@ -164,7 +164,11 @@ class SaasInstance(models.Model):
         ]
 
 class SaasContract(models.Model):
-    history = HistoricalRecords()
+
+    history = HistoricalRecords(
+        # to avoid error: HistoricalSaasContract() got an unexpected keyword argument 'instance_id'
+        excluded_fields={"instance"}
+    )
 
     plan = models.ForeignKey(
         SaasPlan,
