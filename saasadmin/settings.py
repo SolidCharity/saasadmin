@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_registration',
     'django_countries',
     'modeltranslation',
+    'simple_history',
     'rest_framework',
     'rest_framework.authtoken',
     'fontawesomefree',
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'simple_history.middleware.HistoryRequestMiddleware',
 ]
 
 ROOT_URLCONF = 'saasadmin.urls'

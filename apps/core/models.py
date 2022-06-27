@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
+from simple_history.models import HistoricalRecords
 
 class SaasConfiguration(models.Model):
     name = models.CharField(_("name"), max_length=64)
@@ -11,6 +12,8 @@ class SaasConfiguration(models.Model):
         db_table = "saas_configuration"
 
 class SaasCustomer(models.Model):
+    history = HistoricalRecords()
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     is_newsletter_subscribed = models.BooleanField(_("Subscribed to newsletter"), default=False)
     newsletter_subscribed_on = models.DateTimeField(_("newsletter_subscribed_on"), null=True)
@@ -60,6 +63,7 @@ class SaasProduct (models.Model):
         db_table = "saas_product"
 
 class SaasPlan (models.Model):
+
     slug = models.CharField(_("slug"), max_length=16)
     name = models.CharField(_("name"), max_length=16)
     product = models.ForeignKey(
@@ -85,12 +89,33 @@ class SaasPlan (models.Model):
     descr_4 = models.CharField(_("Description 4"), max_length=200, default = "TODO")
     quota_storage = models.CharField(_("Quota for Storage"), max_length=20, default = "0M")
     quota_app = models.CharField(_("Quota for Application"), max_length=20, default = "500M")
+    cost_for_storage = models.DecimalField(_("Cost for Storage"), max_digits=10, decimal_places= 2, default=0)
+    additional_storage_size = models.CharField(_("Additional Storage Size"), max_length=10, default = "")
+
 
     class Meta:
         db_table = "saas_plan"
 
+
+    def get_included_storage_gb(self):
+        if not self.quota_storage:
+            return 0
+        if not self.quota_storage.endswith("G"):
+            raise Exception("Expected trailing G for quota storage")
+        return int(self.quota_storage.replace("G",""))
+
+
+    def get_additional_storage_gb(self):
+        if not self.additional_storage_size:
+            return 0
+        if not self.additional_storage_size.endswith("G"):
+            raise Exception("Expected trailing G for additional storage size")
+        return int(self.additional_storage_size.replace("G",""))
+
 # this is the saas instance rented by the customer
 class SaasInstance(models.Model):
+    history = HistoricalRecords()
+
     identifier = models.CharField(_("identifier"), max_length=16)
 
     product = models.ForeignKey(
@@ -107,6 +132,7 @@ class SaasInstance(models.Model):
     last_port = models.IntegerField(_("Last Port"), default=-1)
     activation_token = models.CharField(max_length=64, null=True)
     custom_domain = models.CharField(_("Custom Domain"),max_length=250, default = "")
+    additional_storage = models.IntegerField(_("Additional Storage"), default = 0)
 
     # possible values for status
     IN_PREPARATION, READY, AVAILABLE, RESERVED, ASSIGNED, EXPIRED, TO_BE_REMOVED, REMOVED = \
@@ -138,6 +164,11 @@ class SaasInstance(models.Model):
         ]
 
 class SaasContract(models.Model):
+
+    history = HistoricalRecords(
+        # to avoid error: HistoricalSaasContract() got an unexpected keyword argument 'instance_id'
+        excluded_fields={"instance"}
+    )
 
     plan = models.ForeignKey(
         SaasPlan,

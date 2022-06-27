@@ -88,11 +88,31 @@
 {% for plan in plans %}
 {% if plan.is_public or selected_plan == plan.slug %}
 <div class="one-third column td">
-    <div class="pricing-table-wrapper-0 pricing-table-wrapper">
-    <div class="pricing-btn">
-        <a href="/plan/{{plan.slug}}" id="changebtn_test" class="customize-unpreviewable disabled">{% translate "Choose" %}</a>
-    </div>
-    </div>
+    <form method="POST" action="/plan/select/{{plan.slug}}">
+    {% csrf_token %}
+        <div class="pricing-table-wrapper-0 pricing-table-wrapper">
+            {% if plan.id in storage %}
+            <br/>{%translate "Additional Storage:"%}<br/>
+            <select name="additional_storage" class="additional_storage">
+                {%for planid, storagechoices in storage.items %}
+                    {% if planid == plan.id %}
+                    {%for name, value in storagechoices.items %}
+                        <option value="{{name}}"
+                            {%if selected_plan == plan.slug and name == selected_additional_storage %} selected
+                            {%elif not selected_plan == plan.slug and name == 0 %} selected{% endif %}
+                            >{{value}}</option>
+                    {% endfor %}
+                    {% endif %}
+                {% endfor %}
+            </select>
+            {% elif storage %}
+            <br/><br/><br/><br/>
+            {% endif %}
+            <div class="pricing-btn">
+                <button type="submit" class="button button-primary disabled">{% translate "Choose" %}</button>
+            </div>
+        </div>
+    </form>
 </div> <!-- div.td -->
 {% endif %}
 {% endfor %}

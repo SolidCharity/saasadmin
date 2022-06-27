@@ -9,7 +9,7 @@ from apps.api.logic.contracts import LogicContracts
 class LogicCustomers:
 
     @transaction.atomic
-    def assign_instance(self, customer, product, plan):
+    def assign_instance(self, customer, product, plan, additional_storage):
 
         # check for first available instance
         instance = SaasInstance.objects.filter(product=product).filter(status=SaasInstance().AVAILABLE).first()
@@ -25,12 +25,14 @@ class LogicCustomers:
             # there might be an unconfirmed contract already
             contract = LogicContracts().get_contract(customer, product)
             if not contract:
-                contract = LogicContracts().get_new_contract(customer, product, plan)
+                contract = LogicContracts().get_new_contract(customer, product, plan, 0)
             contract.instance = instance
             contract.plan = plan
             contract.is_confirmed = True
             contract.save()
             instance.status = instance.ASSIGNED
+            if additional_storage:
+                instance.additional_storage = additional_storage
             instance.save()
 
             # call activation url of hosted application
