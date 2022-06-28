@@ -54,6 +54,10 @@ def customers(request, product):
             plan = SaasPlan.objects.get(id=a['plan_id'])
             a['plan_name'] = plan.name
             a['plan_cost'] = plan.cost_per_period
+
+            instance = SaasInstance.objects.get(id=a['instance_id'])
+            a['instance_url'] = instance.get_url()
+
             # create an object
             o = namedtuple("customer", a.keys())(*a.values())
             # add the object to resulting array

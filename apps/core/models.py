@@ -163,6 +163,14 @@ class SaasInstance(models.Model):
             models.UniqueConstraint(fields=['identifier', 'product'], name='identifier and product')
         ]
 
+    def get_url(self):
+        if self.custom_domain:
+            return f"https://{instance.custom_domain}"
+        else:
+            prod = self.product
+            return prod.instance_url.replace('#Prefix', prod.prefix).replace('#Identifier', self.identifier)
+
+
 class SaasContract(models.Model):
 
     history = HistoricalRecords(
