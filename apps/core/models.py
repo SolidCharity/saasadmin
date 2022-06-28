@@ -165,7 +165,7 @@ class SaasInstance(models.Model):
 
     def get_url(self):
         if self.custom_domain:
-            return f"https://{instance.custom_domain}"
+            return f"https://{self.custom_domain}"
         else:
             prod = self.product
             return prod.instance_url.replace('#Prefix', prod.prefix).replace('#Identifier', self.identifier)
