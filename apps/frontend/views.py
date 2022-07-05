@@ -107,7 +107,7 @@ def display_plans(request):
                 storage[plan.id][AdditionalSizeInGB]=_("+ {} GB costs +{} {}").format(AdditionalSizeInGB, additional_cost, currency_symbol)
             storage[plan.id][999] = _("Contact us if you need more")
 
-    if current_contract:
+    if current_contract and current_contract.instance:
         selected_additional_storage = current_contract.instance.additional_storage
     else:
         selected_additional_storage = None
@@ -256,6 +256,7 @@ def show_contract(request, product, current_plan, new_plan, additional_storage):
         periodLengthExtension = _("another year")
     isNewOrder = (current_plan is None
         or current_plan.slug != new_plan.slug
+        or contract.instance is None
         or contract.instance.additional_storage != additional_storage
         or contract.is_confirmed == False)
     canCancelContract = not isNewOrder and contract.is_confirmed and contract.is_auto_renew
