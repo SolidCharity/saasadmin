@@ -10,7 +10,7 @@ from django.utils import translation
 from django.utils.translation import gettext as _
 from apps.api.logic.products import LogicProducts
 from apps.core.models import SaasCustomer, SaasPlan, SaasProduct, SaasConfiguration
-from apps.frontend.forms import CustomerForm
+from apps.customer.forms import CustomerForm
 from apps.api.logic.customers import LogicCustomers
 from apps.api.logic.plans import LogicPlans
 from apps.api.logic.contracts import LogicContracts

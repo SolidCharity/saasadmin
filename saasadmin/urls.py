@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-from apps.backend import views as backend_views
-from apps.frontend import views as frontend_views
+from apps.admin import views as admin_views
+from apps.customer import views as customer_views
 
 urlpatterns = [
     # Django urls
@@ -31,50 +31,50 @@ urlpatterns = [
     # i18n
     path('i18n/', include('django.conf.urls.i18n')),
 
-    # SaasAdmin Backend
-    path('backend', backend_views.products),
-    path('customers/<str:product>/', backend_views.customers),
-    path('instances/<str:product>/', backend_views.instances),
-    path('instances/<str:product>/add', backend_views.addinstances),
-    path('plans/<str:product>/', backend_views.plans),
-    path('plans/<str:product>/preview', backend_views.preview_pricing),
-    path('plans/<str:product>/add', backend_views.addplan),
-    path('plans/edit/<int:id>', backend_views.editplan),
-    path('plans/update/<int:id>', backend_views.updateplan),
-    path('plans/delete/<int:id>', backend_views.deleteplan),
-    path('contracts/edit/<int:id>/<str:newplan>', backend_views.editcontract),
+    # SaasAdmin Admin UI
+    path('backend', admin_views.products),
+    path('customers/<str:product>/', admin_views.customers),
+    path('instances/<str:product>/', admin_views.instances),
+    path('instances/<str:product>/add', admin_views.addinstances),
+    path('plans/<str:product>/', admin_views.plans),
+    path('plans/<str:product>/preview', admin_views.preview_pricing),
+    path('plans/<str:product>/add', admin_views.addplan),
+    path('plans/edit/<int:id>', admin_views.editplan),
+    path('plans/update/<int:id>', admin_views.updateplan),
+    path('plans/delete/<int:id>', admin_views.deleteplan),
+    path('contracts/edit/<int:id>/<str:newplan>', admin_views.editcontract),
 
-    path('backend/products', backend_views.products),
-    path('products/add', backend_views.addproduct),
-    path('products/<str:slug>/dashboard', backend_views.productdashboard),
-    path('products/edit/<int:id>', backend_views.editproduct),
-    path('products/update/<int:id>', backend_views.updateproduct),
-    path('products/delete/<int:id>', backend_views.deleteproduct),
+    path('backend/products', admin_views.products),
+    path('products/add', admin_views.addproduct),
+    path('products/<str:slug>/dashboard', admin_views.productdashboard),
+    path('products/edit/<int:id>', admin_views.editproduct),
+    path('products/update/<int:id>', admin_views.updateproduct),
+    path('products/delete/<int:id>', admin_views.deleteproduct),
 
-    path('configurations/', backend_views.configurations),
-    path('configurations/add', backend_views.addconfiguration),
-    path('configurations/edit/<int:id>', backend_views.editconfiguration),
-    path('configurations/update/<int:id>', backend_views.updateconfiguration),
+    path('configurations/', admin_views.configurations),
+    path('configurations/add', admin_views.addconfiguration),
+    path('configurations/edit/<int:id>', admin_views.editconfiguration),
+    path('configurations/update/<int:id>', admin_views.updateconfiguration),
 
-    path('instances/edit/<int:id>', backend_views.editinstance),
-    path('instances/update/<int:id>', backend_views.updateinstance),
+    path('instances/edit/<int:id>', admin_views.editinstance),
+    path('instances/update/<int:id>', admin_views.updateinstance),
 
-    # SaasAdmin Frontend
-    path('', frontend_views.home),
-    path('home/', frontend_views.home),
-    path('account', frontend_views.account_view),
-    path('account/update', frontend_views.account_update),
-    path('plan/current', frontend_views.display_plans),
-    path('plan/select/<str:plan_id>', frontend_views.plan_select),
-    path('paymentmethod', frontend_views.paymentmethod_select),
-    path('contract', frontend_views.contract_view),
-    path('contract/add/<str:product_id>/<str:plan_id>', frontend_views.contract_subscribe),
-    path('contract/cancel/<str:product_id>', frontend_views.contract_cancel),
-    path('products', frontend_views.display_products),
-    path('instance', frontend_views.instance_view),
-    path('pricing', frontend_views.display_pricing),
-    path('imprint', frontend_views.display_imprint),
-    path('about', frontend_views.display_about),
-    path('contact', frontend_views.display_contact),
+    # SaasAdmin Customer UI
+    path('', customer_views.home),
+    path('home/', customer_views.home),
+    path('account', customer_views.account_view),
+    path('account/update', customer_views.account_update),
+    path('plan/current', customer_views.display_plans),
+    path('plan/select/<str:plan_id>', customer_views.plan_select),
+    path('paymentmethod', customer_views.paymentmethod_select),
+    path('contract', customer_views.contract_view),
+    path('contract/add/<str:product_id>/<str:plan_id>', customer_views.contract_subscribe),
+    path('contract/cancel/<str:product_id>', customer_views.contract_cancel),
+    path('products', customer_views.display_products),
+    path('instance', customer_views.instance_view),
+    path('pricing', customer_views.display_pricing),
+    path('imprint', customer_views.display_imprint),
+    path('about', customer_views.display_about),
+    path('contact', customer_views.display_contact),
 
 ]
