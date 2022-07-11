@@ -10,7 +10,7 @@ INSERT INTO saas_product ("id", "slug", "name", "prefix",
     "activation_url","deactivation_url",
     "instance_url", "login_url",
     "instance_password_reset_url", "instance_admin_user",
-    "is_active", "number_of_ports") VALUES
+    "is_active", "number_of_ports", "dbms_type") VALUES
     (1, 'kanboard', 'Kanboard', 'kb',
     '',
     'Kanboard is a free and open source Kanban project management software.',
@@ -22,7 +22,7 @@ INSERT INTO saas_product ("id", "slug", "name", "prefix",
     'https://#Prefix#Identifier.example.org/', '/?controller=AuthController&action=login',
     '/?controller=PasswordResetController&action=create',
     'admin',
-    true, 0);
+    true, 0, 'mysql');
 INSERT INTO saas_plan ("id","product_id","period_length_in_months","period_length_in_days","currency_code","cost_per_period","notice_period_in_days",
     "slug",
     "priority",
@@ -77,13 +77,13 @@ INSERT INTO saas_customer ("id","user_id","is_newsletter_subscribed","newsletter
 	(2,3,true,'2021-05-01',NULL,'DE','Gartensparte zum Spaten','Mr','Werner','Schmidt','Am Wasser 7','01234','Plauen','DE','werner@example.org',true),
 	(3,4,true,'2021-05-01',NULL,'DE','Gartensparte Schneckenhain','Mr','Bernd','Schmitz','Am Berg 2','01234','Plauen','DE','bernd.s@example.org',true),
 	(4,5,true,'2021-05-01',NULL,'DE','Sportverein Trimm Dich','Mr','Gunter','Meier','An der Elster 22','01234','Plauen','DE','gunter.meier@example.org',true);
-INSERT INTO saas_instance ("id","product_id","identifier","hostname","pacuser","channel","status","last_interaction","reserved_token","reserved_until","reserved_for_user_id","initial_password","db_password","first_port","last_port","password1","password2","django_secret_key","custom_domain","additional_storage") VALUES
-	(1,1,'344567','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','74$9+%23dw$e4n!b=83ot4$(vjxeldd6821@v9c#xr1p#%o%sz','',0),
-	(2,1,'238978','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','*y@au9s5q2%l*mu&+k08_x3k=nz0qls5or(x^59$gv35g=y_xe','',0),
-	(3,1,'785275','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','m&6ccr#$c8oq+7e+bb-zjo3kijrp_i8t5z31btyuw+^2vt95j=','',0),
-	(4,1,'862344','host0001','xyz00','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','z_%i=-tq9m2-tc9n^o4!vaws=h4+*&-m&lo89tpb*!%)uva3mh','',0),
-	(5,1,'119287','host0002','xyz01','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','ctsw@yenna%tczw4+^c82oz6o@n2dxtvr0aty&fi(-mm6i4!ic','',0),
-	(6,1,'239399','host0002','xyz01','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','h=q&drbyf95o1lc5fk2r+&+i#+&2-n)tj&r!xg%)=hg+4ne2_n','',0);
+INSERT INTO saas_instance ("id","product_id","identifier","hostname","pacuser","channel","status","last_interaction","reserved_token","reserved_until","reserved_for_user_id","initial_password","db_password","first_port","last_port","password1","password2","django_secret_key","custom_domain","additional_storage","dbms_type") VALUES
+	(1,1,'344567','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','74$9+%23dw$e4n!b=83ot4$(vjxeldd6821@v9c#xr1p#%o%sz','',0,"mysql"),
+	(2,1,'238978','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','*y@au9s5q2%l*mu&+k08_x3k=nz0qls5or(x^59$gv35g=y_xe','',0,"mysql"),
+	(3,1,'785275','host0001','xyz00','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','m&6ccr#$c8oq+7e+bb-zjo3kijrp_i8t5z31btyuw+^2vt95j=','',0,"mysql"),
+	(4,1,'862344','host0001','xyz00','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','z_%i=-tq9m2-tc9n^o4!vaws=h4+*&-m&lo89tpb*!%)uva3mh','',0,"mysql"),
+	(5,1,'119287','host0002','xyz01','stable','ASSIGNED',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','ctsw@yenna%tczw4+^c82oz6o@n2dxtvr0aty&fi(-mm6i4!ic','',0,"mysql"),
+	(6,1,'239399','host0002','xyz01','stable','AVAILABLE',NULL,NULL,NULL,NULL,'','topsecret',-1,-1,'topsecret','topsecret','h=q&drbyf95o1lc5fk2r+&+i#+&2-n)tj&r!xg%)=hg+4ne2_n','',0,"mysql");
 INSERT INTO saas_contract ("id","start_date","end_date","latest_cancel_date","is_auto_renew","is_confirmed","customer_id","instance_id","plan_id","payment_method") VALUES
 	(1,'2021-06-05','2023-07-31','2023-07-14',true,true,1,1,2,'SEPA_TRANSFER'),
 	(2,'2021-06-01','2023-07-31','2023-07-14',true,true,2,2,3,'SEPA_TRANSFER'),
