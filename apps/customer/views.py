@@ -25,7 +25,7 @@ def home(request):
     if not request.user.is_authenticated:
         return display_pricing(request)
 
-    # if logged in customer => redirect frontend view
+    # if logged in customer => redirect customer view
     customer = SaasCustomer.objects.filter(user=request.user).first()
     if not customer:
         # first login: need to create customer first

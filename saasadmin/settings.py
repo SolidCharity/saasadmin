@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'fontawesomefree',
     'apps.core',
     'apps.api',
-    'apps.admin',
+    'apps.administrator',
     'apps.customer',
 ]
 
