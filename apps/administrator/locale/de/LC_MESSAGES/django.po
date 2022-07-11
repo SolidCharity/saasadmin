@@ -17,145 +17,148 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps/backend/forms.py:15 apps/backend/templates/productdashboard.html:17
+#: apps/administrator/forms.py:15
+#: apps/administrator/templates/productdashboard.html:17
 msgid "Upstream URL"
 msgstr "Upstream URL"
 
-#: apps/backend/forms.py:16 apps/backend/templates/productdashboard.html:16
+#: apps/administrator/forms.py:16
+#: apps/administrator/templates/productdashboard.html:16
 msgid "Description"
 msgstr "Beschreibung"
 
-#: apps/backend/forms.py:33
+#: apps/administrator/forms.py:33
 msgid "Value"
 msgstr "Wert"
 
-#: apps/backend/templates/addconfiguration.html:27
+#: apps/administrator/templates/addconfiguration.html:27
 msgid "Add Configuration"
 msgstr "Konfiguration Hinzufügen"
 
-#: apps/backend/templates/addconfiguration.html:35
-#: apps/backend/templates/addinstances.html:57
-#: apps/backend/templates/addplan.html:35
-#: apps/backend/templates/addproduct.html:35
+#: apps/administrator/templates/addconfiguration.html:35
+#: apps/administrator/templates/addinstances.html:57
+#: apps/administrator/templates/addplan.html:35
+#: apps/administrator/templates/addproduct.html:35
 msgid "Submit"
 msgstr "Bestätigen"
 
-#: apps/backend/templates/addinstances.html:30
+#: apps/administrator/templates/addinstances.html:30
 msgid "Add Instances"
 msgstr "Instanzen Hinzufügen"
 
-#: apps/backend/templates/addinstances.html:35
+#: apps/administrator/templates/addinstances.html:35
 msgid "Hostname"
 msgstr "Hostname"
 
-#: apps/backend/templates/addinstances.html:42
+#: apps/administrator/templates/addinstances.html:42
 msgid "Pac User"
 msgstr "Pac Benutzer"
 
-#: apps/backend/templates/addinstances.html:49
+#: apps/administrator/templates/addinstances.html:49
 msgid "Number of Instances"
 msgstr "Anzahl von Ports"
 
-#: apps/backend/templates/addplan.html:27
+#: apps/administrator/templates/addplan.html:27
 msgid "Add plan"
 msgstr "Angebot Hinzufügen"
 
-#: apps/backend/templates/addproduct.html:27
+#: apps/administrator/templates/addproduct.html:27
 msgid "Add Product"
 msgstr "Produkt Hinzufügen"
 
-#: apps/backend/templates/configurations.html:7
+#: apps/administrator/templates/configurations.html:7
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: apps/backend/templates/configurations.html:25
-#: apps/backend/templates/plans.html:26
+#: apps/administrator/templates/configurations.html:25
+#: apps/administrator/templates/plans.html:26
 msgid "name"
 msgstr "Name"
 
-#: apps/backend/templates/configurations.html:26
+#: apps/administrator/templates/configurations.html:26
 msgid "value"
 msgstr "Wert"
 
-#: apps/backend/templates/configurations.html:33
-#: apps/backend/templates/customers.html:29
-#: apps/backend/templates/plans.html:44
-#: apps/backend/templates/productdashboard.html:21
+#: apps/administrator/templates/configurations.html:33
+#: apps/administrator/templates/customers.html:29
+#: apps/administrator/templates/plans.html:44
+#: apps/administrator/templates/productdashboard.html:21
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: apps/backend/templates/configurations.html:39
+#: apps/administrator/templates/configurations.html:39
 msgid "Add New Record"
 msgstr "Neuen Eintrag hinzufügen"
 
-#: apps/backend/templates/customers.html:7
+#: apps/administrator/templates/customers.html:7
 msgid "Customers"
 msgstr "Kunden"
 
-#: apps/backend/templates/customers.html:11
-#: apps/backend/templates/productdashboard.html:11
-#: apps/backend/templates/products.html:11
+#: apps/administrator/templates/customers.html:11
+#: apps/administrator/templates/productdashboard.html:11
+#: apps/administrator/templates/products.html:11
 msgid "Name"
 msgstr "Name"
 
-#: apps/backend/templates/customers.html:12
+#: apps/administrator/templates/customers.html:12
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: apps/backend/templates/customers.html:13
+#: apps/administrator/templates/customers.html:13
 msgid "Instance"
 msgstr "Instanz"
 
-#: apps/backend/templates/customers.html:14
+#: apps/administrator/templates/customers.html:14
 msgid "Plan"
 msgstr "Angebot"
 
-#: apps/backend/templates/customers.html:15
+#: apps/administrator/templates/customers.html:15
 msgid "Contract"
 msgstr "Vertrag"
 
-#: apps/backend/templates/customers.html:16
-#: apps/backend/templates/plans.html:32 apps/backend/templates/products.html:14
+#: apps/administrator/templates/customers.html:16
+#: apps/administrator/templates/plans.html:32
+#: apps/administrator/templates/products.html:14
 msgid "Action"
 msgstr "Aktion"
 
-#: apps/backend/templates/customers.html:26
+#: apps/administrator/templates/customers.html:26
 msgid "Extend Test by 14 days"
 msgstr ""
 
-#: apps/backend/templates/customers.html:27
+#: apps/administrator/templates/customers.html:27
 msgid "Switch to Unlimited Test"
 msgstr ""
 
-#: apps/backend/templates/django_registration/activation_complete.html:6
-#: apps/backend/templates/django_registration/registration_complete.html:6
+#: apps/administrator/templates/django_registration/activation_complete.html:6
+#: apps/administrator/templates/django_registration/registration_complete.html:6
 msgid "Success!"
 msgstr "Erfolg!"
 
-#: apps/backend/templates/django_registration/activation_complete.html:8
+#: apps/administrator/templates/django_registration/activation_complete.html:8
 msgid "Now you can login:"
 msgstr "Jetzt können Sie sich anmelden:"
 
-#: apps/backend/templates/django_registration/activation_complete.html:8
-#: apps/backend/templates/django_registration/activation_failed.html:10
+#: apps/administrator/templates/django_registration/activation_complete.html:8
+#: apps/administrator/templates/django_registration/activation_failed.html:10
 msgid "Login"
 msgstr "Anmelden"
 
-#: apps/backend/templates/django_registration/activation_email_body.txt:1
+#: apps/administrator/templates/django_registration/activation_email_body.txt:1
 #, python-format
 msgid "Hello %(username)s,"
 msgstr "Hallo %(username)s,"
 
-#: apps/backend/templates/django_registration/activation_email_body.txt:3
+#: apps/administrator/templates/django_registration/activation_email_body.txt:3
 #, python-format
 msgid "you have registered at %(site)s"
 msgstr "Du hast dich auf %(site)s registriert."
 
-#: apps/backend/templates/django_registration/activation_email_body.txt:5
+#: apps/administrator/templates/django_registration/activation_email_body.txt:5
 msgid "If this was not you, please ignore this email!"
 msgstr "Falls Du das nicht getan hast, ignoriere bitte diese E-Mail!"
 
-#: apps/backend/templates/django_registration/activation_email_body.txt:7
+#: apps/administrator/templates/django_registration/activation_email_body.txt:7
 #, python-format
 msgid ""
 "If you want to activate your account at https://%(site)s, please click on "
@@ -164,43 +167,43 @@ msgstr ""
 "Falls du den Zugang für https://%(site)s bestätigen willst, klicke bitte auf "
 "den folgenden Link:"
 
-#: apps/backend/templates/django_registration/activation_email_body.txt:13
+#: apps/administrator/templates/django_registration/activation_email_body.txt:13
 msgid "All the best!"
 msgstr "Alles Gute!"
 
-#: apps/backend/templates/django_registration/activation_email_body.txt:15
+#: apps/administrator/templates/django_registration/activation_email_body.txt:15
 #, python-format
 msgid "The team at %(site)s"
 msgstr "Das Team von %(site)s"
 
-#: apps/backend/templates/django_registration/activation_email_body.txt:17
+#: apps/administrator/templates/django_registration/activation_email_body.txt:17
 msgid "PS: this is an automated E-Mail, please do not reply."
 msgstr ""
 "PS: Dies ist eine automatisch erzeugte E-Mail, bitte nicht darauf antworten."
 
-#: apps/backend/templates/django_registration/activation_email_body.txt:18
+#: apps/administrator/templates/django_registration/activation_email_body.txt:18
 #, python-format
 msgid "You can contact us at info@%(site)s"
 msgstr "Wir sind per E-Mail erreichbar unter der Adresse info@%(site)s"
 
-#: apps/backend/templates/django_registration/activation_email_subject.txt:2
+#: apps/administrator/templates/django_registration/activation_email_subject.txt:2
 #, python-format
 msgid "Confirm your registration for %(site)s"
 msgstr "Anmeldung für %(site)s bestätigen"
 
-#: apps/backend/templates/django_registration/activation_failed.html:6
+#: apps/administrator/templates/django_registration/activation_failed.html:6
 msgid "Something went wrong."
 msgstr "Das hat nicht funktioniert."
 
-#: apps/backend/templates/django_registration/activation_failed.html:8
+#: apps/administrator/templates/django_registration/activation_failed.html:8
 msgid "Perhaps you have confirmed already?"
 msgstr "Vielleicht wurde die Anmeldung bereits bestätigt?"
 
-#: apps/backend/templates/django_registration/activation_failed.html:10
+#: apps/administrator/templates/django_registration/activation_failed.html:10
 msgid "Please try to Login:"
 msgstr "Bitte versuche dich anzumelden:"
 
-#: apps/backend/templates/django_registration/registration_complete.html:8
+#: apps/administrator/templates/django_registration/registration_complete.html:8
 msgid ""
 "An E-Mail has been sent to you. Please confirm by clicking on the link in "
 "that E-Mail!"
@@ -208,127 +211,127 @@ msgstr ""
 "Es wurde eine E-Mail an Sie verschickt. Bitte bestätigen Sie Ihre "
 "Registrierung, in dem Sie auf den Verweis in der E-Mail klicken!"
 
-#: apps/backend/templates/django_registration/registration_form.html:69
+#: apps/administrator/templates/django_registration/registration_form.html:69
 msgid "Register"
 msgstr "Zugang einrichten"
 
-#: apps/backend/templates/editconfiguration.html:27
+#: apps/administrator/templates/editconfiguration.html:27
 msgid "Update Configuration"
 msgstr "Konfiguration Bearbeiten"
 
-#: apps/backend/templates/editconfiguration.html:35
-#: apps/backend/templates/editinstance.html:35
-#: apps/backend/templates/editplan.html:35
-#: apps/backend/templates/editproduct.html:35
+#: apps/administrator/templates/editconfiguration.html:35
+#: apps/administrator/templates/editinstance.html:35
+#: apps/administrator/templates/editplan.html:35
+#: apps/administrator/templates/editproduct.html:35
 msgid "Update"
 msgstr "Speichern"
 
-#: apps/backend/templates/editinstance.html:27
+#: apps/administrator/templates/editinstance.html:27
 msgid "Update Instance"
 msgstr "Instanz aktualisieren"
 
-#: apps/backend/templates/editplan.html:27
+#: apps/administrator/templates/editplan.html:27
 msgid "Update Plan"
 msgstr "Angebot aktualisieren"
 
-#: apps/backend/templates/editproduct.html:27
+#: apps/administrator/templates/editproduct.html:27
 msgid "Update Product"
 msgstr "Produkt aktualisieren"
 
-#: apps/backend/templates/instances.html:6
+#: apps/administrator/templates/instances.html:6
 msgid "Instances"
 msgstr "Instanzen"
 
-#: apps/backend/templates/plans.html:7
+#: apps/administrator/templates/plans.html:7
 msgid "Plans"
 msgstr "Angebote"
 
-#: apps/backend/templates/plans.html:25
+#: apps/administrator/templates/plans.html:25
 msgid "slug"
 msgstr "Kurzname"
 
-#: apps/backend/templates/plans.html:27
+#: apps/administrator/templates/plans.html:27
 msgid "Cost per Period"
 msgstr "Kosten pro Buchungszeitraum"
 
-#: apps/backend/templates/plans.html:28
+#: apps/administrator/templates/plans.html:28
 msgid "Currency"
 msgstr "Währung"
 
-#: apps/backend/templates/plans.html:29
+#: apps/administrator/templates/plans.html:29
 msgid "Period Length in Months"
 msgstr "Länge des Buchungszeitraums in Monaten"
 
-#: apps/backend/templates/plans.html:30
+#: apps/administrator/templates/plans.html:30
 msgid "Period Length in Days"
 msgstr "Länge des Buchungszeitraums in Tagen"
 
-#: apps/backend/templates/plans.html:31
+#: apps/administrator/templates/plans.html:31
 msgid "Notice Period in Days"
 msgstr "Kündigungsfrist in Tagen"
 
-#: apps/backend/templates/plans.html:45
-#: apps/backend/templates/productdashboard.html:22
+#: apps/administrator/templates/plans.html:45
+#: apps/administrator/templates/productdashboard.html:22
 msgid "Delete"
 msgstr "Löschen"
 
-#: apps/backend/templates/plans.html:51
+#: apps/administrator/templates/plans.html:51
 msgid "Add New Plan"
 msgstr "Neues Angebot Hinzufügen"
 
-#: apps/backend/templates/plans.html:52
+#: apps/administrator/templates/plans.html:52
 msgid "Preview Pricing"
 msgstr "Vorschau der Angebotsliste"
 
-#: apps/backend/templates/productdashboard.html:7
+#: apps/administrator/templates/productdashboard.html:7
 msgid "Product"
 msgstr "Produkt"
 
-#: apps/backend/templates/productdashboard.html:12
-#: apps/backend/templates/products.html:12
+#: apps/administrator/templates/productdashboard.html:12
+#: apps/administrator/templates/products.html:12
 msgid "Slug"
 msgstr "Kurzname"
 
-#: apps/backend/templates/productdashboard.html:13
+#: apps/administrator/templates/productdashboard.html:13
 msgid "Active"
 msgstr "Aktiv"
 
-#: apps/backend/templates/productdashboard.html:14
+#: apps/administrator/templates/productdashboard.html:14
 msgid "Prefix"
 msgstr "Präfix"
 
-#: apps/backend/templates/productdashboard.html:15
+#: apps/administrator/templates/productdashboard.html:15
 msgid "Number of Ports"
 msgstr "Anzahl von Ports"
 
-#: apps/backend/templates/productdashboard.html:22
+#: apps/administrator/templates/productdashboard.html:22
 #, fuzzy
 #| msgid "Are you sure you want to delete this item?')"
 msgid "Are you sure you want to delete this item?"
 msgstr "Bist du dir sicher, dass das gelöscht werden soll?"
 
-#: apps/backend/templates/products.html:7
+#: apps/administrator/templates/products.html:7
 msgid "Products"
 msgstr "Produkte"
 
-#: apps/backend/templates/products.html:13
+#: apps/administrator/templates/products.html:13
 msgid "Is Active"
 msgstr "Ist Aktiv"
 
-#: apps/backend/templates/products.html:22
+#: apps/administrator/templates/products.html:22
 msgid "Select"
 msgstr "Auswählen"
 
-#: apps/backend/templates/products.html:27
+#: apps/administrator/templates/products.html:27
 msgid "Add New Product"
 msgstr "Neues Produkt Hinzufügen"
 
-#: apps/backend/templates/registration/login.html:7
+#: apps/administrator/templates/registration/login.html:7
 msgid "Your username and password didn't match. Please try again."
 msgstr ""
 "Der Benutzername und das Passwort stimmen nicht. Bitte nochmal probieren."
 
-#: apps/backend/templates/registration/login.html:12
+#: apps/administrator/templates/registration/login.html:12
 msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access."
@@ -336,31 +339,31 @@ msgstr ""
 "Dieser Zugang hat keine Rechte für diese Seite. Um fortzufahren, bitte mit "
 "einem Zugang anmelden, der Zugriff hat."
 
-#: apps/backend/templates/registration/login.html:14
+#: apps/administrator/templates/registration/login.html:14
 msgid "Please login to see this page."
 msgstr "Bitte anmelden, um diese Seite zu sehen."
 
-#: apps/backend/templates/registration/login.html:54
+#: apps/administrator/templates/registration/login.html:54
 msgid "login"
 msgstr "Anmelden"
 
-#: apps/backend/templates/registration/login.html:59
+#: apps/administrator/templates/registration/login.html:59
 msgid "Lost password?"
 msgstr "Passwort vergessen?"
 
-#: apps/backend/templates/registration/login.html:60
+#: apps/administrator/templates/registration/login.html:60
 msgid "Create a free account"
 msgstr "Einen kostenlosen Zugang einrichten"
 
-#: apps/backend/views.py:49
+#: apps/administrator/views.py:49
 msgid "contract will be auto renewed"
 msgstr ""
 
-#: apps/backend/views.py:51
+#: apps/administrator/views.py:51
 msgid "contract is indefinite"
 msgstr ""
 
-#: apps/backend/views.py:53
+#: apps/administrator/views.py:53
 #, python-format
 msgid "contract ends on %s"
 msgstr ""

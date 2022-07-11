@@ -22,7 +22,7 @@
         <nav class="topnav">
             <a href="//{% get_main_url request %}">{% get_brand request %}</a>
             {% if user.is_staff %}
-            <a class="left {% get_topnav_active request '/backend/products' %}" href="/backend/products">{%translate "Products"%}</a>
+            <a class="left {% get_topnav_active request '/products/list' %}" href="/products/list">{%translate "Products"%}</a>
             {% if product %}
             <a class="left {% get_topnav_active request '/products/' %}" href="/products/{{product.slug}}/dashboard">{{product.name}}</a>
             <a class="left {% get_topnav_active request '/plans/' %}" href="/plans/{{product.slug}}/">{%translate "Plans"%}</a>

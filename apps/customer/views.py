@@ -10,14 +10,14 @@ from django.utils import translation
 from django.utils.translation import gettext as _
 from apps.api.logic.products import LogicProducts
 from apps.core.models import SaasCustomer, SaasPlan, SaasProduct, SaasConfiguration
-from apps.frontend.forms import CustomerForm
+from apps.customer.forms import CustomerForm
 from apps.api.logic.customers import LogicCustomers
 from apps.api.logic.plans import LogicPlans
 from apps.api.logic.contracts import LogicContracts
 
 def home(request):
     if request.user.is_staff:
-        return redirect('/backend/products')
+        return redirect('/products/list')
     product = LogicProducts().get_product(request, False)
     if product is None:
         return redirect('/products')
@@ -25,7 +25,7 @@ def home(request):
     if not request.user.is_authenticated:
         return display_pricing(request)
 
-    # if logged in customer => redirect frontend view
+    # if logged in customer => redirect customer view
     customer = SaasCustomer.objects.filter(user=request.user).first()
     if not customer:
         # first login: need to create customer first

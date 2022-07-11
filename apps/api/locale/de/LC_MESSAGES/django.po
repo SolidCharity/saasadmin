@@ -27,26 +27,26 @@ msgstr ""
 msgid "Assigning of %s instance for customer %d failed"
 msgstr ""
 
-#: apps/api/logic/customers.py:42
+#: apps/api/logic/customers.py:44
 msgid "SaasAdmin Error during activation"
 msgstr ""
 
-#: apps/api/logic/customers.py:42
+#: apps/api/logic/customers.py:44
 #, python-format
 msgid "Failed activation of %s instance %s for customer %d Exception: %s"
 msgstr ""
 
-#: apps/api/logic/customers.py:47
+#: apps/api/logic/customers.py:49
 #, python-format
 msgid "Instance for %s assigned"
 msgstr ""
 
-#: apps/api/logic/customers.py:48
+#: apps/api/logic/customers.py:50
 #, python-format
 msgid "Nice, an instance of %s was booked for customer %d"
 msgstr ""
 
-#: apps/api/logic/customers.py:49
+#: apps/api/logic/customers.py:51
 #, python-format
 msgid "Still %d instances are available for new customers."
 msgstr ""

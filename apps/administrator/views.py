@@ -8,7 +8,7 @@ from django.http import HttpResponse
 from django.utils.translation import gettext as _
 from apps.core.models import SaasContract, SaasCustomer, SaasInstance, SaasPlan, SaasProduct, SaasConfiguration, SaasInstance
 from apps.core.models import SaasConfiguration
-from apps.backend.forms import PlanForm, ProductForm, AddInstancesForm, ConfigurationForm, InstanceForm
+from apps.administrator.forms import PlanForm, ProductForm, AddInstancesForm, ConfigurationForm, InstanceForm
 from apps.api.logic.contracts import LogicContracts
 from apps.api.logic.products import LogicProducts
 from apps.api.logic.instances import LogicInstances

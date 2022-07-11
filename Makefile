@@ -1,5 +1,5 @@
 VENV := . .venv/bin/activate &&
-POFILES := apps/api/locale/de/LC_MESSAGES/django.po apps/backend/locale/de/LC_MESSAGES/django.po apps/core/locale/de/LC_MESSAGES/django.po apps/frontend/locale/de/LC_MESSAGES/django.po locale/de/LC_MESSAGES/django.po
+POFILES := apps/api/locale/de/LC_MESSAGES/django.po apps/administrator/locale/de/LC_MESSAGES/django.po apps/core/locale/de/LC_MESSAGES/django.po apps/customer/locale/de/LC_MESSAGES/django.po locale/de/LC_MESSAGES/django.po
 
 all:
 	@echo "help:"
@@ -66,9 +66,9 @@ demo_db:
 translate:
 	#${VENV} django-admin compilemessages
 	${VENV} cd apps/api && django-admin compilemessages || exit -1
-	${VENV} cd apps/backend && django-admin compilemessages || exit -1
+	${VENV} cd apps/administrator && django-admin compilemessages || exit -1
 	${VENV} cd apps/core && django-admin compilemessages || exit -1
-	${VENV} cd apps/frontend && django-admin compilemessages || exit -1
+	${VENV} cd apps/customer && django-admin compilemessages || exit -1
 
 messages:
 	${VENV} django-admin makemessages -l de || exit -1
