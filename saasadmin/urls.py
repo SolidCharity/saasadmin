@@ -32,7 +32,6 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 
     # SaasAdmin Admin UI
-    path('backend', admin_views.products),
     path('customers/<str:product>/', admin_views.customers),
     path('instances/<str:product>/', admin_views.instances),
     path('instances/<str:product>/add', admin_views.addinstances),
@@ -44,7 +43,7 @@ urlpatterns = [
     path('plans/delete/<int:id>', admin_views.deleteplan),
     path('contracts/edit/<int:id>/<str:newplan>', admin_views.editcontract),
 
-    path('backend/products', admin_views.products),
+    path('products/list', admin_views.products),
     path('products/add', admin_views.addproduct),
     path('products/<str:slug>/dashboard', admin_views.productdashboard),
     path('products/edit/<int:id>', admin_views.editproduct),

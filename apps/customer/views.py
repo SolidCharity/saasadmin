@@ -17,7 +17,7 @@ from apps.api.logic.contracts import LogicContracts
 
 def home(request):
     if request.user.is_staff:
-        return redirect('/backend/products')
+        return redirect('/products/list')
     product = LogicProducts().get_product(request, False)
     if product is None:
         return redirect('/products')
