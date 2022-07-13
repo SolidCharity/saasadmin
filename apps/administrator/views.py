@@ -218,7 +218,7 @@ def addproduct(request):
         if form.is_valid():
             try:
                 form.save()
-                return redirect('/products')
+                return redirect('/products/list')
             except:
                 pass
     else:

@@ -20,7 +20,7 @@ class ProductForm(forms.ModelForm):
         fields = ("slug", "name", "prefix",
             "instance_url", "login_url", "instance_password_reset_url",
             "instance_admin_user",
-            "number_of_ports", "is_active", "description", "upstream_url")
+            "number_of_ports", "is_active", "description", "upstream_url", "dbms_type")
 
 
 class AddInstancesForm(forms.Form):
@@ -40,6 +40,6 @@ class InstanceForm(forms.ModelForm):
 
     class Meta:
         model = SaasInstance
-        fields = ("custom_domain",)
+        fields = ("custom_domain","dbms_type")
 
 
