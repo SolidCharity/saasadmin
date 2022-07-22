@@ -22,8 +22,8 @@ admin.site.register(SaasCustomer, SaasCustomerHistoryAdmin)
 
 class SaasContractHistoryAdmin(SimpleHistoryAdmin):
     list_display = ["id", "get_customer", "get_product", "get_plan"]
-    history_list_display = ["email_address"]
-    search_fields = ['last_name', 'first_name', 'email_address']
+    history_list_display = ["customer__email_address"]
+    search_fields = ['customer__last_name', 'customer__first_name', 'customer__email_address']
 
     @admin.display(ordering='customer__last_name', description='Customer')
     def get_customer(self, obj):
