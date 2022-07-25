@@ -28,6 +28,8 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .rstrip('/')
             .replace('#Prefix', instance['prefix'])
             .replace('#Identifier', instance['identifier']))
+        if not instance['custom_domain']:
+            instance['custom_domain'] = domain
         template_content = (ansible_inventory_template
             .replace('{{identifier}}', instance['identifier'])
             .replace('{{hostname}}', instance['hostname'])
