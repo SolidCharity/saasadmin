@@ -66,7 +66,7 @@ class SaasProduct (models.Model):
     )
     dbms_type = models.CharField(
         _("Database Type"),
-        max_length=64, choices=DBMS_CHOICES, blank=MYSQL, default=MYSQL)
+        max_length=64, choices=DBMS_CHOICES, blank=False, default=MYSQL)
 
     class Meta:
         db_table = "saas_product"
@@ -139,7 +139,7 @@ class SaasInstance(models.Model):
     first_port = models.IntegerField(_("First Port"), default=-1)
     last_port = models.IntegerField(_("Last Port"), default=-1)
     activation_token = models.CharField(max_length=64, null=True)
-    custom_domain = models.CharField(_("Custom Domain"),max_length=250, default = "")
+    custom_domain = models.CharField(_("Custom Domain"),max_length=250, default = "", null=True, blank=True)
     additional_storage = models.IntegerField(_("Additional Storage"), default = 0)
 
     # possible values for status
@@ -172,7 +172,7 @@ class SaasInstance(models.Model):
     )
     dbms_type = models.CharField(
         _("Database Type"),
-        max_length=64, choices=DBMS_CHOICES, blank=MYSQL, default=MYSQL)
+        max_length=64, choices=DBMS_CHOICES, blank=False, default=MYSQL)
 
     class Meta:
         db_table = "saas_instance"
