@@ -46,6 +46,7 @@ def run_ansible(config, ansible_inventory_template, ansible_playbook, instance):
             .replace('{{django_secret_key}}', instance['django_secret_key'])
             .replace('{{domain}}', domain)
             .replace('{{custom_domain}}', instance['custom_domain'])
+            .replace('{{dbms_type}}', instance['dbms_type'])
             .replace('{{username}}', instance['prefix'] + instance['identifier'])
             .replace('{{password}}', instance['db_password'])
             .replace('{{SaasActivationPassword}}', instance['activation_token'])

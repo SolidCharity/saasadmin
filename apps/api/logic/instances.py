@@ -75,6 +75,7 @@ class LogicInstances:
           password2 = self.random_password(False),
           django_secret_key = get_random_secret_key(),
           db_password = db_password,
+          dbms_type = product.dbms_type,
           status = SaasInstance().IN_PREPARATION)
 
         # return the result

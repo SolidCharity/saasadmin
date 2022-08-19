@@ -58,7 +58,16 @@ class SaasProduct (models.Model):
     description = models.CharField(_("Description"), max_length=250, default="")
     upstream_url= models.CharField(_("Upstream_URL"), max_length=250, default = "https://example.org")
     login_url= models.CharField(_("Login_URL"), max_length=250, default = "")
-    
+
+    POSTGRESQL, MYSQL = ('postgresql', 'mysql')
+    DBMS_CHOICES = (
+        (POSTGRESQL, _("PostgreSQL")),
+        (MYSQL, _("MySQL/MariaDB")),
+    )
+    dbms_type = models.CharField(
+        _("Database Type"),
+        max_length=64, choices=DBMS_CHOICES, blank=False, default=MYSQL)
+
     class Meta:
         db_table = "saas_product"
 
@@ -91,7 +100,6 @@ class SaasPlan (models.Model):
     quota_app = models.CharField(_("Quota for Application"), max_length=20, default = "500M")
     cost_for_storage = models.DecimalField(_("Cost for Storage"), max_digits=10, decimal_places= 2, default=0)
     additional_storage_size = models.CharField(_("Additional Storage Size"), max_length=10, default = "")
-
 
     class Meta:
         db_table = "saas_plan"
@@ -131,7 +139,7 @@ class SaasInstance(models.Model):
     first_port = models.IntegerField(_("First Port"), default=-1)
     last_port = models.IntegerField(_("Last Port"), default=-1)
     activation_token = models.CharField(max_length=64, null=True)
-    custom_domain = models.CharField(_("Custom Domain"),max_length=250, default = "")
+    custom_domain = models.CharField(_("Custom Domain"),max_length=250, default = "", null=True, blank=True)
     additional_storage = models.IntegerField(_("Additional Storage"), default = 0)
 
     # possible values for status
@@ -156,6 +164,15 @@ class SaasInstance(models.Model):
         on_delete=models.CASCADE,
         related_name="%(app_label)s_%(class)s_list",
     )
+
+    POSTGRESQL, MYSQL = ('postgresql', 'mysql')
+    DBMS_CHOICES = (
+        (POSTGRESQL, _("PostgreSQL")),
+        (MYSQL, _("MySQL/MariaDB")),
+    )
+    dbms_type = models.CharField(
+        _("Database Type"),
+        max_length=64, choices=DBMS_CHOICES, blank=False, default=MYSQL)
 
     class Meta:
         db_table = "saas_instance"
