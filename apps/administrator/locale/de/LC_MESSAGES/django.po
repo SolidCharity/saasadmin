@@ -183,8 +183,8 @@ msgstr ""
 
 #: apps/administrator/templates/django_registration/activation_email_body.txt:18
 #, python-format
-msgid "You can contact us at info@%(site)s"
-msgstr "Wir sind per E-Mail erreichbar unter der Adresse info@%(site)s"
+msgid "You can contact us at %(info_email)s"
+msgstr "Wir sind per E-Mail erreichbar unter der Adresse %(info_email)s"
 
 #: apps/administrator/templates/django_registration/activation_email_subject.txt:2
 #, python-format
