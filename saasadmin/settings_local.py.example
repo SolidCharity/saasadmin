@@ -4,7 +4,8 @@ SECRET_KEY = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ADMINS = [('John', 'john@example.com'), ('Mary', 'mary@example.com')]
-SERVER_EMAIL = 'no-reply@solidcharity.com'
+SERVER_EMAIL = 'no-reply@example.com'
+INFO_EMAIL = 'info@example.com'
 EMAIL_SUBJECT_PREFIX = '[SaasAdmin]'
 
 #ALLOWED_HOSTS = ["saasadmintest.example.org"]
