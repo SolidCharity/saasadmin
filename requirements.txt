@@ -8,5 +8,6 @@ django-modeltranslation
 django-simple-history
 tldextract
 fontawesomefree==6.1
+Pillow
 # mysqlclient
 # psycopg2

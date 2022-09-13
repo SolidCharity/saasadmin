@@ -55,7 +55,13 @@ class SaasProduct (models.Model):
     instance_admin_user = models.CharField(_("Instance Admin User"), max_length=100, default = "admin")
     is_active = models.BooleanField(_("Is Active"), default=False)
     number_of_ports = models.IntegerField(_("Number of Ports"), default=1)
+    # 2 sentences
     description = models.CharField(_("Description"), max_length=250, default="")
+    # 5 sentences
+    first_page_purpose = models.CharField(_("First Page Purpose"), max_length=1500, default="")
+    # see https://djangocentral.com/uploading-images-with-django/
+    first_page_logo = models.ImageField(_("First Page Logo"), upload_to='product_logos', null=True)
+
     upstream_url= models.CharField(_("Upstream_URL"), max_length=250, default = "https://example.org")
     login_url= models.CharField(_("Login_URL"), max_length=250, default = "")
 

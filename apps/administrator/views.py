@@ -214,7 +214,7 @@ def addproduct(request):
         # request.POST is immutable, so make a copy
         values = request.POST.copy()
         values['owner'] = request.user.id
-        form = ProductForm(values)
+        form = ProductForm(values, request.FILES)
         if form.is_valid():
             try:
                 form.save()
@@ -245,7 +245,7 @@ def updateproduct(request, id):
     product = SaasProduct.objects.get(id=id)
     # request.POST is immutable, so make a copy
     values = request.POST.copy()
-    form = ProductForm(values, instance = product)
+    form = ProductForm(values, request.FILES, instance = product)
     if form.is_valid():
         form.save()
         return productdashboard(request, product.slug)

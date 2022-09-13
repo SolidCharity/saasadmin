@@ -4,6 +4,7 @@ venv
 .idea
 .vscode
 /static
+/media
 local.py
 *.mo
 settings_local.py
