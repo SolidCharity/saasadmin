@@ -56,7 +56,7 @@ msgstr "Pac Benutzer"
 
 #: apps/administrator/templates/addinstances.html:49
 msgid "Number of Instances"
-msgstr "Anzahl von Ports"
+msgstr "Anzahl von Instanzen"
 
 #: apps/administrator/templates/addplan.html:27
 msgid "Add plan"
