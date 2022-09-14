@@ -10,7 +10,12 @@
 
     <div class="tilegrid">
         {% for product in products %}
-            <div class="tile"><a href="//{{product.slug}}.{% get_main_url request %}" class="button button-primary">{{product.name}}</a></div>
+            <div class="tile">
+                <a href="//{{product.slug}}.{% get_main_url request %}" class="button button-primary">
+                    <img src='/media/{{ product.first_page_logo }}' alt="{{product.name}}">
+                </a>
+                <div>{{product.first_page_purpose}}</div>
+            </div>
         {% endfor %}
     </div>
 
