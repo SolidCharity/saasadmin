@@ -343,7 +343,7 @@ msgstr "beliebt"
 msgid "Register"
 msgstr "Registrieren"
 
-#: apps/customer/templates/select_product.html:9
+#: apps/customer/templates/select_product.html:22
 msgid "Available Products"
 msgstr "Angebotene Produkte"
 

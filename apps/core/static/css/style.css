@@ -131,6 +131,10 @@ div.center {
     grid-gap: 15px;
     grid-template-columns: repeat(auto-fit, 200px);
 }
+.tile{
+width: 100px;
+height: 100px;
+}
 
 div.table {
     display: table;

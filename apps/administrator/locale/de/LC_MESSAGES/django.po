@@ -27,7 +27,11 @@ msgstr "Upstream URL"
 msgid "Description"
 msgstr "Beschreibung"
 
-#: apps/administrator/forms.py:33
+#: apps/administrator/forms.py:17
+msgid "First Page Purpose"
+msgstr ""
+
+#: apps/administrator/forms.py:34
 msgid "Value"
 msgstr "Wert"
 
