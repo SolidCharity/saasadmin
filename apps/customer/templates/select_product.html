@@ -7,8 +7,6 @@
 
 <style>
   
-  
-  
 
 .productlogo {
   width: 150px;
@@ -25,6 +23,47 @@
 .sidebar{
   position: fixed;
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #f1f1f1;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 0 8px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 </style>
 
 <div class="sidebar">
@@ -42,24 +81,39 @@
           <h5>{%translate "Available Products"%}</h5>
         </div>  
         <div class="row">  
-        <div class="three columns">
-            <a href="//wordpress.ossaas.de">
-              <img class="productlogo" src='/media/product_logos/WordPress-logotype-alternative3.png' alt="wordpress">
-            </a>
+          <div class="three columns">
+            <div class="dropdown">
+              <span<a href="//wordpress.ossaas.de">
+                <img class="productlogo" src='/media/product_logos/WordPress-logotype-alternative3.png' alt="wordpress">
+              </a></span>
+              <div class="dropdown-content">
+                <p> Hello Worldpress </p>
+              </div>
+            </div>  
             <div>wordpress</div>          
           </div>
           
           <div class="three columns">
-            <a href="//kanboard.ossaas.de">
-              <img class="productlogo" src='/media/product_logos/Kanboard_icon.svg.png' alt="kandoard">
-            </a>
+            <div class="dropdown">
+              <span<a href="//kanboard.ossaas.de">
+                <img class="productlogo" src='/media/product_logos/Kanboard_icon.svg.png' alt="kandoard">
+              </a></span>
+              <div class="dropdown-content">
+                <p> Hello Kanboard </p>
+              </div>
+            </div>  
             <div>Kanboard</div> 
           </div>
 
           <div class="three columns">
-            <a href="//nextcloud.ossaas.de">
-              <img class="productlogo" src='/media/product_logos/Nextcloud_Logo.svg31.png' alt="Nextcloud">
-            </a>
+            <div class="dropdown">
+              <span><a href="//nextcloud.ossaas.de">
+                <img class="productlogo" src='/media/product_logos/Nextcloud_Logo.svg31.png' alt="Nextcloud">
+              </a></span>
+              <div class="dropdown-content">
+                <p> Hello Nextcloud </p>
+              </div>
+            </div> 
             <div>nextcloud</div>
           </div>
         </div>
@@ -69,23 +123,38 @@
 
         <div class="row">
           <div class="three columns">
-            <a href="//openpetra.ossaas.de">
-              <img class="productlogo" src='/media/product_logos/openpetra_logo_final_white_text.png' alt="openpetra">
-            </a>
+            <div class="dropdown">
+              <a href="//openpetra.ossaas.de">
+                <img class="productlogo" src='/media/product_logos/openpetra_logo_final_white_text.png' alt="openpetra">
+              </a>
+              <div class="dropdown-content">
+                <p> Hello Openpetra </p>
+              </div>
+            </div>
             <div>openpetra</div>
           </div>
 
             <div class="three columns">
-              <a href="//CiviCRM.ossaas.de">
-                <img class="productlogo" src='/media/product_logos/civicrm-icon-lg.png' alt="CiviCRM">
-              </a>
+              <div class="dropdown">
+                <a href="//CiviCRM.ossaas.de">
+                  <img class="productlogo" src='/media/product_logos/civicrm-icon-lg.png' alt="CiviCRM">
+                </a>
+                <div class="dropdown-content">
+                  <p> Hello CiviCRM </p>
+                </div>
+              </div>  
               <div>CiviCRM</div>
             </div>
           
             <div class="three columns">
-              <a href="//OpenProject.ossaas.de">
-                <img class="productlogo" src='/media/product_logos/1592478937959.jpeg' alt="OpenProject">
-              </a>
+              <div class="dropdown">
+                <a href="//OpenProject.ossaas.de">
+                  <img class="productlogo" src='/media/product_logos/1592478937959.jpeg' alt="OpenProject">
+                </a>
+                <div class="dropdown-content">
+                  <p> Hello Openproject </p>
+                </div>
+              </div>
               <div>OpenProject</div>
             </div>
           </div>
@@ -94,9 +163,14 @@
             </div>  
           <div class="row">
             <div class="three columns">
-              <a href="//Tryton.ossaas.de">
-                <img class="productlogo" src='/media/product_logos/120px-Tryton_logo.svg.png' alt="Tryton">
-              </a>
+              <div class="dropdown">
+                <a href="//Tryton.ossaas.de">
+                  <img class="productlogo" src='/media/product_logos/120px-Tryton_logo.svg.png' alt="Tryton">
+                </a>
+                <div class="dropdown-content">
+                  <p> Hello Tryton </p>
+                </div>
+              </div>
               <div>Tryton</div>
             </div>
           </div>    
