@@ -15,10 +15,19 @@
   height: 150px;
   
 }
+
+@media screen and (max-width: 480px) {
+    .sidebar{
+        position: relative;
+    }
+}
+
+.sidebar{
+  position: fixed;
+}
 </style>
 
-<div class="container-left">
- 
+<div class="sidebar">
 
       <ul>
         <li><a class="active" href="#home">Home</a></li>
@@ -26,11 +35,9 @@
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About</a></li>
       </ul>
-    
-  
 </div>
+
 <div class="container">
-              
         <div class="row">
           <h5>{%translate "Available Products"%}</h5>
         </div>  
