@@ -56,8 +56,8 @@ class SaasProduct (models.Model):
     is_active = models.BooleanField(_("Is Active"), default=False)
     number_of_ports = models.IntegerField(_("Number of Ports"), default=1)
     description = models.CharField(_("Description"), max_length=250, default="")
-    upstream_url= models.CharField(_("Upstream_URL"), max_length=250, default = "https://example.org")
-    login_url= models.CharField(_("Login_URL"), max_length=250, default = "")
+    upstream_url = models.URLField(_("Upstream_URL"), max_length=250, default = "https://example.org")
+    login_url= models.CharField(_("Login_URL"), max_length=250, default = "/")
 
     POSTGRESQL, MYSQL = ('postgresql', 'mysql')
     DBMS_CHOICES = (
