@@ -79,11 +79,34 @@ li a:hover {
 <div class="container">
         <div class="row">
           <h5>{%translate "Available Products"%}</h5>
-        </div>  
+        </div> 
+        
+        <div class="row">
+
+          {% for product in products %}
+          <div class="three columns">
+            <div class="dropdown">
+              <span><a href="//{{product.slug}}.{% get_main_url request %}">
+                <img class="productlogo" src='/media/{{ product.first_page_logo }}' alt="{{product.name}}">
+              </a></span>
+              <div class="dropdown-content">
+                <p>{{product.first_page_purpose}}</p>
+              </div>
+            </div>  
+            <div>{{product.name}}</div>          
+          </div>
+          {% if product.newrow %}
+          </div>
+          <div class="row">
+          {% endif %}
+          {% endfor %}
+
+        </div> 
+        
         <div class="row">  
           <div class="three columns">
             <div class="dropdown">
-              <span<a href="//wordpress.ossaas.de">
+              <span><a href="//wordpress.ossaas.de">
                 <img class="productlogo" src='/media/product_logos/WordPress-logotype-alternative3.png' alt="wordpress">
               </a></span>
               <div class="dropdown-content">
@@ -95,7 +118,7 @@ li a:hover {
           
           <div class="three columns">
             <div class="dropdown">
-              <span<a href="//kanboard.ossaas.de">
+              <span><a href="//kanboard.ossaas.de">
                 <img class="productlogo" src='/media/product_logos/Kanboard_icon.svg.png' alt="kandoard">
               </a></span>
               <div class="dropdown-content">

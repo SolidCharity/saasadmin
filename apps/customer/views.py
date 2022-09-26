@@ -399,6 +399,12 @@ def instance_view(request):
 
 def display_products(request):
     products = LogicProducts().get_products()
+    count = 1
+    for product in products:
+        if count % 4 == 0:
+            product.newrow = True
+        count += 1
+
     return render(request, 'select_product.html', {'products': products})
 
 
