@@ -14,37 +14,6 @@
   
 }
 
-@media screen and (max-width: 480px) {
-    .sidebar{
-        position: relative;
-    }
-}
-
-.sidebar{
-  position: fixed;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-}
-
-li a {
-  display: block;
-  color: #000;
-  padding: 8px 0 8px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color on hover */
-li a:hover {
-  background-color: #555;
-  color: white;
-}
-
 .dropdown {
   position: relative;
   display: inline-block;
@@ -66,172 +35,40 @@ li a:hover {
 
 
 </style>
-<!--
-<div class="sidebar">
-
-      <ul>
-        <li><a class="active" href="#home">Home</a></li>
-        <li><a href="#news">News</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#about">About</a></li>
-      </ul>
-</div>
--->
-
 <div class="container">
-        <div class="row">
-          <h5>{%translate "Available Products"%}</h5>
-        </div> 
+  <div class="row">
+    <h5>{%translate "Available Products"%}</h5>
+  </div> 
         
-        <div class="row">
+  <div class="row">
 
-          {% for product in products %}
-          <div class="three columns">
+    {% for product in products %}
+      <div class="three columns">
             
-            <span><a href="//{{product.slug}}.{% get_main_url request %}">
-               <img class="productlogo" src='/media/{{ product.first_page_logo }}' alt="{{product.name}}">
-            </a></span>
-            <div class="dropdown">
-              <div class="dropdown-content">
-                <p>{{product.first_page_purpose}}</p>
-              </div>
-                <div>{{product.name}} 
-
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                  </svg>
-                
-                </div>          
-              </div>
+        <span><a href="//{{product.slug}}.{% get_main_url request %}">
+            <img class="productlogo" src='/media/{{ product.first_page_logo }}' alt="{{product.name}}">
+        </a></span>
+          <div class="dropdown">
+            <div class="dropdown-content">
+              <p>{{product.first_page_purpose}}</p>
             </div>
-            {% if product.newrow %}
+              <div>{{product.name}} 
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                </svg>
+              
+              </div>          
+            </div>
           </div>
+          {% if product.newrow %}
+      </div>
           <div class="row">
           {% endif %}
-          {% endfor %}
+    {% endfor %}
 
-        </div> 
-        
-        <div class="row">  
-          <div class="three columns">
-            
-              <span><a href="//wordpress.ossaas.de">
-                <img class="productlogo" src='/media/product_logos/WordPress-logotype-alternative3.png' alt="wordpress">
-              </a></span>
-              <div>Wordpress
-                <div class="dropdown">
-                <div class="dropdown-content">
-                  <p> Hello Worldpress </p>
-                </div>
-              
-                  <!-- <div><i class="fas fa-info-circle"></i></div> -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                  </svg>        
-            
-                </div>
-              </div>    
-          </div>
-          
-          <div class="three columns">
-            <div class="dropdown">
-              <span><a href="//kanboard.ossaas.de">
-                <img class="productlogo" src='/media/product_logos/Kanboard_icon.svg.png' alt="kandoard">
-              </a></span>
-              <div class="dropdown-content">
-                <p> Hello Kanboard </p>
-              </div>
-            </div>  
-            <div>Kanboard <i class="bi bi-info-circle"></i></div> 
-            
-            <span><i class="bi bi-info-circle"></i></span>
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-              <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-            </svg>
-            
-          </div>
-
-          <div class="three columns">
-            
-              <span><a href="//nextcloud.ossaas.de">
-                <img class="productlogo" src='/media/product_logos/Nextcloud_Logo.svg31.png' alt="Nextcloud">
-              </a></span>
-              <div class="dropdown">
-                <div class="dropdown-content">
-                  <p> Hello Nextcloud </p>
-                </div>
-             
-                <div>nextcloud <i class="fas fa-info-circle"></i></div>
-            </div>
-          </div>
-        </div>
-          <div class="row">
-            <div class="three columns">&nbsp;</div>
-          </div>  
-
-        <div class="row">
-          <div class="three columns">
-            <div class="dropdown">
-              <a href="//openpetra.ossaas.de">
-                <img class="productlogo" src='/media/product_logos/openpetra_logo_final_white_text.png' alt="openpetra">
-              </a>
-              <div class="dropdown-content">
-                <p> Hello Openpetra</p>
-              </div>
-            </div>
-            <div>openpetra <i class="bi bi-info-circle"></i></div>
-          </div>
-
-            <div class="three columns">
-              <div class="dropdown">
-                <a href="//CiviCRM.ossaas.de">
-                  <img class="productlogo" src='/media/product_logos/civicrm-icon-lg.png' alt="CiviCRM">
-                </a>
-                <div class="dropdown-content">
-                  <p> Hello CiviCRM </p>
-                </div>
-              </div>  
-              <div>CiviCRM</div>
-            </div>
-          
-            <div class="three columns">
-              <div class="dropdown">
-                <a href="//OpenProject.ossaas.de">
-                  <img class="productlogo" src='/media/product_logos/1592478937959.jpeg' alt="OpenProject">
-                </a>
-                <div class="dropdown-content">
-                  <p> Hello Openproject </p>
-                </div>
-              </div>
-              <div>OpenProject</div>
-            </div>
-          </div>
-            <div class="row">
-              <div class="three columns">&nbsp;</div>
-            </div>  
-          <div class="row">
-            <div class="three columns">
-              <div class="dropdown">
-                <a href="//Tryton.ossaas.de">
-                  <img class="productlogo" src='/media/product_logos/120px-Tryton_logo.svg.png' alt="Tryton">
-                </a>
-                <div class="dropdown-content">
-                  <p> Hello Tryton </p>
-                </div>
-              </div>
-              <div>Tryton</div>
-            </div>
-          </div>    
-                 
-      </div>
-
-    </div>
-  </div>
-
+  </div> 
 </div>
 
 {% endblock %}
