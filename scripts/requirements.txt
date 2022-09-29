@@ -1,4 +1,0 @@
-pyyaml
-requests
-click
-git+https://dev.hostsharing.net/r/ansible/hs.admin.api.git
