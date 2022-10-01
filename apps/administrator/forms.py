@@ -12,7 +12,6 @@ class PlanForm(forms.ModelForm):
 
 class ProductForm(forms.ModelForm):
 
-    upstream_url = forms.URLField(label=_("Upstream URL"))
     description = forms.CharField(widget=forms.Textarea, label=_("Description"))
     first_page_purpose = forms.CharField(widget=forms.Textarea, label=_("First Page Purpose"))
 

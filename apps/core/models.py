@@ -62,8 +62,8 @@ class SaasProduct (models.Model):
     # see https://djangocentral.com/uploading-images-with-django/
     first_page_logo = models.ImageField(_("First Page Logo"), upload_to='product_logos', null=True)
 
-    upstream_url= models.CharField(_("Upstream_URL"), max_length=250, default = "https://example.org")
-    login_url= models.CharField(_("Login_URL"), max_length=250, default = "")
+    upstream_url = models.CharField(_("Upstream_URL"), max_length=250, default = "https://example.org")
+    login_url = models.CharField(_("Login_URL"), max_length=250, default = "/")
 
     POSTGRESQL, MYSQL = ('postgresql', 'mysql')
     DBMS_CHOICES = (
