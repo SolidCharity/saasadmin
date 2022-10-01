@@ -139,13 +139,11 @@ msgstr "Beschreibung"
 
 #: apps/core/models.py:61
 msgid "First Page Purpose"
-msgstr ""
+msgstr "Kurzbeschreibung auf Startseite"
 
 #: apps/core/models.py:63
-#, fuzzy
-#| msgid "First Port"
 msgid "First Page Logo"
-msgstr "Erster Port"
+msgstr "Logo für Startseite"
 
 #: apps/core/models.py:65
 msgid "Upstream_URL"

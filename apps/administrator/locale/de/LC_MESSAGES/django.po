@@ -29,7 +29,7 @@ msgstr "Beschreibung"
 
 #: apps/administrator/forms.py:17
 msgid "First Page Purpose"
-msgstr ""
+msgstr "Kurzbeschreibung auf Startseite"
 
 #: apps/administrator/forms.py:34
 msgid "Value"
