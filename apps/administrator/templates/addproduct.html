@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
 <div class="form-box">
-<form method="POST" class="post-form" action="/products/add">
+<form method="POST" class="post-form" action="/products/add" enctype="multipart/form-data">
 		{% csrf_token %}
 	<div class="container">
 <br>

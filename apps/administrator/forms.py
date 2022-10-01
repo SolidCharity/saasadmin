@@ -13,13 +13,14 @@ class PlanForm(forms.ModelForm):
 class ProductForm(forms.ModelForm):
 
     description = forms.CharField(widget=forms.Textarea, label=_("Description"))
+    first_page_purpose = forms.CharField(widget=forms.Textarea, label=_("First Page Purpose"))
 
     class Meta:
         model = SaasProduct
         fields = ("slug", "name", "prefix",
             "instance_url", "login_url", "instance_password_reset_url",
             "instance_admin_user",
-            "number_of_ports", "is_active", "description", "upstream_url", "dbms_type")
+            "number_of_ports", "is_active", "description", "first_page_purpose", "first_page_logo", "upstream_url", "dbms_type")
 
 
 class AddInstancesForm(forms.Form):

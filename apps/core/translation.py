@@ -15,4 +15,4 @@ class SaasConfigurationTranslationOptions(TranslationOptions):
 
 @register(SaasProduct)
 class SaasProductTranslationOptions(TranslationOptions):
-    fields = ('description', 'upstream_url')
+    fields = ('description', 'first_page_purpose', 'upstream_url')
