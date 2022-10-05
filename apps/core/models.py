@@ -186,8 +186,8 @@ class SaasInstance(models.Model):
             models.UniqueConstraint(fields=['identifier', 'product'], name='identifier and product')
         ]
 
-    def get_url(self):
-        if self.custom_domain:
+    def get_url(self, custom_domain=True):
+        if self.custom_domain and custom_domain:
             return f"https://{self.custom_domain}"
         else:
             prod = self.product
