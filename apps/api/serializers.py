@@ -10,7 +10,8 @@ class InstanceSerializer(serializers.HyperlinkedModelSerializer):
     quota_app = serializers.SerializerMethodField('get_quota_app')
 
     def get_instance_url(self, instance):
-        return instance.get_url()
+        # get the url of the instance, not the custom url
+        return instance.get_url(False)
 
     def get_prefix(self, instance):
       return instance.product.prefix
