@@ -173,8 +173,7 @@ def paymentmethod_select(request):
                 return show_paymentmethod(request, product, None, None, additional_storage=additional_storage, errormessage=error)
 
             contract.sepa_mandate_date = datetime.today()
-            # TODO: something with prefixinstance_idyyyymmdd?
-            contract.sepa_mandate = 'TODO'
+            contract.sepa_mandate = f"{contract.instance.identifier}{contract.sepa_mandate_date:%Y%m%d}"
         else:
             contract.sepa_mandate_date = None
             contract.sepa_mandate = ''
