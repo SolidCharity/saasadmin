@@ -343,11 +343,11 @@ msgstr "beliebt"
 msgid "Register"
 msgstr "Registrieren"
 
-#: apps/customer/templates/select_product.html:40
+#: apps/customer/templates/select_product.html:10
 msgid "Available Products"
 msgstr "Angebotene Produkte"
 
-#: apps/customer/views.py:73 apps/customer/views.py:187
+#: apps/customer/views.py:73 apps/customer/views.py:186
 msgid "Changes Saved"
 msgstr "Änderungen gespeichert"
 
@@ -367,61 +367,61 @@ msgstr "Mehr gewünscht? Bitte melden!"
 msgid "Please specify account owner and IBAN"
 msgstr "Bitte den Kontoinhaber und die IBAN angeben"
 
-#: apps/customer/views.py:197
+#: apps/customer/views.py:196
 msgid "year"
 msgstr "Jahr"
 
-#: apps/customer/views.py:199 apps/customer/views.py:205
+#: apps/customer/views.py:198 apps/customer/views.py:204
 msgid "month"
 msgstr "Monat"
 
-#: apps/customer/views.py:201
+#: apps/customer/views.py:200
 msgid "months"
 msgstr "Monate"
 
-#: apps/customer/views.py:207
+#: apps/customer/views.py:206
 msgid "weeks"
 msgstr "Wochen"
 
-#: apps/customer/views.py:209
+#: apps/customer/views.py:208
 msgid "day"
 msgstr "Tag"
 
-#: apps/customer/views.py:211
+#: apps/customer/views.py:210
 msgid "days"
 msgstr "Tage"
 
-#: apps/customer/views.py:246
+#: apps/customer/views.py:245
 msgid "forever"
 msgstr "immer"
 
-#: apps/customer/views.py:252
+#: apps/customer/views.py:251
 msgid "another month"
 msgstr "einen weiteren Monat"
 
-#: apps/customer/views.py:254
+#: apps/customer/views.py:253
 msgid "another quarter"
 msgstr "ein weiteres Quartal"
 
-#: apps/customer/views.py:256
+#: apps/customer/views.py:255
 msgid "another year"
 msgstr "ein weiteres Jahr"
 
-#: apps/customer/views.py:324
+#: apps/customer/views.py:323
 #, python-format
 msgid "Contract for %s upgraded"
 msgstr ""
 
-#: apps/customer/views.py:325
+#: apps/customer/views.py:324
 #, python-format
 msgid "Nice, a contract of %s was upgraded for customer %d"
 msgstr ""
 
-#: apps/customer/views.py:343
+#: apps/customer/views.py:342
 msgid "Error: no instance available. Please try again tomorrow!"
 msgstr ""
 
-#: apps/customer/views.py:368
+#: apps/customer/views.py:367
 msgid "Error: no instance has been assigned yet."
 msgstr "Fehler: es wurde noch keine Instanz zugeordnet."
 
