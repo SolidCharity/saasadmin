@@ -309,6 +309,18 @@ def editinstance(request, id):
 
 @login_required
 @staff_member_required
+def viewcontract(request, id):
+    contract = SaasContract.objects.get(id=id)
+
+    if contract.instance.additional_storage > 0:
+        additional_storage_cost = int(contract.instance.additional_storage)/contract.plan.get_additional_storage_gb() * float(contract.plan.cost_for_storage)
+    else:
+        additional_storage_cost = 0
+
+    return render(request,'viewcontract.html', {'contract': contract, 'additional_storage_cost': additional_storage_cost})
+
+@login_required
+@staff_member_required
 def updateinstance(request, id):
     instance = SaasInstance.objects.get(id=id)
     # request.POST is immutable, so make a copy

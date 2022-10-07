@@ -18,20 +18,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps/administrator/forms.py:15
-#: apps/administrator/templates/productdashboard.html:17
-msgid "Upstream URL"
-msgstr "Upstream URL"
-
-#: apps/administrator/forms.py:16
 #: apps/administrator/templates/productdashboard.html:16
 msgid "Description"
 msgstr "Beschreibung"
 
-#: apps/administrator/forms.py:17
+#: apps/administrator/forms.py:16
 msgid "First Page Purpose"
 msgstr "Kurzbeschreibung auf Startseite"
 
-#: apps/administrator/forms.py:34
+#: apps/administrator/forms.py:33
 msgid "Value"
 msgstr "Wert"
 
@@ -117,6 +112,7 @@ msgid "Plan"
 msgstr "Angebot"
 
 #: apps/administrator/templates/customers.html:15
+#: apps/administrator/templates/viewcontract.html:6
 msgid "Contract"
 msgstr "Vertrag"
 
@@ -133,6 +129,10 @@ msgstr ""
 #: apps/administrator/templates/customers.html:27
 msgid "Switch to Unlimited Test"
 msgstr ""
+
+#: apps/administrator/templates/customers.html:30
+msgid "View Contract"
+msgstr "Vertrag anschauen"
 
 #: apps/administrator/templates/django_registration/activation_complete.html:6
 #: apps/administrator/templates/django_registration/registration_complete.html:6
@@ -308,9 +308,11 @@ msgstr "Präfix"
 msgid "Number of Ports"
 msgstr "Anzahl von Ports"
 
+#: apps/administrator/templates/productdashboard.html:17
+msgid "Upstream URL"
+msgstr "Upstream URL"
+
 #: apps/administrator/templates/productdashboard.html:22
-#, fuzzy
-#| msgid "Are you sure you want to delete this item?')"
 msgid "Are you sure you want to delete this item?"
 msgstr "Bist du dir sicher, dass das gelöscht werden soll?"
 
@@ -358,6 +360,55 @@ msgstr "Passwort vergessen?"
 #: apps/administrator/templates/registration/login.html:60
 msgid "Create a free account"
 msgstr "Einen kostenlosen Zugang einrichten"
+
+#: apps/administrator/templates/viewcontract.html:9
+msgid "Starting at"
+msgstr "Beginnt am"
+
+#: apps/administrator/templates/viewcontract.html:10
+msgid "Ending at"
+msgstr "Endet am"
+
+#: apps/administrator/templates/viewcontract.html:12
+#: apps/administrator/templates/viewcontract.html:15
+msgid "Length of period"
+msgstr "Vertragslaufzeit"
+
+#: apps/administrator/templates/viewcontract.html:12
+msgid "Months"
+msgstr "Monate"
+
+#: apps/administrator/templates/viewcontract.html:15
+msgid "Days"
+msgstr "Tage"
+
+#: apps/administrator/templates/viewcontract.html:17
+msgid "Will be renewed automatically"
+msgstr "Wird automatisch verlängert"
+
+#: apps/administrator/templates/viewcontract.html:18
+msgid "Payment Method"
+msgstr "Zahlungsweise"
+
+#: apps/administrator/templates/viewcontract.html:21
+msgid "Account owner"
+msgstr "Kontoinhaber"
+
+#: apps/administrator/templates/viewcontract.html:22
+msgid "IBAN"
+msgstr "IBAN"
+
+#: apps/administrator/templates/viewcontract.html:23
+msgid "SEPA Mandate"
+msgstr "SEPA Mandatsnummer"
+
+#: apps/administrator/templates/viewcontract.html:24
+msgid "SEPA Mandate Date"
+msgstr "SEPA Mandatsdatum"
+
+#: apps/administrator/templates/viewcontract.html:27
+msgid "Amount"
+msgstr "Betrag"
 
 #: apps/administrator/views.py:49
 msgid "contract will be auto renewed"

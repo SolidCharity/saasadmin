@@ -57,6 +57,7 @@ urlpatterns = [
     path('configurations/edit/<int:id>', admin_views.editconfiguration),
     path('configurations/update/<int:id>', admin_views.updateconfiguration),
 
+    path('contracts/view/<int:id>', admin_views.viewcontract),
     path('instances/edit/<int:id>', admin_views.editinstance),
     path('instances/update/<int:id>', admin_views.updateinstance),
 

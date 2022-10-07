@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+  <h3>{%translate "Contract"%} {{contract.customer.first_name}} {{contract.customer.last_name}} - {{contract.plan.product.name}} {{contract.plan.name}}</h3>
+
+  <ul>
+    <li>{%translate "Starting at"%}: {{contract.start_date}}</li>
+    <li>{%translate "Ending at"%}: {{contract.end_date}}</li>
+    {%if contract.plan.period_length_in_months %}
+    <li>{%translate "Length of period"%}: {{contract.plan.period_length_in_months}} {%translate "Months"%}</li>
+    {%endif%}
+    {%if contract.plan.period_length_in_days %}
+    <li>{%translate "Length of period"%}: {{contract.plan.period_length_in_days}} {%translate "Days"%}</li>
+    {%endif%}
+    <li>{%translate "Will be renewed automatically"%}: {{contract.is_auto_renew}}</li>
+    <li>{%translate "Payment Method"%}: {{contract.payment_method}}</li>
+
+    {%if contract.payment_method == 'SEPA_DIRECTDEBIT' %}
+    <li>{%translate "Account owner"%}: {{contract.account_owner}}</li>
+    <li>{%translate "IBAN"%}: {{contract.account_iban}}</li>
+    <li>{%translate "SEPA Mandate"%}: {{contract.sepa_mandate}}</li>
+    <li>{%translate "SEPA Mandate Date"%}: {{contract.sepa_mandate_date}}</li>
+    {%endif%}
+
+    <li>{%translate "Amount"%}: {{contract.plan.cost_per_period|add:additional_storage_cost }} {{contract.plan.currency_code}}</li>
+  </ul>
+  <pre>
+{{contract.customer.title}} {{contract.customer.first_name}} {{contract.customer.last_name}}
+{{contract.customer.street}}
+{{contract.customer.post_code}} {{contract.customer.city}}
+{{contract.customer.country_code}}
+{{contract.customer.email_address}}
+  </pre>
+
+</div>
+
+{% endblock %}

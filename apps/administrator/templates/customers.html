@@ -27,6 +27,7 @@
         <td><a href="/contracts/edit/{{ customer.contract_id }}/MakeFree" class="button button-primary">{%translate "Switch to Unlimited Test"%}</a></td>
         {% endif %}
         <td><a href="/instances/edit/{{ customer.instance_id }}" class="button button-primary">{%translate "Edit"%}</a></td>
+        <td><a href="/contracts/view/{{ customer.contract_id }}" class="button button-primary">{%translate "View Contract"%}</a></td>
     </tr>
     {% endfor %}
 </table>
