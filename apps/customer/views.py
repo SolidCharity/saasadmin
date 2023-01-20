@@ -175,7 +175,8 @@ def paymentmethod_select(request):
                 return show_paymentmethod(request, product, None, None, additional_storage=additional_storage, errormessage=error)
 
             contract.sepa_mandate_date = datetime.today()
-            contract.sepa_mandate = f"{contract.instance.identifier}{contract.sepa_mandate_date:%Y%m%d}"
+            if contract.instance:
+                contract.sepa_mandate = f"{contract.instance.identifier}{contract.sepa_mandate_date:%Y%m%d}"
         else:
             contract.sepa_mandate_date = None
             contract.sepa_mandate = ''
@@ -190,7 +191,10 @@ def paymentmethod_select(request):
     current_plan = LogicContracts().get_current_plan(request, product)
     if current_plan is None:
         return redirect('/plan/current')
-    return show_paymentmethod(request, product, current_plan, None, additional_storage=contract.instance.additional_storage)
+    additional_storage = 0
+    if contract.instance:
+        additional_storage = contract.instance.additional_storage
+    return show_paymentmethod(request, product, current_plan, None, additional_storage=additional_storage)
 
 
 def readablePeriodsInMonths(periodLength):
@@ -225,6 +229,7 @@ def show_paymentmethod(request, product, current_plan, new_plan, additional_stor
 
     return render(request, 'payment.html',
         {'contract': contract,
+        'menu': '/paymentmethod',
         'is_new_contract': new_contract,
         'plan': new_plan,
         'contract': contract,
@@ -278,6 +283,7 @@ def show_contract(request, product, current_plan, new_plan, additional_storage):
         {'product': product,
         'plan': new_plan,
         'contract': contract,
+        'menu': '/contract',
         'is_new_order': isNewOrder,
         'is_free_test': isFreeTest,
         'is_unlimited_test': isUnlimitedTest,
@@ -297,7 +303,10 @@ def contract_view(request):
     if not contract:
         return redirect("/plan/current")
 
-    return show_contract(request, product, contract.plan, None, contract.instance.additional_storage)
+    additional_storage = 0
+    if contract.instance:
+        additional_storage = contract.instance.additional_storage
+    return show_contract(request, product, contract.plan, None, additional_storage)
 
 @login_required
 def contract_subscribe(request, product_id, plan_id):

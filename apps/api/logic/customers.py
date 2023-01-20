@@ -29,6 +29,12 @@ class LogicCustomers:
             contract.instance = instance
             contract.plan = plan
             contract.is_confirmed = True
+
+            # if payment is via direct debit but the sepa mandate has not been set yet
+            if contract.payment_method == "SEPA_DIRECTDEBIT":
+                if not contract.sepa_mandate:
+                    contract.sepa_mandate = f"{contract.instance.identifier}{contract.sepa_mandate_date:%Y%m%d}"
+
             contract.save()
             instance.status = instance.ASSIGNED
             if additional_storage:

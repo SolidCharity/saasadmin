@@ -32,8 +32,8 @@
             {% else %}
             <a class="left {% get_topnav_active request '/account' %}" href="/account">{%translate "Personal Details"%}</a>
             <a class="left {% get_topnav_active request '/plan/current' %}" href="/plan/current">{%translate "Selected Plan"%}</a>
-            <a class="left {% get_topnav_active request '/paymentmethod' %}" href="/paymentmethod">{%translate "Payment Details"%}</a>
-            <a class="left {% get_topnav_active request '/contract' %}" href="/contract">{%translate "Contract"%}</a>
+            <a class="left {% get_topnav_active request '/paymentmethod' menu %}" href="/paymentmethod">{%translate "Payment Details"%}</a>
+            <a class="left {% get_topnav_active request '/contract' menu %}" href="/contract">{%translate "Contract"%}</a>
             <a class="left {% get_topnav_active request '/instance' %}" href="/instance">{%translate "Instance Details"%}</a>
             {% endif %}
             <a class="right" href="/accounts/logout/">{%translate "Logout"%}</a>
