@@ -19,7 +19,7 @@ class SaasCustomer(models.Model):
     newsletter_subscribed_on = models.DateTimeField(_("newsletter_subscribed_on"), null=True)
     newsletter_cancelled = models.DateTimeField(_("newsletter_cancelled"), null=True)
     language_code = models.CharField(_("language_code"), max_length=16, default="de")
-    organisation_name = models.CharField(_("organisation_name"), max_length=64, null=True)
+    organisation_name = models.CharField(_("organisation_name"), max_length=64, null=True, blank=True)
 
     MR, MRS, MRDR, MRSDR = ('Mr', 'Mrs', 'Mr Dr', 'Mrs Dr')
     TITLE_CHOICES = (
@@ -43,6 +43,11 @@ class SaasCustomer(models.Model):
 
     class Meta:
         db_table = "saas_customer"
+
+    def get_name(self):
+        if self.organisation_name:
+            return self.organisation_name
+        return self.last_name + " " + self.first_name
 
 class SaasProduct (models.Model):
     slug = models.CharField(_("Slug"), max_length=50, default = "invalid", unique=True)

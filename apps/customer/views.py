@@ -47,6 +47,8 @@ def account_view(request):
     return render(request, 'account.html', {'customer': customer, 'form': form})
 
 def  clean_null(customer):
+    if customer.organisation_name is None:
+        customer.organisation_name = ''
     if customer.first_name is None:
         customer.first_name = ''
     if customer.last_name is None:
