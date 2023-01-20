@@ -17,7 +17,7 @@
     </tr>
     {% for customer in customers %}
     <tr>
-        <td>{{ customer.last_name }}</td>
+        <td>{{ customer.organisation_name }}</td>
         <td><a href="mailto:{{ customer.email_address }}">{{ customer.email_address }}</a></td>
         <td><a href="{{customer.instance_url}}" target="_blank">{{ customer.instance_identifier }}</a></td>
         <td>{{ customer.plan_name }}</td>

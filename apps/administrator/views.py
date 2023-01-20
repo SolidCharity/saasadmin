@@ -24,6 +24,7 @@ def customers(request, product):
     with connection.cursor() as cursor:
 
         sql = """SELECT email_address, first_name, last_name,
+            organisation_name,
             saas_instance.identifier as instance_identifier,
             sc.id as contract_id,
             saas_instance.id as instance_id,
@@ -45,6 +46,8 @@ def customers(request, product):
         for row in result:
             # create an associative array
             a = dict(zip([c[0] for c in cursor.description], row))
+            if not a['organisation_name']:
+                a['organisation_name'] = a['last_name']
             if a['contract_auto_renew']:
                 a['contract_finish'] = _('contract will be auto renewed')
             elif not a['contract_end_date']:

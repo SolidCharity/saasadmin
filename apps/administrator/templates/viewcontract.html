@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container">
-  <h3>{%translate "Contract"%} {{contract.customer.first_name}} {{contract.customer.last_name}} - {{contract.plan.product.name}} {{contract.plan.name}}</h3>
+  <h3>{%translate "Contract"%} {{contract.customer.get_name}} - {{contract.plan.product.name}} {{contract.plan.name}}</h3>
 
   <ul>
     <li>{%translate "Starting at"%}: {{contract.start_date}}</li>
@@ -27,6 +27,7 @@
     <li>{%translate "Amount"%}: {{contract.plan.cost_per_period|add:additional_storage_cost }} {{contract.plan.currency_code}}</li>
   </ul>
   <pre>
+{{contract.customer.organisation_name}}
 {{contract.customer.title}} {{contract.customer.first_name}} {{contract.customer.last_name}}
 {{contract.customer.street}}
 {{contract.customer.post_code}} {{contract.customer.city}}
