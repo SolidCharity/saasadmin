@@ -229,6 +229,7 @@ def show_paymentmethod(request, product, current_plan, new_plan, additional_stor
 
     return render(request, 'payment.html',
         {'contract': contract,
+        'menu': '/paymentmethod',
         'is_new_contract': new_contract,
         'plan': new_plan,
         'contract': contract,
@@ -282,6 +283,7 @@ def show_contract(request, product, current_plan, new_plan, additional_storage):
         {'product': product,
         'plan': new_plan,
         'contract': contract,
+        'menu': '/contract',
         'is_new_order': isNewOrder,
         'is_free_test': isFreeTest,
         'is_unlimited_test': isUnlimitedTest,
