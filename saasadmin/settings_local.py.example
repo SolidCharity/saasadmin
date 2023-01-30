@@ -30,3 +30,7 @@ PORT_END = 9000
 COUNTRIES_ONLY = ['DE', 'AT', 'CH', 'NL']
 
 SESSION_COOKIE_DOMAIN=".example.org"
+
+MOSPARO_URL="https://captcha.example.org"
+MOSPARO_GUID=""
+MOSPARO_PUBLICKEY=""
