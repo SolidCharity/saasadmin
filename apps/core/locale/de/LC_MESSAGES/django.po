@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps/core/models.py:8 apps/core/models.py:83
+#: apps/core/models.py:8 apps/core/models.py:88
 msgid "name"
 msgstr "name"
 
@@ -93,259 +93,259 @@ msgstr "Land"
 msgid "Email Address"
 msgstr "E-Mail Adresse"
 
-#: apps/core/models.py:42 apps/core/models.py:56
+#: apps/core/models.py:42 apps/core/models.py:61
 msgid "Is Active"
 msgstr "ist aktiv"
 
-#: apps/core/models.py:48
+#: apps/core/models.py:53
 msgid "Slug"
 msgstr "Kurzname"
 
-#: apps/core/models.py:49
+#: apps/core/models.py:54
 msgid "Name"
 msgstr "Name"
 
-#: apps/core/models.py:50
+#: apps/core/models.py:55
 msgid "Prefix"
 msgstr "Präfix"
 
-#: apps/core/models.py:51
+#: apps/core/models.py:56
 msgid "Activation URL"
 msgstr "Aktivierungs-URL"
 
-#: apps/core/models.py:52
+#: apps/core/models.py:57
 msgid "Deactivation URL"
 msgstr "Deaktivierungs-URL"
 
-#: apps/core/models.py:53
+#: apps/core/models.py:58
 msgid "Instance URL"
 msgstr "Instanz-URL"
 
-#: apps/core/models.py:54
+#: apps/core/models.py:59
 msgid "Password Reset URL"
 msgstr "URL zum Zurücksetzen des Passworts"
 
-#: apps/core/models.py:55
+#: apps/core/models.py:60
 msgid "Instance Admin User"
 msgstr "Instanz-Admin-Benutzer"
 
-#: apps/core/models.py:57
+#: apps/core/models.py:62
 msgid "Number of Ports"
 msgstr "Anzahl der Ports"
 
-#: apps/core/models.py:59
+#: apps/core/models.py:64
 msgid "Description"
 msgstr "Beschreibung"
 
-#: apps/core/models.py:61
+#: apps/core/models.py:66
 msgid "First Page Purpose"
 msgstr "Kurzbeschreibung auf Startseite"
 
-#: apps/core/models.py:63
+#: apps/core/models.py:68
 msgid "First Page Logo"
 msgstr "Logo für Startseite"
 
-#: apps/core/models.py:65
+#: apps/core/models.py:70
 msgid "Upstream_URL"
 msgstr "Upstream URL"
 
-#: apps/core/models.py:66
+#: apps/core/models.py:71
 msgid "Login_URL"
 msgstr "URL für Anmeldung"
 
-#: apps/core/models.py:70 apps/core/models.py:176
+#: apps/core/models.py:75 apps/core/models.py:181
 msgid "PostgreSQL"
 msgstr ""
 
-#: apps/core/models.py:71 apps/core/models.py:177
+#: apps/core/models.py:76 apps/core/models.py:182
 msgid "MySQL/MariaDB"
 msgstr ""
 
-#: apps/core/models.py:74 apps/core/models.py:180
+#: apps/core/models.py:79 apps/core/models.py:185
 msgid "Database Type"
 msgstr "Datenbank Typ"
 
-#: apps/core/models.py:82
+#: apps/core/models.py:87
 msgid "slug"
 msgstr "Kurzname"
 
-#: apps/core/models.py:90
+#: apps/core/models.py:95
 msgid "Sorting Order"
 msgstr "Sortierreihenfolge"
 
-#: apps/core/models.py:91
+#: apps/core/models.py:96
 msgid "is favourite"
 msgstr "ist Favorit"
 
-#: apps/core/models.py:92
+#: apps/core/models.py:97
 msgid "is public"
 msgstr "ist öffentlich"
 
-#: apps/core/models.py:94
+#: apps/core/models.py:99
 msgid "Period Length in Months"
 msgstr "Periodenlänge in Monaten"
 
-#: apps/core/models.py:95
+#: apps/core/models.py:100
 msgid "Period Length in Days"
 msgstr "Periodendauer in Tagen"
 
-#: apps/core/models.py:96
+#: apps/core/models.py:101
 msgid "Currency"
 msgstr "Währung"
 
-#: apps/core/models.py:97
+#: apps/core/models.py:102
 msgid "Cost per Period"
 msgstr "Kosten pro Zeitraum"
 
-#: apps/core/models.py:98
+#: apps/core/models.py:103
 msgid "Notice Period in Days"
 msgstr "Kündigungsfrist in Tagen"
 
-#: apps/core/models.py:99
+#: apps/core/models.py:104
 msgid "Description Target"
 msgstr "Beschreibung Zielgruppe"
 
-#: apps/core/models.py:100
+#: apps/core/models.py:105
 msgid "Description Caption"
 msgstr "Beschreibung Überschrift"
 
-#: apps/core/models.py:101
+#: apps/core/models.py:106
 msgid "Description 1"
 msgstr "Beschreibung 1"
 
-#: apps/core/models.py:102
+#: apps/core/models.py:107
 msgid "Description 2"
 msgstr "Beschreibung 2"
 
-#: apps/core/models.py:103
+#: apps/core/models.py:108
 msgid "Description 3"
 msgstr "Beschreibung 3"
 
-#: apps/core/models.py:104
+#: apps/core/models.py:109
 msgid "Description 4"
 msgstr "Beschreibung 4"
 
-#: apps/core/models.py:105
+#: apps/core/models.py:110
 msgid "Quota for Storage"
 msgstr "Kontingent für HDD Speicher (Storage)"
 
-#: apps/core/models.py:106
+#: apps/core/models.py:111
 msgid "Quota for Application"
 msgstr "Kontingent für SSD Speicher (Anwendung)"
 
-#: apps/core/models.py:107
+#: apps/core/models.py:112
 msgid "Cost for Storage"
 msgstr "Kosten für HDD Speicher (Storage)"
 
-#: apps/core/models.py:108
+#: apps/core/models.py:113
 msgid "Additional Storage Size"
 msgstr "Zusätzliche Speichergröße"
 
-#: apps/core/models.py:133
+#: apps/core/models.py:138
 msgid "identifier"
 msgstr "Kennung"
 
-#: apps/core/models.py:142
+#: apps/core/models.py:147
 msgid "Hostname"
 msgstr "Hostname"
 
-#: apps/core/models.py:143
+#: apps/core/models.py:148
 msgid "Packet User"
 msgstr "Paketbenutzer"
 
-#: apps/core/models.py:144
+#: apps/core/models.py:149
 msgid "Channel"
 msgstr "Kanal"
 
-#: apps/core/models.py:145
+#: apps/core/models.py:150
 msgid "First Port"
 msgstr "Erster Port"
 
-#: apps/core/models.py:146
+#: apps/core/models.py:151
 msgid "Last Port"
 msgstr "Letzter Port"
 
-#: apps/core/models.py:148
+#: apps/core/models.py:153
 msgid "Custom Domain"
 msgstr "Eigene Domäne"
 
-#: apps/core/models.py:149
+#: apps/core/models.py:154
 msgid "Additional Storage"
 msgstr "Zusätzlicher Speicher"
 
-#: apps/core/models.py:154
+#: apps/core/models.py:159
 msgid "Status"
 msgstr "Status"
 
-#: apps/core/models.py:156
+#: apps/core/models.py:161
 msgid "DB Password"
 msgstr "Datenbank Passwort"
 
-#: apps/core/models.py:157
+#: apps/core/models.py:162
 msgid "Initial Password"
 msgstr "Anfangs Passwort"
 
-#: apps/core/models.py:159
+#: apps/core/models.py:164
 msgid "Password1"
 msgstr "Passwort1"
 
-#: apps/core/models.py:161
+#: apps/core/models.py:166
 msgid "Password2"
 msgstr "Passwort2"
 
-#: apps/core/models.py:163
+#: apps/core/models.py:168
 msgid "Django Secret Key"
 msgstr "Geheimer Django-Schlüssel"
 
-#: apps/core/models.py:164
+#: apps/core/models.py:169
 msgid "Last Interaction"
 msgstr "Letzte Interaktion"
 
-#: apps/core/models.py:165
+#: apps/core/models.py:170
 msgid "Reserved Token"
 msgstr "Reservierter Token"
 
-#: apps/core/models.py:166
+#: apps/core/models.py:171
 msgid "Reserved Until"
 msgstr "Reserviert bis"
 
-#: apps/core/models.py:225
+#: apps/core/models.py:230
 msgid "Start Date"
 msgstr "Anfangsdatum"
 
-#: apps/core/models.py:226
+#: apps/core/models.py:231
 msgid "End Date"
 msgstr "Enddatum"
 
-#: apps/core/models.py:227
+#: apps/core/models.py:232
 msgid "Latest Cancel Date"
 msgstr "Spätestes Kündigungsdatum"
 
-#: apps/core/models.py:228
+#: apps/core/models.py:233
 msgid "Is Renewing Automatically"
 msgstr "Verlängert sich automatisch"
 
-#: apps/core/models.py:229
+#: apps/core/models.py:234
 msgid "Is Confirmed"
 msgstr "Ist bestätigt"
 
-#: apps/core/models.py:231
+#: apps/core/models.py:236
 msgid "Payment Method"
 msgstr "Zahlungsweise"
 
-#: apps/core/models.py:232
+#: apps/core/models.py:237
 msgid "Account Owner"
 msgstr "Kontoinhaber"
 
-#: apps/core/models.py:233
+#: apps/core/models.py:238
 msgid "Account IBAN"
 msgstr "Konto-IBAN"
 
-#: apps/core/models.py:234
+#: apps/core/models.py:239
 msgid "SEPA Mandate"
 msgstr "SEPA-Mandat"
 
-#: apps/core/models.py:235
+#: apps/core/models.py:240
 msgid "Date of SEPA Mandate"
 msgstr "Datum des SEPA-Mandats"
 
