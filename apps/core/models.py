@@ -120,7 +120,7 @@ class SaasPlan (models.Model):
         if not self.quota_storage:
             return 0
         if not self.quota_storage.endswith("G"):
-            raise Exception("Expected trailing G for quota storage")
+            raise Exception(f"Expected trailing G for quota storage in plan {self.name}, got {self.quota_storage}")
         return int(self.quota_storage.replace("G",""))
 
 
@@ -128,7 +128,7 @@ class SaasPlan (models.Model):
         if not self.additional_storage_size:
             return 0
         if not self.additional_storage_size.endswith("G"):
-            raise Exception("Expected trailing G for additional storage size")
+            raise Exception(f"Expected trailing G for additional storage size in plan {self.name}, got {self.additional_storage_size}")
         return int(self.additional_storage_size.replace("G",""))
 
 # this is the saas instance rented by the customer

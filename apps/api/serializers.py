@@ -20,7 +20,8 @@ class InstanceSerializer(serializers.HyperlinkedModelSerializer):
       plan = LogicContracts().get_plan_of_instance(instance)
       if not plan:
           raise Exception('Missing plan for product')
-      return plan.quota_storage
+      quota_storage = plan.get_included_storage_gb() + instance.additional_storage
+      return str(quota_storage) + 'G'
 
     def get_quota_app(self, instance):
       plan = LogicContracts().get_plan_of_instance(instance)
