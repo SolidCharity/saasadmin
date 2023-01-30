@@ -1,6 +1,7 @@
 from datetime import datetime
 from shutil import ExecError
 from django.shortcuts import render, redirect
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
@@ -441,7 +442,14 @@ def display_contact(request):
     if not conf:
         return None
     conf.value = conf.value.replace('#Website', request.get_host())
-    return render(request, 'display_value.html', {'conf': conf})
 
+    if settings.MOSPARO_GUID:
+        return render(request, 'display_contact.html',
+            {'conf': conf,
+             'mosparo_url': settings.MOSPARO_URL,
+             'mosparo_guid': settings.MOSPARO_GUID,
+             'mosparo_publickey': settings.MOSPARO_PUBLICKEY})
+
+    return render(request, 'display_value.html', {'conf': conf})
 
 

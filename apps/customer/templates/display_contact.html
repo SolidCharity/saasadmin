@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+<script src="{{mosparo_url}}/build/mosparo-frontend.js" defer></script>
+<script>
+    var m;
+    window.onload = function(){
+        m = new mosparo(
+               'mosparo-box',
+               '{{mosparo_url}}',
+               '{{mosparo_guid}}',
+               '{{mosparo_publickey}}',
+        );
+    };
+</script>
+<link href="{{mosparo_url}}/resources/{{mosparo_guid}}.css" rel="stylesheet">
+
+<div class="container">
+{{conf.value |safe}}
+</div>
+
+
+{% endblock %}
