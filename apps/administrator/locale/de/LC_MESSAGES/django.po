@@ -386,39 +386,47 @@ msgstr "Tage"
 msgid "Will be renewed automatically"
 msgstr "Wird automatisch verlängert"
 
-#: apps/administrator/templates/viewcontract.html:18
+#: apps/administrator/templates/viewcontract.html:19
+msgid "Latest Cancel Date"
+msgstr "Spätestes Kündigungsdatum"
+
+#: apps/administrator/templates/viewcontract.html:21
 msgid "Payment Method"
 msgstr "Zahlungsweise"
 
-#: apps/administrator/templates/viewcontract.html:21
+#: apps/administrator/templates/viewcontract.html:24
 msgid "Account owner"
 msgstr "Kontoinhaber"
 
-#: apps/administrator/templates/viewcontract.html:22
+#: apps/administrator/templates/viewcontract.html:25
 msgid "IBAN"
 msgstr "IBAN"
 
-#: apps/administrator/templates/viewcontract.html:23
+#: apps/administrator/templates/viewcontract.html:26
 msgid "SEPA Mandate"
 msgstr "SEPA Mandatsnummer"
 
-#: apps/administrator/templates/viewcontract.html:24
+#: apps/administrator/templates/viewcontract.html:27
 msgid "SEPA Mandate Date"
 msgstr "SEPA Mandatsdatum"
 
-#: apps/administrator/templates/viewcontract.html:27
+#: apps/administrator/templates/viewcontract.html:30
+msgid "Booked Storage Space"
+msgstr "Gebuchter Speicherplatz (HDD)"
+
+#: apps/administrator/templates/viewcontract.html:32
 msgid "Amount"
 msgstr "Betrag"
 
-#: apps/administrator/views.py:49
+#: apps/administrator/views.py:52
 msgid "contract will be auto renewed"
 msgstr ""
 
-#: apps/administrator/views.py:51
+#: apps/administrator/views.py:54
 msgid "contract is indefinite"
 msgstr ""
 
-#: apps/administrator/views.py:53
+#: apps/administrator/views.py:56
 #, python-format
 msgid "contract ends on %s"
 msgstr ""

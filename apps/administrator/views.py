@@ -320,7 +320,9 @@ def viewcontract(request, id):
     else:
         additional_storage_cost = 0
 
-    return render(request,'viewcontract.html', {'contract': contract, 'additional_storage_cost': additional_storage_cost})
+    booked_storage_space = str(contract.plan.get_included_storage_gb() + contract.instance.additional_storage) + " GB"
+
+    return render(request,'viewcontract.html', {'contract': contract, 'additional_storage_cost': additional_storage_cost, 'booked_storage_space': booked_storage_space})
 
 @login_required
 @staff_member_required

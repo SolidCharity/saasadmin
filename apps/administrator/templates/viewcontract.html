@@ -15,6 +15,9 @@
     <li>{%translate "Length of period"%}: {{contract.plan.period_length_in_days}} {%translate "Days"%}</li>
     {%endif%}
     <li>{%translate "Will be renewed automatically"%}: {{contract.is_auto_renew}}</li>
+    {% if contract.is_auto_renew %}
+    <li>{%translate "Latest Cancel Date"%}: {{contract.latest_cancel_date}}</li>
+    {%endif%}
     <li>{%translate "Payment Method"%}: {{contract.payment_method}}</li>
 
     {%if contract.payment_method == 'SEPA_DIRECTDEBIT' %}
@@ -23,6 +26,8 @@
     <li>{%translate "SEPA Mandate"%}: {{contract.sepa_mandate}}</li>
     <li>{%translate "SEPA Mandate Date"%}: {{contract.sepa_mandate_date}}</li>
     {%endif%}
+
+    <li>{%translate "Booked Storage Space"%}: {{booked_storage_space}}</li>
 
     <li>{%translate "Amount"%}: {{contract.plan.cost_per_period|add:additional_storage_cost }} {{contract.plan.currency_code}}</li>
   </ul>
