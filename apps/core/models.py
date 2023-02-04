@@ -117,7 +117,7 @@ class SaasPlan (models.Model):
 
 
     def get_included_storage_gb(self):
-        if not self.quota_storage:
+        if not self.quota_storage or self.quota_storage == '0M':
             return 0
         if not self.quota_storage.endswith("G"):
             raise Exception(f"Expected trailing G for quota storage in plan {self.name}, got {self.quota_storage}")
@@ -125,7 +125,7 @@ class SaasPlan (models.Model):
 
 
     def get_additional_storage_gb(self):
-        if not self.additional_storage_size:
+        if not self.additional_storage_size or self.additional_storage_size == '0M':
             return 0
         if not self.additional_storage_size.endswith("G"):
             raise Exception(f"Expected trailing G for additional storage size in plan {self.name}, got {self.additional_storage_size}")
