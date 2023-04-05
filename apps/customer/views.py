@@ -365,6 +365,10 @@ def contract_cancel(request, product_id):
         contract.is_auto_renew = False
         contract.save()
 
+        # send email to admin
+        LogicCustomers().notify_administrators(_("Contract for %s cancelled") % (product.name,),
+                _("Sad, a contract of %s was upgraded for customer %d") % (product.name, customer.id))
+
     # show cancelled contract
     return show_contract(request, product, plan, None, None)
 
