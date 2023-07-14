@@ -96,7 +96,7 @@ def editcontract(request, id, newplan):
 def instances(request, product):
     product = SaasProduct.objects.filter(slug = product).first()
     unused_instances = SaasInstance.objects.filter(product = product).filter(Q(status=SaasInstance().AVAILABLE) | Q(status=SaasInstance().READY) | Q(status=SaasInstance().IN_PREPARATION))
-    to_be_removed_instances = SaasInstance.objects.filter(product = product).filter(status=SaasInstance().TO_BE_REMOVED)
+    to_be_removed_instances = SaasInstance.objects.filter(product = product).filter(Q(status=SaasInstance().TO_BE_REMOVED) | Q(status=SaasInstance().EXPIRED))
 
     return render(request,"instances.html",
             {'unused_instances': unused_instances,
