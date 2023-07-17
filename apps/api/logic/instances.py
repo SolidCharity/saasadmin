@@ -88,7 +88,8 @@ class LogicInstances:
 
         url = product.activation_url
         if not url:
-            url = product.instance_url.replace("https://", "https://saas.") + "/saas_activate.php?SaasActivationPassword=#SaasActivationPassword&UserEmailAddress=#UserEmailAddress"
+            # TODO activation
+            url = product.instance_url.replace("https://", "https://saas.") + "/saas_activate.php?action=activate&SaasActivationPassword=#SaasActivationPassword&UserEmailAddress=#UserEmailAddress"
 
         PasswordResetToken = None
         if '#PasswordResetToken' in url:
@@ -123,7 +124,8 @@ class LogicInstances:
         url = product.deactivation_url
 
         if not url:
-            url = product.instance_url.replace("https://", "https://saas.") + "/saas_deactivate.php?SaasActivationPassword=#SaasActivationPassword"
+            # TODO deactivation
+            url = product.instance_url.replace("https://", "https://saas.") + "/saas_deactivate.php?action=deactivate&SaasActivationPassword=#SaasActivationPassword"
 
         # for local tests
         if "example.org" in url:
