@@ -1,4 +1,5 @@
 VENV := . .venv/bin/activate &&
+PYTHON_VERSION := 3.9.18
 POFILES := apps/api/locale/de/LC_MESSAGES/django.po apps/administrator/locale/de/LC_MESSAGES/django.po apps/core/locale/de/LC_MESSAGES/django.po apps/customer/locale/de/LC_MESSAGES/django.po locale/de/LC_MESSAGES/django.po
 
 all:
@@ -26,7 +27,7 @@ quickstart_fedora: fedora_packages quickstart
 fedora_packages:
 	(rpm -qa | grep python3-devel) || sudo dnf install python3-devel
 
-quickstart_without_demodb: create_venv pip_packages create_db create_superuser
+quickstart_without_demodb: pyenv create_venv pip_packages create_db create_superuser
 	@echo 
 	@echo =====================================================================================
 	@echo Installation has finished successfully
@@ -40,10 +41,18 @@ create_superuser:
 	${VENV} echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(is_superuser=True).exists() or User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python manage.py shell
 
 pip_packages:
-	${VENV} pip install -r requirements.txt
+	pipenv install
 
 create_venv:
-	python3 -m venv .venv
+	source ~/.profile && pipenv install --python ${PYTHON_VERSION}
+
+pyenv:
+	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+	echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
+	echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
+	echo 'eval "$(pyenv init -)"' >> ~/.profile
+	pyenv install ${PYTHON_VERSION}
+	pyenv global ${PYTHON_VERSION}
 
 create_db:
 	if [ ! -f saasadmin/settings_local.py ]; then cp saasadmin/settings_local.py.example saasadmin/settings_local.py; fi

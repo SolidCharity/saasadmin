@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+python-dateutil = "*"
+requests = "*"
+django = "*"
+djangorestframework = "*"
+django-registration = "*"
+django-countries = "*"
+django-modeltranslation = "*"
+django-simple-history = "*"
+tldextract = "*"
+fontawesomefree = "==6.1"
+pillow = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
+python_full_version = "3.9.18"
