@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 python-dateutil = "*"
 requests = "*"
-django = "*"
+django = "~=3.2"
 djangorestframework = "*"
 django-registration = "*"
 django-countries = "*"
@@ -15,6 +15,7 @@ django-simple-history = "*"
 tldextract = "*"
 fontawesomefree = "==6.1"
 pillow = "*"
+psycopg2 = "*"
 
 [dev-packages]
 
