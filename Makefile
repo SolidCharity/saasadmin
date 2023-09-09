@@ -31,7 +31,7 @@ debian_packages:
 quickstart_fedora: fedora_packages quickstart
 
 fedora_packages:
-	(rpm -qa | grep python3-devel) || sudo dnf install python3-devel
+	(rpm -qa | grep python3-devel) || sudo dnf install python3-devel python3-pip
 
 quickstart_without_demodb: create_venv pip_packages create_db create_superuser
 	@echo 
