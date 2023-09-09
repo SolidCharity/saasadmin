@@ -1,5 +1,9 @@
 VENV := . .venv/bin/activate &&
-PYTHON_VERSION := 3.9.18
+PYENV_PYTHON_VERSION := 3.9.18
+PYTHON_VERSION_MIN := 3.9
+PYTHON_VERSION_OK=$(shell python -c 'import sys;\
+  print(int(float("%d.%d"% sys.version_info[0:2]) >= $(PYTHON_VERSION_MIN)))' )
+
 POFILES := apps/api/locale/de/LC_MESSAGES/django.po apps/administrator/locale/de/LC_MESSAGES/django.po apps/core/locale/de/LC_MESSAGES/django.po apps/customer/locale/de/LC_MESSAGES/django.po locale/de/LC_MESSAGES/django.po
 SHELL := /bin/bash
 
@@ -28,7 +32,7 @@ quickstart_fedora: fedora_packages quickstart
 fedora_packages:
 	(rpm -qa | grep python3-devel) || sudo dnf install python3-devel
 
-quickstart_without_demodb: pyenv create_venv pip_packages create_db create_superuser
+quickstart_without_demodb: create_venv pip_packages create_db create_superuser
 	@echo 
 	@echo =====================================================================================
 	@echo Installation has finished successfully
@@ -45,17 +49,21 @@ pip_packages:
 	source ~/.profile && python -m pipenv install
 
 create_venv:
-	echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.profile
-	source ~/.profile && python -m pipenv install --python ${PYTHON_VERSION}
-
-pyenv:
+ifeq ($(PYTHON_VERSION_OK),0)
 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 	echo 'export PYENV_ROOT="$$HOME/.pyenv"' >> ~/.profile
 	echo 'command -v pyenv >/dev/null || export PATH="$$PYENV_ROOT/bin:$$PATH"' >> ~/.profile
 	echo 'eval "$$(pyenv init -)"' >> ~/.profile
-	source ~/.profile && pyenv install ${PYTHON_VERSION}
-	source ~/.profile && pyenv global ${PYTHON_VERSION}
+	source ~/.profile && pyenv install ${PYENV_PYTHON_VERSION}
+	source ~/.profile && pyenv global ${PYENV_PYTHON_VERSION}
 	source ~/.profile && python3 -m pip install --user --upgrade pip pipenv
+	echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.profile
+	source ~/.profile && python -m pipenv install --python ${PYENV_PYTHON_VERSION}
+else
+	touch ~/.profile
+	pip install --user --upgrade pip pipenv
+	pipenv install
+endif
 
 create_db:
 	if [ ! -f saasadmin/settings_local.py ]; then cp saasadmin/settings_local.py.example saasadmin/settings_local.py; fi
