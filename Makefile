@@ -1,8 +1,9 @@
 VENV := . .venv/bin/activate &&
 PYENV_PYTHON_VERSION := 3.9.18
 PYTHON_VERSION_MIN := 3.9
-PYTHON_VERSION_OK=$(shell python -c 'import sys;\
-  print(int(float("%d.%d"% sys.version_info[0:2]) >= $(PYTHON_VERSION_MIN)))' )
+PYTHON := python3
+PYTHON_VERSION_CUR := $(shell $(PYTHON) -c 'import sys; print("%d.%d"% sys.version_info[0:2])' )
+PYTHON_VERSION_OK := $(shell $(PYTHON) -c 'from packaging.version import parse as parsev; parsev("$(PYTHON_VERSION_CUR)") >= parsev("$(PYTHON_VERSION_MIN)")' )
 
 POFILES := apps/api/locale/de/LC_MESSAGES/django.po apps/administrator/locale/de/LC_MESSAGES/django.po apps/core/locale/de/LC_MESSAGES/django.po apps/customer/locale/de/LC_MESSAGES/django.po locale/de/LC_MESSAGES/django.po
 SHELL := /bin/bash
@@ -46,7 +47,7 @@ create_superuser:
 	${VENV} echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(is_superuser=True).exists() or User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python manage.py shell
 
 pip_packages:
-	source ~/.profile && python -m pipenv install
+	source ~/.profile && $(PYTHON) -m pipenv install
 
 create_venv:
 ifeq ($(PYTHON_VERSION_OK),0)
@@ -58,10 +59,10 @@ ifeq ($(PYTHON_VERSION_OK),0)
 	source ~/.profile && pyenv global ${PYENV_PYTHON_VERSION}
 	source ~/.profile && python3 -m pip install --user --upgrade pip pipenv
 	echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.profile
-	source ~/.profile && python -m pipenv install --python ${PYENV_PYTHON_VERSION}
+	source ~/.profile && $(PYTHON) -m pipenv install --python ${PYENV_PYTHON_VERSION}
 else
-	touch ~/.profile
-	pip install --user --upgrade pip pipenv
+	echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.profile
+	python3 -m pip install --user --upgrade pip pipenv
 	pipenv install
 endif
 
