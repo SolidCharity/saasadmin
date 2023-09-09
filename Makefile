@@ -1,9 +1,9 @@
 VENV := . .venv/bin/activate &&
-PYENV_PYTHON_VERSION := 3.9.18
-PYTHON_VERSION_MIN := 3.9
 PYTHON := python3
-PYTHON_VERSION_CUR := $(shell $(PYTHON) -c 'import sys; print("%d.%d"% sys.version_info[0:2])' )
-PYTHON_VERSION_OK := $(shell $(PYTHON) -c 'from packaging.version import parse as parsev; parsev("$(PYTHON_VERSION_CUR)") >= parsev("$(PYTHON_VERSION_MIN)")' )
+PYENV_PYTHON_VERSION := 3.9.18
+#PYTHON_VERSION_MIN := 3.9
+#PYTHON_VERSION_CUR := $(shell $(PYTHON) -c 'import sys; print("%d.%d"% sys.version_info[0:2])' )
+PYTHON_VERSION_OK := $(shell $(PYTHON) -c 'import sys; sys.version_info[0] == 3 and sys.version_info[1] >= 9' )
 
 POFILES := apps/api/locale/de/LC_MESSAGES/django.po apps/administrator/locale/de/LC_MESSAGES/django.po apps/core/locale/de/LC_MESSAGES/django.po apps/customer/locale/de/LC_MESSAGES/django.po locale/de/LC_MESSAGES/django.po
 SHELL := /bin/bash
