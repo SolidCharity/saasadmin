@@ -42,7 +42,7 @@ create_superuser:
 	${VENV} echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(is_superuser=True).exists() or User.objects.create_superuser('admin', 'admin@example.com', 'admin')" | python manage.py shell
 
 pip_packages:
-	pipenv install
+	source ~/.profile && python -m pipenv install
 
 create_venv:
 	source ~/.profile && python -m pipenv install --python ${PYTHON_VERSION}
