@@ -1,6 +1,7 @@
 VENV := . .venv/bin/activate &&
 PYTHON_VERSION := 3.9.18
 POFILES := apps/api/locale/de/LC_MESSAGES/django.po apps/administrator/locale/de/LC_MESSAGES/django.po apps/core/locale/de/LC_MESSAGES/django.po apps/customer/locale/de/LC_MESSAGES/django.po locale/de/LC_MESSAGES/django.po
+SHELL := /bin/bash
 
 all:
 	@echo "help:"
@@ -51,9 +52,8 @@ pyenv:
 	echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.profile
 	echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.profile
 	echo 'eval "$(pyenv init -)"' >> ~/.profile
-	source ~/.profile
-	pyenv install ${PYTHON_VERSION}
-	pyenv global ${PYTHON_VERSION}
+	source ~/.profile && pyenv install ${PYTHON_VERSION}
+	source ~/.profile && pyenv global ${PYTHON_VERSION}
 
 create_db:
 	if [ ! -f saasadmin/settings_local.py ]; then cp saasadmin/settings_local.py.example saasadmin/settings_local.py; fi
