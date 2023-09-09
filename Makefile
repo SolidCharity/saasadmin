@@ -3,7 +3,7 @@ PYTHON := python3
 PYENV_PYTHON_VERSION := 3.9.18
 #PYTHON_VERSION_MIN := 3.9
 #PYTHON_VERSION_CUR := $(shell $(PYTHON) -c 'import sys; print("%d.%d"% sys.version_info[0:2])' )
-PYTHON_VERSION_OK := $(shell $(PYTHON) -c 'import sys; sys.version_info[0] == 3 and sys.version_info[1] >= 9' )
+PYTHON_VERSION_OK := $(shell $(PYTHON) -c 'import sys; print(sys.version_info[0] == 3 and sys.version_info[1] >= 9)' )
 
 POFILES := apps/api/locale/de/LC_MESSAGES/django.po apps/administrator/locale/de/LC_MESSAGES/django.po apps/core/locale/de/LC_MESSAGES/django.po apps/customer/locale/de/LC_MESSAGES/django.po locale/de/LC_MESSAGES/django.po
 SHELL := /bin/bash
@@ -50,7 +50,7 @@ pip_packages:
 	source ~/.profile && $(PYTHON) -m pipenv install
 
 create_venv:
-ifeq ($(PYTHON_VERSION_OK),0)
+ifeq ($(PYTHON_VERSION_OK),False)
 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
 	echo 'export PYENV_ROOT="$$HOME/.pyenv"' >> ~/.profile
 	echo 'command -v pyenv >/dev/null || export PATH="$$PYENV_ROOT/bin:$$PATH"' >> ~/.profile
@@ -62,8 +62,8 @@ ifeq ($(PYTHON_VERSION_OK),0)
 	source ~/.profile && $(PYTHON) -m pipenv install --python ${PYENV_PYTHON_VERSION}
 else
 	echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.profile
-	python3 -m pip install --user --upgrade pip pipenv
-	python3 -m pipenv install
+	python3 -m pipenv --version || python3 -m pip install pipenv
+	source ~/.profile && python3 -m pipenv install
 endif
 
 create_db:
