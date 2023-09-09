@@ -45,7 +45,7 @@ pip_packages:
 	pipenv install
 
 create_venv:
-	source ~/.profile && pipenv install --python ${PYTHON_VERSION}
+	source ~/.profile && python -m pipenv install --python ${PYTHON_VERSION}
 
 pyenv:
 	git clone https://github.com/pyenv/pyenv.git ~/.pyenv
@@ -54,6 +54,7 @@ pyenv:
 	echo 'eval "$$(pyenv init -)"' >> ~/.profile
 	source ~/.profile && pyenv install ${PYTHON_VERSION}
 	source ~/.profile && pyenv global ${PYTHON_VERSION}
+	source ~/.profile && python3 -m pip install --user --upgrade pip pipenv
 
 create_db:
 	if [ ! -f saasadmin/settings_local.py ]; then cp saasadmin/settings_local.py.example saasadmin/settings_local.py; fi

@@ -15,7 +15,6 @@ django-simple-history = "*"
 tldextract = "*"
 fontawesomefree = "==6.1"
 pillow = "*"
-psycopg2 = "*"
 
 [dev-packages]
 
