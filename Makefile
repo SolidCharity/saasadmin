@@ -26,7 +26,7 @@ install:
 quickstart_debian: debian_packages quickstart
 
 debian_packages:
-	(dpkg -l | grep python3-dev) || (sudo apt update && sudo apt install python3-venv python3-dev gettext -y)
+	(dpkg -l | grep python3-dev) || (sudo apt update && sudo apt install python3-venv python3-dev python3-pip gettext -y)
 	
 quickstart_fedora: fedora_packages quickstart
 
