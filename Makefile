@@ -45,6 +45,7 @@ pip_packages:
 	source ~/.profile && python -m pipenv install
 
 create_venv:
+	echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.profile
 	source ~/.profile && python -m pipenv install --python ${PYTHON_VERSION}
 
 pyenv:
