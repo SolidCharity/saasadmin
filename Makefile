@@ -63,7 +63,7 @@ ifeq ($(PYTHON_VERSION_OK),0)
 else
 	echo 'export PIPENV_VENV_IN_PROJECT=1' >> ~/.profile
 	python3 -m pip install --user --upgrade pip pipenv
-	pipenv install
+	python3 -m pipenv install
 endif
 
 create_db:
